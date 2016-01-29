@@ -1,0 +1,20 @@
+<component name="libraryTable">
+  <library name="share">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/com.star.share/libs/ShareSDK-Evernote-2.5.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/com.star.share/libs/ShareSDK-Wechat-Core-2.5.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/com.star.share/libs/ShareSDK-Email-2.5.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/com.star.share/libs/ShareSDK-WhatsApp-2.5.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/com.star.share/libs/ShareSDK-Twitter-2.5.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/com.star.share/libs/ShareSDK-SinaWeibo-2.5.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/com.star.share/libs/ShareSDK-ShortMessage-2.5.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/com.star.share/libs/ShareSDK-Wechat-2.5.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/com.star.share/libs/mframework.jar!/" />
+      <root url="jar://$PROJECT_DIR$/com.star.share/libs/ShareSDK-Wechat-Moments-2.5.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/com.star.share/libs/ShareSDK-Facebook-2.5.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/com.star.share/libs/ShareSDK-Core-2.5.9.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

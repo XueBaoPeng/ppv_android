@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/com.star.menu/com.star.menu.iml" filepath="$PROJECT_DIR$/com.star.menu/com.star.menu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/com.star.mobile.video/com.star.mobile.video.iml" filepath="$PROJECT_DIR$/com.star.mobile.video/com.star.mobile.video.iml" />
+      <module fileurl="file://$PROJECT_DIR$/com.star.mobile.video_ppv_20160115/com.star.mobile.video_ppv_20160115.iml" filepath="$PROJECT_DIR$/com.star.mobile.video_ppv_20160115/com.star.mobile.video_ppv_20160115.iml" />
+      <module fileurl="file://$PROJECT_DIR$/com.star.share/com.star.share.iml" filepath="$PROJECT_DIR$/com.star.share/com.star.share.iml" />
+      <module fileurl="file://$PROJECT_DIR$/com.star.ui/com.star.ui.iml" filepath="$PROJECT_DIR$/com.star.ui/com.star.ui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/com.star.util/com.star.util.iml" filepath="$PROJECT_DIR$/com.star.util/com.star.util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/facebook_sdk/facebook_sdk.iml" filepath="$PROJECT_DIR$/facebook_sdk/facebook_sdk.iml" />
+    </modules>
+  </component>
+</project>

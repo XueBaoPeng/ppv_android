@@ -1,0 +1,17 @@
+<component name="libraryTable">
+  <library name="mainPPV">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/com.star.mobile.video_ppv_20160115/libs/GetuiSdk2.4.1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/com.star.mobile.video_ppv_20160115/libs/android-async-http-1.4.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/com.star.mobile.video_ppv_20160115/libs/nineoldandroids-2.4.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/com.star.mobile.video_ppv_20160115/libs/ThinDownloadManager.jar!/" />
+      <root url="jar://$PROJECT_DIR$/com.star.mobile.video_ppv_20160115/libs/GetuiExt-2.0.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/com.star.mobile.video_ppv_20160115/libs/model.jar!/" />
+      <root url="jar://$PROJECT_DIR$/com.star.mobile.video_ppv_20160115/libs/unbescape-1.1.1.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/com.star.mobile.video_ppv_20160115/libs/Android_Location_V1.0.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/com.star.mobile.video_ppv_20160115/libs/ppvModel.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
