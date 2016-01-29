@@ -85,7 +85,7 @@ public class FragmentSmartCardInfo extends BaseFragment implements OnClickListen
 		mView.findViewById(R.id.account_bill_rl).setOnClickListener(this);
 	}
 
-	private void initData() {
+	public void initData() {
 		mSmartcardService = new SmartCardService(getActivity());
 		if (mSmartCardInfoVO != null) {
 			getDetailSmartCardInfo(mSmartCardInfoVO);
@@ -101,7 +101,15 @@ public class FragmentSmartCardInfo extends BaseFragment implements OnClickListen
 		initData();
 		super.onResume();
 	}
-	
+
+	@Override
+	public void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		if (this.isAdded()){
+			getActivity().getSupportFragmentManager().putFragment(outState, "mFragment", this);
+		}
+	}
+
 	/**
 	 * 传递参数的接口
 	 * 

@@ -1,13 +1,11 @@
 package com.star.mobile.video.smartcard;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import com.star.cms.model.vo.SmartCardInfoVO;
 import com.star.mobile.video.R;
 import com.star.mobile.video.widget.indicator.IconPagerAdapter;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.view.ViewGroup;
 
@@ -20,29 +18,26 @@ import android.view.ViewGroup;
  */
 public class SmartCardFragmentViewPageAdapter extends FragmentStatePagerAdapter implements IconPagerAdapter {
     private final int resId = R.drawable.point_group;
-    private List<SmartCardInfoVO> mSmartinfos;
-    private SmartCardInfoVO smartCard;
-
-    public SmartCardFragmentViewPageAdapter(android.support.v4.app.FragmentManager fm, List<SmartCardInfoVO> mSmartinfos) {
+    private List<FragmentSmartCardInfo> mFragments = new ArrayList<FragmentSmartCardInfo>();
+    public SmartCardFragmentViewPageAdapter(android.support.v4.app.FragmentManager fm) {
         super(fm);
-        this.mSmartinfos = mSmartinfos;
     }
 
-    public void setSmartInfos(List<SmartCardInfoVO> smartinfos) {
-        this.mSmartinfos = smartinfos;
+
+    public void addFragment(List<FragmentSmartCardInfo> fragments)
+    {
+        this.mFragments = fragments;
         notifyDataSetChanged();
     }
 
     @Override
-    public Fragment getItem(int position) {
-        FragmentSmartCardInfo fsc = FragmentSmartCardInfo.newInstance(mSmartinfos.get(position));
-        smartCard = mSmartinfos.get(position);
-        return fsc;
+    public FragmentSmartCardInfo getItem(int position) {
+        return mFragments.get(position);
     }
 
     @Override
     public int getCount() {
-        return mSmartinfos.size();
+        return mFragments.size();
     }
 
     @Override
@@ -51,20 +46,18 @@ public class SmartCardFragmentViewPageAdapter extends FragmentStatePagerAdapter 
     }
 
     @Override
-    public int getItemPosition(Object object) {
-        if ( mChildCount > 0) {
-            mChildCount --;
-            return POSITION_NONE;
+    public void destroyItem(ViewGroup container, int position, Object object) {
+        // Yet another bug in FragmentStatePagerAdapter that destroyItem is called on fragment that hasnt been added. Need to catch
+        try {
+            super.destroyItem(container, position, object);
+        } catch (IllegalStateException ex) {
+            ex.printStackTrace();
         }
-        return super.getItemPosition(object);
     }
 
-    private int mChildCount = 0;
-
     @Override
-    public void notifyDataSetChanged() {
-        mChildCount = getCount();
-        super.notifyDataSetChanged();
+    public int getItemPosition(Object object) {
+        return POSITION_NONE;
     }
 
 }
