@@ -247,8 +247,7 @@ public class SyncStatusService extends BaseService {
 					
 					List<RechargeCMD> recharges = value.getRecharges();
 					for(RechargeCMD rc :recharges) {
-
-						SmartCardAsyncResult.getInstance().rechargeResult(getApplicationContext(), rc,notifManager);
+						SmartCardAsyncResult.getInstance().rechargeResult(getApplicationContext(), rc,notifManager,rc.getRechargeType());
 						Logger.d("Recharge: (smartcardno:"+rc.getSmartCardNo()+", AcceptStatus:"+rc.getAcceptStatus()+")");
 					}
 				}
