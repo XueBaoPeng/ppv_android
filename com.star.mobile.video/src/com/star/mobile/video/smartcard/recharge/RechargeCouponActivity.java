@@ -350,7 +350,15 @@ public class RechargeCouponActivity extends BaseActivity implements OnClickListe
 					@Override
 					public void onSuccess(Integer value) {
 						CommonUtil.closeProgressDialog();
-						if(value != null && value == RechargeCMD.SUCCESS) {
+						if(value == null) {
+							RechargeDialog dialog = new RechargeDialog(RechargeCouponActivity.this);
+							dialog.setRechargeFail(getString(R.string.boss_unavailable_now));
+							dialog.setRechargeSuccessVisibility(View.GONE);
+							dialog.setRechargeFailVisibility(View.VISIBLE);
+							dialog.show();
+							return;
+						}
+						if(value == RechargeCMD.SUCCESS) {
 							Application a = getApplication();
 							if(a instanceof StarApplication) {
 								((StarApplication)a).finishActivityBClazz(RechargeSmartCardActivity.class);
@@ -380,6 +388,29 @@ public class RechargeCouponActivity extends BaseActivity implements OnClickListe
 									onBackPressed();
 								}
 							});
+						} else if(value.equals(RechargeCMD.RUNING_EXCHANGE)) {
+
+							CommonUtil.getInstance().showPromptDialog(RechargeCouponActivity.this, getString(R.string.tips),
+									getString(R.string.runing_exchange_recharge), getString(R.string.check), getString(R.string.later_big), new CommonUtil.PromptDialogClickListener() {
+
+										@Override
+										public void onConfirmClick() {
+											Application a = getApplication();
+											if(a instanceof StarApplication) {
+												((StarApplication)a).finishActivityBClazz(RechargeSmartCardActivity.class);
+												((StarApplication)a).finishActivityBClazz(MyCouponsActivity.class);
+												((StarApplication)a).finishActivityBClazz(RechargeCouponActivity.class);
+											}
+											Intent intent = new Intent(RechargeCouponActivity.this, MyOrderActivity.class);
+											CommonUtil.startActivity(RechargeCouponActivity.this,intent);
+										}
+
+										@Override
+										public void onCancelClick() {
+											onBackPressed();
+										}
+									});
+
 						} else {
 							//TODO 失败
 						}
