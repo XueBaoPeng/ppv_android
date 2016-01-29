@@ -298,7 +298,6 @@
                         android:layout_below="@id/my_order_result_status"
                         android:layout_marginTop="4dp"
                         android:layout_toRightOf="@+id/my_order_result_reason"
-                        android:maxLines="2"
                         android:textColor="@color/taks_blue"
                         android:layout_marginBottom="16dp"
                         android:textSize="18sp" />
