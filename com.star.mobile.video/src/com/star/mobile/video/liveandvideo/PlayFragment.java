@@ -296,7 +296,9 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(getActivity(),ChannelRateActivity.class);
-				intent.putExtra("channel", mTotalChannels.get(position));
+				if(mTotalChannels.size()>position){
+					intent.putExtra("channel", mTotalChannels.get(position));
+				}
 				CommonUtil.startActivity(getActivity(), intent);
 			}
 		});
