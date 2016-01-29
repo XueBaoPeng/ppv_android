@@ -953,7 +953,7 @@
     <string name="bind_success_message">smartcard: %1$s have been bound to your account</string>
     <string name="loading_delete_smartcard">Loading data, please try later.</string>
     <string name="smartcard_number_doesn_exist">Failed to bind your smart card. The smart card is not exist.</string>
-    <string name="my_order">My Order</string>
+    <string name="my_order">Process Center</string>
     <string name="change_select_des">In order to ensure your account security, Please choose one of these following authentication method:</string>
     <string name="change_select_decoder_name">Serial number of your decoder</string>
     <string name="change_select_decoder_des">Verify your decoder serial number, which can be found on the back of your decoder</string>
@@ -1017,6 +1017,7 @@
     <string name="performed">We already received your request, please check the progress center.</string>
     <string name="faq_name">Lisa</string>
     <string name="balance_s">Balance</string>
+    <string name="exchange_failue">Sorry, Your coupon has been expired.</string>
     <string name="exchange_failue">Sorry, Your coupon has been expired.</string>
     <string name="my_order_nodata">You can check the service history and get the process status here.</string>
     <string name="big_bouquet">BOUQUET</string>
