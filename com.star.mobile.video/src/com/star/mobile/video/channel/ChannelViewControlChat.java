@@ -332,22 +332,22 @@ public class ChannelViewControlChat extends LinearLayout implements OnClickListe
 			@Override
 			public boolean onIntercept() {
 				hideChatNotice();
+				chatVO = newChatToSend(msg);
+				chats.add(chatVO);
+				mAdapter.updateDateRefreshUi(chats);
+				scrollToBottom();
 				return false;
 			}
 
 			@Override
 			public void onSuccess(Chart result) {
 				if(result != null){
-					chatVO = newChatToSend(msg);
-					chats.add(chatVO);
 					chatVO.setId(result.getId());
 					chatVO.setCreateDate(result.getCreateDate());
 					chatVO.setStatus(ChatVO.STATUS_VALID);
 //					SharedPreferencesUtil.saveChatRoomMsgCount(mContext, chatroom, 1);
 					EggAppearService.appearEgg(mContext, EggAppearService.Chatroom_chat);
 				}else{
-					chatVO = newChatToSend(msg);
-					chats.add(chatVO);
 					chatVO.setStatus(ChatVO.STATUS_INVALID);
 				}
 				mChatService.addChatToDB(chatVO, channelId);

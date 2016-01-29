@@ -226,7 +226,7 @@ public class EnterPhoneNumberActivity extends BaseActivity implements OnClickLis
 //    }
 	private void initData() {
 		if(mSmartCardInfoVO!=null){
-			if(mSmartCardInfoVO.getPhoneNumber() !=null && !"".equals(mSmartCardInfoVO.getPhoneNumber())){
+			if(mSmartCardInfoVO.getPhoneNumber() !=null && !"".equals(mSmartCardInfoVO.getPhoneNumber())&& mSmartCardInfoVO.getPhoneNumber().length()>4){
 				ll_no_phone.setVisibility(View.GONE);
 				ll_phone.setVisibility(View.VISIBLE);
 				button.setVisibility(View.VISIBLE);
