@@ -193,9 +193,11 @@ public class EpgView extends TabView<ListView>  {
 				if(position<1){
 					return;
 				}
-				Intent intent = new Intent(context,EpgDetailActivity.class);
-				intent.putExtra("programId", epgs.get(position-1).getId());
-				CommonUtil.startActivity(context, intent);
+				if(position-1<epgs.size()) {
+					Intent intent = new Intent(context, EpgDetailActivity.class);
+					intent.putExtra("programId", epgs.get(position - 1).getId());
+					CommonUtil.startActivity(context, intent);
+				}
 			}
 			
 		});

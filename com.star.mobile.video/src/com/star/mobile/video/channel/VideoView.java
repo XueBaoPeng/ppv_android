@@ -109,7 +109,7 @@ public class VideoView extends TabView<ListView>  {
 		@Override
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
-			case WHAT_HEADER:
+				case WHAT_HEADER:
 				if(mRecommentsVideo.size()>0){
 					Content poster=mRecommentsVideo.get(0).getPoster();
 					List<Resource> resposter=poster.getResources();
@@ -198,17 +198,18 @@ public class VideoView extends TabView<ListView>  {
 		ivRecommendVideoIcon.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				VOD vod = mRecommentsVideo.get(0);
-				Content video=vod.getVideo();
-				List<Resource> resvideo=video.getResources();
-				
-				Intent intent = new Intent(context,Player.class);
-				intent.putExtra("videocontent", (Serializable)mRecommentsVideo);
-				intent.putExtra("position", 0);
-				intent.putExtra("channel", mChannel);
-				intent.putExtra("filename",resvideo.get(0).getUrl() );
-				intent.putExtra("epgname", vod.getName());
-				context.startActivity(intent);
+				if(mRecommentsVideo.size()>0) {
+					VOD vod = mRecommentsVideo.get(0);
+					Content video=vod.getVideo();
+					List<Resource> resvideo=video.getResources();
+					Intent intent = new Intent(context,Player.class);
+					intent.putExtra("videocontent", (Serializable)mRecommentsVideo);
+					intent.putExtra("position", 0);
+					intent.putExtra("channel", mChannel);
+					intent.putExtra("filename",resvideo.get(0).getUrl() );
+					intent.putExtra("epgname", vod.getName());
+					context.startActivity(intent);
+				}
 			}
 		});
 		lv_video_list.setLoadingListener(new LoadingListener<VOD>() {

@@ -98,31 +98,35 @@ public class VideoAdapter extends BaseAdapter {
 			holder.rl_recommend_left.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					VOD vod = mRecommentsVideo.get(position*2-1);
-					Content video=vod.getVideo();
-					List<Resource> resvideo=video.getResources();
-					Intent intent = new Intent(mContext,Player.class);
-					intent.putExtra("videocontent", (Serializable)mRecommentsVideo);
-					intent.putExtra("position", position*2-1);
-					intent.putExtra("channel", getmChannel());
-					intent.putExtra("filename",resvideo.get(0).getUrl() );
-					intent.putExtra("epgname", vod.getName());
-					mContext.startActivity(intent);
+					if(mRecommentsVideo.size() > position*2-1) {
+						VOD vod = mRecommentsVideo.get(position*2-1);
+						Content video=vod.getVideo();
+						List<Resource> resvideo=video.getResources();
+						Intent intent = new Intent(mContext,Player.class);
+						intent.putExtra("videocontent", (Serializable)mRecommentsVideo);
+						intent.putExtra("position", position*2-1);
+						intent.putExtra("channel", getmChannel());
+						intent.putExtra("filename",resvideo.get(0).getUrl() );
+						intent.putExtra("epgname", vod.getName());
+						mContext.startActivity(intent);
+					}
 				}
 			});
 			holder.rl_recommend_right.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					VOD vod = mRecommentsVideo.get(position*2);
-					Content video=vod.getVideo();
-					List<Resource> resvideo=video.getResources();
-					Intent intent = new Intent(mContext,Player.class);
-					intent.putExtra("videocontent", (Serializable)mRecommentsVideo);
-					intent.putExtra("position", position*2);
-					intent.putExtra("channel", getmChannel());
-					intent.putExtra("filename",resvideo.get(0).getUrl() );
-					intent.putExtra("epgname", vod.getName());
-					mContext.startActivity(intent);
+					if(mRecommentsVideo.size() > position*2) {
+						VOD vod = mRecommentsVideo.get(position*2);
+						Content video=vod.getVideo();
+						List<Resource> resvideo=video.getResources();
+						Intent intent = new Intent(mContext,Player.class);
+						intent.putExtra("videocontent", (Serializable)mRecommentsVideo);
+						intent.putExtra("position", position*2);
+						intent.putExtra("channel", getmChannel());
+						intent.putExtra("filename",resvideo.get(0).getUrl() );
+						intent.putExtra("epgname", vod.getName());
+						mContext.startActivity(intent);
+					}
 				}
 			});
 		}
