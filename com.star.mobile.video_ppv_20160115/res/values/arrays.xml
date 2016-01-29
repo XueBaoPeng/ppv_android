@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="Bar_Menus">
+        <item>@string/fragment_tag_Home</item>
+        <item>@string/fragment_tag_video</item>
+        <item>@string/fragment_tag_channelGuide</item>
+        <item>@string/fragment_tag_chatRooms</item>
+        <item>@string/activity_forum_title</item>
+        <item>@string/discobery_tag_fragment</item>
+        <item>@string/fragment_tag_Me</item>
+        <item>@string/activity_alertlist_title</item>
+        <item>@string/feedback</item>
+        <item>@string/setting</item>
+    </string-array>
+    <string-array name="Alert_Ringtone">
+        <item>@string/opening</item>
+        <item>@string/apex</item>
+        <item>@string/beacon</item>
+        <item>@string/by_seaside</item>
+        <item>@string/chimes</item>
+        <item>@string/illuminate</item>
+    </string-array>
+    <string-array name="Alert_Remind">
+        <item name="five_minutes">@string/five_min</item>
+        <item name="ten_minutes">@string/ten_min</item>
+        <item name="fifteen_minutes">@string/fifteen_min</item>
+        <item name="thirty_minutes">@string/thirty_min</item>
+    </string-array>
+    <string-array name="Alert_Remind_min">
+        <item>5</item>
+        <item>10</item>
+        <item>15</item>
+        <item>30</item>
+    </string-array>
+    <string-array name="weekdays">
+        <item>@string/sun</item>
+        <item>@string/mon</item>
+        <item>@string/tue</item>
+        <item>@string/wed</item>
+        <item>@string/thu</item>
+        <item>@string/fri</item>
+        <item>@string/sat</item>
+    </string-array>
+    <string-array name="weekdays_f">
+        <item>@string/sunday</item>
+        <item>@string/monday</item>
+        <item>@string/tuesday</item>
+        <item>@string/wednesday</item>
+        <item>@string/thursday</item>
+        <item>@string/friday</item>
+        <item>@string/saturday</item>
+    </string-array>
+    <string-array name="months">
+        <item>@string/jan</item>
+        <item>@string/feb</item>
+        <item>@string/mar</item>
+        <item>@string/apr</item>
+        <item>@string/may</item>
+        <item>@string/jun</item>
+        <item>@string/jul</item>
+        <item>@string/aug</item>
+        <item>@string/sept</item>
+        <item>@string/oct</item>
+        <item>@string/nov</item>
+        <item>@string/dec</item>
+    </string-array>
+    <string-array name="bouquet">
+        <item>@string/basic</item>
+        <item>@string/classic</item>
+        <item>@string/unique</item>
+    </string-array>
+    <string-array name="setting_title">
+        <item>@string/tell_friend</item>
+        <item>@string/me</item>
+        <item>@string/notification</item>
+        <item>@string/about_tenbre</item>
+        <item>@string/log_out</item>
+    </string-array>
+    <string-array name="about_tenbre">
+        <item>@string/current_version</item>
+        <item>@string/faq</item>
+    </string-array>
+    <string-array name="me">
+        <item>@string/account</item>
+        <item>@string/reset_password</item>
+        <item>@string/account_connection</item>
+        <item>@string/invitation_code</item>
+    </string-array>
+    <string-array name="notification">
+        <item>@string/chat_room_notification</item>
+        <item>@string/alert_setting</item>
+    </string-array>
+    <string-array name="area_name_list">
+        <item>@string/nijeria_list</item>
+        <item>@string/tanzania_list</item>
+        <item>@string/kenya_list</item>
+    </string-array>
+    <string-array name="area_number">
+        <item>@string/nijeria_number</item>
+        <item>@string/tan_area_number</item>
+        <item>@string/kenya_area_number</item>
+    </string-array>
+	<declare-styleable name="CircularProgress">
+        <attr name="borderWidth" format="dimension" />
+    </declare-styleable>
+</resources>

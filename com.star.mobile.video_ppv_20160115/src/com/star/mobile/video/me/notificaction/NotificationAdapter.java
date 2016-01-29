@@ -1,0 +1,100 @@
+package com.star.mobile.video.me.notificaction;
+
+import java.util.List;
+
+import com.star.mobile.video.R;
+import com.star.mobile.video.model.AboutItemData;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+/**
+ * @notify Lee Huicheng 2015/11/6 修改getview方法中的优化
+ */
+public class NotificationAdapter extends BaseAdapter {
+
+	private List<AboutItemData> datas;
+	private Context mContext;
+
+	public NotificationAdapter(List<AboutItemData> datas, Context context) {
+		this.datas = datas;
+		this.mContext = context;
+	}
+
+	public void updateData(List<AboutItemData> datas) {
+		this.datas = datas;
+		notifyDataSetChanged();
+	}
+
+	@Override
+	public int getCount() {
+
+		return datas.size();
+	}
+
+	@Override
+	public Object getItem(int position) {
+
+		return datas.get(position);
+	}
+
+	@Override
+	public long getItemId(int position) {
+
+		return position;
+	}
+
+	@Override
+	public View getView(int position, View view, ViewGroup parent) {
+		ViewHolder holder;
+		if (view == null) {
+			holder = new ViewHolder();
+			view = LayoutInflater.from(mContext).inflate(R.layout.about_item_view, null);
+			holder.itemName = (TextView) view.findViewById(R.id.tv_item_name);
+			holder.ivIcon = (ImageView) view.findViewById(R.id.iv_item_icon);
+			holder.itemNameL = (TextView) view.findViewById(R.id.tv_item_name_l);
+			holder.itemNameR = (TextView) view.findViewById(R.id.tv_item_name_r);
+			holder.ivTargetIcon = (ImageView) view.findViewById(R.id.iv_target_icon);
+			view.setTag(holder);
+		} else {
+			holder = (ViewHolder) view.getTag();
+		}
+		if (datas != null && datas.size() > 0) {
+			AboutItemData data = datas.get(position);
+			if (data != null) {
+				if (data.getItemName().endsWith("min ")) {
+					holder.itemNameL.setText(data.getlItemName());
+					holder.itemNameR.setText(data.getrItemName());
+					holder.itemName.setTextColor(mContext.getResources().getColor(R.color.textcolor_orange));
+				} else {
+					holder.itemNameL.setText("");
+					holder.itemNameR.setText("");
+					holder.itemName.setTextColor(mContext.getResources().getColor(R.color.gray_bg));
+				}
+				if (data.getRightIcon() != null) {
+					holder.ivTargetIcon.setImageResource(data.getRightIcon());
+				} else {
+					holder.ivTargetIcon.setImageResource(R.drawable.ic_keyboard_arrow_right);
+				}
+				holder.itemName.setText(data.getItemName());
+				holder.ivIcon.setBackgroundResource(data.getIcon());
+			}
+		}
+
+		return view;
+	}
+
+	class ViewHolder {
+		TextView itemName;
+		ImageView ivIcon;
+		TextView itemNameL;
+		TextView itemNameR;
+		ImageView ivTargetIcon;
+	}
+
+}

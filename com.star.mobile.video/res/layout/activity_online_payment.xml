@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+    <include layout="@layout/window_titlebar_4" />
+
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        >
+
+        <ImageView
+            android:id="@+id/paga"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="54dp"
+            android:src="@drawable/pic_paga" />
+		<LinearLayout
+	        android:id="@+id/ll_threen_pay_edit"
+	        android:layout_width="match_parent"
+	        android:layout_height="@dimen/dp_50"
+	        android:layout_marginLeft="20dp"
+	        android:layout_marginRight="20dp"
+	        android:layout_marginTop="24dp"
+	        android:layout_below="@id/paga"
+	        android:background="@drawable/bg_input_whitebg"
+	        android:padding="0dp" >
+        <TextView
+            android:id="@+id/tv_currency_symbol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textColor="#707072"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/et_paymoney"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:background="@null"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:hint="@string/entet_the_amount"
+            android:inputType="number"
+            android:singleLine="true"
+            android:textColor="#545454"
+            android:textColorHint="#B0B0B0"
+            android:visibility="visible" />
+    </LinearLayout>
+    <TextView 
+        android:id="@+id/onlinepay"
+        android:layout_width="wrap_content"
+       	android:layout_height="wrap_content"
+       	android:layout_marginTop="8dp"
+       	android:text="@string/online_pay"
+      	android:textColor="@color/black_color"
+        android:textSize="14sp"
+        android:layout_below="@id/ll_threen_pay_edit"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+  />
+     <TextView
+        android:layout_below="@id/onlinepay"
+        android:id="@+id/tv_recharge_limit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/recharge_limit"
+        android:textColor="#D0021B"
+        android:textSize="14sp"
+        android:visibility="gone" />
+    </RelativeLayout>
+    <Button
+	        android:id="@+id/bt_mob_reg_go"
+	        android:layout_width="match_parent"
+	        android:layout_height="@dimen/dp_48"
+	        android:layout_marginBottom="@dimen/dp_32"
+	        android:layout_marginLeft="@dimen/dp_20"
+	        android:layout_marginRight="@dimen/dp_20"
+	        android:background="@drawable/btn_grey"
+	        android:text="@string/next"
+	        android:textColor="@color/reg_go"
+	        android:textSize="20sp" />
+
+</LinearLayout>

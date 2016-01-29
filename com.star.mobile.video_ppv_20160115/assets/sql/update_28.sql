@@ -1,0 +1,1 @@
+alter table package add column type Integer

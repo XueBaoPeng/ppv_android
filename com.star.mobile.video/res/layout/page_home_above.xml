@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="5dp"
+    android:layout_marginTop="5dp"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@id/rl_poster_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_marginLeft="@dimen/action_bar_margin_2"
+        android:layout_marginRight="@dimen/action_bar_margin_2" >
+
+        <com.star.mobile.video.view.InterceptTouchViewPager
+            android:id="@+id/vp_poster_group"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never" />
+
+        <ImageView
+            android:id="@+id/iv_poster_frame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/recommended_poster_frame" />
+
+        <LinearLayout
+            android:id="@+id/ll_pager_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/circle_dot_bg"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="6dp"
+            android:paddingTop="6dp" >
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_share"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/rl_share_info_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/activity_bg" >
+
+            <ImageView
+                android:id="@+id/iv_time_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/share_icon_home_white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="40dp"
+                android:layout_toRightOf="@id/iv_time_icon"
+                android:singleLine="true"
+                android:text="@string/egg_share"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/btn_share_coupon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/rl_share_info_home"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/my_coupon_egg" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_task"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/rl_task_more"
+            style="@style/action_bar_layout_style"
+            android:background="@drawable/title_blue" >
+
+            <TextView
+                android:id="@+id/tv_actionbar_task"
+                style="@style/action_bar_text_shadow_style"
+                android:layout_marginLeft="@dimen/action_bar_margin_10"
+                android:text="@string/task" />
+
+            <ImageView
+                style="@style/action_bar_icon_style_1"
+                android:layout_marginBottom="@dimen/action_bar_margin_6"
+                android:layout_marginLeft="@dimen/action_bar_margin_6"
+                android:layout_toRightOf="@id/tv_actionbar_task"
+                android:src="@drawable/icon_bulling_tasks_focus" />
+
+            <LinearLayout
+                android:id="@+id/ll_task_refresh"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_toLeftOf="@+id/tv_task_line"
+                android:visibility="gone" >
+
+                <ImageView
+                    style="@style/action_bar_icon_style_1"
+                    android:src="@drawable/title_blue_line" />
+
+                <ImageView
+                    android:id="@+id/iv_task_refresh"
+                    style="@style/action_bar_icon_style_1"
+                    android:layout_width="70dp"
+                    android:src="@drawable/update_task" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@id/tv_task_line"
+                style="@style/action_bar_icon_style_1"
+                android:layout_toLeftOf="@+id/tv_task_more"
+                android:src="@drawable/title_blue_line" />
+
+            <TextView
+                android:id="@+id/tv_task_more_bg"
+                android:layout_width="75dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/actionbar_blue_more_bg" />
+
+            <TextView
+                android:id="@id/tv_task_more"
+                style="@style/action_bar_text_shadow_style"
+                android:layout_width="72dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="0dp"
+                android:gravity="center"
+                android:paddingBottom="@dimen/action_bar_margin_10"
+                android:text="@string/text_more" />
+        </RelativeLayout>
+
+        <com.star.mobile.video.me.mycoins.TaskItemView
+            android:id="@+id/taskItemView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <RelativeLayout
+        style="@style/action_bar_layout_style"
+        android:background="@drawable/title_orange" >
+
+        <TextView
+            android:id="@+id/tv_actionbar_video"
+            style="@style/action_bar_text_shadow_style"
+            android:layout_marginLeft="@dimen/action_bar_margin_10"
+            android:text="@string/fragment_tag_video" />
+
+        <ImageView
+            style="@style/action_bar_icon_style_1"
+            android:layout_marginLeft="@dimen/action_bar_margin_6"
+            android:layout_toRightOf="@id/tv_actionbar_video"
+            android:src="@drawable/home_actionbar_button_video_white" />
+        
+        <ImageView
+            android:id="@+id/btn_home_football"
+            android:layout_width="24dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/football_home" />
+        
+    </RelativeLayout>
+
+    <include layout="@layout/layout_home_video" />
+
+    <RelativeLayout
+        android:id="@+id/rl_chatroom_more"
+        style="@style/action_bar_layout_style"
+        android:background="@drawable/title_green" >
+
+        <TextView
+            android:id="@+id/tv_actionbar_chatroom"
+            style="@style/action_bar_text_shadow_style"
+            android:layout_marginLeft="@dimen/action_bar_margin_10"
+            android:text="@string/hot_chat_rooms" />
+
+        <ImageView
+            style="@style/action_bar_icon_style_1"
+            android:layout_marginBottom="@dimen/action_bar_margin_6"
+            android:layout_marginLeft="@dimen/action_bar_margin_6"
+            android:layout_toRightOf="@id/tv_actionbar_chatroom"
+            android:src="@drawable/home_icon_bulling_chat_rooms" />
+
+        <ImageView
+            style="@style/action_bar_icon_style_1"
+            android:layout_toLeftOf="@+id/tv_chatroom_more"
+            android:src="@drawable/title_green_line" />
+
+        <TextView
+            android:id="@+id/tv_chatroom_more_bg"
+            android:layout_width="75dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/actionbar_green_more_bg" />
+
+        <TextView
+            android:id="@id/tv_chatroom_more"
+            style="@style/action_bar_text_shadow_style"
+            android:layout_width="72dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="0dp"
+            android:gravity="center"
+            android:paddingBottom="@dimen/action_bar_margin_10"
+            android:text="@string/text_more" />
+    </RelativeLayout>
+
+    <com.star.mobile.video.view.NoScrollGridView
+        android:id="@id/gv_chat_room"
+        style="@style/listview_style"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:numColumns="4" />
+
+    <LinearLayout
+        android:id="@+id/ll_onair"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/rl_onair_more"
+            style="@style/action_bar_layout_style"
+            android:background="@drawable/title_red" >
+
+            <TextView
+                android:id="@+id/tv_actionbar_onair"
+                style="@style/action_bar_text_shadow_style"
+                android:layout_marginLeft="@dimen/action_bar_margin_10"
+                android:text="@string/fragment_tag_onAir" />
+
+            <ImageView
+                style="@style/action_bar_icon_style_1"
+                android:layout_marginBottom="@dimen/action_bar_margin_6"
+                android:layout_marginLeft="@dimen/action_bar_margin_6"
+                android:layout_toRightOf="@id/tv_actionbar_onair"
+                android:src="@drawable/home_icon_on_air" />
+
+            <ImageView
+                style="@style/action_bar_icon_style_1"
+                android:layout_toLeftOf="@+id/tv_onair_more"
+                android:src="@drawable/title_red_line" />
+
+            <TextView
+                android:id="@+id/tv_onair_more_bg"
+                android:layout_width="75dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/actionbar_red_more_bg" />
+
+            <TextView
+                android:id="@id/tv_onair_more"
+                style="@style/action_bar_text_shadow_style"
+                android:layout_width="72dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="0dp"
+                android:gravity="center"
+                android:paddingBottom="@dimen/action_bar_margin_10"
+                android:text="@string/text_more" />
+        </RelativeLayout>
+
+        <include layout="@layout/view_epg_table" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_channelGuide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/rl_channel_more"
+            style="@style/action_bar_layout_style"
+            android:background="@drawable/title_blue" >
+
+            <TextView
+                android:id="@+id/tv_actionbar_channelguide"
+                style="@style/action_bar_text_shadow_style"
+                android:layout_marginLeft="@dimen/action_bar_margin_10"
+                android:text="@string/fragment_tag_channelGuide" />
+
+            <ImageView
+                style="@style/action_bar_icon_style_1"
+                android:layout_marginLeft="@dimen/action_bar_margin_6"
+                android:layout_toRightOf="@id/tv_actionbar_channelguide"
+                android:src="@drawable/icon_highlight_channel" />
+
+            <ImageView
+                style="@style/action_bar_icon_style_1"
+                android:layout_toLeftOf="@+id/tv_channel_more"
+                android:src="@drawable/title_blue_line" />
+
+            <TextView
+                android:id="@+id/tv_channel_more_bg"
+                android:layout_width="75dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/actionbar_blue_more_bg" />
+
+            <TextView
+                android:id="@id/tv_channel_more"
+                style="@style/action_bar_text_shadow_style"
+                android:layout_width="72dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="0dp"
+                android:gravity="center"
+                android:paddingBottom="@dimen/action_bar_margin_10"
+                android:text="@string/text_more" />
+        </RelativeLayout>
+
+        <include layout="@layout/view_channel_table" />
+    </LinearLayout>
+    <!-- <RelativeLayout
+        style="@style/action_bar_layout_style"
+        android:background="@drawable/title_blue" >
+
+        <TextView
+            android:id="@+id/tv_actionbar_whathot"
+            style="@style/action_bar_text_shadow_style"
+            android:layout_marginLeft="@dimen/action_bar_margin_10"
+            android:text="@string/text_whathot" />
+
+        <ImageView
+            style="@style/action_bar_icon_style_1"
+            android:layout_marginLeft="@dimen/action_bar_margin_6"
+            android:layout_toRightOf="@id/tv_actionbar_whathot"
+            android:src="@drawable/icon_whats_hot" />
+    </RelativeLayout> -->
+</LinearLayout>

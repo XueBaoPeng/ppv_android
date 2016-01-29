@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:lee="http://schemas.android.com/apk/res/com.star.mobile.video"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white" >
+
+    <include
+        android:id="@+id/smart_card_titlebar"
+        layout="@layout/window_titlebar_9" />
+
+    <ScrollView
+        android:id="@+id/smartcard_control_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/smart_card_titlebar"
+        android:scrollbars="none" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <RelativeLayout
+                android:id="@+id/smart_card_info_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:id="@+id/no_smart_card_imagview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="215dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="8dp"
+                    android:src="@drawable/smartcard_nocard"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/getcoins_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="44dp"
+                    android:layout_marginTop="60dp"
+                    android:text="@string/get_coins"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+                <com.star.mobile.video.widget.indicator.CirclePageIndicator
+                    android:id="@+id/circle_indicator"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    lee:fillColor="@color/orange_red"
+                    lee:pageColor="@color/about_list_sel_color"
+                    lee:radius="3dp"
+                    lee:strokeColor="@color/about_list_sel_color"
+                    lee:strokeWidth="1dp" />
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/view_pager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/circle_indicator"
+                    android:layout_marginTop="4dp" />
+            </RelativeLayout>
+
+            <include
+                android:id="@+id/smartcard_loadingView"
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                layout="@layout/loading_progress_large" />
+
+            <ImageView
+                android:id="@+id/layout_split_line_iv"
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:layout_below="@id/smart_card_info_ll"
+                android:background="@drawable/line_bg" />
+            <RelativeLayout
+                android:id="@+id/my_order_rl"
+                android:layout_below="@id/layout_split_line_iv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:id="@+id/my_order_imageview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/ic_reorder" />
+
+                <TextView
+                    android:id="@+id/my_order_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_toRightOf="@id/my_order_imageview"
+                    android:paddingBottom="16dp"
+                    android:singleLine="true"
+                    android:text="@string/my_order"
+                    android:textColor="@color/gray_bg"
+                    android:textSize="20sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/ic_keyboard_arrow_right" />
+            </RelativeLayout>
+            <ImageView
+                android:id="@+id/my_order_split_line_iv"
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:layout_below="@id/my_order_rl"
+                android:background="@drawable/line_bg" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/my_order_split_line_iv"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:id="@+id/other_help_ll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleType="center"
+                        android:src="@drawable/icon_otherhelp_blue_24dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="24dp"
+                        android:gravity="center"
+                        android:text="@string/other_help"
+                        android:textColor="@color/gray_bg"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/split_line_iv"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/grey" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/startimes_business_hall_or_call"
+                    android:textColor="@color/dicobery_content_txt"
+                    android:textSize="12sp" />
+
+                <com.star.mobile.video.view.NoScrollListView
+                    android:id="@+id/lv_customer_phone"
+                    style="@style/listview_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="0dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp" />
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/add_smart_card_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/add_smartcard_iv_bg" />
+
+</RelativeLayout>

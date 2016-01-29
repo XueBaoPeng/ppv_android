@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/ppv_order_title"
+        layout="@layout/window_titlebar_4" />
+
+    <com.star.mobile.video.ppv.ppvorder.PPVOrderDetailView
+        android:id="@+id/ppv_order_detail_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ppv_order_title" />
+
+    <Button
+        android:id="@+id/ppv_order_next_button"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="32dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/orange_button_bg"
+        android:padding="0dp"
+        android:text="@string/text_onair_next"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+</RelativeLayout>

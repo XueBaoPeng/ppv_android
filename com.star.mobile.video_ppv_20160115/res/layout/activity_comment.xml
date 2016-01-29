@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey" >
+
+    <include
+        android:id="@+id/window_titlebar_2"
+        layout="@layout/window_titlebar_2" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@drawable/comments_bg"
+        android:layout_height="match_parent"
+        android:layout_below="@id/window_titlebar_2" >
+
+        <com.star.mobile.video.view.ListView
+            android:id="@+id/comment_list"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_comment_marleft"
+            android:layout_marginRight="@dimen/activity_comment_marright"
+            android:layout_marginTop="@dimen/activity_comment_martop"
+            android:divider="@color/white"
+            android:listSelector="#F8F8F8"
+            android:scrollbars="none" >
+        </com.star.mobile.video.view.ListView>
+
+        <include
+            android:id="@+id/loadingView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            layout="@layout/loading_progress_large" />
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+	<include layout="@layout/window_titlebar_4" />
+	
+	 <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/dp_5"
+        android:layout_marginLeft="@dimen/dp_5"
+        android:layout_marginRight="@dimen/dp_5"
+        android:layout_marginTop="@dimen/dp_3"
+        android:background="@drawable/list_bg"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        android:scrollbars="none" >
+	     <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+	         
+	        <ImageView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginTop="30dp"
+	            android:background="@drawable/icon_not_email_register"
+	            android:layout_gravity="center_horizontal"
+	            /> 
+	         <TextView 
+	             android:layout_width="wrap_content"
+	             android:layout_height="wrap_content"
+	             android:textColor="@color/orange"
+	             android:layout_marginTop="15dp"
+	             android:textSize="18sp"
+	             android:textStyle="bold"
+	             android:layout_gravity="center_horizontal"
+	             android:text="@string/welcome_to_tenbre"
+	             />
+	         <View 
+	             android:layout_width="match_parent"
+	             android:layout_height="1dp"
+	             android:layout_marginTop="15dp"
+	             android:layout_marginLeft="5dp"
+	             android:layout_marginRight="5dp"
+	             android:background="@drawable/bgline_rude"
+	             />
+	         <TextView 
+	             android:layout_width="wrap_content"
+	             android:layout_height="wrap_content"
+	             android:textColor="@color/alert_setting_text"
+	             android:layout_marginTop="10dp"
+	             android:layout_marginLeft="15dp"
+	             android:textSize="15sp"
+	             android:text="@string/almost_tenbre"
+	             />
+	         <TextView 
+	             android:layout_width="wrap_content"
+	             android:layout_height="wrap_content"
+	             android:textColor="@color/alert_setting_text"
+	             android:layout_marginTop="15dp"
+	             android:layout_marginLeft="15dp"
+	             android:textSize="15sp"
+	             android:text="@string/ver_link_has_bean_send"
+	             />
+	         
+	         <TextView 
+	             android:id="@+id/tv_email"
+	             android:layout_width="wrap_content"
+	             android:layout_height="wrap_content"
+	             android:textColor="@color/blue"
+	             android:layout_marginLeft="15dp"
+	             android:textSize="15sp"
+	             android:text="@string/welcome_to_tenbre"
+	             />
+	         <TextView 
+	             android:layout_width="wrap_content"
+	             android:layout_height="wrap_content"
+	             android:textColor="@color/alert_setting_text"
+	             android:layout_marginTop="15dp"
+	             android:layout_marginLeft="15dp"
+	             android:textSize="15sp"
+	             android:text="@string/check_email_"
+	             />
+	         <TextView 
+	             android:layout_width="wrap_content"
+	             android:layout_height="wrap_content"
+	             android:textColor="@color/alert_setting_text"
+	             android:layout_marginTop="15dp"
+	             android:layout_marginLeft="15dp"
+	             android:textSize="15sp"
+	             android:text="@string/still_find"
+	             />
+	         
+	         <RelativeLayout 
+	             android:layout_width="match_parent"
+	             android:layout_height="wrap_content"
+	             android:layout_marginLeft="15dp"
+	             android:layout_marginRight="15dp"
+	             android:layout_marginTop="30dp"
+	             >
+	             <Button
+		            android:id="@+id/bt_activated"
+	            	android:layout_width="100dp"
+	            	android:layout_height="@dimen/dp_50"
+	           	 	android:layout_marginTop="9dp"
+	            	android:text="@string/start"
+	            	android:background="@drawable/choose_coupon_bg"
+  	          		android:textColor="@color/white" 
+  	          		android:layout_centerVertical="true"
+  	          		android:layout_centerHorizontal="true"
+  	          		android:textSize="18sp"
+	             />
+	             
+	             <Button
+		            android:id="@+id/bt_resend"
+	            	android:layout_width="100dp"
+	            	android:layout_height="@dimen/dp_50"
+	           	 	android:layout_marginTop="9dp"
+	            	android:text="@string/resend"
+	            	android:layout_alignParentRight="true"
+	            	android:visibility="gone"
+	            	android:background="@drawable/me_modify_bg"
+  	          		android:textColor="@color/me_modify_btn_bg"
+  	          		android:textSize="18sp"
+	             />
+	             
+	         </RelativeLayout>
+	     </LinearLayout>
+	     
+	 </ScrollView>
+</LinearLayout>

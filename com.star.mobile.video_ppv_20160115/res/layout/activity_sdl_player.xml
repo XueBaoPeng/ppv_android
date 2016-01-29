@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+
+    <org.libsdl.app.SDLSurface
+        android:id="@+id/sdl_play"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ImageView
+        android:id="@+id/sdl_iv_play_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/play_bg" />
+
+    <RelativeLayout
+        android:id="@+id/sdl_rl_center"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_gravity="center_vertical" />
+
+    <RelativeLayout
+        android:id="@+id/sdl_rl_top"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_60"
+        android:layout_gravity="top" >
+
+        <ImageView
+            android:id="@+id/sdl_iv_break"
+            android:layout_width="@dimen/dp_70"
+            android:layout_height="match_parent"
+            android:scaleType="center"
+            android:src="@drawable/play_back" />
+
+        <!-- <ImageView
+            android:id="@+id/sdl_iv_up_lineone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_5"
+            android:layout_toRightOf="@id/sdl_iv_break"
+            android:background="@drawable/top_separateline" /> -->
+
+        <TextView
+            android:id="@+id/sdl_tv_epg_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="50dp"
+            android:paddingBottom="5dp"
+            android:gravity="center_vertical"
+            android:text="aa"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/sdl_iv_up_linetwo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/sdl_iv_lock"
+            android:layout_marginTop="@dimen/dp_5"
+            android:background="@drawable/top_separateline" />
+
+        <ImageView
+            android:id="@id/sdl_iv_lock"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="-10dp"
+            android:scaleType="center"
+            android:visibility="gone"
+            android:src="@drawable/play_lock" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/sdl_rl_buttom"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_gravity="bottom" >
+
+        <RelativeLayout
+            android:id="@+id/sdl_rl_buttom_bar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_60"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/info_bg" >
+
+            <ImageView
+                android:id="@+id/sdl_iv_switch_screen"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:scaleType="center"
+                android:src="@drawable/play_enlarge" />
+
+            <ImageView
+                android:id="@+id/sdl_iv_play"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:scaleType="center"
+                android:src="@drawable/pause" />
+
+            <ImageView
+                android:id="@+id/sdl_iv_buttom_line_one"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/iv_play"
+                android:background="@drawable/actionbar_line" />
+
+            <ImageView
+                android:id="@+id/sdl_iv_line2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_toLeftOf="@id/iv_switch_screen"
+                android:background="@drawable/actionbar_line" />
+        </RelativeLayout>
+
+        <com.star.mobile.video.view.VideoSeekBar
+            android:id="@+id/sdl_pb_play_progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="29dp"
+            android:maxHeight="5dp"
+            android:minHeight="5dp"
+            android:progressDrawable="@drawable/seeckbar_play_video"
+            android:thumb="@drawable/seeckbar_video_select" />
+
+        <TextView
+            android:id="@+id/sdl_tv_video_start_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:text="00:00"
+            android:textColor="#D9D9D9"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/sdl_tv_video_end_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="15dp"
+            android:text="00:00"
+            android:textColor="#D9D9D9"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+</FrameLayout>

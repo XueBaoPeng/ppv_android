@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <com.star.mobile.video.view.EpgOnAirItemView
+        android:id="@+id/epgLayout_1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/channel_item_height" >
+    </com.star.mobile.video.view.EpgOnAirItemView>
+
+    <com.star.mobile.video.view.EpgOnAirItemView
+        android:id="@+id/epgLayout_2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/channel_item_height"
+        android:layout_marginTop="@dimen/action_bar_margin_6" >
+    </com.star.mobile.video.view.EpgOnAirItemView>
+
+    <com.star.mobile.video.view.EpgOnAirItemView
+        android:id="@+id/epgLayout_3"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/channel_item_height"
+        android:layout_marginTop="@dimen/action_bar_margin_6" >
+    </com.star.mobile.video.view.EpgOnAirItemView>
+
+</LinearLayout>

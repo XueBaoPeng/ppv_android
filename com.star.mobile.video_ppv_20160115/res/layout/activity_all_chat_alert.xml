@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+  <include layout="@layout/window_titlebar_4"/>
+  <LinearLayout 
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:background="@color/white"
+      android:orientation="vertical"
+      >
+	   <RelativeLayout
+	       android:layout_width="match_parent"
+	       android:layout_height="60dp"
+	       >
+	       <ImageView 
+	           android:id="@+id/ic_notification"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:layout_marginLeft="16dp"
+	           android:layout_marginRight="16dp"
+	           android:src="@drawable/ic_notifications_on_blue_24dp"
+	           android:layout_centerVertical="true"
+	           
+	           />
+	       
+	    
+	       <ImageView 
+	           android:id="@+id/sound_switch"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:layout_marginRight="15dp"
+	           android:layout_alignParentRight="true"
+	           android:layout_centerVertical="true"
+	           android:background="@drawable/switch_off"
+	           />
+
+	       <TextView
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:layout_centerVertical="true"
+	           android:layout_toRightOf="@+id/ic_notification"
+	           android:text="@string/sound"
+	           android:textColor="@color/gray_bg"
+	           android:textSize="16sp" />
+
+	   </RelativeLayout>
+	   <ImageView 
+        	android:layout_width="match_parent"
+        	android:layout_height="wrap_content"
+        	android:background="@drawable/bgline_long"
+       />
+	    <RelativeLayout
+	       android:layout_width="match_parent"
+	       android:layout_height="60dp"
+	       >
+	       <ImageView 
+	           android:id="@+id/ic_vivration"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:layout_marginLeft="16dp"
+	           android:layout_marginRight="16dp"
+	           android:src="@drawable/ic_vibration_blue_24dp"
+	           android:layout_centerVertical="true"
+	           
+	           />
+	       
+	       <TextView 
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:text="@string/vibration"
+	           android:layout_toRightOf="@id/ic_vivration"
+	           android:layout_centerVertical="true"
+	           android:textSize="16sp"
+	           android:textColor="@color/gray_bg"
+	           
+	           />
+	       
+	    
+	       <ImageView 
+	           android:id="@+id/vibration_switch"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:layout_marginRight="15dp"
+	           android:layout_alignParentRight="true"
+	           android:layout_centerVertical="true"
+	           android:background="@drawable/switch_off"
+	           />
+	   </RelativeLayout>
+	   <ImageView 
+        	android:layout_width="match_parent"
+        	android:layout_height="wrap_content"
+        	android:background="@drawable/bgline_long"
+       />
+  </LinearLayout>
+</LinearLayout>

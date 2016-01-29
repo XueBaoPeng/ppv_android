@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+   <ImageView
+            android:id="@+id/line_phone_focus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_marginRight="@dimen/dp_20"
+            android:layout_marginTop="60dp"
+        	android:layout_centerHorizontal="true"
+            android:background="@drawable/separate_line" />
+    <LinearLayout
+        android:id="@id/parent"
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:orientation="horizontal"
+        >
+         <RelativeLayout 
+        android:id="@+id/phone_parent"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        >
+        
+        <ImageView
+            android:id="@+id/iv_phone"
+            android:layout_width="@dimen/dp_48"
+            android:layout_height="@dimen/dp_48"
+            android:layout_marginLeft="@dimen/dp_48"
+            android:background="@drawable/ic_phone_green" />
+        
+            <ImageView
+                android:id="@+id/line_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/iv_phone"
+                android:layout_below="@+id/iv_phone"
+                android:layout_marginLeft="18dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/triangle_line" />
+        
+    </RelativeLayout>
+      
+    <RelativeLayout 
+        android:id="@+id/email_parent"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        
+        >
+         <ImageView
+            android:id="@+id/iv_email"
+            android:layout_width="@dimen/dp_48"
+            android:layout_height="@dimen/dp_48"
+            android:layout_centerInParent="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/ic_email_green" />
+ 
+ 
+            <ImageView
+                android:id="@+id/line_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/iv_email"
+                android:layout_below="@+id/iv_email"
+                android:layout_marginLeft="17dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/triangle_line" />
+ 
+   	 </RelativeLayout>
+    </LinearLayout>
+    
+   
+</RelativeLayout>

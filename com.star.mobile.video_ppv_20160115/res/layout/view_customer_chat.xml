@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.star.ui.ImageView
+        android:id="@+id/customer_header"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="12dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/me_def_head" />
+
+    <RelativeLayout
+        android:id="@+id/rl_right_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="16dp"
+        android:visibility="invisible" >
+
+        <ProgressBar
+            android:id="@+id/pb_t"
+            style="@style/loadingProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_centerVertical="true" >
+        </ProgressBar>
+
+        <ImageView
+            android:id="@+id/iv_invalid_t"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@drawable/tanhao_icon_profile_red" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/customer_content_rl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="12dp"
+        android:layout_toLeftOf="@id/customer_header"
+        android:layout_toRightOf="@id/rl_right_status" >
+
+        <TextView
+            android:id="@+id/customer_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="8dp"
+            android:singleLine="true"
+            android:textColor="@color/orange_color"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/customer_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_toLeftOf="@id/customer_username"
+            android:singleLine="true"
+            android:textColor="@color/chat_time"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/customer_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/customer_username"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/chat_user_bg"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="4dp"
+            android:textColor="@color/black_color"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+    
+  <include layout="@layout/window_titlebar_4"/>
+  
+  <RelativeLayout 
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="1"
+      android:layout_marginRight="16dp"
+      android:layout_marginLeft="16dp"
+      android:layout_marginTop="24dp"
+      >
+      <TextView 
+          android:id="@+id/please_into"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/recharge_card_info"
+          android:textColor="@color/black_color"
+          android:singleLine="true"
+          android:textSize="14sp"
+          />
+      <EditText
+        android:id="@+id/et_recharge_no"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50"
+        android:layout_marginTop="8dp"
+        android:layout_below="@id/please_into"
+        android:background="@drawable/bg_input_whitebg"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:hint="@string/vouch_no"
+        android:inputType="number"
+        android:paddingLeft="@dimen/dp_10"
+        android:singleLine="true"
+        android:textColor="#545454"
+        android:textColorHint="#B0B0B0" />
+       <TextView 
+          android:id="@+id/you_can_buy"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/you_can"
+          android:textColor="@color/black_color"
+          android:textSize="14sp"
+          android:layout_marginTop="8dp"
+          android:layout_below="@id/et_recharge_no"
+          />
+  </RelativeLayout>
+    	<Button
+	        android:id="@+id/bt_mob_reg_go"
+	        android:layout_width="match_parent"
+	        android:layout_height="@dimen/dp_48"
+	        android:layout_marginBottom="@dimen/dp_32"
+	        android:layout_marginLeft="@dimen/dp_20"
+	        android:layout_marginRight="@dimen/dp_20"
+	        android:background="@drawable/btn_grey"
+	        android:text="@string/next"
+	        android:textColor="@color/reg_go"
+	        android:textSize="20sp" />
+</LinearLayout>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/ppv_linearLayout"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true">
+        <com.star.ui.ImageView
+            android:id="@+id/iv_ppv_icon"
+            android:layout_width="79dp"
+            android:layout_height="79dp"
+            android:layout_marginTop="@dimen/dp_12"
+            android:layout_marginBottom="@dimen/dp_12"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:layout_gravity="center_vertical"
+            android:scaleType="fitXY"
+            android:src="@drawable/icon_channel_logo" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_12"
+            android:layout_marginBottom="@dimen/dp_12"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/dp_8">
+            <TextView
+                android:id="@+id/tv_ppv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ProgramName"
+                android:textSize="16sp"
+                android:textColor="@color/darkGray"
+                android:layout_alignParentLeft="true"/>
+            <TextView
+                android:id="@+id/tv_ppv_money_con"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$"
+                android:textColor="@color/taks_blue"
+                android:layout_alignBaseline="@+id/tv_ppv_money"
+                android:layout_toLeftOf="@+id/tv_ppv_money"
+                android:layout_toStartOf="@+id/tv_ppv_money" />
+            <TextView
+                android:id="@+id/tv_ppv_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4"
+                android:layout_marginRight="@dimen/dp_16"
+                android:textSize="16sp"
+                android:textColor="@color/taks_blue"
+                android:layout_alignBaseline="@+id/tv_ppv_name"
+                android:layout_alignParentRight="true"/>
+            <TextView
+                android:id="@+id/tv_ppv_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2016-01-15 "
+                android:textSize="14sp"
+                android:textColor="@color/alert_setting_text"
+                android:layout_below="@id/tv_ppv_name"/>
+            <RatingBar
+                android:id="@+id/rating_ppv"
+                style="@style/roomRatingBar_12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_ppv_data"
+                android:isIndicator="true"
+                android:numStars="5"
+                android:rating="3.3"
+                android:stepSize="0.1"
+                android:visibility="visible"/>
+            <TextView
+                android:id="@+id/tv_ppv_comment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rating_ppv"
+                android:textSize="14sp"
+                android:text="ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+                android:maxLines="2"
+                android:textColor="@color/ppv_comment"
+                android:layout_marginRight="@dimen/dp_16"
+                android:layout_alignParentLeft="true"/>
+
+
+        </RelativeLayout>
+    </LinearLayout>
+    <View
+        android:layout_below="@id/ppv_linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/ppv_comment"
+        />
+
+</RelativeLayout>

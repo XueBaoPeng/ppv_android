@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/ll_taskHead"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/blue_bg_task"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_coins"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/my_coins"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="13dp" >
+
+            <ImageView
+                android:id="@+id/iv_coin_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@drawable/icon_coin_task" />
+
+            <TextView
+                android:id="@+id/tv_my_coins"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@+id/iv_line"
+                android:layout_toRightOf="@id/iv_coin_icon"
+                android:text="156"
+                android:visibility="gone"
+                android:textColor="@color/white"
+                android:textSize="60sp" />
+			<TextView
+                android:id="@+id/tv_refresh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="50dp"
+                android:layout_toLeftOf="@+id/iv_line"
+                android:layout_toRightOf="@id/iv_coin_icon"
+                android:text="@string/refresh"
+                android:visibility="gone"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+            <ImageView
+                android:id="@id/iv_line"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/iv_rewards"
+                android:background="@drawable/title_blue_line" />
+
+            <ImageView
+                android:id="@id/iv_rewards"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/icon_rewards_task" />
+        </RelativeLayout>
+    </LinearLayout>
+
+	<RelativeLayout
+	    android:id="@+id/rl_double_info"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_marginTop="3dp"
+	    android:visibility="gone"
+	    android:background="@drawable/activity_bg" >
+
+	    <ImageView 
+	        android:id="@+id/iv_time_icon"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerVertical="true"
+	        android:background="@drawable/time"
+	        android:layout_marginLeft="15dp"
+	        />
+	    <TextView 
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_toRightOf="@id/iv_time_icon"
+	        android:layout_marginLeft="8dp"
+	        android:textSize="15sp"
+	        android:textColor="@color/white"
+	        android:layout_centerVertical="true"
+	        android:textStyle="bold"
+	        android:text="@string/alpha"
+	        />
+	</RelativeLayout>
+</LinearLayout>

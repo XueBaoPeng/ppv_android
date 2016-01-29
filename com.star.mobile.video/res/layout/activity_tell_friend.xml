@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+    
+  <include layout="@layout/window_titlebar_2"/>
+   <ScrollView 
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:fillViewport="true"
+      android:overScrollMode="never"
+      android:scrollbars="none" 
+      >
+      <RelativeLayout 
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          >
+           <RelativeLayout 
+          android:layout_marginTop="@dimen/dp_24"
+          android:id="@+id/relativelayout"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="16dp"
+          >
+          <ImageView 
+            android:id="@+id/id_coupons"
+          	android:layout_width="@dimen/dp_106"
+          	android:layout_height="@dimen/dp_84"
+          	android:layout_marginLeft="@dimen/dp_16"
+            android:background="@drawable/coupons"
+            android:layout_marginBottom="@dimen/dp_16"
+           	
+              />
+          <TextView
+              android:id="@+id/content_one"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/tell_friend_content_one"
+              android:background="@color/white"
+              android:layout_toRightOf="@id/id_coupons"
+              android:layout_marginRight="@dimen/dp_16"
+              android:layout_marginLeft="@dimen/dp_16"
+              android:textSize="14sp"
+              android:layout_marginBottom="@dimen/dp_16"
+	     	  android:textColor="@color/unfinished_task_text"
+              />
+          
+      </RelativeLayout>
+      <ImageView 
+          android:layout_below="@id/relativelayout"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:background="@drawable/line_bg"
+          />
+     <RelativeLayout 
+          android:layout_below="@id/relativelayout"
+		android:layout_marginTop="@dimen/dp_8"	
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          >
+              <TextView
+                android:layout_below="@id/tv_invition"
+                android:id="@+id/tv_coupon_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_16"
+                android:layout_marginTop="@dimen/dp_16"
+                android:text="@string/invita_one"
+                android:textColor="@color/unfinished_task_text"
+                android:textSize="14sp" />
+              
+              <ImageView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_below="@id/tv_coupon_info"
+                  android:layout_marginTop="@dimen/dp_16"
+                  android:adjustViewBounds="true"
+                  android:scaleType="fitXY"
+                  android:src="@drawable/guide_tip" />
+                  
+              <TextView
+                  android:id="@+id/tv_invition"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_alignParentTop="true"
+                  android:layout_centerHorizontal="true"
+                  android:layout_centerInParent="true"
+                  android:layout_marginTop="24dp"
+                  android:textColor="@color/orange"
+                  android:textSize="34sp"
+                  android:textStyle="bold" />
+          
+      </RelativeLayout>
+          
+      </RelativeLayout>
+     
+  </ScrollView>
+  
+ <!--  <ScrollView 
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_marginLeft="10dp"
+      android:layout_marginRight="10dp"
+      android:fillViewport="true"
+      android:overScrollMode="never"
+      android:scrollbars="none" 
+      >
+  <LinearLayout 
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      >
+       
+	  <ImageView 
+	      android:id="@+id/image_view"
+	      android:layout_width="wrap_content"
+	      android:layout_height="wrap_content"
+	      android:layout_gravity="center_horizontal"
+	      android:layout_marginTop="10dp"
+		  android:src="@drawable/icon_tellafriend_darkgrey"	      
+	      />
+	  <TextView android:id="@+id/text_title"
+	      android:layout_width="wrap_content"
+	      android:layout_height="wrap_content"
+	      android:layout_gravity="center_horizontal"
+	      android:layout_marginTop="5dp"
+	      android:text="@string/tell_friend_title"
+	      android:textColor="@color/tellfriend_title"
+	      android:textSize="18sp"
+	      android:textStyle="bold"
+	      />
+	  <TextView android:id="@+id/title_divide"
+	      android:layout_width="match_parent"
+	      android:layout_height="1dp"
+	      android:background="@color/unfinished_task_text"
+	      android:layout_marginTop="5dp"
+	      android:layout_marginBottom="5dp"
+	      />
+	  <TextView android:id="@+id/content_one"
+	      android:layout_width="wrap_content"
+	      android:layout_height="wrap_content"
+	      android:text="@string/tell_friend_content_one"
+	      android:textSize="16sp"
+	      android:textColor="@color/unfinished_task_text"
+	      />
+	  <ImageView android:layout_width="match_parent" 
+	      android:layout_height="wrap_content"
+	      android:src="@drawable/share_img"
+	      />
+	  <View 
+	      android:layout_width="match_parent"
+	      android:layout_height="0dp"
+	      android:layout_weight="1"
+	      />
+	  <TextView android:id="@+id/content_two"
+	      android:layout_width="match_parent"
+	      android:layout_height="wrap_content"
+	      android:gravity="center"
+	      android:text="@string/tell_friend_content_two"
+	      android:textSize="16sp"
+	      android:textColor="@color/unfinished_task_text"
+	      />
+	  <Button android:id="@+id/share_friend_button"
+	      android:layout_width="120dp"
+	      android:layout_height="45dp"
+	      android:layout_gravity="center_horizontal"
+	      android:text="@string/share"
+	      android:textColor="@color/white"
+	      android:layout_marginTop="10dp"
+	      android:layout_marginBottom="10dp"
+	      android:textSize="18sp"
+	      android:background="@drawable/orange_button_bg"
+	      />
+  </LinearLayout>
+  </ScrollView> -->
+</LinearLayout>

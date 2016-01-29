@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+    <include layout="@layout/window_titlebar_4" />
+ 
+    <ListView 
+        android:id="@+id/card_ListView"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:divider="@null"
+        android:layout_height="0dp"
+        ></ListView>
+    <Button
+	        android:id="@+id/bt_mob_reg_go"
+	        android:layout_width="match_parent"
+	        android:layout_height="@dimen/dp_48"
+	        android:layout_marginBottom="@dimen/dp_32"
+	        android:layout_marginLeft="@dimen/dp_20"
+	        android:layout_marginRight="@dimen/dp_20"
+	        android:background="@drawable/btn_grey"
+	        android:text="@string/next"
+	        android:textColor="@color/reg_go"
+	        android:textSize="20sp" />
+
+</LinearLayout>

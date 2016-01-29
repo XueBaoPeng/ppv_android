@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/channel_item_height"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/list_bg_selector"
+        android:padding="0dp" >
+
+        <com.star.ui.ImageView
+            android:id="@id/iv_channel_icon"
+            android:layout_width="@dimen/channel_icon_height"
+            android:layout_height="@dimen/channel_icon_height"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/channel_item_margin"
+            android:src="@drawable/icon_channel_logo" />
+
+        <ImageView
+            android:layout_width="@dimen/channel_icon_height"
+            android:layout_height="@dimen/channel_icon_height"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/channel_item_margin"
+            android:src="@drawable/list_channel_cover" />
+
+        <LinearLayout
+            android:id="@+id/channel_video_name_desc_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@+id/iv_video_reminder"
+            android:layout_toRightOf="@id/iv_channel_icon"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@id/tv_channel_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:singleLine="true"
+                android:textColor="#545454"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_channel_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:textColor="#545454"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/live_football_imageview"
+            style="@style/action_bar_icon_style"
+            android:layout_marginRight="8dp"
+            android:layout_toLeftOf="@+id/iv_video_reminder"
+            android:scaleType="center"
+            android:visibility="gone"
+            android:src="@drawable/live" />
+        
+        <ImageView
+            android:id="@id/iv_video_reminder"
+            style="@style/action_bar_icon_style"
+            android:layout_height="match_parent"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/iv_arrow_right"
+            android:scaleType="center"
+            android:src="@drawable/reminder_dot" />
+
+        <ImageView
+            android:id="@id/iv_arrow_right"
+            style="@style/action_bar_icon_style"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:scaleType="center"
+            android:src="@drawable/profile_arrow" />
+    </RelativeLayout>
+
+</LinearLayout>

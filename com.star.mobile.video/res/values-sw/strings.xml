@@ -1,0 +1,924 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 德甲名字 -->
+	<string name="bundesliga_name">Bundesliga</string>
+	<!-- 意甲名字 -->
+	<string name="serie_a_name">Serie A</string>
+	
+	<string name="player_analytic_url">http://analyze.starcloud.link:9537/player</string>
+	<!-- <string name="chatTop_url">http://10.0.63.24:8089/portal_parent</string> -->
+    <!-- <string name="chatTop_url">http://218.205.169.218:8081/forum</string> -->
+    
+    <!-- 支付url test-->
+    <!-- <string name="paga_url">http://218.205.169.218:8081/portal/pay/paga.html</string> -->
+    <!-- realse -->
+    <string name="paga_url">http://tenbre.me/portal/pay/paga.html</string>
+    <string name="faq_url">/forum/faq/faq_list.html</string>
+    
+    <string name="app_name">StarTimes</string>
+    <string name="facebook_app_name">tenbre</string>
+    <string name="app_id">720428864711530</string>
+    <string name="action_settings">Mipangilio</string>
+    <string name="logout">Kutoka/ Toka</string>
+    <string name="fragment_tag_Home">Mwanzo</string>
+    <string name="fragment_tag_Me">Menyu kuu</string>
+    <string name="fragment_tag_epgDetail">Taarifa za vipindi</string>
+    <string name="fragment_tag_onAir">kipo hewani</string>
+    <string name="fragment_tag_channelGuide">Muongozo wa chaneli</string>
+    <string name="fragment_tag_chatRooms">Vyumba vya mazungumzo</string>
+    <string name="fragment_tag_video">Live na Video</string>
+    <string name="tag_video_list">Orodha ya video</string>
+    <string name="activity_allchannels_title">Chaneli zote</string>
+    <string name="activity_alertsetting_title">Mpangilio wa kumbukumbu</string>
+    <string name="activity_alertlist_title">Kumbukumbu</string>
+    <string name="activity_forum_title">baraza</string>
+    <string name="text_whathot">Kipi kipya !!</string>
+    <string name="text_more">Zaidi</string>
+    <string name="comment_more">kundi mzabibu</string>
+    <string name="text_onair_now">Sasa</string>
+    <string name="text_onair_next">Kinachofuata</string>
+    <string name="search_title">Tafuta</string>
+    <string name="task_title">Majukumu</string>
+    <string name="all_comments_title">Maoni yote</string>
+    <string name="qyou_comments_title">Yasemwayo kwenye Q</string>
+    <string name="str_yearago">Miaka iliyopita</string>
+    <string name="str_monthago">Miezi iliyopita</string>
+    <string name="str_daysago">Siku zilizopita</string>
+    <string name="str_hoursago">Masaa yaliyopita</string>
+    <string name="str_minsago">Dakika zilizopita</string>
+    <string name="str_secondago">Sekunde zilizopita</string>
+    <string name="go">Nenda</string>
+    <string name="email_phone">Barua pepe au nambari %1$s za simu </string>
+    <string name="email_add">Barua pepe</string>
+    <string name="login_input_user">Barua pepe/Namba ya simu</string>
+    <string name="pwd">Neno la siri </string>
+    <string name="comfim_pwd">Thibitisha neno la siri</string>
+    <string name="inivated_hin">Namba ya mualiko</string>
+    <string name="invitation_code">Namba ya mualiko</string>
+    <string name="invititions">Mwaliko</string>
+    <string name="MyReminders">Kumbukumbu zangu</string>
+    <string name="ReminderNotification">Taarifa ya ukunusho</string>
+    <string name="login_btn">Ingia</string>
+    <string name="register_btn">Jisajili</string>
+    <string name="already">Umeshajisajili tayari</string>
+    <string name="choose_area">Chagua nchi unayoishi</string>
+    <string name="next">Endelea</string>
+    <string name="have_account">Tayari nina akaunti</string>
+    <string name="login_title">Ingia</string>
+    <string name="reg_title">Jisajili</string>
+    <string name="reg_later_btn">Jisajili Baadaye</string>
+    <string name="skip">Ruka</string>
+    <string name="sig_in_btn">Ingia</string>
+    <string name="nick_name">Jina la utani</string>
+    <string name="nick">Utani</string>
+    <string name="sex">Mwanaume</string>
+    <string name="name">Jina la utani</string>
+    <string name="sex_defalut">Haijabainishwa</string>
+    <string name="sex_man">Mwanaume</string>
+    <string name="sex_woman">Mwanamke</string>
+    <string name="alerts">Tahadhari</string>
+    <string name="search">Tafuta</string>
+    <string name="tv_info">Taarifa</string>
+    <string name="ad">+</string>
+    <string name="leave_comment">Toa maoni</string>
+    <string name="leave_msg">Toa ujumbe wako</string>
+    <string name="forward_link">App hii ina kazi gani?</string>
+    <string name="forward_text">Tuma kwenda:</string>
+    <string name="or">Au</string>
+    <string name="star_coins">Star sarafu</string>
+    <string name="startimes_vip">StarTimes VIP</string>
+    <string name="recharge">Malipo</string>
+    <string name="transfer">Tuma</string>
+    <string name="star_smartcard">Smatikadi ya StarTimes</string>
+    <string name="me_lonin">Ingia</string>
+    <string name="please_select">Tafadhali Chagua</string>
+    <string name="smart_card">SmartKadi:</string>
+    <string name="vouch_no">Nambari ya Vocha</string>
+    <string name="pin_number">PIN Na.</string>
+    <string name="confirm">Hakikisha</string>
+    <string name="ok">Sawa</string>
+    <string name="reset_password">Badili namba ya siri</string>
+    <string name="smart_no">Tafadhali ingiza nambari za smatikadi</string>
+    <string name="stb_code">Tafuta dijiti 6 kama zinavyoonyeshwa kwenye picha</string>
+    <string name="topup_activity_title">Malipo</string>
+    <string name="smart_card_activity_title">Smatikadi ya StarTimes</string>
+    <string name="feedback">Maoni</string>
+    <string name="tenb">Vilishi vyangu</string>
+    <string name="new_pass">Neno jipya la siri</string>
+    <string name="confirm_new_pass">Hakikisha namba mpya ya siri</string>
+    <string name="reset_pass">Panga namba mpya ya siri</string>
+    <string name="reset_nike_name">Jina la utani :</string>
+    <string name="reset_email">Barua pepe :</string>
+    <string name="send_email">Tuma barua pepe</string>
+    <string name="forget_password">Umesahau namba ya siri?</string>
+    <string name="other_account">Ingia kwa kutumia akaunti nyingine?</string>
+    <string name="pease_account">Tafadhali tumia barua pepe uliyotumia kujisajili kwenye akauti hii.</string>
+    <string name="my_wallet">Mkoba wangu</string>
+    <string name="earn_more_coins">Pata sarafu zaidi</string>
+    <string name="my_coupons">Kuponi zangu</string>
+    <string name="coupons">Kuponi</string> 
+    <string name="rewards">Zawadi</string>
+    <string name="conform_to_exchange">Hakiki kubadilisha</string>
+    <string name="expiration_date">Tarehe ya kuisha</string>
+    <string name="exchange_no">Na. ya kubadili:\n</string>
+    <string name="go_to_check_coupon">Ingia kutazama kuponi</string>
+    <string name="my_coupons_title">Kuponi zangu</string>
+    <string name="reward_detail_title">Taarifa kuhusu zawadi</string>
+    <string name="reward_title">Tumia Sarafu</string>
+    <string name="send_btn">Tuma</string>
+    <string name="fast_user_report">Ripoti ya haraka ya mtumiaji </string>
+    <string name="update_notisfy">Ujumbe kuhusu toleo jipya</string>
+    <string name="update">Toleo jipya</string>
+    <string name="select">Chagua</string>
+    <string name="leave_your_precious_advice">Tupatie ushauri wako wa thamani</string>
+    <string name="cannot_alert">Kipo hewani. Kitazame kwenye TV yako sasa!</string>
+    <string name="cannot_cancel_alert">Huwezi kufuta kumbukumbu hii kwa sasa</string>
+    <string name="user_report_title">Je! tunaweza kutumia angalau dakika yako moja utupatie ushauri ni kwa namna gani tunaweza kuboresha App yetu?</string>
+    <string name="bouque">Kifurushi:</string>
+    <string name="validity">Uhalali:</string>
+    <string name="account_balance"> Akaunti:</string>
+    <string name="currency">₦</string>
+    <string name="no">Na.</string>
+    <string name="four_layer_notify_title">Toleo jipya linapatikana sasa, unaweza kulitumia!</string>
+    <string name="four_layer_notify_content">Andika ripoti ya haraka ya mtumiaji na ujipatie sarafu</string>
+    <string name="four_layer_dialog_content">Umekwisha tumia toleo hili jipya!Umelipenda?</string>
+    <string name="four_layer_time">15:00</string>
+    <string name="focebook">Focebook</string>
+    <string name="twitter">Twitter</string>
+    <string name="current_password">Namba ya siri ya sasa</string>
+    <string name="current_version_title">Toleo la sasa</string>
+    <string name="new_version_title">Toleo jipya</string>
+    <string name="guide_number">3</string>
+    <string name="update_information">Taarifa mpya</string>
+    <string name="need_more_coins">Unahitaji sarafu zaidi</string>
+    <string name="alpha">Promosheni ya Alpha!Sarafu mara mbili</string>
+    <string name="egg_share">Alika marafiki ujipatie kuponi!</string>
+    <string name="refresh">Bonyeza kujionea upya</string>
+    <string name="explore_more">Jionee zaidi</string>
+    <string name="comment">Maoni</string>
+    <string name="related">Video zinazohusiana</string>
+    <string name="star_times_smart_card">Namba ya smatikadi ya StarTimes</string>
+    <string name="notice">Zingatia:Unaweza kuunganisha smatikadi yako  kwenye akaunti tofauti zipatazo 10</string>
+    <string name="example">Mfano: namba katika sanduku nyekundu ya mstatili</string>
+    <string name="stb_code_last_four">Nambari 6 za mwisho za dikoda yako</string>
+    <string name="quit_again_click">Bonyeza tena kutoka!</string>
+    <string name="share_text">Nimependa hili, ni muhimu na wewe ujionee!</string>
+    <string name="cancel">Sitisha</string>
+    <string name="edit">Hariri</string>
+    <string name="confirm_to_recharge">Thibitisha na ulipie</string>
+    <string name="fragment_tag_ccount_manager">Smatikadi</string>
+    <string name="discobery_tag_fragment">Ugunduzi</string>
+    <string name="startimes_business_hall_or_call">Tafadhali tembelea ukumbi  wa biashara wa StarTimes au tupigie simu</string>
+    <string name="twenty_four">(+234)094618888</string>
+    <string name="thirteen">(+234)014618888</string>
+    <string name="smart_card_recharge">Malipo ya SmartKadi</string>
+    <string name="my_smart_card">SmartKadi yangu</string>
+    <string name="pay_title">Lipia kwa paga</string>
+	<string name="five_min">Dak. 5</string>
+	<string name="ten_min">Dak. 10</string>
+	<string name="fifteen_min">Dak. 15</string>
+	<string name="thirty_min">Dak. 30</string>
+    <!-- error info -->
+    <string name="error_network">Seva ya wavuti haipatikani ,tafadhali jaribu baadae</string>
+
+     <!-- Player -->
+    <string name="player_first_time_msg">Kichezaji cha video cha StarTimes kinatumia teknolojia ya kisasa ukilinganisha na Youtube inagharimu 1/3 tu ya data.</string>
+    <string name="live_video_not_yet_begin">Inapatikana katika</string>
+    <string name="live_video_ended">Ooops! Tayari kimekwisha</string>
+    
+    
+    <!-- 提示信息 -->
+
+    <!-- 邮件地址不能为空 -->
+    <string name="email_address_can_not_be_empty">Barua pepe isiachwe wazi</string>
+    <!-- 密码不能为空 -->
+    <string name="password_can_not_be_empty">Namba ya(/Neno la) siri (l)isiachwe wazi</string>
+    <!-- 确认密码不能为空 -->
+    <string name="password_must_be_reconfirmed">Namba ya(Neno la) siri lazima (L)ithibitishwe</string>
+    <!-- 再次输入密码 -->
+    <string name="please_reconfirm_the_password">Tafadhali hakiki namba ya (Neno la) siri</string>
+    <!-- 正在加载地区信息 -->
+    <string name="loading_region_information">Inapakia maeneo …………</string>
+    <!-- 正在提交地区信息 -->
+    <string name="submitting_region_information">Inawasilisha eneo lako…</string>
+    <!-- 密码输入不正确 -->
+    <string name="password_is_incorrect">Namba yako ya siri sio sahihi</string>
+    <!-- 密码不能为空 -->
+    <string name="password_not_empty">Usiache neno la siri tupu!</string>
+    <!-- 正在加载个人信息 -->
+    <string name="loading_personal_information">Inapakia taarifa binafsi</string>
+    <!-- 用户名已存在 -->
+    <string name="user_name_is_already_exist">Barua pepe hii tayari ipo</string>
+    <!-- 邮箱已存在 -->
+    <string name="email_has_already_been_registered">Barua pepe hii tayari imekwisha sajiliwa</string>
+    <!-- 手机号已存在 -->
+    <string name="number_has_already_been_registered">Namba hii tayari imekwisha sajililiwa</string>
+    <!-- 用户名不存在 -->
+    <string name="user_name_does_not_exist">Barua pepe hii haipo</string>
+    <!-- 手机号不存在 -->
+    <string name="phone_number_not_exist">Namba hii ya simu haipo</string>
+    <!-- 请输入正确的邮箱 -->
+    <string name="plese_enter_a_valid_email_address">Tafadhali ingiza barua pepe sahihi</string>
+    <!-- 正在登录 -->
+    <string name="logging_in">Inajiunga...</string>
+    <!-- 正在提交注册信息 -->
+    <string name="submitting_registration_information">Inawasilisha...</string>
+    <!-- 正在加载数据 -->
+    <string name="loading">Inapakia...</string>
+
+    <string name="account_connect_title">Uunganishaji wa akaunti</string>
+    <string name="account_connect_successful">Imefanikiwa kuunganisha!</string>
+    <string name="account_connect_unsuccessful">Imeshindikana kuunganishwa!!</string>
+    <string name="account_connect_alert">Akauni yako uliyojisajili kabla % itajumuishwa baada ya uunganishaji.Akaunti yako ya sasa itakuwa ni kitambulisho chako kikuu</string>
+    <string name="account_disconnect_successful">Imefanikiwa kutenganisha</string>
+    <string name="account_disconnect_unsuccessful">Imeshindikana kutenganisha</string>
+    <string name="account_disconnect_alert">Ju e!nataka kutenganisha akaunti yako%s ?</string>
+    <string name="unlink">Tenganisha</string>
+    <string name="account_connect_fail">Imeshindikana kuunganisha. %s imeshaunganishwa na akaunti nyingine</string>
+    <string name="video_end_change_bouquet_prompt">Je!unataka kutazama zaidi? Tazama %1$s chaneli kwenye %2$s kifurushi. Badili kifurushi chako hapa</string>
+    <string name="video_end_change_bouquet_none">Je!Unataka kutazama vipindi uvipendavyo zaidi?Bonyeza kwenye kifurushi hiki kulipia</string>
+    <string name="opening">Inafungua (Msingi)</string>
+    <string name="apex">Kilele</string>
+    <string name="beacon">Beacon</string>
+    <string name="by_seaside">By The Seaside</string>
+    <string name="chimes">Chimes</string>
+    <string name="illuminate">Illuminate</string>
+    
+    <string name="sun">J.Pili</string>
+    <string name="mon">J.Tatu</string>
+    <string name="tue">J.Nne</string>
+    <string name="wed">J.Tano</string>
+    <string name="thu">Alh</string>
+    <string name="fri">Ij.maa</string>
+    <string name="sat">J.Mosi</string>
+    
+    <string name="sunday">Jumapili</string>
+    <string name="monday">Jumatatu</string>
+    <string name="tuesday">Jumanne</string>
+    <string name="wednesday">Jumatano</string>
+    <string name="thursday">Alhamisi</string>
+    <string name="friday">Ijumaa</string>
+    <string name="saturday">Jumamosi</string>
+    
+    <string name="jan">Mwezi wa kwanza</string>
+    <string name="feb">Mwezi wa pili</string>
+    <string name="mar">Mwezi wa tatu</string>
+    <string name="apr">Mwezi wa nne</string>
+    <string name="may">Mwezi wa tano</string>
+    <string name="jun">Mwezi wa sita</string>
+    <string name="jul">Mwezi wa saba</string>
+    <string name="aug">Mwezi wa nane</string>
+    <string name="sept">Mwezi wa tisa</string>
+    <string name="oct">Mwezi wa kumi</string>
+    <string name="nov">Mwezi wa kumi na moja</string>
+    <string name="dec">Mwezi wa kumi na mbili</string>
+    
+    
+    <string name="basic">Ya kawaida</string>
+    <string name="classic">Ya kiwango cha juu</string>
+    <string name="unique">Ya kipekee</string>
+    
+    <!-- album activity -->
+    <string name="album">Albamu</string>
+    <string name="photo">Picha</string>
+    <string name="send_picture_success">Picha imefanikiwa kutumwa %s</string>
+    <string name="send_picture_fail">Imeshindikana kutuma picha!</string>
+    <string name="no_sdcard">Hakuna kadi ya kumbukumbu</string>
+    <string name="success_upload_picture">Imefanikiwa kuweka picha ya profaili!</string>
+    <string name="fail_upload_picture">Imeshindikana kuweka picha  uipendayo</string>
+    
+    <!-- all comment activity -->
+    
+    <string name="comment_less">Maoni yako yasiwe chini ya herufi 6 na yasizidi herufi 500.</string>
+    <string name="submitting">Inawasilisha maoni</string>
+    <string name="submitting_comment_failure">Imeshindikana kuwasilisha maoni</string>
+    
+    <!-- char rooms activity-->
+    <string name="chat_room">Vyumba vya mazungumzo</string>
+    <string name="blank_message_not_allowed">Ujumbe mtupu hauruhusiwi    </string>
+    <string name="only">Inaruhusu maneno 500 tu</string>
+    
+    <!-- choose activity -->
+    <string name="success_locate">Imefanikiwa kupata</string>
+    <string name="location_is_not_found">Eneo lako halijapatikani.Tafadhali chagua eneo lililo karibu yako</string>
+    <string name="fail_locate">Imeshindikana kupata eneo</string>
+    <string name="please_select_area">Tafadhali chagua eneo</string>
+    
+    <!-- current version app detail activity -->
+    <string name="no_version_info">Hakuna Maelezo ya toleo</string>
+    <string name="new_version">Toleo jipya</string>
+    
+    <!-- feedback activity -->
+    <string name="comment_should">Majibu hayawezi kuwa tupu.</string>
+    <string name="submit_feedback_success">Tumepokea majibu yako.Asante</string>
+    <string name="no_user_report">Hakuna ripoti ya mtumiaji kwenye toleo la sasa au umekwishafanya tayari</string>
+    
+    <!-- landscape play activity -->
+    <string name="video_resource_does_not_exist">Video za kipengele hiki hazipatikani</string>
+    <string name="how_to_train_your_dragon">Namna gani ya kufundisha dragoni wako</string>
+    
+    <!-- loging activity  -->
+    <string name="comfirm_to_send_activation">Hakikisha kutuma kiungo cha uanzishaji </string>
+    <string name="do_you_want_to_reset_your_password">Unataka kuunda upya namba yako/(Neno lako) ya siri?</string>
+    <string name="longin_error">Makosa katika kuingia!</string>
+    <string name="sending">Inatuma…</string>
+    <string name="account_from_your_email">Tafadhali: Thibitisha akaunti yako katika barua pepe yako</string>
+    <string name="to_resend_the_activation_link_failure">Imeshindikana kutuma upya uanzishaji kiungo.</string>
+    <string name="login_with">Ingia kwa kutumia</string>
+    
+    <!-- new version app detail activity -->
+    <string name="downloading">Inapakua...</string>
+    <string name="install">Simika</string>
+    <string name="upgrade_information">Taarifa za uboreshaji.</string>
+    <string name="please_update_the_app_and_run_it_again">Tafadhali simika toleo jipya halafu uifungue tena.</string>
+    <string name="current_network_threen_g">Mtandao wa sasa ni 3G,endelea kupakua</string>
+    <string name="later">Baadaye</string>
+    <string name="download_error">Tatizo katika upakuaji</string>
+    
+    <!-- offline epg activity -->
+    <string name="offline_epg">EPG zisizo za mtandaoni</string>
+    
+    <!-- register activity -->
+    <string name="verifying_your_input">Inathibitisha uingizaji wako...</string>
+    <string name="welcome_tenbre">Karibu kwenye App ya StarTimes!Kuendelea na app hii tafadhali bonyeza kiunganishi kilichotumwa kwenye barua pepe yako ili kuthibitisha[%s]</string>
+    <string name="sorry">Samahani</string>
+    <string name="registration_failed">Usajili umeshindikana</string>
+    <string name="email_address_is_wrong">Barua pepe imekosewa!</string>
+    <string name="send">Tuma</string>
+    <string name="resend_failed">Imeshindikana kutuma upya kiunganishi cha uanzishaji.</string>
+    <string name="nickname_can_less_than_five_letters">Jina la utani lisiwe chini ya herufi 5</string>
+    <string name="less_than_eleven_letters">Jina la utani lisiwe chini ya herufi 5</string>
+    <string name="mailbox_not_correct_format">Barua pepe haipo katika muundo sahihi</string>
+    <string name="password_cannot_less_letters">Neno la siri lisiwe  chini ya herufi 6</string>
+    <string name="password_cannoe_greater">Neno la siri lisizidi herufi 50</string>
+    <string name="letter_number_only">6 au zaidi herufi/nambari</string>
+    <string name="password_error">Neno  siri liwe herufi/nambari tu</string>
+    <string name="two_password_do_not_match">Maneno ya siri mawili uliyoingiza hayafanani</string>
+    <string name="five_to_eleven_letters">Herufi 4-20!</string>
+    <string name="password">Neno la siri</string>
+    <string name="confirm_password">Hakikisha neno la siri</string>
+    
+    <!-- reset password activity -->
+    <string name="incorrect_password">Neno la siri limekosewa</string>
+    <string name="password_reset_fails">Samahani!Tatizo la kiufundi(/tatizo lisilojulikana)</string>
+    
+    <!-- reset password send mail activity -->
+    <string name="check_your_email">Tafadhali tazama barua pepe yako na upate namba mpya ya siri  kuingia</string>
+    <string name="email_address_has_not_been">Barua pepe hii bado haijasajiliwa.</string>
+    <string name="password_reset_failed">Utengenezaji upya wa namba ya siri  umeshindikana!</string>
+    
+    <!-- reward activity -->
+    <string name="no_data">Hakuna data</string>
+    
+    <!-- reward detail activity -->
+    <string name="number_prizes_insufficinet">Namba ya tuzo haijitoshelezi</string>
+    <string name="current_balance_insufficinet">Salio lako la sasa halijitoshelezi</string>
+    <string name="server_is_busy">Mtandao unatumika</string>
+    
+    <!-- search activity -->
+    <string name="no_search_results">Hakuna matokeo yoyote</string>
+    <string name="no_more_programs">Hakuna programu zaidi</string>
+    
+    <!-- smartcard activity -->
+    <string name="card_number_can_not_be_empty">Namba ya kadi haiwezi kuachwa wazi</string>
+    <string name="enter_the_decoder">Tafadhali ingiza namba za king\'amuzi chako</string>
+    <string name="binding">Inaunganisha</string>
+    <string name="binding_success">Imefanikiwa kuunganisha</string>
+    <string name="smartcard_number_doesn_exist">Namba ya smatikadi hii haipo</string>
+    <string name="smartcard_binding_fails">Uunganishaji wa smatikadi umeshindikana.Tafadhali jaribu tena baadaye.</string>
+    <string name="failed_ten">Imeshindikana,Kadi yako imeshaunganishwa mara 10.Imefikia kikomo.</string>
+    <string name="smartcard_number_does">Namba ya smatikadi hailingani na namba ya king\'amuzi chako</string>
+    <string name="smartcard_has_already">Smatikadi hii tayari imeshaunganishwa.</string>
+    <string name="binding_failure">Imeshindikana kuunganisha</string>
+    
+    <!-- tasks activity  -->
+    <string name="loading_tasks">Inafungua majukumu… </string>
+    
+    
+    <!-- topup activity -->
+    <string name="account_balance_is_not_enough">Salio la akaunti yako halitoshelezi kwa kifurushi hiki kipya.</string>
+    <string name="fail_to_change_your_bouquet">Imeshindikana kubadili kifurushi chako,Tafadhali wasiliana na ofisi zetu za huduma kwa wateja. Alama ya siri ni..</string>
+    <string name="have_recharged">Umebadilisha kifurushi chako kwenda/</string>
+    <string name="binding_smart_card">Tafadhali unganisha smatikadi yako kwanza</string>
+    <string name="please_try_again">Tafadhali jaribu tena</string>
+    <string name="vouchno_can_not_be_empty">Namba ya vocha haiwezi kuachwa wazi</string>
+    <string name="recharging">Inalipia…</string>
+    <string name="boss_unavailable_now">BOSS haipatikani kwa sasa,Jaribu baadae.</string>
+    <string name="recharge_service_is_busy">Huduma ya malipo inatumika. Inajaribu tena..</string>
+    <string name="recharge_card_number_is_invalid">Nambari za malipo ni batili</string>
+    <string name="client_password_is_incorrect">Namba ya siri ya mteja sio sahihi</string>
+    <string name="recharge_card_number_has_been_used_before">Nambari ya kadi ya malipo imekwisha tumika</string>
+    <string name="recharge_card_has_expired">Kadi  yako ya malipo imekwisha muda wake.</string>
+    <string name="recharge_with_card">Imeshindikana kulipia kwa kadi!</string>
+    <string name="recharge_with_coupon">Imeshindikana kulipia kwa kuponi!</string>
+    <string name="coupon_has_expired">Kuponi hii imekwisha muda wake.</string>
+    <string name="recharge_failure">Malipo yameshindikana</string>
+    <string name="recharget_frequent">Pia mara kwa mara tafdhali jaribu tena baadae</string>
+    <string name="recharge_successfully_your_balance_now">Malipo yamefanikiwa!Salio lako la sasa ni</string>
+    <string name="recharge_task_completed_get">Huduma ya malipo imekamilika! Pata</string>
+    <string name="coins">Sarafu</string>
+    <string name="now">Sasa</string>
+    <string name="customer_name">Jina la mteja</string>
+    <string name="account_balances">Salio la akaunti:</string>
+    <string name="mobile_phone">Namba ya simu:</string>
+    <string name="recharge_this_smart_card">Lipia smatikadi hii</string>
+    <string name="use_coupon">Tumia kuponi</string>
+    <string name="Use_coupon_to_recharge">Tumia coupon Corrected akaunti yako papo hapo</string>
+    <string name="Recharge_card">Ingiza nambari ya kadi yako ya malipo</string>
+    <string name="Pay_online">PAGA inapatikana sasa</string>
+    <string name="recharge_card_info">Tafadhali ingiza namba za kadi yako ya malipo</string>
+    <string name="online_pay">Paga inaweza kutoza ada fulani kwa ajili ya huduma yao</string>
+    <string name="you_can">Unaweza kununua kadi ya malipo kwenye mauzo ya StarTimes.</string>
+    <string name="no_coupon">: Hakuna kuponi</string>
+    <string name="coupon">Kuponi</string>
+    <string name="recharge_card">Lipia Kadi</string>
+    <string name="recharge_smart">Lipia Smatikadi </string>
+    <string name="online_payment">Malipo ya mtandaoni </string>
+    <string name="entet_the_amount">Ingiza kiasi cha fedha</string>
+    <string name="change_bouquet">Badili kifurushi</string>
+    <string name="verification">thibitisho</string>
+    <string name="confirm_to_change">Thibitisha ili kubadili</string>
+    <string name="select_smart_card">Tafdhali chagua smatikadi</string>
+    
+    <!-- user report activity -->
+    <string name="user_report_for_current_version">Hakuna ripoti ya mtumiaji kwenye toleo la sasa</string>
+    <string name="do_report">Tayari umeshakamilisha ripoti ya mtumiaji ya haraka</string>
+    <string name="commit_report_error">Samahani imeshindwa kuwasilisha,Tafadhali jaribu tena baadaye</string>
+    <string name="user_report_for_current_version_give_us_feedback">Hakuna ripoti ya mtumiaji kwenye toleo la sasa,tupatie maoni?</string>
+    <string name="have_received_your_feedback">Tumepokea majibu yako.Umezawadiwa sarafu 5.Asante</string>
+    <string name="answer_all_the_questions">Tafadhali jibu maswali yote</string>
+    <string name="what_apos_new">Kipi kipya!</string>
+    
+    <!-- welcome activity -->
+    <string name="register_your_device_error">Usajili wa kifaa chako una makosa!</string>
+    <string name="logon_failed_with_user">Uingiaji umeshindikana na mtumiaji:</string>
+    <string name="exit">Toka</string>
+    <string name="install_information">Maelezo ya Kusimika</string>
+    <string name="have_already_downloaded_latest_version">Tayari umeshapakua toleo jipya la Startimes ! Thibitisha ili kusimika?</string>
+    
+    <!-- home activity -->
+    <string name="set_channel_filter">Weka chujio la chaneli :? \ Chaneli upendazo zilizohifadhiwa</string>
+    <string name="choose_one_bouquet">Weka chujio la chaneli:\Chagua kifurushi kimoja</string>
+    <string name="choose_one_channel_category">Weka chujio la chaneli:Chagua  kundi moja la chaneli</string>
+    
+    <!-- Fragment, view-->
+    <string name="call">Piga simu</string>
+    <string name="channnel_guide_send_request">Maombi yako yamefanikiwa kutumwa!</string>
+    <string name="alert_success">Tahadhari imefanikiwa</string>
+    <string name="alert_cancel_success">Imefanikiwa kufuta</string>
+    <string name="share_program">\nProgramu</string>
+    <string name="share_channel">\nChaneli</string>
+    <string name="share_from_startime">Shirikisha kutoka kwenye App ya StarTimes.</string>
+    <string name="share_from_tenbre">Shirikisha kutoka kwenye App ya StarTimes.</string>
+    <string name="share_logo_aws">http://tenbre.tk/portal/img/shonngo_logo.png</string>
+    <string name="alert_login">Tafadhali ingia kwanza</string>
+    
+    <string name="alert_unsuccess">Tahadhari imeshindikana</string>
+    <string name="alert_cancel_unsuccess">Ukatishaji wa tahadhari umefanikiwa</string>
+    <string name="comment_commit_limit">Maoni yasiwe chini ya herufi 6 na yasizidi herufi 500</string>
+    <string name="comment_commit">Inawasilisha maoni</string>
+    <string name="comment_commit_fail">Imeshindikana kuwasilisha maoni!</string>
+    <string name="no_program">Chaneli ya sasa haina programu</string>
+    <string name="no_program_guide">Hakuna mwongozo wa program kwa sasa</string>
+    <string name="preparing_data">Ina andaa data. Subiri</string>
+    <string name="success">Imefanikiwa</string>
+    <string name="failure">Imeshindikana</string>
+    <string name="confirm_logout">Hakikisha ili kutoka?</string>
+    <string name="choose_card">Chagua kadi</string>
+    <string name="can_not_like_comment">Huwezi kupenda maoni yako mwenyewe</string>
+    <string name="balance">Salio</string>
+    <string name="bouquest">Vifurushi</string>
+    <string name="remaining_days">Siku zilizosalia</string>
+    <string name="fail_to_get_smartcard">Imeshindikana kupata habari za smatikadi yako</string>
+    <string name="delete_smartcard">Futa smatikadi hii?</string>
+    <string name="delete_smartcard_fail">Imeshindikana kufuta smatikadi hii</string>
+    <string name="get_coins">Pata sarafu</string>
+    <string name="Invite_coupon">Alika</string>
+    <string name="not_specified">Haijabainishwa</string>
+    <string name="Male">Mwanaume</string>
+    <string name="Female">Mwanamke</string>
+    <string name="check_in">Angalia ndani</string>
+    <string name="other_help">Msaada mwingine</string>
+    <string name="twenty_four_hours_everyday">Masaa 24 Kila siku</string>
+    <string name="everyday">7:00-20:00 Kila siku</string>
+    <string name="all_channel">Chaneli zote</string>
+    <string name="favorite">Upendacho</string>
+    <string name="no_program_guide_for_now">Hakuna mwongozo mpango kwa sasa</string>
+    <string name="want_to_see_epg_of_this_channel">Unataka kuona EPG ya chaneli hii</string>
+    <string name="channel_rooms">Vyumba vya chaneli</string>
+    <string name="startimes_rooms">Vyumba vya startimes</string>
+    <string name="report_a_problem">Ripoti tatizo</string>
+    <string name="clip">Kipande cha :</string>
+    <string name="my_coins">Sarafu zangu</string>
+    <string name="mycoins">Sarafu zangu</string>
+    <string name="earn_coins">Jipatie sarafu</string>
+    <string name="spend_coins">Tumia Sarafu </string>
+    <string name="my_tenbre">App yangu ya StarTimes</string>
+    <string name="alert">Tahadhari</string>
+    <string name="tips">Vidokezi</string>
+    <string name="my_coupons_five">Kuponi zangu</string>
+    <string name="ruffle">Mafungu</string>
+    <string name="luck_draw">Bahati nasibu</string>
+    <string name="cost">gharama:</string>
+    <string name="confirm_the_smart_card_information">Hakiki maelezo ya smatikadi</string>
+    <string name="click_here_to_recharge_the_smart_card">Bonyeza hapa kulipia Smatikadi</string>
+    <string name="dismiss">Ondosha</string>
+    <string name="dismiss_s">Ondosha</string>
+    <string name="choose_one_or_more_coupons">Chagua kuponi moja au zaidi</string>
+    <string name="enter_the_recharge_card_number">Ingiza namba ya kadi ya malipo</string>
+    <string name="enter_the_amount_money_you_want_to_recharge">Tafadhali ingiza kiasi cha pesa unachotaka kulipia</string>
+    <string name="more_videos">Video zaidi</string>
+    
+    <!-- view -->
+    <string name="locating">Inaweka</string>
+    <string name="task">Jipatie sarafu</string>
+    <string name="task_coupon_share">Jipatie kuponi</string>
+    <string name="return_">Rudisha</string>
+    <string name="remind_me">Nikumbushe</string>
+    <string name="ahead">Kabla</string>
+    <string name="available_on">Inapatikana katika</string>
+    <string name="channel">Chaneli</string>
+    <string name="dtt">DTT</string>
+    <string name="desk_lamp">Taa ya mezani</string>
+    <string name="tenbre">StarTimes App</string>
+    <string name="start">Anza</string>
+    <string name="data_loading_fails">Utafutaji wa data umeshindikana</string>
+    <string name="all_tasks_completed_today">Majukumu yote yamemalizika leo</string>
+    <string name="coin">Sarafu</string>
+    <string name="confirm_to_log_out">thibitisha ili kutoka?</string>
+    
+    <!-- util -->
+    <string name="your_login_has_been_out_of_date">Uingiaji wako umechelewa,,Inaingia tena…</string>
+    <string name="you_have_just_exchanged" formatted="false"> Umebadilisha \t%1$s \t%2$s coins!</string>
+    <string name="hot_chat_rooms">chumba cha mazungumzo motomoto</string>
+    <string name="value_cannot_be_empty">Thamani haiwezi kuachwa wazi</string>
+    <string name="amount_can_not_be">Kiasi hakiwezi kuwa 0</string>
+    <string name="minimum_amount">Kima cha chini ni 50</string>
+    <string name="share_an_egg">Gawana yai</string>
+    <string name="delete_the_martcard">Imeshindikana kufuta smatikadi</string>
+    <string name="fail_to_delete_this_smart_card">Imeshindikana kufuta smatikadi hii</string>
+    <string name="fail_to_get_the_smart_card_information">Imeshindwa kupata taarifa ya smatikadi hii</string>
+    
+    <string name="rechargeBy_SC">Malipo ya %1$sn yamefanikiwa</string>
+    <string name="rechargeBy_SC_failCO">Malipo ya %1$sn yameshindikana!Salio lako la sasa ni %2$s</string>
+    <string name="rechargeBy_CO">kuponi A%1$s  zimelipiwa.Salio lako la sasa ni %2$s.Unataka kuponi zaidi? Alika  marafiki wajiunge na App ya StarTimes sasa.</string>
+    
+    <string name="coupon_title_newCus">Kuponi ya mtumiaji wa kwanza</string>
+    <string name="coupon_title_limit">Kuponi yenye kikomo</string>
+    <string name="coupon_title_common">Kuponi isiyo na kikomo</string>
+    <string name="coupon_title_free">Kuponi ya bure</string>
+    
+    <string name="coupon_content_newCus">1.Tarehe ya mwisho kutumika %1$s\n2.Kiasi kilichoonyeshwa kwenye kuponi kinaweza kutumika kulipia akaunti yako bila mipaka .\n3. Akaunti mpya tu ndiyo inaweza kukomboa kuponi ya mtumiaji wa kwanza. \n4.Kuponi  ya mtumiaji wa kwanza inaweza</string>
+    <string name="coupon_content_limit">1.Tarehe ya mwisho kutumika %2$s \n2.Kuponi hii utaweza kuitumia pale tu utakapolipia %1$s kwenye akaunti yako</string>
+    <string name="coupon_content_club">1.Tarehe ya mwisho kutumika :30/9 2015.n2.Kuponi hii utaweza kuitumia pale tu utakapolipia %1$s kwenye akaunti yako</string>
+    <string name="coupon_content_common">1.Tarehe ya mwisho kutumika :%1$sn2.Kiasi  kinachoonyeshwa kwenye kuponi hii utaweza kitumia kwenye malipo bila mipaka</string>
+    
+    <string name="share_egg_default">Nimepokea kuponi ya StarTimes ya kutoka kwenye yai la Pasaka.Njoo ujiunge nami.Bonyeza kiunganishi hiki ujishindie bahati yako sasa</string>
+    <string name="share_egg">Unataka kujishindia kirahisi %1$s?WOW!Bonyeza kiunganishi hiki upate App ya StarTimes na ugundue mayai ya Pasaka yaliyofichwa.Shiriki bahati yako pamoja na mimi.</string>
+    <string name="share_egg_after_recharge">Nimejishinda kuponi % 1 $ s  na kulipia smatikadi yangu ya Startimes  . Bonyeza kiungo hiki kupata Startimes Programu , kugundua vitu visivyotarajiwa vya Pasaka . Shiriki bahati na mimi!</string>
+    <string name="share_egg_newCus">Hii ni kuponi ya Startimes kwa ajili yako!Unataka kupata zaidi?Simika app ya Startimes ili ugundue mayai zaidi yaliyofichwa. Uwezo wa kushinda 100%.Shiriki bahati yako na mimi</string>
+    <string name="share_egg_free">Wow,Nimepasua yai lenye  kuponi %1$s ya StarTimes ndani yake.Ati nini? Huwezi kutumia kuponi yako kwa sababu hujajisajili bado?Ni rahisi!Bonyeza hapa ili ugundue mayai yaliyofichwa.</string>
+    <string name="share_egg_free_tan">Wow!Nimevunja yai lenye thamani ya %1$s,Nikapata kuponi ya bure kutoka StarTimes.Ati nini? Huwezi kutumia kuponi kwa sababu bado hujajisajili! Ni rahisi! Bonyeza kiunganishi hiki na ushuhudie maajabu yaliyofichwa.</string>
+    
+    <!-- 邮箱分享标题 -->
+    <string name="email_share_title">Zawadi kutoka StarTimes</string>
+    <!-- 邮箱充值分享 -->
+    <string name="email_share_egg_after_recharge">Nimejishindia  kuponi   %1$s na kulipia smatikadi yangu ya Startimes.\n\n unataka kupata kuponi?Bonyeza kiunganishi hiki kupata App ya StarTimes ugundue mayai yaliyofichwa.\n\n\ uwezo wa kushinda ni %2$s. Shiriki bahati na mimi!</string>
+   	<!-- 邮箱新人卷分享 -->
+    <string name="email_share_egg_newcus">Hii ni StarTimes kuponi kwa ajili yako!Unaweza kuitumia kulipia smatikadi ya startimes yako moja kwa moja\n\n\ unataka kupata zaidi?Simika app ya Startimes na ugundue zawadi za pasaka zilizofichwa .n\n  uwezo wa kushinda ni %$s .Shiriki bahati</string>
+    <!-- 砸开彩蛋分享 -->
+    <string name="email_share_egg">Unataka kushinda kirahisi %1$s?\n\n WOW!Bonyeza kiunganishi hiki kupata App ya StarTimes ili ugundue zawadi za pasaka zilizofichwa.\n\n%2$s uwezo wa kushinda.Shiriki bahati yako pamoja na mimi!</string>
+    
+	<string name="coupon_common_limit">Lipia akaunti yako \n bila kikomo chochote</string>
+    <string name="coupon_newCus_limit">Inapatikana kwa wenye \akaunti mpya tu</string>
+    <string name="coupon_exchange_limit">Inapatikana ukilipia \n zaidi ya %1$s</string>
+    <string name="coupon_free">Lipia kwenye akaunti yako moja kwa moja</string>
+    
+    
+    <string name="bt_check">Angalia</string>
+    <string name="bt_share">Shirikisha</string>
+    <string name="first_coupon">Kuponi ya mtumiaji wa mara ya kwanza</string>
+    <string name="limited_coupon">Kuponi  yenye kikomo</string>
+    <string name="free_coupon">Kuponi ya bure</string>
+    
+    <string name="recharge_limit">Umechagua  kupon a%1$si.\nlt itapatikana wakati umelipia zaidi ya %2$s.</string>
+    <string name="recharge_notmatch">Unahitajika kulipia %1$s ili  utumie kuponi hii.</string>
+    <string name="smcartcard_used">Kuponi hii imetumika.Tafadhali chagua nyingine.</string>
+    
+    <string name="btn_share">Shirikisha  marafiki</string>
+    <string name="first_times">Imefikia kikomo .  Kuponi 10 za mtumiaji wa mara ya kwanza zimeshatumika kwenye smatikadi hii.Tafdhali chagua nyingine.</string>
+    
+    <string name="status_sending">Inatuma</string>
+    <string name="status_Using">Inatumia…</string>
+    
+    <string name="chatRoom_newMessage">Ujumbe mpya kutoka  chumba cha %1$s cha mazungumzo</string>
+    <string name="chatRoom_newMessage_s">Ujumbe mpya kutoka chumba cha mazungumzo</string>
+    <string name="alert_info">Yai moja kwa siku.Usisahau kucheza.Kila la kheri!</string>
+    <!-- 老用户成领取 -->
+    <string name="alert_info_">Hongera!Umejipatia kuponi kwa ajili ya malipo.</string>
+    
+    <string name="alert_info_title">Umejishindia kuponi ya bure.</string>
+    
+    
+    <string name="phone">Simu</string>
+    <string name="email">Barua pepe</string>
+    <string name="get_code">Pata kificho</string>
+    
+    
+    <string name="phone_number_hin">Namba ya simu</string>
+    <string name="ver_code_hin">kithibitisho cha kificho</string>
+    <!-- <string name="phone_msg">Kwa simu za Tanzania</string> -->
+    <string name="error_phone_msg">Namba uliyoingiza sio sahihi</string>
+    <string name="code_msg">Bonyeza "Pata uthibitisho " ili utume kificho tena.</string>
+    <string name="mob_tips">vidokezo:</string>
+    <string name="mob_tip_msg_four">1.Kama una namba za mwaliko na unataka kupata kuponi za bure, tafadhali jisajili kwa njia ya simu.</string>
+<!--     <string name="mob_tip_msg_one">2.Tumia namba yako ya simu kujisajili bure</string>
+ -->    <string name="mob_tip_msg_three">2. Kwa kuendelea inaonyesha kwamba umekubaliana na vigezo na masharti ya huduma.</string>
+    <string name="mob_reg_success">Usajili umefanikiwa.Tafadhali ingia kwa namba yako ya simu sasa.</string>
+    <string name="code_error">Haitambuliki.Tafadhali tazama na uingize tena.</string>
+    <string name="su_login">Namba hii tayari imekwisha sajililiwa</string>
+    <string name="please_check">Namba ya uthibitisho imetumwa kwenye simu yako.Tafadhali tazama.</string>
+    <!-- 坦桑区号 -->
+    <string name="tan_area_number">255</string>
+    <string name="copy">Nakili</string>
+    <string name="forward">Sukuma mbele /endeleza</string>
+    
+    <string name="about_tenbre">Kuhusu App ya StarTimes</string>
+    <string name="current_version">Toleo la sasa</string>
+    <string name="faq">Maswali na Majibu</string>
+    <string name="tell_friend">Mwambie rafiki</string>
+    <string name="account">Akaunti</string>
+    <string name="account_connection">Uunganishaji wa akaunti</string>
+    <string name="log_out">Toka</string>
+    <string name="setting">Mpangilio </string>
+    <string name="coming_soon">Itakujia hivi karibuni</string>
+    <string name="setting_reset">Samahani! Kuseti upya  neno la siri haiwezekani kwa sasa. Itawekwa kwenye toleo lijalo</string>
+    <string name="reset_alert_title">Seti upya neno la siri</string>
+    <string name="account_conection_coming_soon">Uunganshaji wa akaunti utakujia siku za karibuni</string>
+    <string name="share_content">Hello! Angalia App hii ya StarTimes. Ni muongozo wa StarTimes TV yenye  vyumba vya mawasiliano. Bonyeza kiunganishi hiki kupata kuponi na ulipie king\'amuzi chako kwa kutumia simu yako ya mkononi. Anza kufanya maisha yako ya furaha na rahisi!</string>
+    <!-- 充值后分享 -->
+    <string name="rec_share">Nimejishindia kuponi ya StarTimes na kulipia smatikadi yangu.Bonyeza %1$s\n kupata APP ya StarTimes.Anza kufanya maisha yako ya furaha na rahisi</string>
+    <!-- 砸蛋后分享 -->
+    <string name="break_egg_share">Je! unataka kujishindia kuponi ya StarTimes kirahisi?Bonyeza %1$s\n upate APP ya StarTimes.Anza kufanya maisha yako ya furaha na rahisi</string>
+    <!-- 直接分享 -->
+   	<!-- <string name="directly_share">Hello!Angalia App hii ya StarTimes.Ni muongozo wa StarTimes TV wenye vitu vizuri na manufaa lukuki. Bonyeza hapa kuipakua na uisimike bure kwenye simu yako</string> -->
+      <string name="directly_share">Hey! Jipatie kuponi ya bure sasa. Bofya %1$s kupakua programu ya StarTimes  bure ujionee video na mechi moja kwa moja. Usisahau kuingiza msimbo mwaliko wangu %2$s wakati wa kujiandikisha.</string>
+    <!-- Twitter充值后分享 -->
+     <string name="twitter_rec_share">Pata kuponi ya bure!\n%1$s</string>
+    <!-- Twitter砸蛋后分享 -->
+    <string name="twitter_break_egg_share">Pata kuponi ya bure!\n%1$s</string>
+    <!-- Twitter直接分享 -->
+    <string name="twitter_directly_share">Pata kuponi ya bure!\n%1$s</string>
+    
+    <string name="frame_text_tellfrind">Unataka kuponi zaidi?\nBonyeza hapa kuwaalika marafiki.</string>
+    <string name="failed">Imeshindwa</string>
+    <!-- 翻译 -->
+    <string name="me">Mimi</string>
+    <string name="header_describe">Picha</string>
+    <string name="username_describe">Jina:</string>
+    <string name="modify_cancel">Futa</string>
+    <string name="modify_save">Hifadhi</string>
+    <string name="notification">Taarifa</string>
+    <string name="chat_room_notification">Taarifa za vyumba vya mazungumzo</string>
+    <string name="alert_setting">Mpangilio wa tahadhari</string>
+    
+    <string name="welcome_to_tenbre">Karibu kwenye APP ya StarTimes</string>
+    <string name="almost_tenbre">unakaribia</string>
+    <string name="ver_link_has_bean_send">Kiunganishi cha uhakiki kimetumwa kwa</string>
+    <string name="check_email_">Tafadhali angalia barua pepe yako na ubonyeze kiunganishi ili kukamilisha usajili wako.Kama hutapata ujumbe wa barua pepe tafadhali angalia kwenye faili la Spam. </string>
+    <string name="still_find">Bado hujapokea ujumbe wa barua pepe wa kuthibitisha?bonyeza Tuma tena ili utumiwe ujumbe huo.</string>
+    <string name="activated">Imeanzishwa</string>
+    <string name="resend">Tuma tena</string>
+    
+    <string name="sound">Sauti</string>
+    <string name="vibration">Mtikisiko</string>
+    <string name="does_not_match">Utambulisho haulingani</string>
+    <string name="updata_sex_faill">Failed to update</string>
+    <string name="updata_sex_success">Update successfully</string>
+    <string name="update_nickname_hint">Urefu unatakiwa uwe kati ya herufi  4 na 20</string>
+    <string name="tell_friend_title">Alika marafiki na ujivunie kuponi ya bure</string>
+    <string name="tell_friend_content_one">Alika marafiki na upate %1$s kuponi ya kulipa hapo kwa papo.Kadri ualikavyo wengi ndivyo upatavyo kuponi zaidi.</string>
+    <string name="tell_friend_content_two">Bonyeza alama ya shirikisha sasa</string>
+    <string name="tell_friend_content_three">3.Kupata kuponi ni rahisi, bonyeza kitufe cha  shirikisha na umualike rafiki kupitia SMS. Baada ya rafiki kubonyeza kiunganishi na kujiunga  utazawadiwa kuponi ya bure na yeye pia atapata %1$s.</string>
+	<string name="tell_friend_content_four">4.Bonyeza shirikisha na mwambie na rafiki yako abonyeze kiunganishi.</string>
+    
+    
+    <string name="send_to">Tuma kwenda chumba cha mazungumzo.</string>
+    <string name="top_post">Ujumbe muhimu</string>
+    <string name="mute_notification">Taarifa</string>
+    <string name="chat_room_title">Taarifa za vyumba vya mazungumzo</string>
+    <string name="latest_chats">mazungumzo ya mwisho </string>
+    
+    <string name="share_successful">Imefanikiwa kushirikishwa</string>
+    
+    <string name="days_left">Siku zilizosalia </string>
+    <string name="day_left">Siku iliyosalia </string>
+    <string name="please_recharge">Tafadhali lipia</string>
+    <string name="punish_stop">Akaunti yako %1$s itasitishwa baada ya siku %2$s</string>
+    
+    <string name="deduct_refund">Punguza/Rejesha</string>
+    <string name="recharge_smart_card">Lipia smatikadi  hii</string>
+    <string name="change_the_bouquet">Badili kifurushi</string>
+    <string name="account_bill">Muswada wa akaunti</string>
+    <string name="account_bill_title">Muswada wa akaunti</string>
+    <string name="last_month_bill">Bili ya mwezi uliopita.</string>
+    <string name="smart_card_no">Smatikadi:</string>
+    <string name="charged_no">Namba ya malipo :</string>
+    <string name="time">Muda:</string>
+    <string name="no_records">Hakuna rekodi!</string>
+    <string name="cash">Fedha taslimu</string>
+    <string name="other_method">Njia nyingine</string>
+    <string name="this_month">Mwezi huu</string>
+    <string name="deduct">Punguza</string>
+    <string name="refund">Rejesha fedha</string>
+    <string name="account_select_foot">Kuna bili ya miezi sita tu kwenye APP ya StarTimes. Unataka maelezo zaidi tafadhali wasiliana na ofisi zetu au huduma kwa wateja.</string>
+    <string name="bouquet_left">Kifurushi kilichobaki:</string>
+    <string name="days">Siku</string>
+    <string name="day">Siku</string>
+    <string name="details">Maelezo:</string>
+    
+    <!-- 1.6.5 -->
+    <string name="nijeria_list">Nigeria (+234)</string>
+    <string name="tanzania_list">Tanzania (+255)</string>
+    <string name="kenya_list">Kenya (+254)</string>
+    <string name="nijeria_number">234</string>
+    <string name="tanzania_number">255</string>
+    <string name="kenya_area_number">254</string>
+    <string name="uganda_number">256</string>
+    <string name="south_africa_number">27</string>
+    <string name="rwanda_number">250</string>
+    <string name="number_is_not_registered">Namba hii haijasajiliwa</string>
+    <string name="number_you_entered_was_not_recognized">Namba uliyoingiza haitambuliki!</string>
+    <string name="epg_subhead">Kipengele</string>
+    <string name="epg_classification">Kiwango</string>
+    <string name="epg_channel_number">Channel No:</string>
+    <string name="epg_descripion">utangulizi:</string>
+    <string name="setting_new_password">Seti neno la siri jipya</string>
+    
+    <!-- 1.6.6 -->
+    <string name="topup_smartcard">Smatikadi mpya</string>
+    <string name="topup_bouquet">Kifurushi</string>
+    <string name="share">Shirikisha</string>
+    
+    <!-- 1.6.7 -->
+    <string name="add_smartcard_info">Namba sita za mwisho kwenye king\'amuzi chako</string>
+    <string name="recharge_smartcard">Bonyeza hapa kuunganisha smatikadi yako.</string>
+    <string name="add_smartcard">Ongeza smatikadi</string>
+    <string name="setting_error">Tatizo la mpangilio</string>
+    <string name="like_comment_from_yourself">Huwezi penda maoni yako  mwenyewe</string>
+    <string name="checking_in">Inaangalia ndani</string>
+    <string name="sign_in_success">Imefanikiwa kuingia</string>
+    <string name="sign_in_failure">Imeshindwa kuingia</string>
+    <string name="sign_in_limit">Ingia mara moja kwa siku</string>
+    <string name="login_first">Zingatia:Wateja waliojisajili tu watapata sarafu. Tafadhali ingia kwanza kabla ya kufanya majukumu.</string>
+    <string name="no_alert">hujaweka kumbukumbu yoyote!</string>
+    <string name="no_coupons">Hakuna kuponi kwa sasa\ Vuna moja.</string>
+    <string name="leave_foot">Acha kumbukumbu yako</string>
+    <string name="upload_head">Bonyeza hapa na uweke picha</string>
+    <string name="fill_smartcard">Jaza namba ya smatikadi yao na uhakiki ili kuiunganisha.</string>
+    <string name="click_sidebar">Bonyeza hapa ili kupata habari\n makala kwenye menyu ya pembeni</string>
+    <string name="book_program">Chagua programu uipendayo hapa</string>
+    <string name="alert_program">Weka kumbukumbu kwenye programu hii</string>
+    <string name="waiting">Inata…</string>
+    
+    <string name="congratulations">Hongera!</string>
+    <string name="redeem_reward">Sarafu zinaweza kutumika kwa kukomboa zawadi mbalimbali.</string>
+    <string name="please_enter_numbers">Tafadhali ingiza namba 10</string>
+    <string name="copyright">Kwa kuendelea inamaanisha kwamba umesoma na kukubali masharti na vigezo vya huduma hii.</string>
+    
+    <!-- 2.0.5 -->
+    <string name="video_describe">Itakujia siku zijazo</string>
+    <string name="no_more_comments">Hakuna maoni zaidi</string>
+    <string name="none_more_videos">Hakuna video zaidi,tutajitahidi kutafuta video nzuri zinazovutia kwa ajili yako</string>
+    
+    <string name="invita">1. If you have an invitation code and want to get free coupon, please register via your phone number.</string>
+    <string name="invita_one">Hii  ni alama yako ya siri ya mwaliko! Waalike marafiki zako wajisajili kwenye App ya StarTimes, wote wawili mtazawadiwa a%1s kuponi ya kulipia papo.</string>
+    <string name="step_one">HATUA YA 1:</string>
+    <string name="step_one_txt">Mwambie rafiki yako alama ya siri(code) ya mwaliko</string>
+    <string name="step_two">HATUA YA 2:</string>
+    <string name="step_two_txt">Mwambie ajisajili kwenye App ya StarTimes kwa kutumia namba ya simu</string>
+    <string name="step_three">HATUA YA 3:</string>
+    <string name="step_three_txt">Mwambie rafiki yako aingize alama ya siri ya mwaliko kwenye sehemu ya kujisajili kwa namba ya simu.</string>
+    <string name="step_four">HATUA YA 4:</string>
+    <string name="step_four_txt">Pata kuponi na ulipie papo</string>
+    <string name="bundesliga">Bundesliga</string>
+    <string name="seriea">Serie A</string>
+    <string name="video_live_chat">Maongezi</string>
+    <string name="video_live_more_video">Video zaidi</string>
+    <string name="video_chat_notice">Wasiliana hapa na watu mbalimbali kutoka Africa</string>
+    
+    <!-- 上拉、下拉刷新 -->
+    <string name="head">Kichwa cha juu</string>
+    <string name="pull_to_refresh">Vuta kufanya upya</string>
+    <string name="release_to_refresh">Achia kufanya upya</string>
+    <string name="refreshing">Inafanya upya…</string>
+    <string name="refresh_succeed">Imefanikiwa kufanya upya</string>
+    <string name="refresh_fail">Imeshindwa kufanya upya</string>
+    <string name="pullup_to_load">Vuta kwa kupata zaidi</string>
+    <string name="release_to_load">Achia ili kupakia</string>
+    <!-- <string name="app_loading">Inapakia</string> -->
+    <string name="load_succeed">Imefanikiwa kupakia</string>
+    <string name="load_fail">Imeshindwa kupakia</string>
+    <string name="load_no_data">Hakuna data iliyopakia</string>
+    <string name="load_no_videos">Hakuna video zinazopakia</string>
+    
+    <!-- 视频质量 -->
+    <string name="quality">Ubora</string>
+    <string name="normal">Kawaida-30kb/s</string>
+    <string name="low">Chini - 15kb/s</string>
+    <string name="apply">Kuomba</string>
+    <string name="no_video_quality">Hakuna ufafanuzi wa kubadili video kwa sasa</string>
+    <string name="alert_prompt">Tayari umeshaweka tahadhari.</string>
+    
+    <string name="network_propomt">Hali ya mtandao sio nzuri,jaribu kubadili kwenye ubora wa chini</string>
+    <string name="dialog_yes">Ndio</string>
+    <string name="dialog_no">Hapana</string>
+    <string name="prompt_msg">Kipindi bado hakijaanza, tafadhali weka kumbukumbu!</string>
+    <string name="post_prompt_msg">Tafadhali ingia kwanza,ndio utaweza kuandika chochote</string>
+    <string name="choose_country">Chagua nchi</string>
+    
+    <string name="fav_channel">Nimependa % 1$s chaneli</string>
+    <string name="download_epg">Nimepakua EPG ya %1$s chaneli.Usikose kipindi chochote.</string>
+    <string name="welcome_tenbre_play">Karibu kwenye APP ya StarTimes</string>
+    <string name="welcome_msg">Anza safari yako ya StarTimes</string>
+    
+    <string name="facebook_login_error">Imeshindwa,Haiwezi kuunganisha kwa Facebook,tafadhhali angalia mtandao wako.</string>
+    <!-- 论坛删除消息取消按钮提示 -->
+    <string name="forum_confirm">HAKIKISHA</string>
+    <string name="forum_cancle">SITISHA</string>
+    <string name="forum_later">BAADAYE</string>
+    <!-- 论坛帖子置顶提示 -->
+    <string name="forum_stick_prompt">Thibitisha kuweka ujumbe huu?</string>
+    <!-- 论坛帖子取消置顶提示 -->
+    <string name="forum_cancle_stick_prompt">Thibitisha kusitisha ujumbe huu?</string>
+    <!-- 论坛帖子删除提示 -->
+    <string name="forum_delete_prompt">Thibitisha kufuta ujumbe huu</string>
+    <!-- 论坛置顶帖超过5个提示 -->
+    <string name="forum_more_five_stick_prompt">Namba ya ujumbe muhimu imefikia kikomo,Tafadhali angalia na usitishe baadhi ya jumbe muhimu kwanza.</string>
+    <!-- 论坛长按删除消息提示 -->
+    <string name="forum_delete_message_prompt">thibitisha kufuta ujumbe huu?</string>
+ 	
+    
+    <string name="chatroom_notification">Taarifa za chumba cha mazungumzo</string>
+    <string name="reminder_setting">Mipangilio ya kumbukumbu</string>
+    <string name="reminder">Taarifa za kumbukumbu</string>
+    <string name="ringtone">Sauti</string>
+    <string name="language">Lugha</string>
+    <string name="english">English</string>
+    <string name="francais">francais</string>
+    <string name="kiswahili">kiswahili</string>
+    <string name="about">Kuhusu</string>
+    <string name="home_video">VIDEO</string>
+    <string name="home_epg">EPG</string>
+    <string name="home_chat">CHAT</string>
+    <!-- 翻译到这里 -->
+    <string name="video_tips">Vidokezo</string>
+    <string name="video_update">Sasisha</string>
+    
+    <string name="confirm_number">Tafadhali hakikisha umeingiza namba sahihi</string>
+    <string name="click_to_cancel">Bonyeza kusitisha</string>
+    
+    <string name="favorite_collect_mask">Chunguza zaidi na ufurahie</string>
+    <string name="sign_with">Au ingia kwa</string> 
+    <string name="coins_coupon">Bila kikomo</string>
+    <string name="coins_coupon_msg_success">Hongera!Umefanikiwa kukomboa kuponi</string>
+    <string name="coins_coupon_msg">Je, unataka kutumia %1$ s sarafu kuwakomboa %2$ s kuponi?</string>
+    <string name="coupon_msg">Itatumika kulipia smatikadi yako</string>
+    <string name="coins_coupon_check">ANGALIA</string>
+    <string name="coins_not_coupon_msg">Safaru hazitoshi,Nenda kamalize majukumu ujipatie sarafu zaidi</string>
+    <string name="earn">JIPATIE</string>
+    <string name="spend">TUMIA</string>
+    <string name="delete_smart_card">Futa Kadi</string>
+    <string name="delete_smart_card_prompt">Kadi %s itafutwa</string>
+    <string name="bind_smart_card_prompt">Tafadhali unganisha smatikidi kwanza</string>
+    <string name="bind_smart_card_limit">Unaweza kuunganisha smatikadi mara 10 tu</string>
+    <string name="bind_smart_card_call_prompt">Wasiliana na huduma kwa wateja %s</string>
+    <string name="dotask_earncoins">Umemaliza "%1$s" jukumu, na %2$s na kujivunia sarafu</string>
+    <string name="bill_recharge">LIPIA</string>
+    <string name="bill_deduct_refund">PUNGUZO/RUDISHO</string>
+    <string name="enter_decoder_number">Tafadhali ingiza dijiti 6 za namba ya King\'amuzi chako</string>
+    
+    <string name="search_too_many">Samahani,Umeingiza maneno mengi zaidi</string>
+    
+    <string name="crash_message">StarTimes App imesimama,tafadhali jaribu kuianza upya baadaye</string>
+    <string name="loading_prompt">Najaribu upakiaji mgumu, nipe muda tafadhali,.</string>
+    <string name="url_not_find">The page you are looking for is removed or temporarily unavailable</string>
+    <string name="no_bouquet">No Bouquet</string>
+    <string name="not_video_text">Video haipo kwa sasa, Tafadhali jaribu chaneli nyingine chache kwa sasa</string>
+    <string name="not_epg_text">Hakuna mwongozo wa programu kwa sasa</string>
+    <string name="not_coupon_text">Hakuna kuponi sasa</string>
+    <string name="not_bill_text">Hakuna rekodi yoyote \u2026</string>
+    <string name="not_reminder_text">Hujaseti kumbukumbu yoyote ile</string>
+    <string name="not_result_text">Hakuna matokeo yaliyopatikana</string>
+    <string name="not_channel_comment_text">Sema chochote kuhusu programu hii</string>
+    <string name="not_feedback_text">Tunahitaji msaada wako kwa maboresho zaidi</string>
+    <string name="select_for_you">Teua kwa ajili yako</string>
+    <string name="my_coins_prompt">Vidokezo:Sarafu zinaweza kununua vitu mbalimbali</string>
+    <string name="all_hours">Masaa 24 kila siku</string>
+    <string name="search_edit">Chaneli/Video/Programu</string>
+    <string name="change">Badilisha</string>
+    <string name="bouquet_to">kifurushi kwenda:</string>
+    <string name="no_more_tenbs">Hakuna vilishi tena</string>
+    <string name="inforamtion">Taarifa</string>
+    <string name="title_save">Hifadhi</string>
+</resources>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/rl_coupon"
+        android:layout_width="match_parent"
+        android:layout_height="146dp"
+        android:layout_marginTop="6dp"
+	    android:background="@drawable/coupon_bg_explan"
+        >
+		<TextView android:id="@+id/tv_reward_name"
+		    android:layout_marginTop="16dp"
+		    android:layout_marginLeft="16dp"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:textColor="@color/white"
+		    android:textSize="20sp"
+		    android:text="@string/desk_lamp"
+		    />
+       <TextView
+            android:id="@+id/tv_exchange_date"
+            android:layout_below="@+id/tv_reward_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="16dp"
+            android:text="@string/desk_lamp"
+            android:textColor="@color/translucent_white"
+            android:textSize="16sp" />
+       <LinearLayout 
+             android:id="@+id/ll_icon_price"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentRight="true"
+             android:layout_marginTop="16dp"
+             android:layout_marginRight="16dp"
+             android:orientation="horizontal"
+             >
+             <TextView 
+                 android:id="@+id/tv_symbol"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:textColor="@color/white"
+                 android:textSize="20sp"
+                 />
+             <TextView 
+	              android:id="@+id/tv_my_coupon_price"
+	              android:layout_width="wrap_content"
+	              android:layout_height="wrap_content"
+	              android:layout_marginLeft="2dp"
+	              android:textSize="20sp"
+	              android:textColor="@color/white"
+             />
+       </LinearLayout>
+       <LinearLayout 
+           android:layout_width="match_parent"
+	       android:layout_height="wrap_content"
+	       android:orientation="horizontal"
+	       android:layout_alignParentBottom="true"
+	       android:layout_marginLeft="16dp"
+	       android:layout_marginBottom="24dp">
+		   <ImageView android:id="@+id/tv_exchange_info"
+		       android:layout_width="wrap_content"
+		       android:layout_height="wrap_content"
+		       android:layout_gravity="center"
+		       android:src="@drawable/ic_help"
+		       />
+		   <TextView  android:id="@+id/tv_NoOrLimit"
+	           android:layout_width="match_parent"
+	           android:layout_height="wrap_content"
+			   android:layout_marginLeft="2dp"
+			   android:textColor="@color/translucent_black"
+			   android:textSize="12sp" />
+	   </LinearLayout>
+	    <ImageView
+           android:id="@+id/iv_used_mark"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignParentRight="true"
+           android:layout_alignParentBottom="true"
+           android:src="@drawable/used_icon_coupon"
+           android:visibility="gone"
+           android:layout_marginRight="5dp"
+           android:layout_marginBottom="3dp"
+           />        
+    </RelativeLayout>
+
+</LinearLayout>

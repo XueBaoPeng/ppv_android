@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/channel_item_height"
+        android:background="@color/white"
+        android:padding="0dp" >
+
+        <com.star.ui.ImageView
+            android:id="@id/iv_channel_icon"
+            android:layout_width="@dimen/channel_icon_height"
+            android:layout_height="@dimen/channel_icon_height"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/channel_item_margin"
+            android:layout_marginRight="@dimen/channel_item_margin"
+            android:src="@drawable/icon_channel_logo" />
+
+        <ImageView
+            android:layout_width="@dimen/channel_icon_height"
+            android:layout_height="@dimen/channel_icon_height"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/channel_item_margin"
+            android:layout_marginRight="@dimen/channel_item_margin"
+            android:background="@drawable/list_channel_cover" />
+
+        <TextView
+            android:id="@+id/tv_channel_number"
+            android:layout_width="@dimen/action_bar_margin_35"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/action_bar_margin_5"
+            android:layout_marginTop="@dimen/action_bar_margin_5"
+            android:background="@drawable/channel_number_bg"
+            android:gravity="center"
+            android:padding="0dp"
+            android:textColor="@color/white"
+            android:visibility="gone" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/pb_play_rate"
+            android:layout_toRightOf="@id/iv_channel_icon" >
+
+            <TextView
+                android:id="@id/tv_epg_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="@dimen/action_bar_margin_10"
+                android:layout_toLeftOf="@id/iv_alert_item_icon"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:singleLine="true"
+                android:textColor="@color/list_text_color"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@id/iv_alert_item_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/action_bar_margin_10"
+                android:scaleType="center"
+                android:src="@drawable/icon_alert"
+                android:visibility="invisible" />
+        </RelativeLayout>
+
+        <ProgressBar
+            android:id="@+id/pb_loading"
+            style="@style/loadingProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="16dp"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="@dimen/action_bar_margin_25"
+            android:visibility="gone" />
+
+        <ProgressBar
+            android:id="@id/pb_play_rate"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/action_bar_margin_10"
+            android:layout_marginRight="@dimen/action_bar_margin_10"
+            android:layout_toRightOf="@id/iv_channel_icon"
+            android:max="1000"
+            android:progressDrawable="@drawable/progress_bar_epg_item"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/iv_epg_line" 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/separate_line"
+        />
+    
+    <!-- <ImageView
+        android:id="@+id/iv_alert_cancle"
+        android:layout_width="@dimen/channel_icon_height"
+        android:layout_height="match_parent"
+        android:scaleType="center"
+        android:src="@drawable/slide_alert" /> -->
+
+</LinearLayout>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white" >
+
+    <include
+        android:id="@+id/comment_title"
+        layout="@layout/window_titlebar_2" />
+
+    <ScrollView
+        android:id="@+id/scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/comment_title"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        android:scrollbars="none" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <com.star.mobile.video.view.ListViewForScrollView
+                android:id="@+id/channel_comment_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@color/white"
+                android:listSelector="#F8F8F8" />
+
+            <!-- <ImageView
+                android:id="@+id/no_data_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/no_comments"
+                android:visibility="gone" /> -->
+            <TextView 
+                android:id="@+id/no_data_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textColor="@color/grey"
+	            android:textSize="16sp"
+                android:gravity="center"
+                android:text="@string/not_channel_comment_text"
+                android:drawableTop="@drawable/no_available_coupon"
+                android:visibility="gone"
+                />
+        </RelativeLayout>
+    </ScrollView>
+
+    <com.star.mobile.video.channel.ChatBottomInputView
+        android:id="@+id/chatInputView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
+
+</RelativeLayout>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/action_bar_height"
+        android:layout_margin="@dimen/action_bar_margin_8" 
+        android:background="@drawable/now_next_bg">
+
+        <TextView
+            android:id="@+id/tv_onair_now"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/now_focus"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="@string/text_onair_now"
+            android:textColor="@color/onair_btn_focus"
+            android:textSize="@dimen/action_bar_text_size_small" />
+
+        <TextView
+            android:id="@+id/tv_onair_next"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="@string/text_onair_next"
+            android:textColor="@color/onair_btn_unfocus"
+            android:textSize="@dimen/action_bar_text_size_small" />
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@id/vp_epg_group"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+    </android.support.v4.view.ViewPager>
+
+</LinearLayout>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="star">
+         <attr name="text_0"  format="reference|string" />
+         <attr name="text_1"  format="reference|string" />
+         <attr name="text_2"  format="reference|string" />
+         <attr name="text_3"  format="reference|string" />
+         <attr name="text_4"  format="reference|string" />
+         <attr name="icon_0"  format="reference" />
+         <attr name="icon_1"  format="reference" />
+         <attr name="icon_2"  format="reference" />
+         <attr name="icon_3"  format="reference" />
+         <attr name="icon_4"  format="reference" />
+         
+         <attr name="visibility_0">
+             <enum name="gone" value="-1" />
+             <enum name="invisible" value="0"/>
+             <enum name="visible" value="1" />
+         </attr>
+         
+         <attr name="visibility_1">
+             <enum name="gone" value="-1" />
+             <enum name="invisible" value="0"/>
+             <enum name="visible" value="1" />
+         </attr>
+         
+         <attr name="visibility_2">
+             <enum name="gone" value="-1" />
+             <enum name="invisible" value="0"/>
+             <enum name="visible" value="1" />
+         </attr>
+         
+         <attr name="visibility_3">
+             <enum name="gone" value="-1" />
+             <enum name="invisible" value="0"/>
+             <enum name="visible" value="1" />
+         </attr>
+         
+         <attr name="visibility_4">
+             <enum name="gone" value="-1" />
+             <enum name="invisible" value="0"/>
+             <enum name="visible" value="1" />
+         </attr>
+         
+         <attr name="enabled" format="boolean"/>
+         
+         <attr name="selected" format="integer" />
+         
+         <!-- dropdown list -->
+         <attr name="relativeList" format="reference"/>
+         <attr name="items" format="reference" />
+         
+         <!-- scroller window -->
+         <attr name="opposite" format="boolean" />
+         
+    </declare-styleable> 
+    
+    <declare-styleable name="DragTopLayout">
+
+        <!--Set the collapse panel offset-->
+        <attr name="dtlCollapseOffset" format="dimension"/>
+
+        <!--Set enable drag over.The default value is true.-->
+        <attr name="dtlOverDrag" format="boolean"/>
+
+        <!--Open the top view after the drag layout is created. The default value is false.-->
+        <attr name="dtlOpen" format="boolean"/>
+
+        <!-- The id of the top view (which will be dragged) -->
+        <attr name="dtlTopView" format="reference" />
+
+        <!-- The content view which will be dragged together with "dtlTopView" -->
+        <attr name="dtlDragContentView" format="reference" />
+
+        <!-- True the top view can be dragged -->
+        <attr name="dtlCaptureTop" format="boolean" />
+    </declare-styleable>
+</resources>
+
+
+<!-- 
+
+
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+format
+
+"reference" //引用
+"color" //颜色
+"boolean" //布尔值
+"dimension" //尺寸值
+"float" //浮点值
+"integer" //整型值
+"string" //字符串
+"fraction" //百分数,比如200%
+
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+枚举类型
+
+<attr name="orientation">
+  <enum name="horizontal" value="0" />
+  <enum name="vertical" value="1" />
+</attr>
+
+
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+位运算
+
+<attr name="windowSoftInputMode">
+  <flag name = "stateUnspecified" value = "0" />
+  <flag name = "stateUnchanged" value = "1" />
+  <flag name = "stateHidden" value = "2" />
+  <flag name = "stateAlwaysHidden" value = "3" />
+  <flag name = "stateVisible" value = "4" />
+  <flag name = "stateAlwaysVisible" value = "5" />
+  <flag name = "adjustUnspecified" value = "0x00" />
+  <flag name = "adjustResize" value = "0x10" />
+  <flag name = "adjustPan" value = "0x20" />
+  <flag name = "adjustNothing" value = "0x30" />
+</attr>
+
+android:windowSoftInputMode = "stateUnspecified | stateUnchanged | stateHidden"
+
+
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+多类型
+
+<attr name = "background" format = "reference|color" />
+android:background = "@drawable/图片ID|#00FF00"
+
+
+
+
+
+
+
+
+
+
+
+ -->

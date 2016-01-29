@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="@dimen/action_bar_height"
+    android:background="@color/translucent_bg" >
+
+    <ImageView
+        android:id="@id/iv_actionbar_back"
+        style="@style/action_bar_login_btn_style"
+        android:src="@drawable/actionbar_back" />
+</RelativeLayout>

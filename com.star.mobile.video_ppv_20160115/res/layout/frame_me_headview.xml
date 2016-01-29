@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.star.mobile.video.view.MaskGuideView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <View
+        android:id="@id/frame_title"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@drawable/black_bg_small" />
+
+    <View
+        android:id="@id/frame_l"
+        android:layout_width="match_parent"
+        android:layout_height="132dp"
+        android:layout_below="@id/frame_title"
+        android:layout_toLeftOf="@+id/frame_head"
+        android:background="@drawable/black_bg_small" />
+
+    <View
+        android:id="@id/frame_head"
+        android:layout_width="125dp"
+        android:layout_height="132dp"
+        android:layout_below="@id/frame_title"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/profile_photo_guide_bg" />
+
+    <View
+        android:id="@id/frame_r"
+        android:layout_width="match_parent"
+        android:layout_height="132dp"
+        android:layout_below="@id/frame_title"
+        android:layout_toRightOf="@id/frame_head"
+        android:background="@drawable/black_bg_small" />
+
+    <View
+        android:id="@id/frame_d"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/frame_head"
+        android:background="@drawable/black_bg_small" />
+
+    <ImageView
+        android:id="@+id/iv_me_figure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/frame_head"
+        android:layout_marginLeft="-30dp"
+        android:layout_marginTop="-20dp"
+        android:layout_toRightOf="@id/frame_head"
+        android:src="@drawable/figure" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/frame_head"
+        android:layout_toLeftOf="@id/iv_me_figure"
+        android:layout_marginRight="35dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/guide_bg"
+        android:padding="10dp"
+        android:textSize="14sp"
+        android:text="@string/upload_head"
+        android:textColor="@color/white" />
+
+</com.star.mobile.video.view.MaskGuideView>

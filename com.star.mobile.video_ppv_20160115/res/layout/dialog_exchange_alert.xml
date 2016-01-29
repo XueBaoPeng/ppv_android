@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/list_bg"
+    android:orientation="vertical"
+    android:padding="0dp" >
+	
+    <FrameLayout 
+        android:layout_width="160dp"
+	    android:layout_height="150dp"
+	    android:layout_gravity="center_horizontal"
+	    android:layout_marginTop="20dp"
+        >
+	    <com.star.ui.ImageView
+	        android:id="@+id/iv_coupons_image"
+	        android:layout_width="160dp"
+	        android:layout_height="150dp"
+	        android:src="@drawable/coupon_detail_picture" />
+	    <LinearLayout
+	        android:id="@+id/ll_ic_price" 
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center"
+	        android:layout_marginTop="-25dp"
+	        android:visibility="gone"
+	        android:orientation="horizontal"
+	        >
+	        <TextView
+		        android:id="@+id/tv_symbol" 
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:textColor="@color/white"
+		        android:textSize="23sp"
+		        android:textStyle="bold"
+	        />
+	        <TextView
+		        android:id="@+id/tv_coupon_price" 
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:textColor="@color/white"
+		        android:textSize="25sp"
+		        android:textStyle="bold"
+	        />
+	    </LinearLayout>
+	    
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tv_coupons_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15dp"
+        android:textColor="#545454"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_coupons_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="25dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:textColor="#545454"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+</LinearLayout>

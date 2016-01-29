@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<countrys>
+    <!--0 智能卡相关 -->
+    <!--1 paga 充值 -->
+    <!--2 邀请好友 -->
+    <!--3 四格体验 -->
+    <!--4 简易版，屏蔽大部分功能-->
+    <!--5 充值卡 -->
+    <!--6 邀请码 -->
+    <!--7 手机注册 -->
+    <!--8 ppv -->
+    <country name="Nigeria">  
+        <functionIds>8</functionIds>
+    </country>
+    <country name="Tanzania">  
+        <functionIds>1</functionIds>  
+    </country>
+    <country name="Uganda">  
+        <functionIds>1,8</functionIds>
+    </country>  
+    <country name="Kenya">  
+        <functionIds>1,5,8</functionIds>
+    </country>  
+    <country name="South Africa">  
+        <functionIds>1,5,8</functionIds>
+    </country>  
+    <country name="Rwanda">  
+        <functionIds>1,8</functionIds>
+    </country>  
+    <country name="Other Country">
+        <functionIds>0,1,2,3,4,6,7,8</functionIds>
+    </country>
+</countrys>  

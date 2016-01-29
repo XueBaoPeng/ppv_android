@@ -1,0 +1,1 @@
+alter table chat add column type Integer

@@ -1,0 +1,1 @@
+alter table channel add column hasEPG Integer

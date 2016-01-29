@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/chat_bg"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <include layout="@layout/window_titlebar_4" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="6dp"
+                android:layout_weight="1" >
+
+                <ListView
+                    android:id="@+id/lv_chat_list"
+                    style="@style/listview_style"
+                    android:layout_below="@+id/iv_no_chat"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp"
+                    android:dividerHeight="0dp"
+                    android:scrollbars="vertical" >
+                </ListView>
+
+                <LinearLayout
+                    android:id="@+id/iv_no_chat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:orientation="vertical"
+                    android:visibility="gone" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/leave_your_footprint" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/leave_foot"
+                        android:textColor="#999999"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/iv_new_chat"
+                    android:layout_width="26dp"
+                    android:layout_height="32dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="30dp"
+                    android:background="@drawable/chatroom_info_reminder"
+                    android:gravity="center_horizontal"
+                    android:paddingTop="2dp"
+                    android:textColor="@color/white"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:background="@drawable/bg_input"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingTop="2dp" >
+
+                <ImageView
+                    android:id="@+id/iv_chat_face"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/video_live_face_bg" />
+
+                <ImageView
+                    android:id="@+id/iv_image_send"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_marginLeft="4dp"
+                    android:background="@drawable/icon_picture_line" />
+
+                <EditText
+                    android:id="@+id/et_chat_content"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_search"
+                    android:inputType="textNoSuggestions"
+                    android:singleLine="true"
+                    android:textColor="#70000000"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:id="@+id/iv_chat_send"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="8dp"
+                    android:background="@drawable/video_live_send_btn_bg"
+                    android:visibility="gone" />
+
+                <View
+                    android:layout_width="8dp"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+
+            <com.star.mobile.video.view.FaceContainer
+                android:id="@+id/ll_face_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/expression_bg_chatroom"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/chat_room_prompt_rl"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="52dp"
+            android:background="@color/translucent_80"
+            android:visibility="gone" >
+
+            <com.star.mobile.video.view.BulletinView
+                android:id="@+id/chat_room_prompt_textview"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="40dp"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/chat_room_prompt_cancel"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="8dp"
+                android:scaleType="center"
+                android:src="@drawable/chat_room_cancel" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</LinearLayout>

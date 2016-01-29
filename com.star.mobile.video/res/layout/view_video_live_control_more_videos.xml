@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/video_live_more_videos_rl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <com.star.mobile.video.view.PullToRefreshLayout
+            android:id="@+id/refresh_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <include layout="@layout/refresh_head" />
+
+            <com.star.mobile.video.view.PullableGridView
+                android:id="@+id/video_live_more_videos_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:cacheColorHint="#00000000"
+                android:horizontalSpacing="1dp"
+                android:listSelector="#00000000"
+                android:numColumns="2"
+                android:scrollbars="none"
+                android:verticalSpacing="8dp" >
+            </com.star.mobile.video.view.PullableGridView>
+
+            <include layout="@layout/load_more" />
+
+            <TextView
+                android:id="@+id/video_live_none_more_video_textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:gravity="center"
+                android:text="@string/none_more_videos"
+                android:textColor="@color/list_text_color"
+                android:textSize="@dimen/action_bar_text_size"
+                android:visibility="gone" />
+        </com.star.mobile.video.view.PullToRefreshLayout>
+    </RelativeLayout>
+
+</LinearLayout>

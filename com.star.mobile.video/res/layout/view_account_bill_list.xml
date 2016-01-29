@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+         >
+         <TextView
+             android:id="@+id/rl_popuwindow_parent"
+             android:layout_width="match_parent"
+             android:layout_height="3dp"
+             />
+        <RelativeLayout 
+            android:id="@+id/rl_date"
+            android:layout_below="@id/rl_popuwindow_parent"
+	        android:layout_width="match_parent"
+	        android:layout_height="50dp"
+            >
+	        <TextView
+	            android:id="@+id/tv_sel_date"
+	            android:layout_width="match_parent"
+	            android:layout_height="match_parent"
+	            android:gravity="center_vertical"
+	            android:layout_marginLeft="10dp"
+	            android:textColor="@color/taks_blue"
+	            android:textSize="16sp" />
+			
+	        <ImageView
+	            android:id="@id/iv_pull"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignParentRight="true"
+	            android:layout_centerVertical="true"
+	            android:layout_marginRight="20dp"
+	            android:background="@drawable/pull_triangle" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:background="@drawable/line_bg" />
+	<FrameLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    >
+	    <ListView 
+	        android:id="@+id/lv_content"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginBottom="2dp"
+	        android:divider="@color/white"
+	    	android:listSelector="#F8F8F8"
+        	android:scrollbars="none"
+	        ></ListView>
+	    <!-- <ProgressBar
+            android:id="@+id/pb_loading"
+            style="@style/loadingProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:visibility="gone"
+            android:layout_gravity="center_vertical|center_horizontal" /> -->
+	    <include
+            android:id="@+id/pb_loading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            layout="@layout/loading_progress_large"
+            android:visibility="gone"
+            android:layout_gravity="center_vertical|center_horizontal"
+             />
+	    <RelativeLayout
+	        android:id="@+id/rl_no_data" 
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center_vertical|center_horizontal"
+	        android:visibility="gone"
+	        >
+	        <ImageView
+	            android:id="@+id/iv_no"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_centerHorizontal="true"
+		        android:src="@drawable/no_available_coupon"
+	        />
+	         <TextView android:layout_width="200dp"
+		            android:layout_below="@+id/iv_no"
+		            android:gravity="center"
+		            android:layout_height="wrap_content"
+		            android:text="@string/not_bill_text"
+		            android:textColor="@color/grey"
+		            android:textSize="16sp"
+		            /> 
+	    </RelativeLayout>
+	</FrameLayout>
+</LinearLayout>

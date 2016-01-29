@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/list_bg"
+    android:minHeight="@dimen/channel_icon_height"
+    android:orientation="vertical"
+    android:padding="0dp" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/channel_icon_height" >
+
+        <ImageView
+            android:id="@+id/iv_alert_item_icon"
+            style="@style/action_bar_icon_style"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/action_bar_margin_15" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/action_bar_margin_15"
+            android:layout_toRightOf="@id/iv_alert_item_icon"
+            android:gravity="center_vertical" >
+
+            <TextView
+                android:id="@+id/tv_alert_item_content_l"
+                style="@style/title_bar_text_style"
+                android:text="@string/remind_me"
+                android:textColor="@color/alert_setting_text"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_alert_item_content"
+                style="@style/title_bar_text_style"
+                android:textColor="@color/alert_setting_text" />
+
+            <TextView
+                android:id="@+id/tv_alert_item_content_r"
+                style="@style/title_bar_text_style"
+                android:text="@string/ahead"
+                android:textColor="@color/alert_setting_text"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_alert_item_arrow"
+            style="@style/action_bar_icon_style"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/action_bar_margin_20"
+            android:src="@drawable/icon_arrow_down" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_alert_child_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/v_bottom_line"
+            style="@style/divider_line_style"
+            android:layout_marginLeft="@dimen/action_bar_margin_15"
+            android:layout_marginRight="@dimen/action_bar_margin_15"
+            android:src="@drawable/bgline_rude" />
+
+        <com.star.mobile.video.view.NoScrollGridView
+            android:id="@+id/lv_alert_child_list"
+            style="@style/listview_style"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:numColumns="1" >
+        </com.star.mobile.video.view.NoScrollGridView>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/list_bg"
+    android:orientation="horizontal"
+    android:padding="8dp" >
+
+    <RelativeLayout
+        android:id="@+id/rl_video_one"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:visibility="invisible" >
+
+        <com.star.ui.ImageView
+            android:id="@+id/iv_video_one"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/bundesliga_video_bg" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:scaleType="center"
+            android:src="@drawable/list_icon_play_touming" />
+
+        <TextView
+            android:id="@+id/tv_video_one"
+            android:layout_width="match_parent"
+            android:layout_height="26dp"
+            android:layout_below="@id/iv_video_one"
+            android:background="@drawable/video_text_bg"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:singleLine="true"
+            android:textColor="#545454"
+            android:textSize="17sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_video_two"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_weight="1"
+        android:visibility="invisible" >
+
+        <com.star.ui.ImageView
+            android:id="@+id/iv_video_two"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/serie_video_bg" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:scaleType="center"
+            android:src="@drawable/list_icon_play_touming" />
+
+        <TextView
+            android:id="@+id/tv_video_two"
+            android:layout_width="match_parent"
+            android:layout_height="26dp"
+            android:layout_below="@id/iv_video_two"
+            android:background="@drawable/video_text_bg"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:singleLine="true"
+            android:textColor="#545454"
+            android:textSize="17sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_video_three"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_weight="1"
+        android:visibility="invisible" >
+
+        <com.star.ui.ImageView
+            android:id="@+id/iv_video_three"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/channelguide_video_moren" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:scaleType="center"
+            android:src="@drawable/list_icon_play_touming" />
+
+        <TextView
+            android:id="@+id/tv_video_three"
+            android:layout_width="match_parent"
+            android:layout_height="26dp"
+            android:layout_below="@id/iv_video_three"
+            android:background="@drawable/video_text_bg"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:singleLine="true"
+            android:textColor="#545454"
+            android:textSize="17sp" />
+    </RelativeLayout>
+
+</LinearLayout>

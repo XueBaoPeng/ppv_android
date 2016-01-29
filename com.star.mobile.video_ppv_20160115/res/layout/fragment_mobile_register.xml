@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+    
+    <EditText
+        android:id="@+id/et_mob_reg_nike_name"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_48"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginRight="@dimen/dp_20"
+        android:background="@drawable/info_frame"
+        android:hint="@string/nick_name"
+        android:paddingLeft="@dimen/dp_5"
+        android:singleLine="true"
+        android:visibility="gone"
+        android:textColor="#545454"
+        android:textColorHint="#B0B0B0" />
+
+    <EditText
+        android:id="@+id/et_mob_reg_password"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_48"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginRight="@dimen/dp_20"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/bg_input_whitebg"
+        android:hint="@string/pwd"
+        android:inputType="textPassword"
+        android:paddingLeft="@dimen/dp_5"
+        android:singleLine="true"
+        android:textColor="#545454"
+        android:textSize="18sp"
+        android:textColorHint="#B0B0B0" />
+
+    <EditText
+        android:id="@+id/et_mob_reg_comfim_password"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_48"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginRight="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_8"
+        android:background="@drawable/bg_input_whitebg"
+        android:hint="@string/comfim_pwd"
+        android:inputType="textPassword"
+        android:paddingLeft="@dimen/dp_5"
+        android:singleLine="true"
+        android:textColor="#545454"
+        android:textSize="18sp"
+        android:textColorHint="#B0B0B0" />
+    
+    
+	<View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+	
+    <Button
+        android:id="@+id/bt_mob_reg_go"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_48"
+        android:layout_marginBottom="@dimen/dp_32"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginRight="@dimen/dp_20"
+        android:background="@drawable/btn_grey"
+        android:text="@string/register_btn"
+        android:textColor="@color/reg_go"
+        android:textSize="20sp" />
+
+</LinearLayout>

@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+   <!--  <TextView
+        android:id="@+id/tv_nike_name_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/red"
+        android:textSize="17sp"
+        android:visibility="gone" /> -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginRight="@dimen/dp_20" 
+        >
+
+      <!--   <ImageView
+            android:id="@+id/iv_email_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/right_icon_register_green"
+            android:visibility="gone" /> -->
+
+        <EditText
+            android:id="@+id/et_regemail_address"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_48"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/bg_input_whitebg"
+            android:ems="10"
+            android:hint="@string/email_add"
+            android:inputType="textEmailAddress"
+            android:paddingLeft="@dimen/dp_5"
+            android:singleLine="true"
+            android:textColor="#545454"
+            android:textSize="18sp"
+            android:textColorHint="#B0B0B0" >
+           
+        </EditText>
+
+    </RelativeLayout>
+
+    <!-- <TextView
+        android:id="@+id/tv_email_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/red"
+        android:textSize="17sp" /> -->
+
+    <RelativeLayout
+        
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginRight="@dimen/dp_20" 
+        android:layout_marginTop="@dimen/dp_8" >
+
+        <EditText
+            android:id="@+id/et_reg_password"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_48"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/bg_input_whitebg"
+            android:hint="@string/pwd"
+            android:inputType="textPassword"
+            android:paddingLeft="@dimen/dp_5"
+            android:singleLine="true"
+            android:textColor="#545454"
+            android:textSize="18sp"
+            android:textColorHint="#B0B0B0" />
+
+       <!--  <ImageView
+            android:id="@+id/iv_password_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/right_icon_register_green"
+            android:visibility="gone" /> -->
+    </RelativeLayout>
+
+   <!--  <TextView
+        android:id="@+id/tv_password_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/red"
+        android:textSize="17sp" /> -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginRight="@dimen/dp_20" 
+        android:layout_marginTop="@dimen/dp_8"  >
+
+        <EditText
+            android:id="@+id/et_comfim_password"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_48"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/bg_input_whitebg"
+            android:hint="@string/comfim_pwd"
+            android:inputType="textPassword"
+            android:paddingLeft="@dimen/dp_5"
+            android:singleLine="true"
+            android:textColor="#545454"
+            android:textSize="18sp"
+            android:textColorHint="#B0B0B0" />
+
+       <!--  <ImageView
+            android:id="@+id/iv_comfim_password_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/right_icon_register_green"
+            android:visibility="gone" /> -->
+    </RelativeLayout>
+
+ <!--    <TextView
+        android:id="@+id/tv_comfim_password_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/red"
+        android:textSize="17sp" /> -->
+
+  
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginRight="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_20"
+        android:text="@string/mob_tip_msg_four"
+        android:textColor="@color/choose_text" />
+
+    <TextView
+        android:id="@+id/tv_copyright"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginRight="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_8"
+        android:textColor="@color/choose_text" />
+	
+ 	 <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="32dp"
+        >
+         <Button
+        android:id="@+id/bt_emial_reg_go"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_48"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginRight="@dimen/dp_20"
+        android:background="@drawable/btn_grey"
+        android:text="@string/register_btn"
+        android:textColor="@color/reg_go"
+        android:textSize="20sp" />
+         
+         <Button
+        android:layout_below="@id/bt_emial_reg_go"
+        android:id="@+id/bt_have_account"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_48"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginRight="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_16"
+        android:text="@string/have_account"
+        android:background="@drawable/have_account"
+        android:textColor="#4c4c4c"
+        android:textSize="14dp" />
+ 	     </RelativeLayout>
+   
+
+</LinearLayout>

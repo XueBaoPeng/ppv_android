@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/menu_item_height" >
+
+        <ImageView
+            android:id="@+id/iv_menu_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="2dp"
+            android:scaleType="center" />
+
+        <TextView
+            android:id="@+id/tv_menu_name"
+            style="@style/menu_text_style"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="16dp"
+            android:layout_toLeftOf="@+id/ll_select"
+            android:layout_toRightOf="@id/iv_menu_icon"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:singleLine="true" />
+
+        <LinearLayout
+            android:id="@id/ll_select"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true" >
+
+            <ImageView
+                android:id="@+id/iv_menu_football"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="3dp"
+                android:visibility="invisible"
+                android:src="@drawable/football_home" />
+
+            <ImageView
+                android:id="@+id/iv_menu_reminder"
+                style="@style/action_bar_icon_style"
+                android:layout_height="match_parent"
+                android:layout_marginRight="16dp"
+                android:scaleType="center"
+                android:src="@drawable/reminder_dot"
+                android:visibility="invisible" />
+            
+
+            <ImageView
+                android:id="@+id/iv_menu_select"
+                style="@style/action_bar_icon_style"
+                android:layout_height="match_parent"
+                android:layout_marginRight="16dp"
+                android:scaleType="center"
+                android:src="@drawable/menu_arrow" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/v_bottom_line"
+        style="@style/divider_line_style"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:src="@drawable/bulling_line" />
+
+    <ImageView
+        android:id="@+id/v_bottom_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/separate_bg"
+        android:visibility="gone" />
+
+</LinearLayout>

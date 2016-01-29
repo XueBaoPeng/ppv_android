@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="4dp" >
+
+    <RelativeLayout
+        android:id="@+id/chart_from_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:padding="0dp" >
+
+        <com.star.ui.ImageView
+            android:id="@+id/iv_user_icon_f"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="12dp"
+            android:src="@drawable/example_head_portrait" />
+
+        <ImageView
+            android:id="@+id/iv_leader_f"
+            android:layout_width="54dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="1dp"
+            android:src="@drawable/chatroom_leader_headphoto"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_user_name_f"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="12dp"
+            android:layout_toRightOf="@id/iv_user_icon_f"
+            android:textColor="@color/orange_color"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_chat_time_f"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="12dp"
+            android:layout_toRightOf="@id/tv_user_name_f"
+            android:textColor="@color/chat_time"
+            android:textSize="12sp" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_user_name_f"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="25dp"
+            android:layout_toRightOf="@id/iv_user_icon_f" >
+
+            <TextView
+                android:id="@+id/tv_chat_content_f"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/chat_others_bg"
+                android:paddingBottom="10dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="8dp"
+                android:paddingTop="8dp"
+                android:textColor="@color/black_color"
+                android:textSize="14sp" />
+
+            <com.star.ui.ImageView
+                android:id="@+id/iv_chat_image_f"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/nopicture_bg" />
+
+            <RelativeLayout
+                android:id="@+id/rl_chat_link_f"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+               android:background="@drawable/chat_others_bg"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="12dp" >
+
+                <TextView
+                    android:id="@+id/tv_link_title_f"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:textColor="#747474"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <com.star.ui.ImageView
+                    android:id="@+id/iv_link_icon_f"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_below="@id/tv_link_title_f"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginLeft="8dp"
+                    android:src="@drawable/link_picture_chat_grey" />
+
+                <TextView
+                    android:id="@+id/tv_link_desc_f"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_link_title_f"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/iv_link_icon_f"
+                    android:ellipsize="end"
+                    android:maxLines="3"
+                    android:textColor="#747474"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/chart_to_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="10dp" >
+
+        <com.star.ui.ImageView
+            android:id="@+id/iv_user_icon_t"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="12dp"
+            android:src="@drawable/example_head_portrait" />
+
+        <ImageView
+            android:id="@+id/iv_leader_t"
+            android:layout_width="54dp"
+            android:layout_height="55dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="1dp"
+            android:src="@drawable/chatroom_leader_headphoto"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_user_name_t"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="6dp"
+            android:layout_marginTop="12dp"
+            android:layout_toLeftOf="@id/iv_user_icon_t"
+            android:textColor="@color/orange_color"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_chat_time_t"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="12dp"
+            android:layout_toLeftOf="@id/tv_user_name_t"
+            android:textColor="@color/chat_time"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_user_name_t"
+            android:layout_toLeftOf="@id/iv_user_icon_t"
+            android:orientation="horizontal" >
+
+            <RelativeLayout
+                android:id="@+id/rl_right_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="2dp"
+                android:visibility="invisible" >
+
+                <ProgressBar
+                    android:id="@+id/pb_t"
+                    style="@style/loadingProgressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_centerVertical="true" >
+                </ProgressBar>
+
+                <ImageView
+                    android:id="@+id/iv_invalid_t"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/tanhao_icon_profile_red" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="6dp" >
+
+                <TextView
+                    android:id="@+id/tv_chat_content_t"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/chat_user_bg"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="8dp"
+                    android:textColor="@color/black_color"
+                    android:textSize="14sp" />
+
+                <!-- android:autoLink="web" -->
+
+                <com.star.ui.ImageView
+                    android:id="@+id/iv_chat_image_t"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:src="@drawable/nopicture_bg" />
+
+                <RelativeLayout
+                    android:id="@+id/rl_chat_link_t"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/chat_user_bg"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="12dp" >
+
+                    <TextView
+                        android:id="@+id/tv_link_title_t"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:singleLine="true"
+                        android:textColor="#747474"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <com.star.ui.ImageView
+                        android:id="@+id/iv_link_icon_t"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:layout_below="@id/tv_link_title_t"
+                        android:layout_marginTop="3dp"
+                        android:src="@drawable/link_picture_chat_grey" />
+
+                    <TextView
+                        android:id="@+id/tv_link_desc_t"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_link_title_t"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@id/iv_link_icon_t"
+                        android:ellipsize="end"
+                        android:maxLines="3"
+                        android:textColor="#747474"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

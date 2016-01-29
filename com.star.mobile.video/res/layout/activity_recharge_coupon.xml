@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+    <include layout="@layout/window_titlebar_4" />
+ 	<com.star.mobile.video.view.SmartCardInfoView 
+             android:id="@+id/smardInfo"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             />   
+               <ImageView 
+          		  android:id="@+id/line_bg"
+		          android:layout_width="match_parent"
+		          android:layout_height="wrap_content"
+		          android:background="@drawable/line_bg"
+		          android:layout_below="@id/smardInfo"
+		          />
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        >
+
+       			<TextView 
+	                android:id="@+id/tv_symbol"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:textSize="16dp"
+	                android:layout_marginTop="24dp" 
+	                android:layout_marginRight="20dp"
+	                android:layout_marginLeft="20dp"
+	                />
+     
+ 
+    </RelativeLayout>
+    <Button
+	        android:id="@+id/bt_mob_reg_go"
+	        android:layout_width="match_parent"
+	        android:layout_height="@dimen/dp_48"
+	        android:layout_marginBottom="@dimen/dp_32"
+	        android:layout_marginLeft="@dimen/dp_20"
+	        android:layout_marginRight="@dimen/dp_20"
+	        android:background="@drawable/btn_grey"
+	        android:text="@string/confirm"
+	        android:textColor="@color/reg_go"
+	        android:textSize="20sp" />
+
+</LinearLayout>

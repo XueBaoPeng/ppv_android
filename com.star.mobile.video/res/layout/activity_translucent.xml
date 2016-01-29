@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/translucent_bg"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/translucent_bg"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        android:scrollbars="none" >
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="210dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/egg_light_bg" />
+			
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="160dp"
+                android:orientation="vertical" >
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+					<RelativeLayout
+					    android:id="@+id/rl_exchange" 
+					    android:layout_width="wrap_content"
+					    android:layout_height="wrap_content"
+					    android:layout_gravity="center_horizontal"
+					    android:visibility="gone"
+					    >
+					    
+					    <ImageView
+					        android:id="@+id/iv_exchange_bg" 
+					        android:layout_width="151dp"
+					        android:layout_height="151dp"
+					        android:layout_marginTop="60dp"
+					        android:layout_marginLeft="54dp"
+					        />
+					    <FrameLayout 
+					        android:layout_width="151dp"
+					        android:layout_height="151dp"
+					        android:layout_marginTop="60dp"
+					        android:layout_marginLeft="54dp"
+					        >
+					        <com.star.ui.ImageView
+						        android:id="@+id/iv_exchange_logo"
+						        android:layout_width="151dp"
+						        android:layout_height="151dp"
+					        >
+					    </com.star.ui.ImageView>
+					    <LinearLayout
+					        android:id="@+id/ll_ex" 
+					        android:layout_width="wrap_content"
+					        android:layout_height="wrap_content"
+					        android:layout_gravity="center"
+					        android:orientation="horizontal"
+					        android:layout_marginTop="-25dp"
+					        android:visibility="gone"
+					        >
+					        <TextView 
+						        android:id="@+id/tv_symbol"
+						        android:layout_width="wrap_content"
+						        android:layout_height="wrap_content"
+						        android:textSize="27sp"
+						        android:textColor="@color/white"
+						        android:textStyle="bold"
+					        />
+					        <TextView 
+						        android:id="@+id/tv_fac"
+						        android:layout_width="wrap_content"
+						        android:layout_height="wrap_content"
+						        android:textSize="29sp"
+						        android:textColor="@color/white"
+						        android:textStyle="bold"
+					        />
+					    </LinearLayout>
+					        
+					    </FrameLayout>
+					    <ImageView 
+					        android:layout_width="wrap_content"
+					        android:layout_height="wrap_content"
+					        android:layout_centerHorizontal="true"
+					        android:background="@drawable/coupon_bottom"
+					        />
+					    <TextView 
+					        android:id="@+id/tv_exchange_des"
+					        android:layout_width="wrap_content"
+					        android:layout_height="wrap_content"
+					        android:textSize="15sp"
+					        android:paddingLeft="16dp"
+					        android:layout_marginTop="195dp"
+					        android:layout_centerHorizontal="true"
+					        android:textColor="@color/white"
+					        />
+					</RelativeLayout>
+                    <com.star.mobile.video.view.AnimView
+                        android:id="@+id/v_loading_exchange"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:visibility="gone" />
+                    
+                    <com.star.mobile.video.view.AnimView
+                        android:id="@+id/v_smashing_egg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:visibility="gone" />
+
+                    <com.star.mobile.video.view.AnimView
+                        android:id="@+id/v_alert_egg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="60dp" />
+                </FrameLayout>
+            </LinearLayout>
+            <LinearLayout 
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:orientation="vertical"
+                >
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+                    <ImageView
+                        android:id="@+id/iv_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="60dp"
+                        android:src="@drawable/egg_title" />
+
+                    <ImageView
+                        android:id="@+id/iv_egg_close"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="-33dp"
+                        android:scaleType="center"
+                        android:layout_marginTop="79dp"
+                        android:layout_toRightOf="@id/iv_title"
+                        android:src="@drawable/close_egg" />
+                </RelativeLayout>
+                
+                
+                <RelativeLayout
+                    android:id="@+id/rl_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="230dp"
+                    android:visibility="gone" >
+
+                    <Button
+                        android:id="@+id/bt_check"
+                        android:layout_width="80dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="50dp"
+                        android:background="@drawable/gray_btn_bg"
+                        android:textColor="@color/choose_text"
+                        android:textSize="18sp"
+                        android:text="@string/bt_check" />
+
+                    <Button
+                        android:id="@+id/bt_share"
+                        android:layout_width="80dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="40dp"
+                        android:background="@drawable/gray_btn_bg"
+                        android:textColor="@color/choose_text"
+                        android:textSize="18sp"
+                        android:text="@string/bt_share" />
+                </RelativeLayout>
+            </LinearLayout>
+        </FrameLayout>
+    </ScrollView>
+</LinearLayout>

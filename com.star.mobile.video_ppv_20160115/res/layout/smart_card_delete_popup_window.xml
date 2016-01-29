@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:id="@+id/smart_card_delete_ll"
+    android:layout_height="50dp"
+    android:orientation="vertical"
+    android:background="@drawable/delete_smartcard_btn">
+
+    <TextView
+        android:id="@+id/delete_smart_card_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/delete_smart_card"
+        android:textColor="@color/gray_bg"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:textSize="18sp" />
+    
+</RelativeLayout>

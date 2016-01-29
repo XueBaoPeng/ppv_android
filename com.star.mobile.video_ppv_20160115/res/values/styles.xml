@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="mediumCustomProgressBar" parent="@android:style/Widget.ProgressBar">
+        <item name="android:indeterminateDrawable">@drawable/progress_medium_holo</item>
+    </style>
+
+    <style name="loadingProgressBar" parent="@android:style/Widget.ProgressBar.Small">
+        <item name="android:indeterminateDrawable">@drawable/progress_loading_holo</item>
+    </style>
+
+    <style name="loadingProgressBar_title" parent="@android:style/Widget.ProgressBar.Small">
+        <item name="android:indeterminateDrawable">@drawable/progress_loading_actionbar</item>
+    </style>
+
+    <style name="loadingProgressBar_large" parent="@android:style/Widget.ProgressBar">
+        <item name="android:indeterminateDrawable">@drawable/progress_loading_holo_large</item>
+    </style>
+
+    <style name="AppTheme" parent="@android:style/Theme.Light.NoTitleBar">
+        <item name="android:windowBackground">@color/window_bg</item>
+    </style>
+    
+    <style name="welcome_bg" parent="android:Theme">
+     <item name="android:windowNoTitle">true</item>
+     <item name="android:windowBackground">@drawable/welcome_bg</item>
+	</style>
+
+    <style name="radiobutton_newStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:button">@null</item>
+        <item name="android:layout_weight">1.0</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="action_bar_icon_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
+    <style name="action_bar_icon_style_1">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:scaleType">center</item>
+        <item name="android:layout_marginBottom">@dimen/action_bar_margin_8</item>
+    </style>
+
+    <style name="action_bar_btn_style">
+        <item name="android:layout_width">@dimen/menu_btn_width</item>
+        <item name="android:layout_height">@dimen/dp_44</item>
+        <item name="android:scaleType">center</item>
+        <item name="android:background">@drawable/actionbar_btn_bg</item>
+    </style>
+    
+    <style name="action_bar_login_btn_style">
+        <item name="android:layout_width">@dimen/menu_btn_width</item>
+        <item name="android:layout_height">@dimen/dp_44</item>
+        <item name="android:scaleType">center</item>
+        <item name="android:background">@drawable/actionbar_login_btn_bg</item>
+    </style>
+
+    <style name="title_bar_text_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/action_bar_text_size</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
+    <style name="epg_startime_text_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">@dimen/action_bar_text_size</item>
+        <item name="android:textColor">@color/textcolor_orange</item>
+        <item name="android:shadowColor">@color/white</item>
+        <item name="android:shadowDy">2</item>
+        <item name="android:shadowRadius">1</item>
+    </style>
+
+    <style name="menu_text_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/menu_item_text_size</item>
+        <item name="android:textColor">@color/onair_btn_unfocus</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
+    <style name="menu_text_focus_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/menu_item_text_size_focus</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:shadowColor">@color/text_shadow</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:shadowDy">2</item>
+        <item name="android:shadowRadius">1</item>
+    </style>
+
+    <style name="action_bar_text_shadow_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">@dimen/action_bar_text_size</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginBottom">@dimen/action_bar_margin_10</item>
+        <item name="android:shadowColor">@color/text_shadow</item>
+        <item name="android:shadowDy">2</item>
+        <item name="android:shadowRadius">1</item>
+    </style>
+
+    <style name="action_bar_layout_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/action_bar_height</item>
+        <item name="android:layout_marginTop">@dimen/channel_item_margin</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="sear_edit_select" parent="@android:style/Widget.EditText">
+        <item name="android:background">@drawable/search_select</item>
+    </style>
+
+    <style name="listview_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginLeft">@dimen/action_bar_margin_6</item>
+        <item name="android:layout_marginRight">@dimen/action_bar_margin_6</item>
+        <item name="android:divider">@null</item>
+        <item name="android:dividerHeight">@dimen/action_bar_margin_2</item>
+        <item name="android:listSelector">@android:color/transparent</item>
+        <item name="android:cacheColorHint">@android:color/transparent</item>
+        <item name="android:overScrollMode">never</item>
+        <item name="android:scrollbars">none</item>
+    </style>
+    
+    
+    
+    <style name="about_listview_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:divider">@null</item>
+        <item name="android:dividerHeight">0dp</item>
+        <item name="android:listSelector">@android:color/transparent</item>
+        <item name="android:cacheColorHint">@android:color/transparent</item>
+        <item name="android:overScrollMode">never</item>
+        <item name="android:scrollbars">none</item>
+    </style>
+
+    <style name="divider_line_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:scaleType">fitXY</item>
+    </style>
+
+    <style name="TaskInfoDialog" parent="android:Theme.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+	<style name="task_text">
+		<item name="android:textSize">22sp</item>
+		<item name="android:textStyle">bold</item>
+		<item name="android:textColor">#E86300</item>	    
+	</style>
+	
+	<style name="translucent">
+		<item name="android:windowBackground">@color/translucent_background</item>
+		<item name="android:windowIsTranslucent">true</item>
+		<item name="android:windowNoTitle">true</item>
+	</style> 
+	<style name="translucent_full">
+		<item name="android:windowBackground">@color/translucent_bg</item>
+		<item name="android:windowIsTranslucent">true</item>
+		<item name="android:windowNoTitle">true</item>
+	</style> 
+	
+	<style name="video_more_text">
+	    <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/menu_item_text_size_focus</item>
+        <item name="android:textColor">#FF7A06</item>
+	</style>
+	
+	<style name="scroll_view_style">
+	    <item name="android:fillViewport">true</item>
+	    <item name="android:overScrollMode">never</item>
+	    <item name="android:scrollbars">none</item>
+	</style>
+	<style name="roomRatingBar_48" parent="@android:style/Widget.RatingBar">
+		<item name="android:progressDrawable">@drawable/room_rating_bar_48</item>
+		<item name="android:minHeight">48dp</item>
+		<item name="android:maxHeight">48dp</item>
+	</style>
+	<style name="roomRatingBar_24" parent="@android:style/Widget.RatingBar">
+		<item name="android:progressDrawable">@drawable/room_rating_bar_24</item>
+		<item name="android:minHeight">28dp</item>
+		<item name="android:maxHeight">28dp</item>
+	</style>
+	<style name="roomRatingBar_12" parent="@android:style/Widget.RatingBar">
+		<item name="android:progressDrawable">@drawable/room_rating_bar_12</item>
+		<item name="android:minHeight">14dp</item>
+		<item name="android:maxHeight">14dp</item>
+	</style>
+    <style name="checkboxTheme" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/checkbox_style</item>
+    </style>
+    <style name="radiobuttonTheme" parent="@android:style/Widget.CompoundButton.RadioButton">
+        <item name="android:button">@drawable/radiobutton_style</item>
+    </style>
+</resources>

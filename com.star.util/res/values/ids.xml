@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="recycle_tag"></item>
+    <item type="id" name="async_data_load_runnable"></item>
+    <item type="id" name="toast_callback"></item>
+</resources>

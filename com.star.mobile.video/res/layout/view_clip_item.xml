@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:paddingBottom="@dimen/action_bar_margin_5"
+    android:paddingTop="@dimen/action_bar_margin_5" >
+
+    <ImageView
+        style="@style/action_bar_icon_style"
+        android:src="@drawable/play_button_blue" />
+
+    <TextView
+        android:id="@+id/tv_clip_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/action_bar_margin_8"
+        android:textColor="@color/blue"
+        android:textSize="16sp" />
+
+</LinearLayout>

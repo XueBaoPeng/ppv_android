@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <com.star.mobile.video.view.PhoneNumberInputView
+        android:id="@+id/phone_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginRight="@dimen/dp_20"
+        >
+    </com.star.mobile.video.view.PhoneNumberInputView>
+
+    <com.star.mobile.video.view.CheckCodeView
+        android:id="@+id/check_code_view"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginRight="@dimen/dp_20"
+        android:layout_marginTop="8dp" >
+    </com.star.mobile.video.view.CheckCodeView>
+    <EditText
+        android:id="@+id/et_invite_code"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_48"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginRight="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_8"
+        android:background="@drawable/bg_input_whitebg"
+        android:hint="@string/inivated_hin"
+        android:inputType="number"
+        android:paddingLeft="@dimen/dp_5"
+        android:singleLine="true"
+        android:textSize="18sp"
+        android:textColor="#545454"
+        android:textColorHint="#B0B0B0" />
+ 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/invita"
+        android:textSize="14dp"
+        android:textColor="#4c4c4c" />
+
+  <!--   <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginRight="@dimen/dp_20"
+        android:text="@string/mob_tip_msg_one"
+        android:textSize="14dp"
+        android:textColor="#4c4c4c" /> -->
+
+    <TextView
+        android:id="@+id/tv_three"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginRight="@dimen/dp_20"
+        android:textColor="@color/choose_text" />
+
+
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="32dp"
+        >
+        <Button
+        android:id="@+id/bt_mob_check_next"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_48"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginRight="@dimen/dp_20"
+        android:background="@drawable/btn_grey"
+        android:text="@string/next"
+        android:textColor="@color/reg_go"
+        android:textSize="20sp" />
+
+    <Button
+        android:layout_below="@id/bt_mob_check_next"
+        android:id="@+id/bt_have_account"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_48"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginRight="@dimen/dp_20"
+        android:text="@string/have_account"
+        android:background="@drawable/btn_have_account"
+        android:textColor="#4c4c4c"
+        android:textSize="14dp" />
+        
+    </RelativeLayout>
+    
+
+</LinearLayout>

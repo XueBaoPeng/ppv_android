@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <com.star.mobile.video.view.ChannelItemView
+            android:id="@+id/chnLayout_1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+        </com.star.mobile.video.view.ChannelItemView>
+
+        <com.star.mobile.video.view.ChannelItemView
+            android:id="@+id/chnLayout_2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/action_bar_margin_5"
+            android:layout_weight="1" >
+        </com.star.mobile.video.view.ChannelItemView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/action_bar_margin_6" >
+
+        <com.star.mobile.video.view.ChannelItemView
+            android:id="@+id/chnLayout_3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+        </com.star.mobile.video.view.ChannelItemView>
+
+        <com.star.mobile.video.view.ChannelItemView
+            android:id="@+id/chnLayout_4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/action_bar_margin_5"
+            android:layout_weight="1" >
+        </com.star.mobile.video.view.ChannelItemView>
+    </LinearLayout>
+
+</LinearLayout>

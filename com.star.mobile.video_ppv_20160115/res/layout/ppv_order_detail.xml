@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/program_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Start war"
+        android:textColor="@color/gray_bg"
+        android:textSize="20sp" />
+
+    <RatingBar
+        android:id="@+id/rating_channel"
+        style="@style/roomRatingBar_24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/program_name_tv"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="12dp"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:rating="3"
+        android:stepSize="0.1" />
+
+    <TextView
+        android:id="@+id/program_date_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rating_channel"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="12dp"
+        android:text="02-Jan"
+        android:textColor="@color/darkGray"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/program_detail_time_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/rating_channel"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginTop="12dp"
+        android:text="10:00/16:00/20:00"
+        android:textColor="@color/darkGray"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/program_product_code_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/program_date_tv"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="12dp"
+        android:text="Product code:"
+        android:textColor="@color/darkGray"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/program_product_code_content_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/program_date_tv"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginTop="12dp"
+        android:text="xxxxxxxxxxxxxxxxxx"
+        android:textColor="@color/darkGray"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/program_channel_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/program_product_code_tv"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="12dp"
+        android:text="Channel:"
+        android:textColor="@color/darkGray"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/program_channel_content_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/program_product_code_tv"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginTop="12dp"
+        android:text="Scrapper 258"
+        android:textColor="@color/darkGray"
+        android:textSize="16sp" />
+
+    <ImageView
+        android:id="@+id/layout_split_line_iv"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:layout_below="@id/program_channel_tv"
+        android:background="@drawable/line_bg" />
+
+
+    <TextView
+        android:id="@+id/program_phone_number_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_split_line_iv"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="12dp"
+        android:text="Phone number:"
+        android:textColor="@color/darkGray"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/program_phone_number_content_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/layout_split_line_iv"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginTop="12dp"
+        android:text="123552165435132"
+        android:textColor="@color/darkGray"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/program_smart_card_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/program_phone_number_tv"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="12dp"
+        android:text="Smart card:"
+        android:textColor="@color/darkGray"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/program_smart_card_content_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/program_phone_number_tv"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginTop="12dp"
+        android:text="555-7788-4551"
+        android:textColor="@color/darkGray"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/program_total_price_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/program_smart_card_tv"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="12dp"
+        android:text="Total price:"
+        android:textColor="@color/darkGray"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/program_total_price_content_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/program_smart_card_tv"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginTop="12dp"
+        android:text="$3.00"
+        android:textColor="@color/taks_blue"
+        android:textSize="16sp" />
+</RelativeLayout>

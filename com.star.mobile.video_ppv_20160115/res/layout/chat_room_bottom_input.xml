@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/ll_three"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/chat_input_linearlayout"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:background="@drawable/bg_input"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingTop="2dp" >
+
+            <ImageView
+                android:id="@+id/video_live_chat_face_iv"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/video_live_face_bg" />
+
+            <ImageView
+                android:id="@+id/iv_image_send"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginLeft="4dp"
+                android:background="@drawable/icon_picture_line"
+                android:visibility="gone" />
+
+            <EditText
+                android:id="@+id/video_live_chat_edittext"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_search"
+                android:ellipsize="end"
+                android:inputType="textNoSuggestions"
+                android:singleLine="true"
+                android:textColorHint="@color/text_hiht_color"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/video_live_content_send_iv"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/video_live_send_btn_bg" />
+        </LinearLayout>
+
+        <com.star.mobile.video.view.FaceContainer
+            android:id="@+id/faceContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</RelativeLayout>

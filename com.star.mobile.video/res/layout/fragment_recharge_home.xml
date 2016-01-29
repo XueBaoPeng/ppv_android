@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/btn_recharge"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/list_bg_selector"
+        android:padding="0dp" >
+
+        <ImageView
+            android:id="@+id/iv_icon_smartcard"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"
+            android:scaleType="center"
+            android:src="@drawable/icon_recharge_smartcard" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/iv_arrow_smartcard"
+            android:layout_toRightOf="@id/iv_icon_smartcard"
+            android:gravity="center_vertical"
+            android:text="@string/recharge_smart_card"
+            android:textColor="#545454"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@id/iv_arrow_smartcard"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:scaleType="center"
+            android:src="@drawable/icon_arrow_smartcard" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/btn_changePkg"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/list_bg_selector"
+        android:padding="0dp" >
+
+        <ImageView
+            android:id="@+id/iv_icon_changePkg"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"
+            android:scaleType="center"
+            android:src="@drawable/icon_change_bouquet" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/iv_arrow_changePkg"
+            android:layout_toRightOf="@id/iv_icon_changePkg"
+            android:gravity="center_vertical"
+            android:text="@string/change_the_bouquet"
+            android:textColor="#545454"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@id/iv_arrow_changePkg"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:scaleType="center"
+            android:src="@drawable/icon_arrow_smartcard" />
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:id="@+id/btn_account_bill"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/list_bg_selector"
+        android:padding="0dp" >
+
+        <ImageView
+            android:id="@+id/iv_icon_bill"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"
+            android:scaleType="center"
+            android:src="@drawable/list_icon_actionbar_white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/iv_arrow_changePkg"
+            android:layout_toRightOf="@id/iv_icon_bill"
+            android:gravity="center_vertical"
+            android:text="@string/account_bill"
+            android:textColor="#545454"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@id/iv_arrow_changePkg"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:scaleType="center"
+            android:src="@drawable/icon_arrow_smartcard" />
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:id="@+id/ly_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/guide_blue"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+    <com.star.util.verticalviewpager.VerticalViewPager
+        android:id="@+id/directional_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ImageView
+        android:id="@+id/viewpager_start_imageview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/guide_btn_bg"
+        android:visibility="gone" />
+
+
+    <RelativeLayout
+        android:id="@+id/guide_arrow"
+        android:layout_width="48dp"
+        android:layout_height="64dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/guide_bounds" >
+
+        <ImageView
+            android:id="@+id/guide_arrow_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/shape" />
+
+        <ImageView
+            android:id="@+id/guide_arrow_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/guide_arrow_1"
+            android:alpha="0.7"
+            android:src="@drawable/shape" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

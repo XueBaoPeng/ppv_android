@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">StarTimes</string>
+    <integer name="app_version_code">2</integer>
+    <string name="app_version">2.0.0</string>
+    <string name="proj_name">ShareSDK_TPL</string>
+
+    <string name="share_sdk">StarTimes</string>
+    <string name="login_with_sina_weibo">Login with Sina weibo</string>
+    <string name="login_with_qzone">Login with your qzone</string>
+    <string name="login_with_other_plat">Login with your facebook</string>
+    
+    
+    <string name="userid_found">User info exists, logoning…</string>
+    <string name="logining">signing in…</string>
+    <string name="auth_cancel">authorization canceled</string>
+    <string name="auth_error">authorization error</string>
+    <string name="auth_complete">authorize successfully, logoning…</string>
+    <string name="if_register_needed">if you need to register…</string>
+    <string name="after_auth">Good enough</string>
+    <string name="ok">OK</string>
+</resources>

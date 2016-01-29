@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/title"
+        layout="@layout/window_titlebar_4" />
+
+    <RelativeLayout
+        android:id="@+id/rl_share_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/activity_bg"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:visibility="gone" >
+
+        <ImageView
+            android:id="@+id/iv_time_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/time" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="60dp"
+            android:layout_toRightOf="@id/iv_time_icon"
+            android:singleLine="true"
+            android:text="@string/egg_share"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/iv_share_egg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/rl_share_info"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="-3dp"
+        android:layout_marginRight="20dp"
+        android:src="@drawable/my_coupon_egg"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/rl_share_info" >
+
+        <ListView
+            android:id="@+id/lv_coupons"
+            style="@style/listview_style"
+            android:dividerHeight="0dp" >
+        </ListView>
+
+        <!-- <View
+            android:id="@+id/v_shadow"
+            android:layout_width="match_parent"
+            android:layout_height="6dp"
+            android:background="@drawable/shadow" /> -->
+
+        <LinearLayout
+            android:id="@+id/iv_no_coupons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:visibility="gone"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="center"
+                android:src="@drawable/no_available_coupon" />
+            <TextView android:layout_width="200dp"
+		            android:layout_height="wrap_content"
+		            android:gravity="center"
+		            android:text="@string/not_coupon_text"
+		            android:textColor="@color/grey"
+		            android:textSize="16sp"
+		            /> 
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

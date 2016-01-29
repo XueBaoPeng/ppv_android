@@ -1,0 +1,696 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.star.mobile.video"
+    android:versionCode="79"
+    android:versionName="2.6.1" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="21" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <!-- <uses-permission android:name="getui.permission.GetuiService" /> -->
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <!-- 自定义权限 -->
+    <!--
+    <permission
+        android:name="getui.permission.GetuiService"
+        android:protectionLevel="normal" >
+    </permission>
+    -->
+
+    <application
+        android:name=".StarApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/app_icon"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+
+        <!-- facebook所需要的app_id -->
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/app_id" />
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="999b389d320c05f06fdc473dce10e619" />
+
+        <activity
+            android:name="com.star.mobile.video.activity.WelcomeActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait"
+            android:theme="@style/welcome_bg"
+            android:configChanges="locale" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="platformapi"
+                    android:scheme="starvideo" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="org.libsdl.app.Player"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.activity.AlertSettingActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" 
+            android:configChanges="locale">
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.activity.AlertListActicity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="locale" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.me.mycoins.MyCoinsActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" 
+            android:configChanges="locale">
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.epg.AllCommentActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" 
+            android:configChanges="locale">
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.activity.ChatActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden" 
+            android:configChanges="locale">
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.activity.AlbumActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" 
+            android:configChanges="locale">
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.activity.AlbumImageViewActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:configChanges="locale" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.activity.PhotoActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:configChanges="locale" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.account.HeadviewUploadActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:configChanges="locale" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.activity.ChannelCommentActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="locale" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.search.SearchActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden" 
+            android:configChanges="locale">
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.account.LoginActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" 
+            android:configChanges="locale">
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.home.HomeActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden" 
+            android:configChanges="locale">
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.activity.AccountConnectActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" 
+            android:configChanges="locale">
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.account.RegisterActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" 
+            android:configChanges="locale">
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.account.ChooseAreaActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="locale" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.smartcard.SmartCardActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.me.feedback.FeedbackActivity"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.account.ResetPasswordActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.account.ResetFillPassActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.account.ResetPasswordSendMailActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.activity.LandscapePalyActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.me.coupon.MyCouponsActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.activity.OfflineEpgActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.me.feedback.UserReportActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.me.mycoins.reward.RewardDetailActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.activity.CurrentVersionAppDetailActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.activity.AlertDialogActivity"
+            android:theme="@style/TaskInfoDialog" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.activity.AlertInstallActivity"
+            android:theme="@style/TaskInfoDialog" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.smartcard.AsynAlertDialogActivity"
+            android:theme="@style/TaskInfoDialog" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.activity.BrowserActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="com.star.mobile.video"
+                    android:scheme="tenbre" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.activity.FeedbackAlertDialogActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/TaskInfoDialog" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.activity.PreviewImageActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.activity.NewVersionAppDetailActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.activity.IsLoginAlertDialogActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/TaskInfoDialog" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.activity.TranslucentBackgroundWebViewActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/translucent" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.activity.TranslucentBackgroundActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/translucent" >
+        </activity>
+        <activity android:name="com.star.mobile.video.ppv.PpvActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/translucent">
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.activity.ComingSoonActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.account.ModifyMeActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.account.ModifyNameActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.chatroom.AlertChatAllActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.activity.SendActivationLinkActicity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.chatroom.ShareChatRoomActivity"
+            android:launchMode="standard"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.chatroom.ChatRoomSettingActicity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.activity.AccountBillActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.account.PhoneAndEmailResetPwdActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.activity.TellFriendActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.activity.GooglePlayActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.activity.HeadMagnifyActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="cn.sharesdk.demo.tpl.FacebookShare"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/translucent_full" >
+        </activity>
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.star.mobile.video.activity.HorizontalVideoPlayActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.star.mobile.video.activity.InvitationActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.tenb.TenbActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.me.account.AccountAcitivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.me.language.LanguageActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.me.about.AboutActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.me.notificaction.NotificationActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.me.notificaction.ReminderNotificationActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.me.notificaction.ReminderSettingAcitivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.smartcard.SmartCardControlActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.smartcard.recharge.RechargeSmartCardActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.smartcard.recharge.RechargeCouponActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.smartcard.recharge.RechargeCardNumActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.smartcard.recharge.RechargeCardActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.smartcard.recharge.OnlinePaymentActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.chatroom.ChatRoomsActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.base.BaseFragmentActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.me.notificaction.RingtonActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.epg.EpgDetailActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" 
+            android:windowSoftInputMode="adjustResize|stateHidden">
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.channel.ChannelRateActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" 
+            android:windowSoftInputMode="adjustResize|stateHidden">
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.changebouquet.EnterDecoderNumberActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.changebouquet.ChangeBouquetActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.smartcard.MyOrderDetailActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.smartcard.MyOrderActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.chatroom.faq.RobotCustomerChatActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:screenOrientation="portrait" >
+        </activity>
+		<activity
+            android:name="com.star.mobile.video.changebouquet.ChangeWayActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.changebouquet.ChangeSuccessActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.star.mobile.video.changebouquet.EnterPhoneNumberActivity"
+             android:windowSoftInputMode="adjustResize|stateHidden"
+            android:screenOrientation="portrait" >
+        </activity>
+        <service android:name="com.star.mobile.video.service.DownloadService" />
+        <service android:name="com.star.mobile.video.service.FourLayerService" />
+        <service android:name="com.star.mobile.video.service.SmartCardService" />
+        <service android:name="com.star.mobile.video.service.InitService" />
+        <service android:name="com.star.mobile.video.service.SyncStatusService" />
+        <service
+            android:name="com.star.mobile.video.service.EggAlertService"
+            android:label="AlertServer"
+            android:persistent="true" >
+            <intent-filter>
+                <action android:name="EggAlertService" />
+            </intent-filter>
+        </service>
+
+        <receiver android:name="com.star.mobile.video.receiver.DownloadCompleteReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.DOWNLOAD_COMPLETE" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.star.mobile.video.receiver.BattoryReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.TIME_TICK" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name="cn.sharesdk.framework.ShareSDKUIShell"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="stateHidden|adjustResize" >
+            <intent-filter>
+                <data android:scheme="tencent100371282" />
+
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <!--
+        <activity
+    		android:name="com.facebook.LoginActivity"
+    		android:label="@string/app_name" >
+		</activity>
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/app_id"/>
+         
+		微信分享回调
+		<activity
+  			android:name=".wxapi.WXEntryActivity"
+  			android:theme="@android:style/Theme.Translucent.NoTitleBar"
+  			android:configChanges="keyboardHidden|orientation|screenSize"
+  			android:exported="true"
+  			android:screenOrientation="portrait" />
+        -->
+        <!-- 个推SDK配置开始 -->
+        <!-- 配置的第三方参数属性 -->
+        <meta-data
+            android:name="PUSH_APPID"
+            android:value="Aee7pGAme78dzyoDS5Nxq7" />
+        <meta-data
+            android:name="PUSH_APPSECRET"
+            android:value="rK07UCmhnp8RMc3Lm8lrU7" />
+        <meta-data
+            android:name="PUSH_APPKEY"
+            android:value="aBkdhG2HHp5MWPxqayJ6U5" />
+        <meta-data
+            android:name="PUSH_GROUPID"
+            android:value="" />
+
+        <receiver
+            android:name="com.star.mobile.video.receiver.PushTenbreReceiver"
+            android:exported="false" >
+            <intent-filter>
+
+                <!-- 替换为action android:name="com.igexin.sdk.action.第三方应用APPID" -->
+                <action android:name="com.igexin.sdk.action.Aee7pGAme78dzyoDS5Nxq7" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.star.mobile.video.receiver.NetworkChangeReceiver"
+            android:label="NetworkConnection" >
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+        <!-- 配置SDK核心服务 -->
+        <service
+            android:name="com.igexin.sdk.PushService"
+            android:exported="true"
+            android:label="NotificationCenter"
+            android:process=":pushservice" >
+        </service>
+
+        <receiver android:name="com.igexin.sdk.PushReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="com.igexin.sdk.action.refreshls" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.igexin.sdk.PushManagerReceiver"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.igexin.sdk.action.pushmanager" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name="com.igexin.sdk.PushActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:process=":pushservice"
+            android:taskAffinity="com.igexin.sdk.PushActivityTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+        </activity>
+
+        <!-- 配置弹框activity -->
+        <activity
+            android:name="com.igexin.getuiext.activity.GetuiExtActivity"
+            android:configChanges="orientation|keyboard|keyboardHidden"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:process=":pushservice"
+            android:taskAffinity="android.task.myServicetask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <receiver
+            android:name="com.igexin.getuiext.service.PayloadReceiver"
+            android:exported="false" >
+            <intent-filter>
+
+                <!-- 这个com.igexin.sdk.action.7fjUl2Z3LH6xYy7NQK4ni4固定，不能修改 -->
+                <action android:name="com.igexin.sdk.action.7fjUl2Z3LH6xYy7NQK4ni4" />
+                <!-- android:name="com.igexin.sdk.action.第三方的appId" -->
+                <action android:name="com.igexin.sdk.action.Aee7pGAme78dzyoDS5Nxq7" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.igexin.getuiext.service.GetuiExtService"
+            android:process=":pushservice" />
+
+        <!-- 个推download模块配置 -->
+        <service
+            android:name="com.igexin.download.DownloadService"
+            android:process=":pushservice" />
+
+        <receiver
+            android:name="com.igexin.download.DownloadReceiver"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+        <provider
+            android:name="com.igexin.download.DownloadProvider"
+            android:authorities="downloads.com.star.mobile.video"
+            android:process=":pushservice" />
+        <!-- android:authorities="downloads.第三方包名" -->
+
+
+        <!-- ====================================================== -->
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/app_id" />
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationName"
+            android:value="@string/facebook_app_name" />
+    </application>
+
+</manifest>

@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="@color/white">
+    <include layout="@layout/window_titlebar_4" />
+     <ScrollView 
+        android:id="@+id/scollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        > 
+        <RelativeLayout 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+         <com.star.mobile.video.view.SmartCardInfoView 
+             android:id="@+id/smardInfo"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             />
+            <ImageView 
+          		  android:id="@+id/line_bg"
+		          android:layout_width="match_parent"
+		          android:layout_height="8dp"
+		          android:background="@drawable/line_bg"
+		          android:layout_below="@id/smardInfo"
+		          />
+
+          		 <RelativeLayout
+          		     android:layout_width="match_parent"
+          		     android:layout_height="match_parent"
+          		     android:layout_below="@id/line_bg"
+          		     android:background="@color/window_bg" >
+
+          		     <RelativeLayout
+				        android:id="@+id/btn_recharge_coupon"
+				        android:layout_width="match_parent"
+				        android:layout_height="92dp"
+				        android:layout_centerHorizontal="true"
+				        android:background="@color/white"
+				        android:padding="0dp" >
+						        <ImageView
+						            android:id="@+id/iv_icon_co"
+						            android:layout_width="wrap_content"
+						            android:layout_height="wrap_content"
+						            android:layout_marginLeft="16dp"
+						            android:layout_marginTop="8dp"
+						            android:scaleType="center"
+						            android:src="@drawable/icon_daily_blue_24dp" />
+						
+						        <TextView
+						            android:layout_width="wrap_content"
+						            android:layout_height="wrap_content"
+						            android:layout_marginLeft="8dp"
+						            android:layout_marginRight="8dp"
+						            android:layout_marginTop="8dp"
+						            android:layout_toLeftOf="@+id/iv_arrow_co"
+						            android:layout_toRightOf="@id/iv_icon_co"
+						            android:gravity="center_vertical"
+						            android:text="@string/use_coupon"
+						            android:textColor="@color/blue"
+						            android:textSize="18sp" />
+						
+						        <ImageView
+						            android:id="@id/iv_arrow_co"
+						            android:layout_width="wrap_content"
+						            android:layout_height="wrap_content"
+						            android:layout_alignParentRight="true"
+						            android:layout_marginRight="16dp"
+						            android:layout_marginTop="8dp"
+						            android:scaleType="center"
+						            android:src="@drawable/icon_arrow_smartcard" />
+						        <TextView 
+						            android:layout_width="wrap_content"
+						            android:layout_height="wrap_content"
+						            android:text="@string/Use_coupon_to_recharge"
+						            android:layout_below="@id/iv_icon_co"
+						            android:textSize="12sp"
+						            android:layout_marginTop="12dp"
+						            android:layout_marginLeft="16dp"
+						            android:layout_marginRight="8dp"
+						            android:textColor="@color/text_default"
+						            />
+						       
+						    </RelativeLayout>
+						    <ImageView 
+						        android:id="@+id/line_bg1"
+						          android:layout_width="match_parent"
+						          android:layout_height="8dp"
+						          android:background="@drawable/line_bg"
+						          android:layout_below="@id/btn_recharge_coupon"
+						          />
+						    <RelativeLayout
+						        android:id="@+id/btn_recharge_smartcard"
+						        android:layout_width="match_parent"
+						        android:layout_height="92dp"
+						        android:layout_centerHorizontal="true"
+						        android:background="@color/white"
+						        android:layout_below="@id/line_bg1"
+						        android:padding="0dp" >
+						
+						        <ImageView
+						            android:id="@+id/iv_icon_sc"
+						            android:layout_width="wrap_content"
+						            android:layout_height="wrap_content"
+						            android:layout_marginLeft="16dp"
+						            android:layout_marginTop="8dp"
+						            android:scaleType="center"
+						            android:src="@drawable/ic_alarm_add_blue_24dp" />
+						
+						        <TextView
+						            android:layout_width="wrap_content"
+						            android:layout_height="wrap_content"
+						            android:layout_marginLeft="8dp"
+						            android:layout_marginRight="8dp"
+						            android:layout_marginTop="8dp"
+						            android:layout_toLeftOf="@+id/iv_arrow_sc"
+						            android:layout_toRightOf="@id/iv_icon_sc"
+						            android:gravity="center_vertical"
+						            android:text="@string/recharge_card"
+						            android:textColor="@color/blue"
+						            android:textSize="18sp" />
+						
+						        <ImageView
+						            android:id="@id/iv_arrow_sc"
+						            android:layout_width="wrap_content"
+						            android:layout_height="wrap_content"
+						            android:layout_alignParentRight="true"
+						            android:layout_marginRight="16dp"
+						            android:layout_marginTop="8dp"
+						            android:scaleType="center"
+						            android:src="@drawable/icon_arrow_smartcard" />
+						         <TextView 
+						            android:layout_width="wrap_content"
+						            android:layout_height="wrap_content"
+						            android:text="@string/Recharge_card"
+						            android:layout_below="@id/iv_icon_sc"
+						            android:textSize="12sp"
+						            android:layout_marginTop="12dp"
+						            android:layout_marginLeft="16dp"
+						            android:layout_marginRight="8dp"
+						            android:textColor="@color/text_default"
+						            />
+						    </RelativeLayout>
+						     <ImageView 
+						        android:id="@+id/line_bg2"
+						          android:layout_width="match_parent"
+						          android:layout_height="8dp"
+						          android:background="@drawable/line_bg"
+						          android:layout_below="@id/btn_recharge_smartcard"
+						          />
+						    <RelativeLayout
+						        android:id="@+id/btn_recharge_payment"
+						        android:layout_width="match_parent"
+						        android:layout_height="92dp"
+						        android:background="@color/white"
+						        android:layout_below="@id/line_bg2"
+						        android:layout_centerHorizontal="true"
+						        android:padding="0dp" >
+						
+						        <ImageView
+						            android:id="@+id/iv_icon_py"
+						            android:layout_width="wrap_content"
+						            android:layout_height="wrap_content"
+						            android:layout_marginLeft="16dp"
+						            android:layout_marginTop="8dp"
+						            android:scaleType="center"
+						            android:src="@drawable/ic_drafts_blue_24dp" />
+						
+						        <TextView
+						            android:layout_width="wrap_content"
+						            android:layout_height="wrap_content"
+						            android:layout_marginLeft="8dp"
+						            android:layout_marginRight="8dp"
+						            android:layout_marginTop="8dp"
+						            android:layout_toLeftOf="@+id/iv_arrow_py"
+						            android:layout_toRightOf="@id/iv_icon_py"
+						            android:gravity="center_vertical"
+						            android:text="@string/online_payment"
+						            android:textColor="@color/blue"
+						            android:textSize="18sp" />
+						
+						        <ImageView
+						            android:id="@id/iv_arrow_py"
+						            android:layout_width="wrap_content"
+						            android:layout_height="wrap_content"
+						            android:layout_alignParentRight="true"
+						            android:layout_marginRight="16dp"
+						            android:layout_marginTop="8dp"
+						            android:scaleType="center"
+						            android:src="@drawable/icon_arrow_smartcard" />
+						         <TextView 
+						            android:layout_width="wrap_content"
+						            android:layout_height="wrap_content"
+						            android:text="@string/Pay_online"
+						            android:layout_below="@id/iv_icon_py"
+						            android:textSize="12sp"
+						            android:layout_marginTop="12dp"
+						            android:layout_marginLeft="16dp"
+						            android:layout_marginRight="8dp"
+						            android:textColor="@color/text_default"
+						            />
+						    </RelativeLayout>
+						     <TextView
+						        android:layout_below="@id/btn_recharge_payment"
+						        android:id="@+id/tv_recharge_limit"
+						        android:layout_width="wrap_content"
+						        android:layout_height="wrap_content"
+						        android:layout_marginLeft="15dp"
+						        android:layout_marginRight="15dp"
+						        android:layout_marginTop="20dp"
+						        android:text="@string/recharge_limit"
+						        android:textColor="#D0021B"
+						        android:visibility="gone"
+						        android:textSize="14sp" />
+          		     </RelativeLayout>
+           </RelativeLayout>
+    </ScrollView>
+</LinearLayout>

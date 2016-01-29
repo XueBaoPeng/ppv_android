@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/window_titlebar_4"/>
+    
+    
+    <ScrollView
+        android:id="@+id/sv_epg_detail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical"
+            android:padding="@dimen/action_bar_margin_6" >
+
+            <RelativeLayout
+                android:id="@+id/rl_poster_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                android:layout_marginLeft="@dimen/action_bar_margin_2"
+                android:layout_marginRight="@dimen/action_bar_margin_2" >
+
+                <com.star.ui.ImageView
+                    android:id="@+id/iv_epg_poster"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/default_program"
+                    android:scaleType="fitXY" />
+
+                <ImageView
+                    android:id="@+id/iv_epg_play_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="center"
+                    android:src="@drawable/play_button_programe_detail" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/recommended_picture_frame" />
+
+                <com.star.ui.ImageView
+                    android:id="@+id/iv_channel_icon"
+                    android:layout_width="@dimen/channel_icon_height"
+                    android:layout_height="@dimen/channel_icon_height"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="@dimen/action_bar_margin_6"
+                    android:layout_marginLeft="7dp" />
+
+                <TextView
+                    android:id="@+id/tv_channel_number"
+                    android:layout_width="@dimen/action_bar_margin_35"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="@dimen/menu_item_height"
+                    android:layout_marginLeft="@dimen/action_bar_margin_2"
+                    android:background="@drawable/channel_number_bg"
+                    android:gravity="center"
+                    android:padding="0dp"
+                    android:textColor="@color/white"
+                    android:visibility="invisible" />
+
+                <View
+                    android:id="@+id/blank_view"
+                    android:layout_width="@dimen/action_bar_margin_12"
+                    android:layout_height="1dp"
+                    android:layout_alignParentRight="true"
+                    android:visibility="invisible" />
+
+                <TextView
+                    android:id="@+id/tv_epg_name"
+                    style="@style/title_bar_text_style"
+                    android:layout_width="match_parent"
+                    android:layout_above="@+id/tv_epg_startime"
+                    android:layout_marginBottom="@dimen/action_bar_margin_5"
+                    android:layout_marginLeft="@dimen/action_bar_margin_10"
+                    android:layout_toLeftOf="@id/blank_view"
+                    android:layout_toRightOf="@id/iv_channel_icon"
+                    android:ellipsize="end"
+                    android:gravity="right"
+                    android:singleLine="true" />
+
+                <TextView
+                    android:id="@+id/tv_epg_stardate"
+                    style="@style/title_bar_text_style"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="@dimen/action_bar_margin_10"
+                    android:layout_marginRight="@dimen/dp_30"
+                    android:layout_toLeftOf="@id/tv_epg_startime"
+                    android:textColor="@color/epg_start_data" />
+
+                <TextView
+                    android:id="@id/tv_epg_startime"
+                    style="@style/title_bar_text_style"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="@dimen/action_bar_margin_10"
+                    android:layout_toLeftOf="@id/blank_view"
+                    android:textColor="@color/textcolor_orange" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/rl_epg_detail"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/action_bar_height"
+                android:layout_marginTop="@dimen/action_bar_margin_8"
+                android:background="@drawable/program_detail_top" >
+
+                <RelativeLayout
+                    android:id="@+id/ll_alert_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" >
+
+                    <ImageView
+                        android:id="@+id/iv_alert_icon"
+                        style="@style/action_bar_icon_style"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/program_icon_alert" />
+
+                    <TextView
+                        android:id="@+id/tv_fav_count"
+                        style="@style/title_bar_text_style"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@id/iv_alert_icon"
+                        android:textSize="@dimen/action_bar_text_size_small" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/ll_comment_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" >
+
+                    <ImageView
+                        style="@style/action_bar_icon_style"
+                        android:src="@drawable/title_blue_line" />
+
+                    <ImageView
+                        android:id="@+id/iv_comment_icon"
+                        style="@style/action_bar_icon_style"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/icon_critical" />
+
+                    <TextView
+                        android:id="@+id/tv_comment_count"
+                        style="@style/title_bar_text_style"
+                        android:layout_marginLeft="@dimen/action_bar_margin_6"
+                        android:layout_toRightOf="@id/iv_comment_icon"
+                        android:gravity="center"
+                        android:textSize="@dimen/action_bar_text_size_small" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/ll_share_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" >
+
+                    <ImageView
+                        style="@style/action_bar_icon_style"
+                        android:src="@drawable/title_blue_line" />
+
+                    <ImageView
+                        android:id="@+id/iv_share_icon"
+                        style="@style/action_bar_icon_style"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/icon_share" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/program_detail_white_bg"
+                android:orientation="vertical"
+                android:padding="@dimen/action_bar_margin_15" >
+
+                <LinearLayout
+                    android:id="@+id/classification_linear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/epg_classification"
+                        android:textColor="@color/alert_setting_text"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_epg_classification"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/list_text_color"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/subhead_linear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/epg_subhead"
+                        android:textColor="@color/alert_setting_text"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_epg_subhead"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/list_text_color"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/descripion_linear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/epg_descripion"
+                        android:textColor="@color/alert_setting_text"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_epg_descripion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/list_text_color"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_clips_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="visible" >
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/action_bar_margin_5"
+                        android:layout_marginTop="@dimen/action_bar_margin_10"
+                        android:background="@drawable/bgline_long" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/action_bar_margin_3"
+                        android:text="@string/clip"
+                        android:textColor="@color/clip_color"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_clips_group"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_comment_layout"
+                style="@style/action_bar_layout_style"
+                android:background="@drawable/title_green" >
+
+                <TextView
+                    android:id="@+id/tv_actionbar_comment"
+                    style="@style/action_bar_text_shadow_style"
+                    android:layout_marginLeft="@dimen/action_bar_margin_10"
+                    android:text="@string/comment" />
+
+                <ImageView
+                    style="@style/action_bar_icon_style_1"
+                    android:layout_centerVertical="false"
+                    android:layout_marginLeft="@dimen/action_bar_margin_6"
+                    android:layout_marginTop="@dimen/action_bar_margin_5"
+                    android:layout_toRightOf="@id/tv_actionbar_comment"
+                    android:src="@drawable/icon_critical" />
+
+                <ImageView
+                    style="@style/action_bar_icon_style_1"
+                    android:layout_centerVertical="false"
+                    android:layout_marginRight="@dimen/action_bar_margin_15"
+                    android:layout_toLeftOf="@+id/tv_comment_more"
+                    android:src="@drawable/title_green_line" />
+
+                <TextView
+                    android:id="@id/tv_comment_more"
+                    style="@style/action_bar_text_shadow_style"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/action_bar_margin_15"
+                    android:text="@string/comment_more" />
+            </RelativeLayout>
+
+            <com.star.mobile.video.epg.CommentListView
+                android:id="@+id/epg_comment_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/action_bar_margin_2" />
+
+            <RelativeLayout
+                style="@style/action_bar_layout_style"
+                android:background="@drawable/title_orange" >
+
+                <TextView
+                    style="@style/action_bar_text_shadow_style"
+                    android:layout_marginLeft="@dimen/action_bar_margin_10"
+                    android:text="@string/explore_more" />
+            </RelativeLayout>
+
+            <com.star.mobile.video.view.EpgOnAlertItemView
+                android:id="@+id/explore_epg_left"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/channel_group_height"
+                android:layout_marginTop="@dimen/action_bar_margin_2" />
+
+            <com.star.mobile.video.view.EpgOnAlertItemView
+                android:id="@+id/explore_epg_right"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/channel_group_height"
+                android:layout_marginTop="@dimen/action_bar_margin_6" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

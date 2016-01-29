@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/title"
+        layout="@layout/window_titlebar_4" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/title" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center"
+            android:scrollbars="none" >
+
+            <LinearLayout
+                android:id="@+id/smart_card_info"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:id="@+id/smart_card_prompt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/smartcard_backside" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/example"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/black_color"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="4dp"
+                    android:text="@string/smartcard_enter_prompt"
+                    android:textColor="@color/grey_"
+                    android:textSize="14sp" />
+
+                <!-- <EditText
+                    android:id="@+id/et_card_num"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/dp_50"
+                    android:layout_marginBottom="@dimen/dp_8"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/info_frame"
+                    android:cursorVisible="false"
+                    android:ellipsize="end"
+                    android:inputType="number"
+                    android:singleLine="true"
+                    android:textColor="#545454"/> -->
+                <LinearLayout
+                    android:id="@+id/ll_card_num"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+                </LinearLayout>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/bt_ok"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/dp_50"
+                android:layout_below="@id/smart_card_info"
+                android:layout_marginBottom="32dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="112dp"
+                android:background="@drawable/btn_grey"
+                android:padding="0dp"
+                android:text="@string/confirm"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+        </RelativeLayout>
+    </ScrollView>
+
+    <!--
+    <com.star.mobile.video.view.MaskGuideView
+        android:id="@+id/smartcard_guide"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:visibility="gone"
+        android:padding="0dp">
+
+        <View
+            android:id="@+id/iv_smartcard_above"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/black_bg" />
+
+        <ImageView
+            android:id="@+id/iv_smartcard_guide"
+            android:layout_width="match_parent"
+            android:layout_height="76dp"
+            android:layout_below="@id/iv_smartcard_above"
+            android:background="@drawable/add_smartcard_guide_bg" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/iv_smartcard_guide"
+            android:background="@drawable/black_bg" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_smartcard_guide"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/guide_bg"
+            android:padding="10dp"
+            android:text="@string/fill_smartcard"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+    </com.star.mobile.video.view.MaskGuideView>
+    -->
+
+</RelativeLayout>

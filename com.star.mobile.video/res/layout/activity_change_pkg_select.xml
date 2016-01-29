@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white" >
+    <include layout="@layout/window_titlebar_4"/>
+    <RelativeLayout 
+        android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_marginBottom="32dp"
+        >
+    <TextView
+        android:id="@+id/tv_select_des"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/gray_bg"
+        android:layout_margin="16dp"
+        android:text="@string/change_select_des"
+        android:textSize="16sp"
+        />
+    
+	<RelativeLayout 
+	    android:id="@+id/rl_decoder"
+	    android:layout_below="@+id/tv_select_des"
+	    android:layout_width="match_parent"
+	    android:layout_marginLeft="16dp"
+	    android:layout_marginRight="16dp"
+	    android:layout_height="wrap_content"
+	    >
+	    <ImageView
+	        android:id="@+id/iv_way_decoder"
+	        android:layout_width="wrap_content"
+	        android:layout_height="30dp"
+	        android:layout_marginTop="1dp"
+	        android:scaleType="center"
+	        android:src="@drawable/no_sel" />
+	
+	    <RelativeLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="8dp"
+	        android:layout_toRightOf="@id/iv_way_decoder" >
+	
+	        <LinearLayout
+	            android:id="@+id/way_decoder_imageview_ll"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:orientation="horizontal" >
+	
+	            <TextView
+	                android:id="@+id/tv_way_decoder"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_marginLeft="10dp"
+	                android:textColor="@color/taks_blue"
+	                android:text="@string/change_select_decoder_name"
+	                android:textSize="16sp" />
+	         
+	        </LinearLayout>
+	
+	        <TextView
+	            android:id="@+id/tv_way_decoder_des"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="@string/change_select_decoder_des"
+	            android:layout_below="@id/way_decoder_imageview_ll"
+	            android:layout_marginLeft="10dp"
+	            android:textColor="@color/text_default"
+	            android:textSize="12sp" />
+	
+	        <ImageView
+	            android:id="@+id/pkg_split_line"
+	            android:layout_width="match_parent"
+	            android:layout_height="1dp"
+	            android:layout_below="@id/tv_way_decoder_des"
+	            android:layout_marginBottom="16dp"
+	            android:layout_marginLeft="10dp"
+	            android:layout_marginTop="16dp"
+	            android:background="@color/grey" />
+	    </RelativeLayout>
+	</RelativeLayout>
+	<RelativeLayout 
+	    android:id="@+id/rl_phone"
+	    android:layout_below="@+id/rl_decoder"
+	    android:layout_marginLeft="16dp"
+	    android:layout_marginRight="16dp"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    >
+	    <ImageView
+	        android:id="@+id/iv_way_phone"
+	        android:layout_width="wrap_content"
+	        android:layout_height="30dp"
+	        android:layout_marginTop="1dp"
+	        android:scaleType="center"
+	        android:src="@drawable/no_sel" />
+	
+	    <RelativeLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="8dp"
+	        android:layout_toRightOf="@id/iv_way_phone" >
+	
+	        <LinearLayout
+	            android:id="@+id/way_phone_imageview_ll"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:orientation="horizontal" >
+	
+	            <TextView
+	                android:id="@+id/tv_way_phone"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_marginLeft="10dp"
+	                android:text="@string/change_select_phone_name"
+	                android:textColor="@color/taks_blue"
+	                android:textSize="16sp" />
+	         
+	        </LinearLayout>
+	
+	        <TextView
+	            android:id="@+id/tv_way_phone_des"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="@string/change_select_phone_des"
+	            android:layout_below="@id/way_phone_imageview_ll"
+	            android:layout_marginLeft="10dp"
+	            android:textColor="@color/text_default"
+	            android:textSize="12sp" />
+	    </RelativeLayout>
+	</RelativeLayout>
+	<Button
+         android:id="@+id/btn_change_way"
+         android:layout_width="fill_parent"
+         android:layout_height="@dimen/dp_50"
+         android:layout_marginLeft="16dp"
+         android:layout_marginRight="16dp"
+         android:layout_alignParentBottom="true"
+         android:background="@drawable/need_more_coins_button"
+         android:padding="0dp"
+         android:text="@string/text_onair_next"
+         android:textColor="@color/white"
+         android:textSize="20sp" />
+	</RelativeLayout>
+</LinearLayout>

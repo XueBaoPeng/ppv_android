@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+           
+    <ImageView
+            android:id="@+id/notification_imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="-5dp"
+            android:layout_marginStart="-5dp"
+            android:src="@drawable/app_icon" />
+        
+    
+       
+    <TextView
+            android:id="@+id/notification_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/notification_imageView"
+            android:text="StarTimes APP from StarTimes.apk" />
+        
+        
+    <ProgressBar
+            android:id="@+id/notification_progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/notification_imageView"
+            android:layout_below="@+id/notification_title" />
+
+        
+	<TextView
+            android:id="@+id/notification_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/notification_progressBar"
+            android:layout_toRightOf="@+id/notification_imageView"
+            android:text="TextView" />
+         
+
+</RelativeLayout>

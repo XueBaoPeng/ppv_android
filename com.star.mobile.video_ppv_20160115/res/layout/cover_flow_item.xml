@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="72dp"
+    android:layout_height="80dp">
+
+    <com.star.ui.ImageView
+        android:id="@+id/cover_flow_imageview"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/channel_detail_bg" />
+
+    <ImageView
+        android:id="@+id/cover_flow_iv_cricle_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/bg_channel_line_cricle" />
+    
+</RelativeLayout>

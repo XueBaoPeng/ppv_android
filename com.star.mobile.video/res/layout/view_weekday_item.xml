@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:minHeight="@dimen/action_bar_height">
+
+    <ImageView
+        android:id="@+id/iv_weekday_line"
+        style="@style/action_bar_icon_style"
+        android:src="@drawable/date_line" />
+
+    <TextView
+        android:id="@+id/tv_weekday_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textSize="@dimen/action_bar_text_size_small" />
+
+</RelativeLayout>

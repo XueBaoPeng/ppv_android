@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="165dp"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:background="@color/about_list_sel_color" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:id="@+id/balance_imageview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/ic_payment_blue_24dp" />
+
+        <TextView
+            android:id="@+id/balance_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_toRightOf="@id/balance_imageview"
+            android:singleLine="true"
+            android:text="Balance"
+            android:textColor="@color/gray_bg"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/smart_card_detail_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/balance_textview"
+            android:layout_marginLeft="24dp"
+            android:layout_toRightOf="@id/balance_imageview"
+            android:paddingBottom="16dp"
+            android:text="N32432"
+            android:textColor="@color/orange_color"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/icon_arrowright" />
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:background="@color/about_list_sel_color" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:id="@+id/bouquet_imageview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/ic_shopping_basket_blue_24dp" />
+
+        <TextView
+            android:id="@+id/bouquet_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_toRightOf="@id/bouquet_imageview"
+            android:singleLine="true"
+            android:text="Balance"
+            android:textColor="@color/gray_bg"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/bouquet_package_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/bouquet_textview"
+            android:layout_marginLeft="24dp"
+            android:layout_toRightOf="@id/bouquet_imageview"
+            android:paddingBottom="16dp"
+            android:text="N32432"
+            android:textColor="@color/orange_color"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/icon_arrowright" />
+    </RelativeLayout>
+
+</LinearLayout>

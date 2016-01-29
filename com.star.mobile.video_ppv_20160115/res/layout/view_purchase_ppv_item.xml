@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="64dp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="16dp">
+
+        <TextView
+            android:id="@+id/purchase_time_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10:00"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/purchase_product_code_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/purchase_time_tv"
+            android:layout_marginTop="4dp"
+            android:singleLine="true"
+            android:text="Product code:xxxxxxxxxxxxxxxxxx"
+            android:textColor="@color/translucent_50"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/purchase_checkbox_rl"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="16dp">
+
+        <CheckBox
+            android:id="@+id/purchase_checkbox"
+            style="@style/checkboxTheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:layout_centerInParent="true" />
+
+        <RadioButton
+            android:id="@+id/purchase_radiobutton"
+            style="@style/radiobuttonTheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="16dp"
+        android:layout_toLeftOf="@id/purchase_checkbox_rl">
+
+        <TextView
+            android:id="@+id/purshase_price_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$2.00"
+            android:textColor="@color/taks_blue"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/favorable_price_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/purshase_price_tv"
+            android:text="$3.00"
+            android:textColor="@color/purchase_text_color"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/purchase_status_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/rectangle_purchased"
+        android:visibility="gone" />
+</RelativeLayout>

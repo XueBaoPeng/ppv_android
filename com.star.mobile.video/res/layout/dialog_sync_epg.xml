@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="270dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/list_bg"
+    android:orientation="vertical"
+    android:padding="0dp" >
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp" >
+
+        <com.star.ui.ImageView
+            android:id="@+id/iv_channel_icon"
+            android:layout_width="@dimen/channel_item_height"
+            android:layout_height="@dimen/channel_item_height"
+            android:src="@drawable/icon_channel_logo" />
+
+        <ImageView
+            android:layout_width="@dimen/channel_item_height"
+            android:layout_height="@dimen/channel_item_height"
+            android:background="@drawable/list_channel_cover" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_sync_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#747474"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_gravity="center_horizontal"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/bt_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:background="@drawable/popup_button_go"
+        android:textColor="#545454"
+        android:textStyle="bold"
+        android:textSize="20sp" />
+
+</LinearLayout>

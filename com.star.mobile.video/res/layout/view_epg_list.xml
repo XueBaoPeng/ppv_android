@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent" >
+
+    <ListView
+        android:id="@+id/lv_epg_list"
+        style="@style/listview_style"
+        android:dividerHeight="0dp" >
+    </ListView>
+
+    <RelativeLayout
+        android:id="@+id/iv_no_data"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+         >
+        <ImageView 
+            android:id="@+id/iv_no_reminder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/no_available_coupon"
+            />
+        <TextView android:layout_width="200dp"
+		            android:layout_height="wrap_content"
+		            android:gravity="center"
+		            android:layout_centerHorizontal="true"
+		            android:layout_below="@+id/iv_no_reminder"
+		            android:text="@string/not_reminder_text"
+		            android:textColor="@color/grey"
+		            android:textSize="16sp"
+		            /> 
+    </RelativeLayout>
+
+    <include
+        android:id="@+id/loadingView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        layout="@layout/loading_progress_large"
+        android:visibility="gone" />
+
+</RelativeLayout>

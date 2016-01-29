@@ -1,0 +1,63 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2D2D2D" >
+	<include 
+	    android:id="@+id/head_title"
+	    layout="@layout/window_titlebar_3"/>
+    <com.star.mobile.video.view.ClipZoomImageView
+        android:id="@+id/id_clipImageLayout"
+        android:layout_below="@id/head_title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <RelativeLayout
+        android:layout_below="@id/head_title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <View
+            android:id="@+id/view_l"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@+id/view_c"
+            android:background="@drawable/head_upload_bg" />
+
+        <ImageView
+            android:id="@+id/view_c"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/headphoto_area" />
+
+        <View
+            android:id="@+id/view_r"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/view_c"
+            android:background="@drawable/head_upload_bg" />
+
+        <View
+            android:id="@+id/view_t"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/view_c"
+            android:layout_toLeftOf="@id/view_r"
+            android:layout_toRightOf="@id/view_l"
+            android:background="@drawable/head_upload_bg" />
+
+        <View
+            android:id="@+id/view_b"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/view_c"
+            android:layout_toLeftOf="@id/view_r"
+            android:layout_toRightOf="@id/view_l"
+            android:background="@drawable/head_upload_bg" />
+    </RelativeLayout>
+
+     
+     
+
+</RelativeLayout>

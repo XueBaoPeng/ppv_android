@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <EditText
+            android:id="@+id/et_check_num"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_48"
+            android:layout_weight="2"
+            android:background="@drawable/bg_input_whitebg"
+            android:hint="@string/ver_code_hin"
+            android:inputType="number"
+            android:maxLength="4"
+            android:paddingLeft="@dimen/dp_5"
+            android:singleLine="true"
+            android:textColor="@color/choose_text"
+            android:textSize="18sp"
+            android:textColorHint="@color/no_select_coupon_title" />
+
+        <Button
+            android:id="@+id/bt_ver_code"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_48"
+            android:layout_marginLeft="-5dp"
+            android:layout_marginTop="-1dp"
+            android:layout_weight="1"
+            android:background="@drawable/get_code_black_button"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </LinearLayout>
+    
+	<TextView 
+        android:id="@+id/tv_code_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        android:textColor="@color/choose_text"
+        android:textSize="16sp"
+        />
+</LinearLayout>

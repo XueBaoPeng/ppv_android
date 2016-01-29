@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/title_bar"
+        layout="@layout/window_titlebar" />
+
+    <LinearLayout
+        android:id="@+id/home_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/title_bar"
+        android:orientation="vertical" />
+
+    <LinearLayout
+        android:id="@+id/other_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" />
+
+    <include
+        android:id="@+id/rl_menubar_guide"
+        layout="@layout/frame_menubar"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/rl_chnGuide_guide"
+        layout="@layout/frame_chanel_guide"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/rl_epgDetail_alert"
+        layout="@layout/frame_detail_alert"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/rl_me_headView"
+        layout="@layout/frame_me_headview"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/rl_allchn_guide"
+        layout="@layout/frame_all_channel"
+        android:visibility="gone" />
+    <include
+        android:id="@+id/rl_chatroom_guide"
+        layout="@layout/frame_chnguide_chatroom"
+        android:visibility="gone" />
+
+</RelativeLayout>

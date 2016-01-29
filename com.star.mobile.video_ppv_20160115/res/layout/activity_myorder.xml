@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white" >
+
+    <include
+        android:id="@+id/my_order_title"
+        layout="@layout/window_titlebar_4" />
+
+    <com.star.mobile.video.view.ListView
+        android:id="@+id/my_order_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/my_order_title"
+        android:divider="@null"
+        android:scrollbars="none" >
+    </com.star.mobile.video.view.ListView>
+
+    <include
+        android:id="@+id/smartcard_loadingView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/my_order_title"
+        layout="@layout/loading_progress_large" />
+
+</RelativeLayout>

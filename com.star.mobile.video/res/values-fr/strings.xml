@@ -1,0 +1,923 @@
+<resources>
+	<!-- 德甲名字 -->
+	<string name="bundesliga_name">Bundesliga</string>
+	<!-- 意甲名字 -->
+	<string name="serie_a_name">Série A</string>
+	
+	<string name="player_analytic_url">http://analyze.starcloud.link:9537/player</string>
+	<!-- <string name="chatTop_url">http://10.0.63.24:8089/portal_parent</string> -->
+    <!-- <string name="chatTop_url">http://218.205.169.218:8081/forum</string> -->
+    
+    <!-- 支付url test-->
+    <!-- <string name="paga_url">http://218.205.169.218:8081/portal/pay/paga.html</string> -->
+    <!-- realse -->
+    <string name="paga_url">http://tenbre.me/portal/pay/paga.html</string>
+    <string name="faq_url">/forum/faq/faq_list.html</string>
+    
+    <string name="app_name">StarTimes</string>
+    <string name="facebook_app_name">tenbre</string>
+    <string name="app_id">720428864711530</string>
+    <string name="action_settings">Paramètres</string>
+    <string name="logout">Déconnexion</string>
+    <string name="fragment_tag_Home">Accueil</string>
+    <string name="fragment_tag_Me">Moi</string>
+    <string name="fragment_tag_epgDetail">Détail du programme</string>
+    <string name="fragment_tag_onAir">Sur l\'antenne</string>
+    <string name="fragment_tag_channelGuide">Guide des chaînes</string>
+    <string name="fragment_tag_chatRooms">Salles de Chat</string>
+    <string name="fragment_tag_video">En direct &amp; Vidéo</string>
+    <string name="tag_video_list">Liste des vidéos</string>
+    <string name="activity_allchannels_title">Toutes les chaînes</string>
+    <string name="activity_alertsetting_title">Reminder Setting</string>
+    <string name="activity_alertlist_title">Mes rappels</string>
+     <string name="activity_forum_title">Forum</string>
+    <string name="text_whathot">A la Une</string>
+    <string name="text_more">Plus</string>
+    <string name="comment_more">Group Vine</string>
+    <string name="text_onair_now">Maintenant</string>
+    <string name="text_onair_next">Suivant</string>
+    <string name="search_title">Recherche</string>
+    <string name="task_title">Tâches</string>
+    <string name="all_comments_title">Tous les commentaires</string>
+    <string name="qyou_comments_title">Qyou Commentaires</string>
+    <string name="str_yearago">il y a des années</string>
+    
+    <string name="str_monthago">il y a des mois</string>
+    <string name="str_daysago">il y a quelques jours</string>
+    <string name="str_hoursago">il y a des heures</string>
+    <string name="str_minsago">il y a quelques minutes</string>
+    <string name="str_secondago">il y a des secondes</string>
+    <string name="go">Aller</string>
+    <string name="email_phone">Email/ Numéro de téléphone en 9 chiffres</string>
+    <string name="email_add">Adresse e-mail</string>
+    <string name="login_input_user">E_mail / numéro de téléphone</string>
+    <string name="pwd">Mot de passe</string>
+    <string name="comfim_pwd">Confirmez le mot de passe</string>
+    <string name="inivated_hin">Code d\'invitation</string>
+    <string name="invitation_code">Code d\'invitation</string>
+    <string name="invititions">d\'invitation</string>
+    <string name="MyReminders">My Reminders</string>
+    <string name="ReminderNotification">Notification Rappel</string>
+    <string name="login_btn">Sign in</string>
+    <string name="register_btn">Inscription</string>
+    <string name="already">déjà inscrit</string>
+    <string name="choose_area">Choisissez votre zone de pays :</string>
+    <string name="next">Suivant</string>
+    <string name="have_account">Avez vous déjà un compte?</string>
+    <string name="login_title">Connexion</string>
+    <string name="reg_title">Inscription</string>
+    <string name="reg_later_btn">S\'inscrire plus tard</string>
+    <string name="skip">Sauter</string>
+    <string name="sig_in_btn">S\'inscrire</string>
+    <string name="nick_name">Pseudo</string>
+    <string name="nick">Nick</string>
+    <string name="sex">Mâle</string>
+    <string name="name">Pseudo</string>
+    <string name="alerts">Alertes</string>
+    <string name="search">Recherche…</string>
+    <string name="tv_info">Info</string>
+    <string name="ad">+</string>
+    <string name="leave_comment">Laissez un commentaire…</string>
+    <string name="leave_msg">Laissez votre message</string>
+    <string name="forward_link">A quoi sert cette application?</string>
+    <string name="forward_text">Envoyer à :</string>
+    <string name="or">Ou</string>
+    <string name="program_dital">Program Detail</string>
+    <string name="star_coins">Pièces en étoile</string>
+    <string name="startimes_vip">StarTimes VIP</string>
+    <string name="recharge">Recharger</string>
+    <string name="transfer">Transfert</string>
+    <string name="star_smartcard">Carte à puce de StarTimes</string>
+    <string name="me_lonin">Connexion</string>
+    <string name="please_select">Veuillez choisir</string>
+    <string name="smart_card">Carte à puce :</string>
+    <string name="vouch_no">N\° Bon</string>
+    <string name="pin_number">N\° PIN</string>
+    <string name="confirm">Confirmez </string>
+    <string name="ok">OK</string>
+    <string name="reset_password">Réinitialiser le mot de passe</string>
+    <string name="smart_no">Veuillez entrer le numéro de la  carte à puce</string>
+    <string name="stb_code">Trouvez les 6 chiffres, comme indiqué dans l\'image</string>
+    <string name="topup_activity_title">Recharger</string>
+    <string name="smart_card_activity_title">Carte à puce de StarTimes</string>
+    <string name="feedback">Commentaires</string>
+    <string name="tenb">Mes donnees</string>
+    <string name="new_pass">Nouveau mot de passe</string>
+    <string name="confirm_new_pass">Confirmez le nouveau mot de passe</string>
+    <string name="reset_pass">Réinitialiser le mot de passe</string>
+    <string name="reset_nike_name">Pseudo :</string>
+    <string name="reset_email">Email :</string>
+    <string name="send_email">Envoyer un email</string>
+    <string name="forget_password">Mot de passe oublié ?</string>
+    <string name="other_account">Inscrivez-vous avec d\'autres comptes</string>
+    <string name="pease_account">Veuillez utiliser le compte avec l\'email d\'inscription</string>
+    <string name="my_wallet">Mon portefeuille</string>
+    <string name="earn_more_coins">Gagnez plus de pièces</string>
+    <string name="my_coupons">Mes coupons</string>
+	<string name="coupons">Coupons</string>    
+    <string name="rewards">Récompenses</string>
+    <string name="conform_to_exchange">Confirmez pour échanger</string>
+    <string name="expiration_date">Date d\'expiration:</string>
+    <string name="exchange_no">N\° Échange :</string>
+    <string name="go_to_check_coupon">Allez vérifier le coupon</string>
+    <string name="my_coupons_title">Mes coupons</string>
+    <string name="reward_detail_title">Détail de Récompense</string>
+    <string name="reward_title">Dépenser les pièces</string>
+    <string name="send_btn">Envoyer</string>
+    <string name="fast_user_report">Rapport rapide d\'utilisateur</string>
+    <string name="update_notisfy">Notification de mise à jour</string>
+    <string name="update">Mettre à jour</string>
+    <string name="select">Choisissez</string>
+    <string name="leave_your_precious_advice">Laissez vos précieux conseils</string>
+    <string name="cannot_alert">Il est en direct. Vous pouvez le regarder sur votre téléviseur dès maintenant !</string>
+    <string name="cannot_cancel_alert">L\'annulation de l\'alerte est invalide pour le moment!</string>
+    <string name="user_report_title">Pouvez-vous nous laisser une petite minute pour répondre à cette enquête rapide afin de nous aider à </string>
+    <string name="bouque">Basic Bouquet:</string>
+    <string name="validity">Validité :</string>
+    <string name="account_balance">Compte :</string>
+    <string name="currency">₦</string>
+    <string name="no">No.</string>
+    <string name="four_layer_notify_title">La prochaine mise à jour dépend de vous!</string>
+    <string name="four_layer_notify_content">Rédiger un rapport rapide d\'utilisateur, et bénéficier des pièces .</string>
+    <string name="four_layer_dialog_content">Vous avez fait l\'expérience des principales mises à jour de cette version. L\'aimez-vous?</string>
+    <string name="four_layer_time">15:00</string>
+    <string name="egg_alert_time">11:00</string>
+    <string name="focebook">Focebook</string>
+    <string name="twitter">Twitter</string>
+    <string name="current_password">Mot de passe actuel</string>
+    <string name="current_version_title">Version actuelle</string>
+    <string name="new_version_title">Nouvelle version</string>
+    <string name="guide_number">3</string>
+    <string name="update_information">Informations sur la mise à jour</string>
+    <string name="inforamtion">Information</string>
+    <string name="title_save">Sauvegarder</string>
+    <string name="sex_man">Mâle</string>
+    <string name="sex_woman">Femelle</string>
+    <string name="sex_defalut">Non précisé</string>
+    <string name="need_more_coins">Besoin de plus de pièces</string>
+    <string name="alpha">Promotion de test Alpha ! Pièces doublées</string>
+    <string name="egg_share">Invitez vos amis et obtenez des coupons!</string>
+    <string name="refresh">Cliquez sur Actualiser</string>
+    <string name="explore_more">Explorez Plus</string>
+    <string name="comment">Commentaires</string>
+    <string name="related">Vidéos connexes</string>
+    <string name="star_times_smart_card">Numéro de carte à puce de StarTimes</string>
+    <string name="notice">Notice : une carte à puce ne peut être liée qu\'à 10 comptes différents.</string>
+    <string name="example">Exemple: Le nombre dans la boîte rectangulaire rouge.</string>
+    <string name="stb_code_last_four">Les 6 derniers chiffres de votre numéro de série du décodeur</string>
+    <string name="quit_again_click">Appuyez à nouveau pour quitter!</string>
+    <string name="share_text">Je l\'adore, vous devez y jeter un coup d\'œil !</string>
+    <string name="cancel">Annuler</string>
+    <string name="edit">Éditer</string>
+    <string name="confirm_to_recharge">Confirmer pour recharger</string>
+    <string name="fragment_tag_ccount_manager">Carte à puce</string>
+    <string name="discobery_tag_fragment">Découverte</string>
+    <string name="startimes_business_hall_or_call">Veuillez  visiter le service commercial de StarTimes ou bien appelez-nous</string>
+    <string name="twenty_four">(+234)094618888</string>
+    <string name="thirteen">(+234)014618888</string>
+    <string name="smart_card_recharge">Recharge de carte à puce </string>
+    <string name="my_smart_card">Ma carte à puce</string>
+    <string name="pay_title">Payez avec paga</string>
+	<string name="five_min">5min</string>
+	<string name="ten_min">10min</string>
+	<string name="fifteen_min">15min</string>
+	<string name="thirty_min">30min</string>
+    
+    <!-- error info -->
+    <string name="error_network">Serveur internet indisponible, veuillez réessayer plus tard.</string><!-- 提示信息 -->
+    
+    <!-- Player -->
+    <string name="player_first_time_msg">Le lecteur vidéo de StarTimes utilise la technologie d\'encodage la plus avancée. Comparé à Youtube, il </string>
+    <string name="live_video_not_yet_begin">Disponible à</string>
+    <string name="live_video_ended">Oops, déjà terminé.</string>
+
+    <!-- 邮件地址不能为空 -->
+
+    <string name="email_address_can_not_be_empty">L\'adresse e-mail ne peut pas être vierge</string>
+    <!-- 密码不能为空 -->
+    <string name="password_can_not_be_empty">Le mot de passe ne peut pas être vierge</string>
+
+    <!-- 确认密码不能为空 -->
+    <string name="password_must_be_reconfirmed">Le mot de passe doit être reconfirmé</string>
+    <!-- 再次输入密码 -->
+    <string name="please_reconfirm_the_password">Veuillez confirmer le mot de passe</string>
+    <!-- 正在加载地区信息 -->
+    <string name="loading_region_information">Chargement des régions ...</string>
+    <!-- 正在提交地区信息 -->
+    <string name="submitting_region_information">Envoi de votre région ...</string>
+    <!-- 密码输入不正确 -->
+    <string name="password_is_incorrect">Le mot de passe est incorrect</string>
+    <!-- 密码不能为空 -->
+    <string name="password_not_empty">Ne laissez pas le mot de passe vierge !</string>
+    <!-- 正在加载个人信息 -->
+    <string name="loading_personal_information">Chargement des informations personnelles</string>
+    <!-- 用户名已存在 -->
+    <string name="user_name_is_already_exist">L\'email existe déjà</string>
+    <!-- 邮箱已存在 -->
+    <string name="email_has_already_been_registered">L\'email a déjà été enregistré</string>
+    <!-- 手机号已存在 -->
+    <string name="number_has_already_been_registered">Le numéro a déjà été enregistré</string>
+    <!-- 用户名不存在 -->
+    <string name="user_name_does_not_exist">L\'email n\'existe pas</string>
+    <!-- 手机号不存在 -->
+    <string name="phone_number_not_exist">Le numéro de téléphone n\'existe pas</string>
+    <!-- 请输入正确的邮箱 -->
+    <string name="plese_enter_a_valid_email_address">Veuillez saisir une adresse email valide</string>
+    <!-- 正在登录 -->
+    <string name="logging_in">Connexion...</string>
+    <!-- 正在提交注册信息 -->
+    <string name="submitting_registration_information">Envoi en cours ...</string>
+    <!-- 正在加载数据 -->
+    <string name="loading">Chargement...</string>
+
+    <string name="account_connect_title">Connexion de compte</string>
+    <string name="account_connect_successful">Liaison effectuée avec succès !</string>
+    <string name="account_connect_unsuccessful">Liaison effectuée avec succès !</string>
+    <string name="account_connect_alert">Votre compte précédent crée avec votre %s sera fusionné après la connexion. Le compte courant sera </string>
+    <string name="account_disconnect_successful">Dissociation effectuée avec succès !</string>
+    <string name="account_disconnect_unsuccessful">Dissociation effectuée avec succès !</string>
+    <string name="account_disconnect_alert">Voulez-vous délier votre compte %s ?</string>
+    <string name="unlink">Délier</string>
+    <string name="account_connect_fail">Liaison échouée. Le %s a été lié par un autre compte.</string>
+    <string name="video_end_change_bouquet_prompt">Voulez-vous regarder plus ? Consultez la chaîne %1$s  du bouquet de %2$s. Mettez à jour votre </string>
+    <string name="video_end_change_bouquet_none"> Voulez-vous regarder plus de programmes intéressants ? Cliquez sur le bouton Bouquet pour vous abonner.</string>
+    <!-- array list -->
+   	
+    <string name="opening">Ouverture (par défaut)</string>
+    <string name="apex">apex</string>
+    <string name="beacon">Balise</string>
+    <string name="by_seaside">Au bord de la mer</string>
+    <string name="chimes">Sonneries</string>
+    <string name="illuminate">éclairer</string>
+    
+    <string name="sun">Dim</string>
+    <string name="mon">Lun</string>
+    <string name="tue">Mar</string>
+    <string name="wed">Mer</string>
+    <string name="thu">Jeu</string>
+    <string name="fri">Ven</string>
+    <string name="sat">Sam</string>
+    
+    <string name="sunday">Dimanche</string>
+    <string name="monday">Lundi</string>
+    <string name="tuesday">Mardi</string>
+    <string name="wednesday">Mercredi</string>
+    <string name="thursday">Jeudi</string>
+    <string name="friday">Vendredi</string>
+    <string name="saturday">Samedi</string>
+    
+    <string name="jan">Jan.</string>
+    <string name="feb">Fév..</string>
+    <string name="mar">Mars</string>
+    <string name="apr">Avr.</string>
+    <string name="may">Mai</string>
+    <string name="jun">Juin</string>
+    <string name="jul">Juil.</string>
+    <string name="aug">Août</string>
+    <string name="sept">Sept.</string>
+    <string name="oct">Oct.</string>
+    <string name="nov">Nov.</string>
+    <string name="dec">Déc..</string>
+    
+    
+    <string name="basic">De base</string>
+    <string name="classic">Classique</string>
+    <string name="unique">Unique</string>
+    
+    <!-- album activity -->
+    <string name="album">Album</string>
+    <string name="photo">Photos</string>
+    <string name="send_picture_success">Envoi de photo  %s avec succès!</string>
+    <string name="send_picture_fail">Erreur d\'envoi de photo</string>
+    <string name="no_sdcard">Pas de Sd carte</string>
+    <string name="success_upload_picture">Photo de profil téléchargée avec succès</string>
+    <string name="fail_upload_picture">Échec de téléchargement de la photo de profil</string>
+    
+    <!-- all comment activity -->
+    
+    <string name="comment_less">Les commentaires doivent contenir au minimum 6 lettres et au maximum 500 lettres</string>
+    <string name="submitting">Envoi de commentaires…</string>
+    <string name="submitting_comment_failure">Échec d\'envoi du commentaire!</string>
+    
+    <!-- char rooms activity-->
+    <string name="chat_room">Salle de chat</string>
+    <string name="blank_message_not_allowed">Le message vierge n\'est pas autorisé !</string>
+    <string name="only">Seulement 500 lettres autorisées !</string>
+    
+    <!-- choose activity -->
+    <string name="success_locate">Localisation réussie</string>
+    <string name="location_is_not_found">Votre position est introuvable. Veuillez sélectionner la région la plus proche.</string>
+    <string name="fail_locate">Localisation échouée</string>
+    <string name="please_select_area">Veuillez sélectionner une zone</string>
+    
+    <!-- current version app detail activity -->
+    <string name="no_version_info">Aucune information sur cette version</string>
+    <string name="new_version">Nouvelle version</string>
+    
+    <!-- feedback activity -->
+    <string name="comment_should">Les commentaires ne  peuvent pas être vide.</string>
+    <string name="submit_feedback_success">Nous avons reçu vos commentaires, merci.</string>
+    <string name="no_user_report">Aucun rapport d\'utilisateur pour la version actuelle ou bien vous l\'avez déjà fait.</string>
+    
+    <!-- landscape play activity -->
+    <string name="video_resource_does_not_exist">La ressource vidéo n\'existe pas.</string>
+    <string name="how_to_train_your_dragon">Comment dresser votre dragon</string>
+    
+    <!-- loging activity  -->
+    <string name="comfirm_to_send_activation">Veuillez Confirmer l\'envoi d\'un lien d\'activation !</string>
+    <string name="do_you_want_to_reset_your_password">Voulez-vous réinitialiser votre mot de passe ?</string>
+    <string name="longin_error">Login error!</string>
+    <string name="sending">Erreur d\'identification !</string>
+    <string name="account_from_your_email">Veuillez activer votre compte à partir de votre e-mail :</string>
+    <string name="to_resend_the_activation_link_failure">Échec de renvoi du lien d\'activation!</string>
+    <string name="login_with">Connectez-vous avec</string>
+    
+    <!-- new version app detail activity -->
+    <string name="downloading">Téléchargement en cours...</string>
+    <string name="install">Installer</string>
+    <string name="upgrade_information">Mettre à jour les Informations</string>
+    <string name="please_update_the_app_and_run_it_again">Veuillez mettre à jour l\'application et l\'exécuter à nouveau.</string>
+    <string name="current_network_threen_g">Le réseau actuel est 3G, continuez à télécharger.</string>
+    <string name="later">Plus tard</string>
+    <string name="download_error">Erreur de téléchargement</string>
+    
+    <!-- offline epg activity -->
+    <string name="offline_epg">Hors ligne EPG </string>
+    
+    <!-- register activity -->
+    <string name="verifying_your_input">Vérification de votre saisie…</string>
+    <string name="welcome_tenbre">Bienvenue sur tenbre play! Pour compléter le processus, veuillez cliquer sur le lien  envoyé dans votre boîte mail pour vérifier votre email %s</string>
+    <string name="sorry">Désolé!</string>
+    <string name="registration_failed">Échec d\'inscription.</string>
+    <string name="email_address_is_wrong">L\'adresse e-mail est incorrecte !</string>
+    <string name="send">Envoi</string>
+    <string name="resend_failed">Échec de renvoi du lien d\'activation !</string>
+    <string name="nickname_can_less_than_five_letters">Le pseudo ne peut pas être inférieur à 5 lettres !</string>
+    <string name="less_than_eleven_letters">Le pseudo ne peut pas être supérieur à 50 lettres !</string>
+    <string name="mailbox_not_correct_format">Le format de la boîte mail est incorrect !</string>
+    <string name="password_cannot_less_letters">Le mot de passe ne peut pas être inférieur à 6 lettres !</string>
+    <string name="password_cannoe_greater">Le mot de passe ne peut pas être supérieur à 50 lettres !</string>
+    <string name="letter_number_only">Au moins 6 lettres / chiffres</string>
+    <string name="password_error">Le mot de passe doit être uniquement des chiffres / lettres</string>
+    <string name="two_password_do_not_match">Les deux mots de passe que vous avez entrés ne sont pas identiques!</string>
+    <string name="five_to_eleven_letters">4-20 letters!</string>
+    <string name="password">Mot de passe</string>
+    <string name="confirm_password">Confirmez le mot de passe</string>
+    
+    <!-- reset password activity -->
+    <string name="incorrect_password">Mot de passe incorrect.</string>
+    <string name="password_reset_fails">Désolé ! Erreur inconnue.</string>
+    
+    <!-- reset password send mail activity -->
+    <string name="check_your_email">Veuillez vérifier votre e-mail : %s et obtenir un mot de passe aléatoire pour vous connecter.</string>
+    <string name="email_address_has_not_been">Cette adresse e-mail n\'a pas encore été enregistrée.</string>
+    <string name="password_reset_failed">Échec de réinitialisation du mot de passe</string>
+    
+    <!-- reward activity -->
+    <string name="no_data">Pas de données</string>
+    
+    <!-- reward detail activity -->
+    <string name="number_prizes_insufficinet">Le nombre de prix est insuffisant</string>
+    <string name="current_balance_insufficinet">Votre solde actuel est insuffisant</string>
+    <string name="server_is_busy">Le serveur est occupé</string>
+    
+    <!-- search activity -->
+    <string name="no_search_results">Aucun résultat de recherche !</string>
+    <string name="no_more_programs">Il n\'y a plus de programmes</string>
+    
+    <!-- smartcard activity -->
+    <string name="card_number_can_not_be_empty">Le numéro de carte ne peut pas être vide</string>
+    <string name="enter_the_decoder">Veuillez entrer le numéro de série du décodeur</string>
+    <string name="binding">Liaison en cours…</string>
+    <string name="binding_success">Liaison réussie</string>
+    <string name="smartcard_number_doesn_exist">Le numéro de carte à puce n\'existe pas.</string>
+    <string name="smartcard_binding_fails">Liaison de la carte à puce échouée. Veuillez essayer plus tard !</string>
+    <string name="failed_ten">Échoué, votre carte à puce a été liée 10 fois, et la limite est déjà atteinte.</string>
+    <string name="smartcard_number_does">Le numéro de carte à puce ne correspond pas à celui de série du décodeur.</string>
+    <string name="smartcard_has_already">La carte à puce a déjà été liée</string>
+    <string name="binding_failure">Échec de liaison</string>
+    
+    <!-- tasks activity  -->
+    <string name="loading_tasks">Chargement des tâches en cours ...</string>
+    
+    
+    <!-- topup activity -->
+    <string name="account_balance_is_not_enough">Le solde de votre compte ne suffit pas à acheter ce nouveau bouquet.</string>
+    <string name="fail_to_change_your_bouquet">Erreur de changement de votre bouquet, veuillez contacter le service commercial.</string>
+    <string name="have_recharged">Vous avez changé votre bouquet en</string>
+    <string name="binding_smart_card">Veuillez lier d\'abord la carte à puce</string>
+    <string name="please_try_again">Veuillez réessayer.</string>
+    <string name="vouchno_can_not_be_empty">Le numéro de bon ne doit pas  être vierge</string>
+    <string name="recharging">Rechargement en cours …</string>
+    <string name="boss_unavailable_now">BOSS indisponible pour le moment, essayez plus tard.</string>
+    <string name="recharge_service_is_busy">Recharge Service is busy, Retrying...</string>
+    <string name="recharge_card_number_is_invalid">Le numéro de carte de recharge est invalide</string>
+    <string name="client_password_is_incorrect">Le mot de passe du client est incorrect</string>
+    <string name="recharge_card_number_has_been_used_before">Le numéro de carte de recharge a déjà été utilisé.</string>
+    <string name="recharge_card_has_expired">La carte de recharge a expiré.</string>
+    <string name="recharge_with_card">Défaut de recharger avec la carte !</string>
+    <string name="recharge_with_coupon">Défaut de recharger avec le coupon !</string>
+    <string name="coupon_has_expired">Le coupon a expiré</string>
+    <string name="recharge_failure">Échec de recharge !</string>
+    <string name="recharget_frequent">Trop frequent, veuiller réessayer plus tard.</string>
+    <string name="recharge_successfully_your_balance_now">Recharge effectuée avec succès ! Votre solde est maintenant</string>
+    <string name="recharge_task_completed_get">La tâche de recharge terminée ! Obtenez</string>
+    <string name="coins">Pièces</string>
+    <string name="now">Maintenant</string>
+    <string name="customer_name">Nom du client :</string>
+    <string name="account_balances">Solde du compte :</string>
+    <string name="mobile_phone">Téléphone portable :</string>
+    <string name="recharge_this_smart_card">Rechargez cette carte à puce</string>
+    <string name="use_coupon">Utiliser le coupon</string>
+    <string name="Use_coupon_to_recharge">Utilisez les coupons pour recharger votre compte instantanément</string>
+    <string name="Recharge_card">Entrez le numéro de votre carte de recharge</string>
+    <string name="Pay_online">Paga est maintenant disponible</string>
+    <string name="recharge_card_info">Veuillez entrer le numéro de votre carte de recharge</string>
+    <string name="online_pay">Paga pourrait facturer certains frais pour leur service.</string>
+    <string name="you_can">Vous pouvez acheter la carte de recharge dans les points de vente StarTimes.</string>
+    <string name="no_coupon">Pas de coupon</string>
+    <string name="coupon">Coupon</string>
+    <string name="recharge_card">Carte de recharge :</string>
+    <string name="recharge_smart">Recharge de carte à puce</string>
+    <string name="online_payment">Paiement en ligne</string>
+    <string name="entet_the_amount">Saisissez le montant</string>
+    <string name="change_bouquet">Changement de Bouquet</string>
+    <string name="verification">Vérification</string>
+    <string name="confirm_to_change">Confirmer pour changer</string>
+    <string name="select_smart_card">Veuillez choisir une carte à puce</string>
+    <!-- user report activity -->
+    <string name="user_report_for_current_version">Aucun rapport d\'utilisateur pour la version actuelle.</string>
+    <string name="do_report">Vous avez déjà terminé le rapport rapide d\'utilisateur.</string>
+    <string name="commit_report_error">Désolé, echec d\'envoi. Veuillez réessayer plus tard.</string>
+    <string name="user_report_for_current_version_give_us_feedback">Aucun rapport d\'utilisateur pour la version actuelle, laissez-nous un commentaire ?</string>
+    <string name="have_received_your_feedback">Nous avons reçu vos commentaires, et vous avez 5 pièces, merci.</string>
+    <string name="answer_all_the_questions">Veuillez répondre à toutes les questions!</string>
+    <string name="what_apos_new">Quoi de neuf</string>
+    
+    <!-- welcome activity -->
+    <string name="register_your_device_error">Signalez l\'erreur de votre appareil !</string>
+    <string name="logon_failed_with_user">Échec de connexion avec l\'utilisateur :</string>
+    <string name="exit">Quitter</string>
+    <string name="install_information">Installer les informations</string>
+    <string name="have_already_downloaded_latest_version">Vous avez déjà téléchargé la dernière version de Tenbre! Confirmer la mise à jour ?</string>
+    
+    <!-- home activity -->
+    <string name="set_channel_filter">Définissez un filtre de canal : Chaînes favorites que vous avez enregistrées</string>
+    <string name="choose_one_bouquet">Définissez un filtre de canal : \n Choisissez un bouquet</string>
+    <string name="choose_one_channel_category">Définissez un filtre de canal : \n Choisissez une catégorie de chaines</string>
+    
+    <!-- Fragment, view-->
+    <string name="call">Appel</string>
+    <string name="channnel_guide_send_request">Votre demande a été envoyée avec succès !</string>
+    <string name="alert_success">Alerte effectuée avec succès !</string>
+    <string name="alert_cancel_success">Annulation réussie</string>
+    <string name="share_program">\n Programme :</string>
+    <string name="share_channel">\n Chaînes :</string>
+    <string name="share_from_startime">Partager à partir de StarTimes APP.</string>
+    <string name="share_from_tenbre">Partager à partir de StarTimes APP.</string>
+    <string name="share_logo_aws">http://tenbre.tk/portal/img/shonngo_logo.png</string>
+    <string name="alert_login">Veuillez vous connecter d\'abord</string>
+    
+    <string name="alert_unsuccess">Alerte sans succès !</string>
+    <string name="alert_cancel_unsuccess">L\'annulation de l\'alerte est échouée !</string>
+    <string name="comment_commit_limit">Les commentaires doivent être au minimum 6 lettres et au maximum 500 lettres</string>
+    <string name="comment_commit">Envoi de commentaires…</string>
+    <string name="comment_commit_fail">Échec d\'envoi de commentaires !</string>
+    <string name="no_program">La chaîne actuelle n\'a pas de programme.</string>
+    <string name="no_program_guide">Pas de guide de programmes maintenant.</string>
+    <string name="preparing_data">Préparation de données, en attente …</string>
+    <string name="success">succès.</string>
+    <string name="failure">échec.</string>
+    <string name="confirm_logout">Confirmez la déconnexion?</string>
+    <string name="choose_card">Choisissez une  Carte</string>
+    <string name="can_not_like_comment">Vous ne pouvez pas aimer votre propre commentaire !</string>
+    <string name="balance">Solde</string>
+    <string name="bouquest">Bouquet</string>
+    <string name="remaining_days">jours restants</string>
+    <string name="fail_to_get_smartcard">Impossible d\'obtenir les informations de la carte à puce</string>
+    <string name="delete_smartcard">Supprimer la carte à puce?</string>
+    <string name="delete_smartcard_fail">Suppression de cette carte à puce échouée.</string>
+    <string name="get_coins">Obtenir des pièces</string>
+    <string name="Invite_coupon">Inviter</string>
+    <string name="not_specified">Non précisé</string>
+    <string name="Male">Mâle</string>
+    <string name="Female">Femelle</string>
+    <string name="check_in">Vérification</string>
+    <string name="other_help">Autres aides</string>
+    <string name="twenty_four_hours_everyday">24 heures tous les jours</string>
+    <string name="everyday">De 7:00 à 20:00 tous les jours</string>
+    <string name="all_channel">Toutes les Chaînes</string>
+    <string name="favorite">Préféré</string>
+    <string name="no_program_guide_for_now">Pas de guide de programmes pour le moment.</string>
+    <string name="want_to_see_epg_of_this_channel">Voulez-vous voir le GPE de cette chaîne ?</string>
+    <string name="channel_rooms">Salles de Chaînes</string>
+    <string name="startimes_rooms">Salles de Startimes</string>
+    <string name="report_a_problem">Signaler un problème ?</string>
+    <string name="clip">Clip :  </string>
+    <string name="my_coins">Mes pièces</string>
+    <string name="mycoins">Mes pièces</string>
+    <string name="earn_coins">Gagner des pièces</string>
+    <string name="spend_coins">Dépenser des pièces</string>
+    <string name="my_tenbre">Mon StarTimes APP</string>
+    <string name="alert">Alerte</string>
+    <string name="tips">Astuces</string>
+    <string name="my_coupons_five">My coupons (5)</string>
+    <string name="ruffle">Ride</string>
+    <string name="luck_draw">Tirage au sort</string>
+    <string name="cost">cost :</string>
+    <string name="confirm_the_smart_card_information">Confirmer les informations de la carte à puce</string>
+    <string name="click_here_to_recharge_the_smart_card">Cliquez ici pour recharger la carte à puce</string>
+    <string name="dismiss">rejeter</string>
+    <string name="dismiss_s">rejeter</string>
+    <string name="choose_one_or_more_coupons">Choisissez un ou plusieurs coupons</string>
+    <string name="enter_the_recharge_card_number">Entrez le numéro de carte de recharge</string>
+    <string name="enter_the_amount_money_you_want_to_recharge">Entrez le montant d\'argent que vous souhaitez recharger !</string>
+    <string name="more_videos">Plus de vidéos</string>
+    
+    
+    <!-- view -->
+    <string name="locating">Localisation</string>
+    <string name="task">Gagner des pièces</string>
+    <string name="task_coupon_share">Gagner des coupons</string>
+    <string name="return_">Retour</string>
+    <string name="remind_me">Rappelez-moi</string>
+    <string name="ahead">En avant</string>
+    <string name="available_on">Disponible sur :</string>
+    <string name="channel">Chaîne</string>
+    <string name="dtt">TNT</string>
+    <string name="desk_lamp">Service de table</string>
+    <string name="tenbre">StarTimes App</string>
+    <string name="start">Démarrer</string>
+    <string name="data_loading_fails">Le chargement de données a échoué !</string>
+    <string name="all_tasks_completed_today">Toutes les tâches ont été accomplies aujourd\'hui !</string>
+    <string name="coin">pièce</string>
+    <string name="confirm_to_log_out">Confirmez la déconnexion ?</string>
+    
+    <!-- util -->
+    <string name="your_login_has_been_out_of_date">Votre connexion est obsolète. Reconnecter …</string>
+    
+    <string name="you_have_just_exchanged" formatted="false" >Vous venez juste d\'échanger les  %1$s  avec %2$s des pièces !</string>
+    <string name="hot_chat_rooms">Salles de chat torride </string>
+    <string name="value_cannot_be_empty">La valeur ne peut être vide</string>
+    <string name="amount_can_not_be">Le montant ne peut pas être 0</string>
+    <string name="minimum_amount">Le montant minimum est de 50</string>
+    <string name="share_an_egg">share an egg.</string>
+    <string name="delete_the_martcard">Supprimer la carte à puce?</string>
+    <string name="fail_to_delete_this_smart_card">Échec de suppression de cette carte à puce.</string>
+    <string name="fail_to_get_the_smart_card_information">Impossible d\'obtenir les informations de la carte à puce</string>
+    
+    <string name="rechargeBy_SC">Le rechargement de %1$s  effectué avec succès!</string>
+    <string name="rechargeBy_SC_failCO">Le rechargement de %1$s effectué avec succès! Votre solde est maintenant %2$s</string>
+    <string name="rechargeBy_CO">Un coupon %1$s a été rechargé. Votre solde est maintenant %2$s. Voulez-vous plus de coupons ? </string>
+    
+    <string name="coupon_title_newCus">Premier coupon</string>
+    <string name="coupon_title_limit">coupon limité</string>
+    <string name="coupon_title_common">coupon illimité</string>
+    <string name="coupon_title_free">coupon gratuit</string>
+    
+    <string name="coupon_content_newCus">1. Date d\'expiration %1$s \n2. Le montant indiqué sur le coupon peut être utilisé pour recharger votre compte sans aucune limitation. \n3. Seul un nouveau titulaire du compte peut racheter le premier coupon. \n4. Le premier coupon est transférable à un ami.</string>
+    <string name="coupon_content_limit">1. Date d\'expiration %2$s \n2. Ce coupon peut être échangé lorsque vous rechargez %1$s dans votre compte.</string>
+    <string name="coupon_content_club">1. Date d\'expiration : le 30 septembre 2015 \n2. Ce coupon peut être échangé lorsque vous rechargez %1$s dans votre compte.</string>
+    <string name="coupon_content_common">1. Date d\'expiration %1$s \n2. Le montant indiqué sur le coupon peut être utilisé pour recharger votre compte sans aucune limitation.</string>
+    
+    <string name="share_egg_default">Je viens de recevoir un coupon de StarTimes pour la promotion de la chasse aux œufs de Pâques. Venez me rejoindre. Cliquez sur le lien pour essayer</string>
+    <string name="share_egg">Voulez-vous simplement gagner %1$s? WOW! Cliquez sur le lien ci-dessous pour télécharger </string>
+    <string name="share_egg_after_recharge">Je viens de gagner un coupon de %1$s et recharger ma carte à puce de StarTimes . Cliquez sur le lien </string>
+    <string name="share_egg_newCus">Voici un coupon de StarTimes pour vous! Voulez-vous en obtenir plus ? Installez StarTimes APP, découvrez les surprises de Pâques. 100% chance de gagner. Partagez la chance avec moi !</string>
+    <string name="share_egg_free">Woo-hoo, je viens de craquer un œuf avec  %1$s de coupon gratuit de StarTimes à l\'intérieur. Quoi ? Vous ne pouvez pas utiliser votre coupon parce que vous ne vous êtes pas encore inscrit ? C\'est facile ! Cliquez sur le lien ci-dessous pour me joindre et découvrir les surprises cachées !</string>
+    <string name="share_egg_free_tan">Wow!Nimevunja yai lenye thamani ya %1$s,Nikapata kuponi ya bure kutoka StarTimes.Ati nini? Huwezi kutumia kuponi kwa sababu bado hujajisajili! Ni rahisi! Bonyeza kiunganishi hiki na ushuhudie maajabu yaliyofichwa.</string>
+       
+    <!-- 邮箱分享标题 -->
+    <string name="email_share_title">Un cadeau de StarTimes</string>
+    <!-- 邮箱充值分享 -->
+    <string name="email_share_egg_after_recharge">Je viens de gagner le coupon de %1$s et recharger ma carte à puce de StarTimes . \n \n Voulez-vous obtenir plus de coupons ? Cliquez sur le lien ci-dessous pour télécharger StarTimes APP, découvrez les surprises cachées de Pâques.  \n chance de gagner %2$s \n. Partagez la chance avec moi!</string>
+   	<!-- 邮箱新人卷分享 -->
+    <string name="email_share_egg_newcus">Voici un coupon de StarTimes pour vous ! Vous pouvez l\'utiliser pour recharger directement votre carte à puce ! \n \n %1$s Voulez-vous en obtenir plus? Installez StarTimes APP, découvrez les surprises de Pâques</string>
+    <!-- 砸开彩蛋分享 -->
+    <string name="email_share_egg">Voulez-vous simplement gagner %1$s? WOW! Cliquez sur le lien ci-dessous pour télécharger StarTimes APP, découvrez les surprises de Pâques. Partagez la chance avec moi !</string>
+    
+	<string name="coupon_common_limit">Rechargez votre compte \n sans aucune limitation</string>
+    <string name="coupon_newCus_limit">Disponible pour un nouveau titulaire du compte \n</string>
+    <string name="coupon_exchange_limit">Disponible lorsque la recharge \n est plus de %1$s</string>
+    <string name="coupon_free">Recharger directement dans votre compte.</string>
+    
+
+	<string name="bt_check">Vérifiez</string>
+    <string name="bt_share">Partagez</string>
+
+    <string name="first_coupon">Premier coupon</string>
+    <string name="limited_coupon">Limited coupon</string>
+    <string name="free_coupon">coupon limité</string>
+    
+    <string name="recharge_limit">Vous avez choisi un coupon de %1$s. \n  Il sera disponible lorsque vous rechargez plus de %2$s.</string>
+    <string name="recharge_notmatch">Vous devez charger %1$s pour être en mesure d\'utiliser ce coupon.</string>
+    <string name="smcartcard_used">Ce coupon a été utilisé, veuillez choisir un autre.</string>
+    
+    <string name="btn_share">Partager avec des amis</string>
+    <string name="first_times">Limite atteinte. 10 premiers coupons ont déjà été rechargés à cette carte à puce. Veuillez choisir un </string>
+    
+    <string name="status_sending">Envoi en cours…</string>
+    <string name="status_Using">Utilisation en cours…</string>
+    
+    <string name="chatRoom_newMessage">Nouveau message de la salle de chat %1$s.</string>
+    <string name="chatRoom_newMessage_s">Nouveau message de la salle de chat </string>
+    <string name="alert_info">Un œuf par jour. N\'oubliez pas de jouer. Bonne chance !</string>
+    <!-- 老用户成领取 -->
+    <string name="alert_info_">Félicitations! Vous avez un coupon pour la recharge instantanée.</string>
+    
+    <string name="alert_info_title">Vous avez gagné un coupon gratuit</string>
+    
+    <string name="phone">Téléphone</string>
+    <string name="email">Email</string>
+    <string name="get_code">Obtenir un code</string>
+    <string name="phone_number_hin">Numéro de téléphone</string>
+    <string name="ver_code_hin">Code de vérification</string>
+    <!-- <string name="phone_msg">Seuls les numéros de téléphone de la Tanzanie</string> -->
+    <string name="error_phone_msg">Le numéro que vous avez saisi n\'est pas correct.</string>
+    <string name="code_msg">CCliquez sur "Obtenir un code" pour envoyer à nouveau un code </string>
+    <string name="mob_tips">Tips：</string>
+    <string name="mob_tip_msg_four">1. Si vous avez un code d\'invitation et voulez obtenir un coupon gratuit, veuillez vous inscrire via votre numéro de téléphone.</string>
+<!--     <string name="mob_tip_msg_one">2. Utilisez votre numéro de téléphone pour vous inscrire gratuitement</string>
+ -->    <string name="mob_tip_msg_three">2. En continuant vous indiquez que vous avez lu et accepté les Conditions générales d\'utilisation</string>
+    <string name="mob_reg_success">Inscription réussie. Vous devez vous identifier maintenant avec votre numéro de téléphone.</string>
+    <string name="code_error">Non reconnu. Veuillez vérifier et entrer à nouveau.</string>
+    <string name="su_login">Sorry, the number has already been registered.</string>
+    <string name="please_check">Le code de vérification a été envoyé sur votre téléphone. Veuillez vérifier.</string>
+    <!-- 坦桑区号 -->
+    <string name="tan_area_number">255</string>
+    <string name="copy">Copier</string>
+    <string name="forward">En avant</string>
+    
+    <string name="about_tenbre">À propos de StarTimes App</string>
+    <string name="current_version">Version actuelle</string>
+    <string name="faq">FAQ</string>
+    <string name="tell_friend">Informer un ami</string>
+    <string name="account">Compte</string>
+    <string name="account_connection">Connexion de compte</string>
+    <string name="log_out">Déconnexion</string>
+    <string name="setting">Paramètres</string>
+    <string name="coming_soon">Bientôt</string>
+    <string name="setting_reset">Désolé, la réinitialisation de mot passe n\'est pas prise en charge  pour le moment. Elle sera disponible dans la version suivante.</string>
+    <string name="reset_alert_title">Réinitialiser le mot de passe</string>
+    <string name="account_conection_coming_soon">La connexion de compte sera prise en charge bientôt.</string>
+    <string name="share_content">Hé! Essayez l\'application  StarTimes. Un guide de poche TV StarTimes avec des salles de chat. Cliquez sur le lien pour obtenir des coupons et renouveler votre abonnement avec votre téléphone. Commencez une vie amusante et plus facile!</string>
+    <!-- 充值后分享 -->
+    <string name="rec_share">Je viens de gagner un coupon de StarTimes et recharger ma carte à puce. Cliquez sur %1$s \n  pour télécharger StarTimes App. Commencez une vie amusante et plus facile!</string>
+    <!-- 砸蛋后分享 -->
+    <string name="break_egg_share">Voulez-vous tout simplement gagner un coupon StarTimes? Cliquez sur %1$s \n  pour télécharger StarTimes App. Commencez une vie amusante et plus facile!</string>
+    <!-- 直接分享 -->
+   	<!-- <string name="directly_share">Hé! Regardez cette application StarTimes. Un guide de poche TV de StarTimes avec des fonctionnalités intéressantes et beaucoup de récompenses. Cliquez maintenant pour télécharger et obtenir immediatement un coupon gratuit . %1$s</string> -->
+    <string name="directly_share">Salut! Obtenez des coupons gratuits instantanés dés maintenant. Cliquez sur %1$s pour télécharger StarTimes App et regarder des vidéos et matches en direct en ligne gratuitement. N\'oubliez pas d\'entrer mon code invitation %2$s lorsque vous vous inscriverez</string>
+    <!-- Twitter充值后分享 -->
+     <string name="twitter_rec_share">Obtenir un coupon gratuit \n %1$s </string>
+    <!-- Twitter砸蛋后分享 -->
+    <string name="twitter_break_egg_share">Obtenir  un coupon gratuit \n %1$s</string>
+    <!-- Twitter直接分享 -->
+    <string name="twitter_directly_share">Obtenir  un coupon gratuit \n %1$s</string>
+    
+    <string name="frame_text_tellfrind">Voulez-vous plus de coupons? \n Cliquez ici pour inviter des amis.</string>
+    <string name="failed">Échoué</string>
+    <!-- 翻译 -->
+    <string name="me">Moi</string>
+    <string name="header_describe">Avatar</string>
+    <string name="username_describe">Nom:</string>
+    <string name="modify_cancel">Annuler</string>
+    <string name="modify_save">Sauvegarder</string>
+    <string name="notification">Notification</string>
+    <string name="chat_room_notification">Notification de salle de chat</string>
+    <string name="alert_setting">Reglage d\'alerte</string>
+    
+    <string name="welcome_to_tenbre">Bienvenue sur StarTimes App</string>
+    <string name="almost_tenbre">Vous y êtes presque!</string>
+    <string name="ver_link_has_bean_send">Un lien de vérification a été envoyé</string>
+    <string name="check_email_">Veuillez vérifier votre e-mail et cliquez sur le lien de vérification pour compléter l\'inscription. Si vous ne trouvez pas l\'e-mail d\'activation, veuillez vérifier votre dossier de courrier indésirable</string>
+    <string name="still_find">Vous ne parvenez toujours pas à trouver l\'e-mail d\'activation? Cliquez sur Envoyer à nouveau pour envoyer un autre e-mail d\'activation.</string>
+    <string name="activated">Activé</string>
+    <string name="resend">Renvoyer</string>
+    
+    <string name="sound">Son</string>
+    <string name="vibration">Vibration</string>
+    <string name="does_not_match">L\'identité ne correspond pas</string>
+    <string name="updata_sex_faill">Failed to update</string>
+    <string name="updata_sex_success">Update successfully</string>
+    <string name="update_nickname_hint">La longueur doit être comprise entre 4 a 20 lettres</string>
+    <string name="tell_friend_title">Inviter des amis, gagner des  coupons gratuits!</string>
+    <string name="tell_friend_content_one">Inviter des amis et obtenir des coupons %1$s gratuits pour une recharge instantanée. Plus d\'amis vous invitez, plus de coupons gratuits vous aurez.</string>
+    <string name="tell_friend_content_two">Cliquez sur le bouton  partager maintenant</string>
+    <string name="tell_friend_content_three">3. C\'est facile d\'obtenir un coupon, il suffit de cliquer sur le bouton Partager et partager via SMS. Si l\'on clique sur le lien que vous avez partagé, et rejoint StarTimes APP, vous obtiendrez un coupon gratuit,  au fait votre ami en aura un %1$s aussi!</string>
+	<string name="tell_friend_content_four">4. Il suffit de cliquer sur  Partager et demander à vos amis de cliquer sur le lien!</string>
+    
+    
+    <string name="send_to">Envoyer à  la salle de chat</string>
+    <string name="top_post">Meilleurs posts</string>
+    <string name="mute_notification">Notification</string>
+    <string name="chat_room_title">Information de la salle de chat</string>
+    <string name="latest_chats">Dernières discussions</string>
+    
+    <string name="share_successful">Partage avec succès!</string>
+    
+    <string name="days_left">Jours restants</string>
+    <string name="day_left">Jours restants</string>
+    <string name="please_recharge">Veuillez Recharger</string>
+    <string name="punish_stop">Votre compte %1$s sera bloqué ,arrêt sur %2$s (%3$s jours plus tard)</string>
+    
+    <string name="deduct_refund">Déduire / Rembourser</string>
+    <string name="recharge_smart_card">Rechargez cette carte à puce</string>
+    <string name="change_the_bouquet">Changez de bouquet</string>
+    <string name="account_bill">Compte de facturation</string>
+    <string name="account_bill_title">Compte de facturation</string>
+    <string name="last_month_bill">La facture du mois dernier</string>
+    <string name="smart_card_no">Carte à puce:</string>
+    <string name="charged_no">Chargé No.:</string>
+    <string name="time">Temp:</string>
+    <string name="no_records">Pas d\'enregistrement</string>
+    <string name="cash">En espèces</string>
+    <string name="other_method">D\'autres méthodes</string>
+    <string name="this_month">Le mois courant</string>
+    <string name="deduct">Déduire</string>
+    <string name="refund">Remboursement</string>
+    <string name="account_select_foot">Seulement les factures de six mois sont disponibles sur StarTimes App. Pour plus de détails, veuillez contacter le service commercial ou le centre d\'appels.</string>
+    <string name="bouquet_left">Bouquet restant:</string>
+    <string name="days">Jours</string>
+    <string name="day">jour</string>
+    <string name="details">Détails:</string>
+    
+    <!-- 1.6.5 -->
+    <string name="nijeria_list">Nigeria (+234)</string>
+    <string name="tanzania_list">Tanzania (+255)</string>
+    <string name="kenya_list">Kenya (+254)</string>
+    <string name="nijeria_number">234</string>
+    <string name="tanzania_number">255</string>
+    <string name="kenya_area_number">254</string>
+    <string name="uganda_number">256</string>
+    <string name="south_africa_number">27</string>
+    <string name="rwanda_number">250</string>
+    <string name="number_is_not_registered">Ce numéro n\'est pas inscrit</string>
+    <string name="number_you_entered_was_not_recognized">Le numéro que vous avez entré n\'a pas été reconnu!</string>
+    <string name="epg_subhead">Sous-titre:</string>
+    <string name="epg_classification">Intro:</string>
+    <string name="epg_channel_number">Channel No:</string>
+    <string name="epg_descripion">Intro:</string>
+    <string name="setting_new_password">Réglager un nouveau mot de passe ...</string>
+    
+    <!-- 1.6.6 -->
+    <string name="topup_smartcard">Carte à puce</string>
+    <string name="topup_bouquet">Bouquet</string>
+    <string name="share">Partager</string>
+    
+    <!-- 1.6.7 -->
+    <string name="add_smartcard_info">Les 6 derniers chiffres de votre numéro de série du décodeur</string>
+    <string name="recharge_smartcard">Cliquez ici pour jumeler votre carte à puce</string>
+    <string name="add_smartcard">ajouter la carte à puce</string>
+    <string name="setting_error">Erreur de réglage!</string>
+    <string name="like_comment_from_yourself">Vous ne pouvez  pas aimer votre propre commentaire !</string>
+    <string name="checking_in">Vérification en cours. </string>
+    <string name="sign_in_success">Connexion réussie.</string>
+    <string name="sign_in_failure">Connexion échouée.</string>
+    <string name="sign_in_limit">Connectez-vous une seule fois par jour.</string>
+    <string name="login_first">Notification: Seuls les utilisateurs inscrits peuvent obtenir des pièces . Veuillez vous connecter avant de faire la tâche!</string>
+    <string name="no_alert">Vous n\'avez réglé aucun rappel!</string>
+    <string name="no_coupons">Aucun coupon disponible. Allez en racheter un!</string>
+    <string name="leave_foot">Laissez votre empreinte.</string>
+    <string name="upload_head">Cliquez ici pour télécharger votre photo de profil</string>
+    <string name="fill_smartcard">Remplissez votre numéro de carte à puce et confirmez pour la lier</string>
+    <string name="click_sidebar">Cliquez ici pour trouver de nouvelles caractéristiques dans la barre latérale</string>
+    <string name="book_program">Choisissez un programme que vous aimez ici!</string>
+    <string name="alert_program">Définir une alerte à ce programme</string>
+    <string name="waiting">Init...</string>
+    
+    <string name="congratulations">Félicitations</string>
+    <string name="redeem_reward">Les pièces peuvent être utilisées pour racheter des récompenses!</string>
+    <string name="please_enter_numbers">veuillez entrer 10 numéros</string>
+    <string name="copyright">2. En continuant vous indiquez que vous avez lu et accepté les conditions générales d\'utilisation</string>
+    
+    <!-- 2.0.5 -->
+    <string name="video_describe">Bientôt</string>
+    <string name="no_more_comments">Pas d\'autres commentaires</string>
+    <string name="none_more_videos">Pas d\'autres vidéos. Nous essayons de trouver des vidéos  plus intéressantes pour vous.</string>
+    
+    <string name="invita">1. If you have an invitation code and want to get free coupon, please register via your phone number.</string>
+    <string name="invita_one">Voici votre code d\'invitation. Invitez vos amis à  s\'inscrire sur StarTimes App. Vous obtiendrez chacun un coupon de %1s pour une recharge instantanée.</string>
+    <string name="step_one">ÉTAPE 1:</string>
+    <string name="step_one_txt">Faites part de votre code d\'invitation à votre ami</string>
+    <string name="step_two">ÉTAPE 2:</string>
+    <string name="step_two_txt">Invitez-le/la à s\'inscrire sur StarTimes App par numéro de téléphone</string>
+    <string name="step_three">ÉTAPE 3:</string>
+    <string name="step_three_txt">Demandez à votre ami d\'entrer votre code d\'invitation sur la page d\'inscription du téléphone</string>
+    <string name="step_four">ÉTAPE 4:</string>
+    <string name="step_four_txt">Obtenez un coupon pour une recharge instantanée</string>
+    <string name="bundesliga">Bundesliga</string>
+    <string name="seriea">Série A</string>
+    <string name="video_live_chat">Chat</string>
+    <string name="video_live_more_video">Plus de vidéos</string>
+    <string name="video_chat_notice">Discutez ici avec des gens de toute l\'Afrique!</string>
+    
+    <!-- 上拉、下拉刷新 -->
+    <string name="head">Vue de face </string>
+    <string name="pull_to_refresh">Tirez pour actualiser</string>
+    <string name="release_to_refresh">Relâchez pour actualiser</string>
+    <string name="refreshing">Actualisation en cours...</string>
+    <string name="refresh_succeed">Actualisation réussie</string>
+    <string name="refresh_fail">Actualisation échouée</string>
+    <string name="pullup_to_load">Tirez Pour Plus</string>
+    <string name="release_to_load">Relâchez pour charger</string>
+    <!-- <string name="app_loading">Chargement en cours...</string> -->
+    <string name="load_succeed">Chargement réussi</string>
+    <string name="load_fail">Chargement échoué</string>
+    <string name="load_no_data">Aucune donnée se charge</string>
+    <string name="load_no_videos">Aucune vidéo se charge. </string>
+    
+    <!-- 视频质量 -->
+    <string name="quality">Qualité</string>
+    <string name="normal">Normal-30KB/s</string>
+    <string name="low">Faible-15KB/s</string>
+    <string name="apply">Appliquer</string>
+    <string name="no_video_quality">Aucune définition pour passer à la vidéo en cours</string>
+    <string name="alert_prompt">Vous avez déjà configuré une alerte</string>
+    
+    <string name="network_propomt">Les conditions du réseau sont médiocres. Essayez de passer à une faible qualité.</string>
+    <string name="dialog_yes">Oui</string>
+    <string name="dialog_no">Non</string>
+    <string name="prompt_msg">Le programme n\'a pas encore commencé, Veuillez définir une alerte!</string>
+    <string name="post_prompt_msg">Veuillez vous connecter pour publier un post.</string>
+    <string name="choose_country">Choisissez un pays</string>
+    
+    <string name="fav_channel">Je viens d\'aimer la chaîne %1$s.</string>
+    <string name="download_epg">Je viens de télécharger l\'EPG de la chaîne %1$. Ne ratez plus vos programmes。</string>
+    <string name="welcome_tenbre_play">Bienvenue sur StarTimes App</string>
+    <string name="welcome_msg">Commencez votre voyage à StarTimes!</string>
+    
+    <string name="facebook_login_error">Échoué. Impossible d\'accéder à Facebook, veuillez vérifier votre connexion réseau.</string>
+    <!-- 论坛删除消息取消按钮提示 -->
+    <string name="forum_confirm">CONFIRMER</string>
+    <string name="forum_cancle">ANNULER</string>
+    <string name="forum_later">PLUS TARD</string>
+    <!-- 论坛帖子置顶提示 -->
+    <string name="forum_stick_prompt">Voulez-vous confimrer la publication de ce post?</string>
+    <!-- 论坛帖子取消置顶提示 -->
+    <string name="forum_cancle_stick_prompt">Voulez-vous confimrer l\'annulation de ce post?</string>
+    <!-- 论坛帖子删除提示 -->
+    <string name="forum_delete_prompt">Voulez-vous confimrer la suppression de ce post?</string>
+    <!-- 论坛置顶帖超过5个提示 -->
+    <string name="forum_more_five_stick_prompt">Le nombre limite de posts est atteint, veuillez commencer par vérifier et annuler certains posts.</string>
+    <!-- 论坛长按删除消息提示 -->
+    <string name="forum_delete_message_prompt">Voulez-vous confirmer la suppression de message ? </string>
+ 	
+    
+    <string name="chatroom_notification">Notification de salle de chat</string>
+    <string name="reminder_setting">Reglage de Rappel</string>
+    <string name="reminder">Notification de  Rappel</string>
+    <string name="ringtone">Sonnerie</string>
+    <string name="about">À propos</string>
+    <string name="home_video">VIDÉO</string>
+    <string name="home_epg">EPG</string>
+    <string name="home_chat">CHAT</string>
+    <string name="video_tips">ASTUCES</string>
+    <string name="video_update">METTRE À JOUR</string>
+    
+    <string name="confirm_number">Veuillez confirmer que vous avez entré le bon numéro.</string>
+    <string name="click_to_cancel">Cliquez pour annuler</string>
+    
+    <string name="favorite_collect_mask">Explorez plus et amusez-vous</string>
+    <string name="sign_with">ou connectez-vous avec</string> 
+    <string name="coins_coupon">Sans limites</string>
+    <string name="coins_coupon_msg_success">Félicitation! Échange coupon avec succès</string>
+    <string name="coins_coupon_msg">Voulez-vous depenser les %1$s pièces et  echanger %2$s  coupon ?</string>
+    <string name="coupon_msg">sera utilisé pour recharger votre carte à puce.</string>
+    <string name="coins_coupon_check">VÉRIFIER</string>
+    <string name="coins_not_coupon_msg">Les pieces ne suffisent pas, allez terminer plusieurs tâches pour obtenir plus de pièces .</string>
+    <string name="earn">GAGNER</string>
+    <string name="spend">DÉPENSER</string>
+    <string name="delete_smart_card">supprimer la carte</string>
+    <string name="delete_smart_card_prompt">Carte %s sera supprimee</string>
+    <string name="bind_smart_card_prompt">Veuillez lier votre carte à puce d\'abord.</string>
+    <string name="bind_smart_card_limit">Vous ne pouvez lier que 10 cartes à puce</string>
+    <string name="bind_smart_card_call_prompt">Contactez le centre d\'appel avec %s</string>
+    
+    <string name="dotask_earncoins">Vous avez terminé "%1$s" des tâches, et a gagné %2$s de pièces .</string>
+    <string name="bill_recharge">RECHARGER</string>
+    <string name="bill_deduct_refund">DÉDUIRE / REMBOURSEMENT</string>
+    <string name="enter_decoder_number">Veuiller entrez les 6 chiffres de votre numéro de décodeur:</string>
+    
+    <string name="search_too_many">Désolé, vous avez entré trop de mots.</string>
+    
+    <string name="crash_message">StarTimes App s\'est arrêté, veuillez essayer de le redémarrer plus tard.</string>
+    <string name="loading_prompt">Je suis en train de fair le  chargement,veuillez  me donner un peu de temps.</string>
+    <string name="url_not_find">The page you are looking for is removed or temporarily unavailable</string>
+    <string name="no_bouquet">No Bouquet</string>
+    <string name="not_video_text">Vidéo n\'est  pas disponible pour le moment, Veuillez essayer quelques autres chaines pour l\'instant</string>
+    <string name="not_epg_text">Pas de guide de programmes pour le moment</string>
+    <string name="not_coupon_text">Aucun coupons pour le moment</string>
+    <string name="not_bill_text">Je n\'ai trouvé aucun enregistrements</string>
+    <string name="not_reminder_text">Vous n\'avez pas réglé aucun rappels!</string>
+    <string name="not_result_text">Aucun résultat trouvé</string>
+    <string name="not_channel_comment_text">say something about this programme</string>
+    <string name="not_feedback_text">Nous avons besoin de votre aide pour s\'ameliorer!</string>
+    <string name="select_for_you">Choisissez pour vous</string>
+    <string name="search_edit">Chaîne/Vidéo/Programme</string>
+    <string name="change">Change</string>
+    <string name="bouquet_to">bouquet à:</string>
+    <string name="no_more_tenbs">Pas plus de flux</string>
+    <string name="my_coins_prompt">Astuces:Pièces  peuvent être utiliser pour acheter beaucoup de choses!</string>
+    
+</resources>

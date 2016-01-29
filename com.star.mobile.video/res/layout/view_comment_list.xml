@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+    <LinearLayout
+        android:id="@+id/comment_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >	
+        <com.star.mobile.video.view.NoScrollGridView
+            android:id="@+id/channel_comment_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@color/white"
+            android:listSelector="#F8F8F8"
+            android:numColumns="1"
+            android:scrollbars="none" />
+          <!-- <ImageView
+           android:id="@+id/no_data_image"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:src="@drawable/no_comments"
+           android:visibility="gone"
+           android:layout_marginTop="16dp"
+           android:layout_marginBottom="16dp"
+           android:layout_gravity="center_horizontal" /> -->
+   		 <TextView 
+            android:id="@+id/no_data_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:drawableTop="@drawable/no_available_coupon"
+            android:text="@string/not_channel_comment_text"
+            android:layout_marginTop="16dp"
+           	android:layout_marginBottom="16dp"
+           	android:layout_gravity="center_horizontal" 
+           	android:textColor="@color/grey"
+	        android:textSize="16sp"
+           	android:visibility="gone"
+            />
+          <com.star.mobile.video.channel.ChatBottomInputView 
+            android:id="@+id/chatBottomInputView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+        
+    </LinearLayout>
+  
+</RelativeLayout>

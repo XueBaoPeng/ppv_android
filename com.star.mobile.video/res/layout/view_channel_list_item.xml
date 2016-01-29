@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/ll_category_layout"
+        style="@style/action_bar_layout_style"
+        android:layout_height="@dimen/menu_item_height"
+        android:layout_marginTop="6dp" >
+
+        <TextView
+            android:id="@+id/tv_category_name"
+            style="@style/action_bar_text_shadow_style"
+            android:layout_marginLeft="@dimen/action_bar_margin_10" />
+    </RelativeLayout>
+
+    <com.star.mobile.video.view.NoScrollGridView
+        android:id="@+id/gv_channel_group"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="3dp"
+        android:gravity="center"
+        android:horizontalSpacing="3dp"
+        android:listSelector="@android:color/transparent"
+        android:scrollbars="none"
+        android:verticalSpacing="3dp" />
+
+</LinearLayout>

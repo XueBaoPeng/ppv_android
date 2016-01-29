@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/ll_phone_number"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/bg_input_whitebg" >
+
+        <TextView
+            android:id="@+id/tv_area_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/choose_text"
+            android:textSize="18sp">
+        </TextView>
+
+        <EditText
+            android:id="@+id/et_phone_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/phone_number_hin"
+            android:background="@null"
+            android:inputType="number"
+            android:paddingLeft="@dimen/dp_5"
+            android:singleLine="true"
+            android:textColor="#545454"
+            android:textSize="18sp"
+            android:textColorHint="#B0B0B0" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_error_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textSize="16sp"
+        android:visibility="gone" />
+
+</LinearLayout>

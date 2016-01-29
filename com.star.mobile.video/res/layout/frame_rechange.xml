@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.star.mobile.video.view.MaskGuideView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/frame_confirm_info"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" >
+
+        <View
+            android:id="@+id/frame_confirm_above"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@drawable/all_cover_bg" />
+
+        <View
+            android:id="@+id/frame_confirm_t"
+            android:layout_width="12dp"
+            android:layout_height="match_parent"
+            android:layout_above="@id/frame_center"
+            android:layout_below="@+id/frame_confirm_above"
+            android:background="@drawable/all_cover_bg" />
+
+        <View
+            android:id="@+id/frame_confirm_b"
+            android:layout_width="12dp"
+            android:layout_height="match_parent"
+            android:layout_above="@id/frame_center"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/frame_confirm_above"
+            android:background="@drawable/all_cover_bg" />
+
+        <ImageView
+            android:id="@+id/frame_rechange_info"
+            android:layout_width="match_parent"
+            android:layout_height="235dp"
+            android:layout_below="@id/frame_confirm_above"
+            android:layout_toLeftOf="@id/frame_confirm_b"
+            android:layout_toRightOf="@id/frame_confirm_t"
+            android:background="@drawable/frame_cover" />
+
+        <View
+            android:id="@id/frame_center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/frame_rechange_confirm_cover"
+            android:layout_below="@id/frame_rechange_info"
+            android:background="@drawable/all_cover_bg" />
+
+        <View
+            android:id="@+id/frame_confirm_l"
+            android:layout_width="22dp"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/frame_confirm_bottom"
+            android:layout_below="@id/frame_center"
+            android:background="@drawable/all_cover_bg" />
+
+        <View
+            android:id="@+id/frame_confirm_r"
+            android:layout_width="22dp"
+            android:layout_height="match_parent"
+            android:layout_above="@id/frame_confirm_bottom"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/frame_center"
+            android:background="@drawable/all_cover_bg" />
+
+        <ImageView
+            android:id="@id/frame_rechange_confirm_cover"
+            android:layout_width="match_parent"
+            android:layout_height="69dp"
+            android:layout_above="@+id/frame_confirm_bottom"
+            android:layout_toLeftOf="@id/frame_confirm_r"
+            android:layout_toRightOf="@id/frame_confirm_l"
+            android:background="@drawable/frame_cover" />
+
+        <ImageView
+            android:id="@+id/frame_rechange_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_above="@+id/frame_confirm_bottom"
+            android:layout_margin="10dp"
+            android:layout_toLeftOf="@id/frame_confirm_r"
+            android:layout_toRightOf="@id/frame_confirm_l" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/frame_rechange_info"
+            android:layout_marginTop="5dp"
+            android:gravity="center_horizontal"
+            android:text="@string/confirm_the_smart_card_information"
+            android:textColor="@color/white"
+            android:textSize="17sp" />
+
+        <View
+            android:id="@id/frame_confirm_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/all_cover_bg" />
+
+        <ImageView
+            android:id="@+id/iv_rechange_confirm"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_alignBottom="@id/frame_rechange_confirm_cover"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/point_circle_rechage" />
+
+        <ImageView
+            android:id="@+id/iv_finger_confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/iv_rechange_confirm"
+            android:layout_marginBottom="-25dp"
+            android:layout_marginLeft="-30dp"
+            android:layout_toRightOf="@id/iv_rechange_confirm"
+            android:background="@drawable/finger_card_info" />
+
+        <TextView
+            android:id="@+id/tv_click_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/iv_finger_confirm"
+            android:layout_centerHorizontal="true"
+            android:text="@string/click_here_to_recharge_the_smart_card"
+            android:textColor="@color/white"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/tv_confirm_dismiss"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@id/tv_click_text"
+            android:layout_below="@id/tv_click_text"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/ok_button_bg"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="@string/dismiss"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/frame_choose_info"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" >
+
+        <View
+            android:id="@+id/frame_choose_above"
+            android:layout_width="match_parent"
+            android:layout_height="282dp"
+            android:background="@drawable/all_cover_bg" />
+
+        <View
+            android:id="@+id/frame_choose_t"
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/frame_choose_bottom"
+            android:layout_below="@id/frame_choose_above"
+            android:background="@drawable/all_cover_bg" />
+
+        <View
+            android:id="@+id/frame_choose_b"
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_above="@id/frame_choose_bottom"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/frame_choose_above"
+            android:background="@drawable/all_cover_bg" />
+
+        <ImageView
+            android:id="@+id/frame_choose_list"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_below="@id/frame_choose_above"
+            android:layout_toLeftOf="@id/frame_choose_b"
+            android:layout_toRightOf="@id/frame_choose_t"
+            android:background="@drawable/frame_cover" />
+
+        <View
+            android:id="@id/frame_choose_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/frame_choose_list"
+            android:background="@drawable/all_cover_bg" />
+
+        <ImageView
+            android:id="@+id/iv_rechange_choose"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignTop="@id/frame_choose_list"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="11dp"
+            android:src="@drawable/point_circle_rechage" />
+
+        <ImageView
+            android:id="@+id/iv_rechange_choose_1"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignTop="@id/frame_choose_list"
+            android:layout_marginTop="8dp" />
+
+        <ImageView
+            android:id="@+id/iv_rechange_choose_2"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@id/iv_rechange_choose_1" />
+
+        <ImageView
+            android:id="@+id/iv_finger_choose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/iv_rechange_choose"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="12dp"
+            android:background="@drawable/finger_choose_method" />
+
+        <TextView
+            android:id="@+id/tv_choose_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/iv_finger_choose"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:text="Choose one payment method"
+            android:textColor="@color/white"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/tv_choose_dismiss"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@id/tv_choose_text"
+            android:layout_below="@id/tv_choose_text"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/ok_button_bg"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="@string/dismiss"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/frame_coupon_info"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" >
+
+        <View
+            android:id="@+id/frame_coupon_above"
+            android:layout_width="match_parent"
+            android:layout_height="245dp"
+            android:background="@drawable/all_cover_bg" />
+
+        <View
+            android:id="@+id/frame_coupon_t"
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/frame_coupon_bottom"
+            android:layout_below="@id/frame_coupon_above"
+            android:background="@drawable/all_cover_bg" />
+
+        <View
+            android:id="@+id/frame_coupon_b"
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_above="@id/frame_coupon_bottom"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/frame_coupon_above"
+            android:background="@drawable/all_cover_bg" />
+
+        <ImageView
+            android:id="@+id/frame_coupon_list"
+            android:layout_width="match_parent"
+            android:layout_height="95dp"
+            android:layout_below="@id/frame_coupon_above"
+            android:layout_toLeftOf="@id/frame_coupon_b"
+            android:layout_toRightOf="@id/frame_coupon_t"
+            android:background="@drawable/frame_cover" />
+
+        <View
+            android:id="@+id/frame_coupon_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/frame_coupon_list"
+            android:background="@drawable/all_cover_bg" />
+
+        <LinearLayout
+            android:id="@+id/ll_click_point"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/frame_coupon_above"
+            android:layout_marginTop="45dp"
+            android:layout_toLeftOf="@id/frame_coupon_b"
+            android:layout_toRightOf="@id/frame_coupon_t"
+            android:gravity="bottom"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp" >
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+
+                <ImageView
+                    android:id="@+id/iv_rechange_coupon"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/point_circle_rechage" />
+
+                <ImageView
+                    android:id="@+id/iv_finger_coupon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/iv_rechange_coupon"
+                    android:layout_marginLeft="-25dp"
+                    android:layout_marginTop="-20dp"
+                    android:layout_toRightOf="@id/iv_rechange_coupon"
+                    android:background="@drawable/finger_use_coupon" />
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_coupon_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_click_point"
+            android:layout_centerHorizontal="true"
+            android:text="@string/choose_one_or_more_coupons"
+            android:textColor="@color/white"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/tv_coupon_dismiss"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@id/tv_coupon_text"
+            android:layout_below="@id/tv_coupon_text"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/ok_button_bg"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="@string/dismiss"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/frame_card_info"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" >
+
+        <View
+            android:id="@+id/frame_card_above"
+            android:layout_width="match_parent"
+            android:layout_height="248dp"
+            android:background="@drawable/all_cover_bg" />
+
+        <View
+            android:id="@+id/frame_card_t"
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/frame_card_bottom"
+            android:layout_below="@id/frame_card_above"
+            android:background="@drawable/all_cover_bg" />
+
+        <View
+            android:id="@+id/frame_card_b"
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_above="@id/frame_card_bottom"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/frame_card_above"
+            android:background="@drawable/all_cover_bg" />
+
+        <ImageView
+            android:id="@+id/frame_card_content"
+            android:layout_width="match_parent"
+            android:layout_height="112dp"
+            android:layout_below="@id/frame_card_above"
+            android:layout_toLeftOf="@id/frame_card_b"
+            android:layout_toRightOf="@id/frame_card_t"
+            android:background="@drawable/frame_cover" />
+
+        <View
+            android:id="@+id/frame_card_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/frame_card_content"
+            android:background="@drawable/all_cover_bg" />
+
+        <TextView
+            android:id="@+id/tv_card_dismiss"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/frame_card_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/ok_button_bg"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="@string/dismiss"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_card_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/tv_card_dismiss"
+            android:layout_alignRight="@id/tv_card_dismiss"
+            android:layout_marginBottom="10dp"
+            android:text="@string/enter_the_recharge_card_number"
+            android:textColor="@color/white"
+            android:textSize="17sp" />
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:id="@+id/frame_paga_info"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" >
+
+        <View
+            android:id="@+id/frame_paga_above"
+            android:layout_width="match_parent"
+            android:layout_height="248dp"
+            android:background="@drawable/all_cover_bg" />
+
+        <View
+            android:id="@+id/frame_paga_t"
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/frame_paga_bottom"
+            android:layout_below="@id/frame_paga_above"
+            android:background="@drawable/all_cover_bg" />
+
+        <View
+            android:id="@+id/frame_paga_b"
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_above="@id/frame_paga_bottom"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/frame_paga_above"
+            android:background="@drawable/all_cover_bg" />
+
+        <ImageView
+            android:id="@+id/frame_paga_content"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_below="@id/frame_paga_above"
+            android:layout_toLeftOf="@id/frame_paga_b"
+            android:layout_toRightOf="@id/frame_paga_t"
+            android:background="@drawable/frame_cover" />
+
+        <View
+            android:id="@+id/frame_paga_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/frame_paga_content"
+            android:background="@drawable/all_cover_bg" />
+
+        <TextView
+            android:id="@+id/tv_paga_dismiss"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/frame_paga_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/ok_button_bg"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="@string/dismiss"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_paga_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/tv_paga_dismiss"
+            android:layout_alignRight="@id/tv_paga_dismiss"
+            android:text="@string/enter_the_amount_money_you_want_to_recharge"
+            android:textColor="@color/white"
+            android:textSize="17sp" />
+    </RelativeLayout>
+
+</com.star.mobile.video.view.MaskGuideView>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/rl_my_smart_card"
+        style="@style/action_bar_layout_style"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/title_orange" >
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/action_bar_text_shadow_style"
+            android:layout_marginLeft="10dp"
+            android:text="@string/smart_card_recharge" />
+
+        <ImageView
+            android:id="@+id/iv_loading_line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="12dp"
+            android:layout_toLeftOf="@+id/iv_smart_loading_icon"
+            android:background="@drawable/title_orange_line"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@id/iv_smart_loading_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_toLeftOf="@+id/ll_edit"
+            android:background="@drawable/update_task"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@id/ll_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:visibility="gone" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/title_orange_line" />
+
+            <TextView
+                android:id="@+id/tv_operation"
+                style="@style/action_bar_text_shadow_style"
+                android:text="@string/edit"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/lv_smart_card_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+    <com.star.mobile.video.view.AddSmardCartView
+        android:id="@+id/view_account_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <com.star.mobile.video.view.LoadingProgressBar
+        android:id="@+id/lp_smartcard_loading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+    </com.star.mobile.video.view.LoadingProgressBar>
+
+</LinearLayout>

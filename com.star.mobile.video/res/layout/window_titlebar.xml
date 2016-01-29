@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/action_bar_height"
+    android:background="@drawable/actionbar_bg" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toLeftOf="@+id/pb_title_loading" >
+
+        <ImageView
+            android:id="@+id/iv_actionbar_menu"
+            style="@style/action_bar_btn_style"
+            android:src="@drawable/actionbar_back" />
+
+        <ImageView
+            android:id="@+id/iv_actionbar_logo"
+            style="@style/action_bar_icon_style"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:layout_toRightOf="@id/iv_actionbar_menu"
+            android:paddingTop="3dp"
+            android:src="@drawable/actionbar_home_logo" />
+
+        <TextView
+            android:id="@+id/tv_actionbar_title"
+            style="@style/title_bar_text_style"
+            android:layout_marginLeft="@dimen/action_bar_margin_8"
+            android:layout_marginRight="@dimen/action_bar_margin_8"
+            android:layout_toRightOf="@id/iv_actionbar_logo"
+            android:ellipsize="end"
+            android:singleLine="true" />
+    </RelativeLayout>
+
+    <ProgressBar
+        android:id="@id/pb_title_loading"
+        style="@style/loadingProgressBar_title"
+        android:layout_width="@dimen/menu_btn_width"
+        android:layout_height="16dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/action_bar_margin_15"
+        android:layout_toLeftOf="@+id/ll_search"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@id/ll_search"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true" >
+
+        <!-- <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/actionbar_line" /> -->
+
+        <ImageView
+            android:id="@+id/iv_actionbar_search"
+            style="@style/action_bar_btn_style"
+            android:src="@drawable/actionbar_search" />
+
+        <!-- <ImageView
+            android:id="@+id/iv_actionbar_line"
+            style="@style/action_bar_icon_style"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/actionbar_line" /> -->
+
+        <ImageView
+            android:id="@+id/iv_actionbar_back"
+            style="@style/action_bar_btn_style"
+            android:src="@drawable/channel_back" />
+    </LinearLayout>
+
+</RelativeLayout>

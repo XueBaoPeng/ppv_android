@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_marginLeft="-4dp"
+        android:layout_marginRight="-4dp"
+        android:background="@drawable/me_logout_bg" >
+        
+      <!-- <com.facebook.drawee.view.SimpleDraweeView  
+         android:id="@+id/iv_dic_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="8dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="16dp"
+        /> -->
+      
+	  <com.star.ui.ImageView
+            android:id="@+id/iv_dic_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="8dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="16dp" />  
+       
+
+        <ImageView
+            android:id="@+id/keyboard_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/ic_keyboard_arrow_right" />
+
+        <TextView
+            android:id="@+id/tv_dic_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/keyboard_arrow"
+            android:layout_toRightOf="@id/iv_dic_icon"
+            android:singleLine="true"
+            android:text="uowyerwieyr"
+            android:textColor="@color/gray_bg"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tv_dic_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_dic_title"
+            android:layout_marginTop="2dp"
+            android:layout_toLeftOf="@id/keyboard_arrow"
+            android:layout_toRightOf="@id/iv_dic_icon"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:textColor="@color/dicobery_content_txt"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+</LinearLayout>

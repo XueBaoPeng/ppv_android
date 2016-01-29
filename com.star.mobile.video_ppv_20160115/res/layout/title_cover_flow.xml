@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.star.mobile.video.liveandvideo.ResizeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/resizeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/allChannel"
+        android:layout_width="match_parent"
+        android:layout_height="116dp"
+        android:background="@drawable/bg_home_channel_136dp" >
+
+        <RelativeLayout
+            android:id="@+id/fancy_favorite_rl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <com.star.mobile.video.widget.FancyCoverFlow
+                android:id="@+id/fancy_cover_flow"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"/>
+
+            <ImageView
+                android:id="@+id/favority_big_imageview"
+                android:layout_width="45dp"
+                android:layout_height="42dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/fill_big" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_below="@id/fancy_favorite_rl"
+            android:layout_marginTop="-4dp" >
+
+            <com.star.mobile.video.view.AlwaysMarqueeTextView
+                android:id="@+id/channel_number_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="96dp"
+                android:ellipsize="marquee"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:gravity="center_horizontal"
+                android:singleLine="true"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:scrollHorizontally="true"
+                android:textColor="@color/white"
+                android:textSize="22sp" />
+
+            <ImageView
+                android:id="@+id/favority_imageview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="16dp"
+                android:src="@drawable/outline" />
+
+            <RelativeLayout
+                android:id="@+id/favorit_small_rl"
+                android:layout_width="48dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:id="@+id/favority_small_imageview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="16dp"
+                    android:src="@drawable/fill_small" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <com.star.ui.DragTopLayout
+        android:id="@+id/dv_channel_detail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/allChannel"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="98dp"
+            android:background="@drawable/bg_home_channel_97dp"
+            android:orientation="vertical" >
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#999999" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/channel_package"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="30dp"
+                    android:background="#999999" />
+
+                <TextView
+                    android:id="@+id/channel_category"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#999999" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="DTT"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="30dp"
+                    android:background="#999999" />
+
+                <LinearLayout
+                    android:id="@+id/ll_rate"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+
+                    <RatingBar
+                        android:id="@+id/rating_channel"
+                        style="@style/roomRatingBar_24"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop="2dp"
+                        android:isIndicator="true"
+                        android:numStars="5"
+                        android:stepSize="0.1" >
+                    </RatingBar>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/home_viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+            </android.support.v4.view.ViewPager>
+
+            <com.star.mobile.video.channel.ChannelControlView
+                android:id="@+id/cc_contro_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+            </com.star.mobile.video.channel.ChannelControlView>
+        </RelativeLayout>
+    </com.star.ui.DragTopLayout>
+
+    <com.star.mobile.video.channel.ChatBottomInputView
+        android:id="@+id/cb_chat_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone" >
+    </com.star.mobile.video.channel.ChatBottomInputView>
+
+    <com.star.ui.DragTopLayout
+        android:id="@+id/channel_show_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/translucent_99"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <LinearLayout
+            android:id="@+id/ll_drag_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/orange_red" >
+
+                <RelativeLayout
+                    android:id="@+id/view_flowlayout_rl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <com.star.ui.FlowLayout
+                        android:id="@+id/view_flowlayout_packages"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="24dp"
+                        android:layout_marginRight="24dp" />
+
+                    <ImageView
+                        android:id="@+id/horizontal_line"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@id/view_flowlayout_packages"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginTop="4dp"
+                        android:background="@color/white" />
+
+                    <com.star.ui.FlowLayout
+                        android:id="@+id/view_flowlayout_categorys"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/horizontal_line"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginLeft="24dp"
+                        android:layout_marginRight="24dp"
+                        android:layout_marginTop="4dp"
+                        android:paddingBottom="16dp" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/channel_expand_imageview"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="-15dp"
+                android:scaleType="center"
+                android:src="@drawable/ic_expand_less" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <GridView
+                android:id="@+id/gv_favorite_collect"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="9dp"
+                android:cacheColorHint="#00000000"
+                android:gravity="center"
+                android:horizontalSpacing="12dp"
+                android:listSelector="#00000000"
+                android:numColumns="4"
+                android:scrollbars="none"
+                android:transcriptMode="alwaysScroll"
+                android:verticalSpacing="12dp" />
+        </LinearLayout>
+    </com.star.ui.DragTopLayout>
+
+    <com.star.ui.FlowLayout
+        android:id="@+id/view_flowlayout_choose_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp" />
+
+</com.star.mobile.video.liveandvideo.ResizeLayout>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/grey"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:id="@+id/video_player_rl"
+                android:layout_width="match_parent"
+                android:layout_height="200dp" >
+
+                <include
+                    android:id="@+id/video_vertical_player"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
+                    layout="@layout/view_player"
+                    android:background="@drawable/recommended_picture_frame" />
+
+                <ImageView
+                    android:id="@+id/video_center_play"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/icon_play" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <LinearLayout
+                    android:id="@+id/demand_control_ll"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:visibility="gone" >
+
+                    <com.star.mobile.video.view.HorizontalVideoPlayInfoView
+                        android:id="@+id/hv_playinfoview"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" >
+
+                        <com.star.mobile.video.view.ListView
+                            android:id="@+id/horizontal_video_list"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="6dp"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginRight="8dp"
+                            android:layout_marginTop="6dp"
+                            android:cacheColorHint="@android:color/transparent"
+                            android:divider="@null"
+                            android:dividerHeight="0dp"
+                            android:listSelector="@android:color/transparent"
+                            android:scrollbars="@null" />
+
+                        <TextView
+                            android:id="@+id/none_more_video_textview"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginRight="8dp"
+                            android:gravity="center"
+                            android:text="@string/none_more_videos"
+                            android:textColor="@color/list_text_color"
+                            android:textSize="@dimen/action_bar_text_size"
+                            android:visibility="gone" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <com.star.mobile.video.view.VideoQualitySettingView
+                    android:id="@+id/video_quality_setting_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="48dp"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <com.star.mobile.video.view.VideoLiveViewControl
+                android:id="@+id/video_live_view_control"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/video_quality_guide"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:background="@color/translucent_80" >
+
+            <ImageView
+                android:id="@+id/video_quality_guide_setting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="54dp"
+                android:layout_marginTop="154dp"
+                android:src="@drawable/icon_setting_guide" />
+
+            <ImageView
+                android:id="@+id/video_quality_guide_textview"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="13dp"
+                android:layout_marginTop="180dp"
+                android:src="@drawable/setting_info_guide_textview" />
+
+            <ImageView
+                android:id="@+id/video_quality_guide_setting_ok"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/video_quality_guide_textview"
+                android:layout_marginRight="36dp"
+                android:src="@drawable/bt_ok_guide" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</LinearLayout>

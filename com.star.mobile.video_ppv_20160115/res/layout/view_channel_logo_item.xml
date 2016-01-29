@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <View
+        android:id="@+id/v_blank"
+        android:layout_width="@dimen/action_bar_margin_4"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <com.star.ui.ImageView
+            android:id="@id/iv_channel_icon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/icon_channel_logo_bg"
+            android:paddingBottom="3dp"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp"
+            android:paddingTop="1dp"
+            android:src="@drawable/icon_channel_logo" />
+
+        <ImageView
+            android:id="@+id/iv_channel_icon_cover"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/channel_detail_bg" />
+
+        <ImageView
+            android:id="@+id/iv_channel_hot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/icon_hot_chatroom"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@id/rl_fav_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/action_bar_margin_2"
+            android:background="@drawable/all_channel_number_bg"
+            android:gravity="center_vertical"
+            android:visibility="gone" >
+
+            <ImageView
+                android:id="@id/iv_fav_status"
+                style="@style/action_bar_icon_style"
+                android:layout_marginLeft="@dimen/action_bar_margin_4"
+                android:src="@drawable/no_favorite" />
+
+            <TextView
+                android:id="@id/tv_chn_fav_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/action_bar_margin_2"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

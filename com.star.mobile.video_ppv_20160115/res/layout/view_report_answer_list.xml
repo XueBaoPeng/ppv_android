@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.star.mobile.video.view.NoScrollGridView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lv_answer_list"
+    style="@style/listview_style"
+    android:background="@drawable/button_bg" />

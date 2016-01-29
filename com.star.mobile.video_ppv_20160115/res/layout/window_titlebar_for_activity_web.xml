@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/iv_actionbar_web"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/action_bar_height"
+    android:background="@drawable/actionbar_bg" >
+
+    <ImageView
+            android:id="@+id/iv_actionbar_back"
+            style="@style/action_bar_btn_style"
+            android:src="@drawable/actionbar_back" />
+
+        <!-- <ImageView
+            android:id="@+id/iv_actionbar_line_f"
+            style="@style/action_bar_icon_style"
+            android:layout_toRightOf="@id/iv_actionbar_back"
+            android:src="@drawable/actionbar_line" /> -->
+    
+       <ImageView
+            android:id="@+id/iv_actionbar_close"
+            android:layout_toRightOf="@id/iv_actionbar_back"
+            style="@style/action_bar_btn_style"
+            android:src="@drawable/actionbar_icon_close" />
+
+        <!-- <ImageView
+            android:id="@+id/iv_actionbar_line_two"
+            style="@style/action_bar_icon_style"
+            android:layout_toRightOf="@id/iv_actionbar_close"
+            android:src="@drawable/actionbar_line" /> --> 
+    <TextView
+        android:id="@+id/tv_actionbar_title"
+        style="@style/title_bar_text_style"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="@dimen/action_bar_margin_8"
+        android:layout_toRightOf="@id/iv_actionbar_close"
+        android:layout_toLeftOf="@+id/iv_actionbar_share"
+        android:ellipsize="end"
+        android:singleLine="true" />
+
+    <!-- <ImageView
+        android:id="@id/iv_actionbar_line"
+        style="@style/action_bar_icon_style"
+        android:layout_toLeftOf="@+id/iv_actionbar_share"
+        android:src="@drawable/actionbar_line" /> -->
+
+    <ImageView
+        android:id="@id/iv_actionbar_share"
+        style="@style/action_bar_btn_style"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/forward_icon_actionbar_white"/>
+
+</RelativeLayout>

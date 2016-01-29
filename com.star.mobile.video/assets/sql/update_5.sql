@@ -1,0 +1,1 @@
+create table if not exists chat(chatId text primary key,userId long,channelID long,createDate long,icoURL text,imageURL  text,userName text,msg text);

@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white" >
+
+    <include
+        android:id="@+id/my_order_title"
+        layout="@layout/window_titlebar_4" />
+
+    <RelativeLayout
+        android:id="@+id/my_order_info_rl"
+        android:layout_width="match_parent"
+        android:layout_height="116dp"
+        android:layout_below="@id/my_order_title" >
+
+        <com.star.ui.ImageView
+            android:id="@+id/my_order_detail_user_header"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_margin="16dp"
+            android:layout_toRightOf="@id/relative1"
+            android:scaleType="fitXY"
+            android:src="@drawable/me_def_head" />
+
+        <TextView
+            android:id="@+id/my_order_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_toRightOf="@id/my_order_detail_user_header"
+            android:singleLine="true"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/my_order_card_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/my_order_type"
+            android:layout_marginTop="6dp"
+            android:layout_toRightOf="@id/my_order_detail_user_header"
+            android:singleLine="true"
+            android:textColor="@color/taks_blue"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/my_order_card_change"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/my_order_card_number"
+            android:layout_marginTop="6dp"
+            android:layout_toRightOf="@id/my_order_detail_user_header"
+            android:singleLine="true"
+            android:textColor="@color/taks_blue"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/layout_split_line_iv"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:layout_below="@id/my_order_info_rl"
+        android:background="@drawable/line_bg" />
+
+    <include
+        android:id="@+id/smartcard_loadingView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/layout_split_line_iv"
+        layout="@layout/loading_progress_large" />
+    
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_split_line_iv" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <RelativeLayout
+                    android:id="@+id/success_status_rl"
+                    android:layout_width="24dp"
+                    android:layout_height="130dp" >
+
+                    <ImageView
+                        android:id="@+id/my_oreder_success_iv"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_confirm" />
+
+                    <View
+                        android:layout_width="2dp"
+                        android:layout_height="105dp"
+                        android:layout_below="@id/my_oreder_success_iv"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="8dp"
+                        android:background="@color/line_gray" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/receive_rl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_toRightOf="@id/success_status_rl" >
+
+                    <TextView
+                        android:id="@+id/receive_textview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:textColor="@color/taks_blue"
+                        android:text="@string/receive"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/my_order_detail_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/receive_textview"
+                        android:layout_marginTop="4dp"
+                        android:singleLine="true"
+                        android:textColor="@color/taks_blue"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/my_order_detail_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/my_order_detail_time"
+                        android:layout_marginTop="4dp"
+                        android:singleLine="true"
+                        android:textColor="@color/taks_blue"
+                        android:textSize="18sp" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <RelativeLayout
+                    android:id="@+id/process_status_rl"
+                    android:layout_width="24dp"
+                    android:layout_height="130dp"
+                    android:layout_marginTop="8dp" >
+
+                    <ImageView
+                        android:id="@+id/my_oreder_process_iv"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_cancel" />
+
+                    <View
+                        android:layout_width="2dp"
+                        android:layout_height="105dp"
+                        android:layout_below="@id/my_oreder_process_iv"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="8dp"
+                        android:background="@color/line_gray" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/process_rl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_toRightOf="@id/process_status_rl" >
+
+                    <TextView
+                        android:id="@+id/process_textview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/taks_blue"
+                        android:text="@string/process"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/my_order_failed_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/process_textview"
+                        android:layout_marginTop="4dp"
+                        android:singleLine="true"
+                        android:textColor="@color/taks_blue"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/my_order_failed_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/my_order_failed_time"
+                        android:layout_marginTop="4dp"
+                        android:singleLine="true"
+                        android:textColor="@color/taks_blue"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/my_order_failed_reason"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/my_order_failed_status"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/reason"
+                        android:textColor="@color/gray_bg"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/my_order_failed_reason_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/my_order_failed_status"
+                        android:layout_marginTop="4dp"
+                        android:layout_toRightOf="@+id/my_order_failed_reason"
+                        android:maxLines="2"
+                        android:textColor="@color/taks_blue"
+                        android:textSize="18sp" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <RelativeLayout
+                    android:id="@+id/result_status_rl"
+                    android:layout_width="24dp"
+                    android:layout_height="130dp"
+                    android:layout_marginTop="8dp" >
+
+                    <ImageView
+                        android:id="@+id/my_oreder_result_iv"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_av_timer" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/result_rl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_toRightOf="@id/result_status_rl" >
+
+                    <TextView
+                        android:id="@+id/result_textview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/result"
+                        android:textColor="@color/taks_blue"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/my_order_result_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/result_textview"
+                        android:layout_marginTop="4dp"
+                        android:singleLine="true"
+                        android:textColor="@color/taks_blue"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/my_order_result_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/my_order_result_time"
+                        android:layout_marginTop="4dp"
+                        android:singleLine="true"
+                        android:textColor="@color/taks_blue"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/my_order_result_reason"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/my_order_result_status"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/reason"
+                        android:textColor="@color/gray_bg"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/my_order_result_reason_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/my_order_result_status"
+                        android:layout_marginTop="4dp"
+                        android:layout_toRightOf="@+id/my_order_result_reason"
+                        android:maxLines="2"
+                        android:textColor="@color/taks_blue"
+                        android:layout_marginBottom="16dp"
+                        android:textSize="18sp" />
+                </RelativeLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

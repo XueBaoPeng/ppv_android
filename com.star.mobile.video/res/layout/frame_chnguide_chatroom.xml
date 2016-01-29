@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.star.mobile.video.view.MaskGuideView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/black_bg_small"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/frame_chatroom_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:paddingBottom="100dp"
+        android:src="@drawable/chatroomalsocanbe_icon_bulling_chat_rooms_large" />
+
+
+    <TextView
+        android:id="@+id/frame_chatroom_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/frame_chatroom_center"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/ok_button_bg"
+        android:paddingBottom="6dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="6dp"
+        android:text="@string/ok"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+</com.star.mobile.video.view.MaskGuideView>
