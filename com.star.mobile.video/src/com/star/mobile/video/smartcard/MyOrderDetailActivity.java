@@ -35,6 +35,7 @@ import com.star.util.loader.OnResultListener;
  * @author Lee
  * @date 2016/01/04
  * @version 1.0
+ * @test
  *
  */
 public class MyOrderDetailActivity extends BaseActivity implements OnClickListener {
