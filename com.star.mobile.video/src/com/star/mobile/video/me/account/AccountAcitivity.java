@@ -11,6 +11,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.star.cms.model.User;
 import com.star.cms.model.enm.AccountType;
 import com.star.mobile.video.R;
 import com.star.mobile.video.StarApplication;
@@ -18,6 +19,7 @@ import com.star.mobile.video.account.ResetPasswordActivity;
 import com.star.mobile.video.activity.AccountConnectActivity;
 import com.star.mobile.video.base.BaseActivity;
 import com.star.mobile.video.model.AboutItemData;
+import com.star.mobile.video.service.UserService;
 import com.star.mobile.video.shared.SharedPreferencesUtil;
 import com.star.mobile.video.util.CommonUtil;
 
@@ -31,11 +33,14 @@ public class AccountAcitivity extends BaseActivity {
 	
 	private ListView lvData;
 	private AccountAdapter mAdapter;
+	private UserService userService;
+	private User user;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.about_activity);
+		userService = new UserService();
 		initView();
 	}
 	
@@ -79,7 +84,17 @@ public class AccountAcitivity extends BaseActivity {
 		List<AboutItemData> data = new ArrayList<AboutItemData>();
 		AboutItemData chatrommNotif = new AboutItemData(getString(R.string.reset_password), ResetPasswordActivity.class);
 		chatrommNotif.setIcon(R.drawable.ic_redo);
-		if(!(AccountType.Facebook.equals(StarApplication.mUser.getType()) || AccountType.Twitter.equals(StarApplication.mUser.getType()))) {
+		user = StarApplication.mUser;
+		if(user == null) {
+			userService.setCallbackListener(new UserService.CallbackListener() {
+				@Override
+				public void callback(User u) {
+					user = u;
+				}
+			});
+			userService.getUser(AccountAcitivity.this);
+		}
+		if(user != null && !(AccountType.Facebook.equals(user.getType()) || AccountType.Twitter.equals(user.getType()))) {
 			data.add(chatrommNotif);
 		}
 		AboutItemData reminder = new AboutItemData(getString(R.string.account_connect_title),AccountConnectActivity.class);
