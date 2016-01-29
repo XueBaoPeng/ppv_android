@@ -164,12 +164,12 @@ public class SmartCardControlActivity extends FragmentActivity implements OnClic
 		});
 		
 	}
-
+	List<FragmentSmartCardInfo> mFragments = new ArrayList<FragmentSmartCardInfo>();
 	private void initSmartCard(List<SmartCardInfoVO> smartCardInfos) {
 		if (smartCardInfos != null && smartCardInfos.size() > 0) {
 			mSmartinfos.clear();
 			mSmartinfos.addAll(smartCardInfos);
-			List<FragmentSmartCardInfo> mFragments = new ArrayList<FragmentSmartCardInfo>();
+			mFragments.clear();
 			for (int i = 0; i < mSmartinfos.size();i++){
 				FragmentSmartCardInfo fsc = FragmentSmartCardInfo.newInstance(mSmartinfos.get(i));
 				mFragments.add(fsc);
@@ -198,7 +198,8 @@ public class SmartCardControlActivity extends FragmentActivity implements OnClic
 			}
 		} else {
 			mSmartinfos.clear();
-			mSmartCardFragmentViewPagerAdapter.addFragment(null);
+			mFragments.clear();
+			mSmartCardFragmentViewPagerAdapter.addFragment(mFragments);
 			setLayoutParamsData(INITLAYOUTHEIGHT);
 			// indicator隐藏，显示没有绑卡的图片
 			mCirclePageIndicator.setVisibility(View.INVISIBLE);
