@@ -19,7 +19,9 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Build;
+import android.os.Handler;
 import android.os.Looper;
+import android.os.Message;
 import android.util.Log;
 
 import com.star.mobile.video.activity.WelcomeActivity;
@@ -104,32 +106,42 @@ public class CrashHandler implements UncaughtExceptionHandler {
 		}
 		//使用Toast来显示异常信息
 		new Thread() {
+			public Handler mHandler;
 			@Override
 			public void run() {
 				Looper.prepare();
-				CommonUtil.getInstance().showPromptSystemDialog(mContext,
-						null, mContext.getString(R.string.crash_message), mContext.getString(R.string.confirm), null, new PromptDialogClickListener() {
-					
-					@Override
-					public void onConfirmClick() {
-						 Intent intent = new Intent(mContext, WelcomeActivity.class);  
-				         PendingIntent restartIntent = PendingIntent.getActivity(mContext, 0, intent,    
-				                    Intent.FLAG_ACTIVITY_NEW_TASK);                                                 
-				         AlarmManager mgr = (AlarmManager)application.getSystemService(Context.ALARM_SERVICE);    
-				         mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 1000,restartIntent); // 1秒钟后重启应用   
-						//退出程序
-						System.exit(1);
+				mHandler = new Handler() {
+					public void handleMessage(Message msg) {
+						switch (msg.what){
+							case 1:
+								CommonUtil.getInstance().showPromptSystemDialog(mContext,
+										null, mContext.getString(R.string.crash_message), mContext.getString(R.string.confirm), null, new PromptDialogClickListener() {
+
+											@Override
+											public void onConfirmClick() {
+												Intent intent = new Intent(mContext, WelcomeActivity.class);
+												PendingIntent restartIntent = PendingIntent.getActivity(mContext, 0, intent, Intent.FLAG_ACTIVITY_NEW_TASK);
+												AlarmManager mgr = (AlarmManager)application.getSystemService(Context.ALARM_SERVICE);
+												mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 1000,restartIntent); // 1秒钟后重启应用
+												//退出程序
+												System.exit(1);
+											}
+
+											@Override
+											public void onCancelClick() {
+
+											}
+										});
+								//收集设备参数信息
+								collectDeviceInfo(mContext);
+								//保存日志文件
+								saveCrashInfo2File(ex);
+								break;
+						}
 					}
-					
-					@Override
-					public void onCancelClick() {
-						
-					}
-				});
-				//收集设备参数信息 
-				collectDeviceInfo(mContext);
-				//保存日志文件 
-				saveCrashInfo2File(ex);
+				};
+				mHandler.sendEmptyMessage(1);
+
 				Looper.loop();
 			}
 		}.start();
