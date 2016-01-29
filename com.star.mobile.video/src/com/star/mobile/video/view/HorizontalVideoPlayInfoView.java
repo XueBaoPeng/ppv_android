@@ -120,13 +120,16 @@ public class HorizontalVideoPlayInfoView extends LinearLayout implements OnClick
 		switch (v.getId()) {
 		case R.id.vertical_video_recharge_ll:
 			bouquetAndRecharge();
-			
-			ToastUtil.showToast(mContext, channelName+"_"+mVod.getName());
-			GA.sendEvent("Self_service", "Recharge_video", channelName+"_"+mVod.getName(), 1);
+			if (mVod != null){
+				ToastUtil.showToast(mContext, channelName+"_"+mVod.getName());
+				GA.sendEvent("Self_service", "Recharge_video", channelName+"_"+mVod.getName(), 1);
+			}
 			break;
 		case R.id.vertical_video_bouquet_ll:
-			ToastUtil.showToast(mContext, channelName+"_"+mVod.getName());
-			GA.sendEvent("Self_service", "Bouquet_video", channelName+"_"+mVod.getName(), 1);
+			if (mVod != null){
+				ToastUtil.showToast(mContext, channelName+"_"+mVod.getName());
+				GA.sendEvent("Self_service", "Bouquet_video", channelName+"_"+mVod.getName(), 1);
+			}
 			bouquetAndRecharge();
 			break;
 		default:

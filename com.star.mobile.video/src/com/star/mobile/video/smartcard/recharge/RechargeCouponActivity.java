@@ -3,6 +3,7 @@ package com.star.mobile.video.smartcard.recharge;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.Application;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -19,17 +20,20 @@ import android.widget.TextView;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.star.cms.model.Award;
+import com.star.cms.model.RechargeCMD;
 import com.star.cms.model.dto.RechargeResult;
 import com.star.cms.model.vo.ExchangeVO;
 import com.star.cms.model.vo.SmartCardInfoVO;
 import com.star.mobile.video.R;
 import com.star.mobile.video.StarApplication;
 import com.star.mobile.video.base.BaseActivity;
+import com.star.mobile.video.changebouquet.ChangeSuccessActivity;
 import com.star.mobile.video.dialog.RechargeDialog;
 import com.star.mobile.video.me.coupon.MyCouponsActivity;
 import com.star.mobile.video.me.mycoins.TaskService;
 import com.star.mobile.video.service.UserService;
 import com.star.mobile.video.shared.SharedPreferencesUtil;
+import com.star.mobile.video.smartcard.MyOrderActivity;
 import com.star.mobile.video.smartcard.SmartCardService;
 import com.star.mobile.video.util.ApplicationUtil;
 import com.star.mobile.video.util.CommonUtil;
@@ -96,26 +100,26 @@ public class RechargeCouponActivity extends BaseActivity implements OnClickListe
 	private void getDetailSmartCardInfo(final SmartCardInfoVO vo) {
 		CommonUtil.showProgressDialog(RechargeCouponActivity.this, null, getString(R.string.loading));
 		mSmartCardService.getSmartCardInfo(vo.getSmardCardNo(), new OnResultListener<SmartCardInfoVO>() {
-			
+
 			@Override
 			public void onSuccess(SmartCardInfoVO value) {
 				CommonUtil.closeProgressDialog();
 				if (value != null) {
-					smartcardVo=value;
-					initView();	
+					smartcardVo = value;
+					initView();
 					btnRecharge.setBackgroundResource(R.drawable.btn_orange);
 					btnRecharge.setOnClickListener(RechargeCouponActivity.this);
-				}else{
+				} else {
 					btnRecharge.setBackgroundResource(R.drawable.btn_grey);
 					btnRecharge.setOnClickListener(null);
 				}
 			}
-			
+
 			@Override
 			public boolean onIntercept() {
 				return false;
 			}
-			
+
 			@Override
 			public void onFailure(int errorCode, String msg) {
 				CommonUtil.closeProgressDialog();
@@ -257,16 +261,16 @@ public class RechargeCouponActivity extends BaseActivity implements OnClickListe
 			userService.saveExpectedStopSmartcard(RechargeCouponActivity.this);
 		} 
 		dialog.setOnDismissListener(new Dialog.OnDismissListener() {
-			
+
 			@Override
 			public void onDismiss(DialogInterface dialog) {
-				if(rr.getExchangeMoney()!=null){
+				if (rr.getExchangeMoney() != null) {
 					selectExchange.setIsAccepted(true);
 					Intent intent = new Intent();
 					intent.setClass(RechargeCouponActivity.this, MyCouponsActivity.class);
 					CommonUtil.startActivity(RechargeCouponActivity.this, intent);
 				}
-				 
+
 				new TaskService(RechargeCouponActivity.this).showTaskDialog(RechargeCouponActivity.this, rr.getTaskResult());
 				//initSmartCard();
 			}
@@ -313,7 +317,8 @@ public class RechargeCouponActivity extends BaseActivity implements OnClickListe
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.bt_mob_reg_go:
-			recharge();
+//			recharge();
+			syncRecharge();
 			break;
 		case R.id.iv_actionbar_back:
 			onBackPressed();
@@ -321,5 +326,74 @@ public class RechargeCouponActivity extends BaseActivity implements OnClickListe
 		default:
 			break;
 		}
+	}
+
+	private void syncRecharge() {
+		if(selectSmartCardNo==null || selectSmartCardNo.isEmpty()) {
+			ToastUtil.centerShowToast(RechargeCouponActivity.this, getString(R.string.vouchno_can_not_be_empty));
+			return;
+		}
+		CommonUtil.showProgressDialog(RechargeCouponActivity.this, null, getString(R.string.recharging));
+		List<Long> exchangeIDs = new ArrayList<Long>();
+		if(selectExchange != null && !(selectExchange.isValid()||selectExchange.isAccepted())) {
+			exchangeIDs.add(selectExchange.getId());
+		}
+
+		mSmartCardService.rechargeCard(null,selectSmartCardNo,exchangeIDs,ApplicationUtil.getAppVerison(RechargeCouponActivity.this),
+				smartcardVo.getMoney(),RechargeCMD.EXCHANGE_TYPE,new OnResultListener<Integer>(){
+
+					@Override
+					public boolean onIntercept() {
+						return false;
+					}
+
+					@Override
+					public void onSuccess(Integer value) {
+						CommonUtil.closeProgressDialog();
+						if(value != null && value == RechargeCMD.SUCCESS) {
+							Application a = getApplication();
+							if(a instanceof StarApplication) {
+								((StarApplication)a).finishActivityBClazz(RechargeSmartCardActivity.class);
+								((StarApplication)a).finishActivityBClazz(MyCouponsActivity.class);
+								((StarApplication)a).finishActivityBClazz(RechargeCouponActivity.class);
+							}
+							Intent intent = new Intent(RechargeCouponActivity.this,ChangeSuccessActivity.class);
+							CommonUtil.startActivity(RechargeCouponActivity.this, intent);
+						} else if(value == RechargeResult.EXCHANGE_FAILURE) {
+							//优惠券不可用
+							CommonUtil.getInstance().showPromptDialog(RechargeCouponActivity.this, getString(R.string.tips), getString(R.string.performed), getString(R.string.check), getString(R.string.later_big), new CommonUtil.PromptDialogClickListener() {
+
+								@Override
+								public void onConfirmClick() {
+									Application a = getApplication();
+									if(a instanceof StarApplication) {
+										((StarApplication)a).finishActivityBClazz(RechargeSmartCardActivity.class);
+										((StarApplication)a).finishActivityBClazz(MyCouponsActivity.class);
+										((StarApplication)a).finishActivityBClazz(RechargeCouponActivity.class);
+									}
+									Intent intent = new Intent(RechargeCouponActivity.this, MyOrderActivity.class);
+									CommonUtil.startActivity(RechargeCouponActivity.this,intent);
+								}
+
+								@Override
+								public void onCancelClick() {
+									onBackPressed();
+								}
+							});
+						} else {
+							//TODO 失败
+						}
+					}
+
+					@Override
+					public void onFailure(int errorCode, String msg) {
+						CommonUtil.closeProgressDialog();
+						RechargeDialog dialog = new RechargeDialog(RechargeCouponActivity.this);
+						dialog.setRechargeFail(getString(R.string.boss_unavailable_now));
+						dialog.setRechargeSuccessVisibility(View.GONE);
+						dialog.setRechargeFailVisibility(View.VISIBLE);
+						dialog.show();
+					}
+				});
 	}
 }

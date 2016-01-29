@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white" >
+    android:background="@color/white">
 
     <include
         android:id="@+id/my_order_title"
@@ -14,14 +14,39 @@
         android:layout_height="match_parent"
         android:layout_below="@id/my_order_title"
         android:divider="@null"
-        android:scrollbars="none" >
-    </com.star.mobile.video.view.ListView>
+        android:scrollbars="none"></com.star.mobile.video.view.ListView>
 
     <include
         android:id="@+id/smartcard_loadingView"
+        layout="@layout/loading_progress_large"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/my_order_title" />
+
+    <LinearLayout
+        android:id="@+id/my_order_nodata_rl"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/my_order_title"
-        layout="@layout/loading_progress_large" />
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/my_order_nodata_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/no_available_coupon" />
+
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/my_order_nodata_iv"
+            android:text="@string/my_order_nodata"
+            android:textColor="@color/grey"
+            android:gravity="center"
+            android:textSize="16sp" />
+
+    </LinearLayout>
 
 </RelativeLayout>

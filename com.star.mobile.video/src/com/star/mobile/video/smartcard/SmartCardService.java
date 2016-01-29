@@ -79,9 +79,9 @@ public class SmartCardService extends AbstractService {
 	 * 
 	 * @param cardNum
 	 *            只能卡号
-	 * @param stbCode
+	 * @paramstbCode
 	 *            机顶盒号后四位
-	 * @param versionCode
+	 * @paramversionCode
 	 *            当前app的versionCode
 	 * @param listener
 	 */
@@ -151,13 +151,13 @@ public class SmartCardService extends AbstractService {
 	 * @param listener
 	 */
 	public void rechargeCard(String rechargeCard, String smartCardNo, List<Long> exchageIDs, int appVersion,
-			Double rechargeBeforeMoney, OnResultListener<Integer> listener) {
+			Double rechargeBeforeMoney, int rechargeType, OnResultListener<Integer> listener) {
 		Map<String, Object> params = new HashMap<String, Object>();
 		if (rechargeCard != null) {
 			params.put("rechargeCard", rechargeCard);
 		}
 		params.put("smartcardNo", smartCardNo);
-		params.put("rechargeType", RechargeCMD.RECHARGE_CARD_TYPE);
+		params.put("rechargeType", rechargeType);
 		if (exchageIDs.size() > 0)
 			params.put("exchangeIds", exchageIDs);
 		doPost(Constant.getAsyncRechargeUrl(), Integer.class, params, listener);

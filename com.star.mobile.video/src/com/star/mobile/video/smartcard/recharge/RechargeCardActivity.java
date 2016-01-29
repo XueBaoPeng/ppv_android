@@ -353,7 +353,7 @@ public class RechargeCardActivity extends BaseActivity implements OnClickListene
 			exchangeIDs.add(selectExchange.getId());
 		}
 		vouchNo = etVouchNo.getEditableText().toString().replace(" ", "");
-		mSmartCardService.rechargeCard(vouchNo, selectSmartCardNo, exchangeIDs, ApplicationUtil.getAppVerison(RechargeCardActivity.this), SmartcardVo.getMoney(), new OnResultListener<Integer>() {
+		mSmartCardService.rechargeCard(vouchNo, selectSmartCardNo, exchangeIDs, ApplicationUtil.getAppVerison(RechargeCardActivity.this), SmartcardVo.getMoney(),RechargeCMD.RECHARGE_CARD_TYPE, new OnResultListener<Integer>() {
 
 			@Override
 			public boolean onIntercept() {

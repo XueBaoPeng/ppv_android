@@ -25,6 +25,7 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,6 +43,7 @@ public class MyOrderActivity extends BaseActivity implements OnClickListener{
 	private SmartCardService mSmartCardService;
 	private List<SMSHistory> mMyOrderLists = new ArrayList<SMSHistory>();
 	private MyOrderAdapter mMyOrderAdapter;
+	private LinearLayout mMyOrderNodatall;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -57,6 +59,7 @@ public class MyOrderActivity extends BaseActivity implements OnClickListener{
 		((TextView)findViewById(R.id.tv_actionbar_title)).setText(getString(R.string.my_order));
 		mMyOrderListView = (com.star.mobile.video.view.ListView) findViewById(R.id.my_order_listview);
 		mSmartCardLoading = (View) findViewById(R.id.smartcard_loadingView);
+		mMyOrderNodatall = (LinearLayout) findViewById(R.id.my_order_nodata_rl);
 	}
 	/**
 	 * 数据初始化
@@ -106,6 +109,7 @@ public class MyOrderActivity extends BaseActivity implements OnClickListener{
 			public void loadPost(List<SMSHistory> datas) {
 				mSmartCardLoading.setVisibility(View.GONE);
 				if(datas!=null && datas.size()>0){
+					mMyOrderNodatall.setVisibility(View.GONE);
 					mMyOrderLists.addAll(datas);
 					mMyOrderAdapter.setMyOrderData(mMyOrderLists);
 					mMyOrderListView.setOnItemClickListener(new OnItemClickListener() {
@@ -121,7 +125,7 @@ public class MyOrderActivity extends BaseActivity implements OnClickListener{
 						}
 					});
 				}else {
-					ToastUtil.centerShowToast(MyOrderActivity.this, getString(R.string.no_data));
+					mMyOrderNodatall.setVisibility(View.VISIBLE);
 				}
 			}
 

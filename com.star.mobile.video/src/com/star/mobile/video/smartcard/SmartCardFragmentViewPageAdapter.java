@@ -52,7 +52,19 @@ public class SmartCardFragmentViewPageAdapter extends FragmentStatePagerAdapter 
 
     @Override
     public int getItemPosition(Object object) {
-        return POSITION_NONE;
+        if ( mChildCount > 0) {
+            mChildCount --;
+            return POSITION_NONE;
+        }
+        return super.getItemPosition(object);
+    }
+
+    private int mChildCount = 0;
+
+    @Override
+    public void notifyDataSetChanged() {
+        mChildCount = getCount();
+        super.notifyDataSetChanged();
     }
 
 }

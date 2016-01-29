@@ -265,6 +265,7 @@ public class RechargeCardNumActivity extends BaseActivity implements OnClickList
 						intent.putExtra("smartcardinfovo",(Serializable) scInfo.get(currentPosition));
 						intent.putExtra("exchange", selectExchange);
 						CommonUtil.startActivity((Activity)RechargeCardNumActivity.this, intent);
+					 	finish();
 					}else if(selectExchange.getTypeGet()==ExchangeVO.TYPE_EXCHANGE||selectExchange.getTypeGet()==ExchangeVO.CLUB_COUPON){
 						Intent intent = new Intent(RechargeCardNumActivity.this, RechargeSmartCardActivity.class);
 						intent.putExtra("smartcardinfovo",(Serializable) scInfo.get(currentPosition));

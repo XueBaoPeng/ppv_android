@@ -303,6 +303,10 @@
                         android:layout_marginBottom="16dp"
                         android:textSize="18sp" />
                 </RelativeLayout>
+                <View
+                    android:layout_below="@id/result_rl"
+                    android:layout_width="match_parent"
+                    android:layout_height="16dp"/>
             </RelativeLayout>
         </LinearLayout>
     </ScrollView>
