@@ -1018,7 +1018,6 @@
     <string name="faq_name">Lisa</string>
     <string name="balance_s">Balance</string>
     <string name="exchange_failue">Sorry, Your coupon has been expired.</string>
-    <string name="exchange_failue">Sorry, Your coupon has been expired.</string>
     <string name="my_order_nodata">You can check the service history and get the process status here.</string>
     <string name="big_bouquet">BOUQUET</string>
 </resources>
