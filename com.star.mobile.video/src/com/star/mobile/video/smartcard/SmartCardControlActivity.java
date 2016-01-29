@@ -106,7 +106,8 @@ public class SmartCardControlActivity extends FragmentActivity implements OnClic
 	private void initData() {
 		mUserService = new UserService();
 		mSmartcardService = new SmartCardService(this);
-		mSmartCardFragmentViewPagerAdapter = new SmartCardFragmentViewPageAdapter(getSupportFragmentManager());
+		mSmartCardFragmentViewPagerAdapter = new SmartCardFragmentViewPageAdapter(getSupportFragmentManager(),
+				mSmartinfos);
 		mViewPager.setAdapter(mSmartCardFragmentViewPagerAdapter);
 		mViewPager.setOnPageChangeListener(this);
 		mCirclePageIndicator.setViewPager(mViewPager);
@@ -164,17 +165,12 @@ public class SmartCardControlActivity extends FragmentActivity implements OnClic
 		});
 		
 	}
-	List<FragmentSmartCardInfo> mFragments = new ArrayList<FragmentSmartCardInfo>();
+
 	private void initSmartCard(List<SmartCardInfoVO> smartCardInfos) {
 		if (smartCardInfos != null && smartCardInfos.size() > 0) {
 			mSmartinfos.clear();
 			mSmartinfos.addAll(smartCardInfos);
-			mFragments.clear();
-			for (int i = 0; i < mSmartinfos.size();i++){
-				FragmentSmartCardInfo fsc = FragmentSmartCardInfo.newInstance(mSmartinfos.get(i));
-				mFragments.add(fsc);
-			}
-			mSmartCardFragmentViewPagerAdapter.addFragment(mFragments);
+			mSmartCardFragmentViewPagerAdapter.setSmartInfos(mSmartinfos);
 			setLayoutParamsData(INCLUDEDATALAYOUTHEIGHT);
 			mNoSmartCardIV.setVisibility(View.GONE);
 			if (mSmartinfos.size() == 1) {
@@ -198,8 +194,7 @@ public class SmartCardControlActivity extends FragmentActivity implements OnClic
 			}
 		} else {
 			mSmartinfos.clear();
-			mFragments.clear();
-			mSmartCardFragmentViewPagerAdapter.addFragment(mFragments);
+			mSmartCardFragmentViewPagerAdapter.setSmartInfos(mSmartinfos);
 			setLayoutParamsData(INITLAYOUTHEIGHT);
 			// indicator隐藏，显示没有绑卡的图片
 			mCirclePageIndicator.setVisibility(View.INVISIBLE);

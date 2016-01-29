@@ -3,9 +3,11 @@ package com.star.mobile.video.smartcard;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.star.cms.model.vo.SmartCardInfoVO;
 import com.star.mobile.video.R;
 import com.star.mobile.video.widget.indicator.IconPagerAdapter;
 
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.view.ViewGroup;
 
@@ -18,41 +20,34 @@ import android.view.ViewGroup;
  */
 public class SmartCardFragmentViewPageAdapter extends FragmentStatePagerAdapter implements IconPagerAdapter {
     private final int resId = R.drawable.point_group;
-    private List<FragmentSmartCardInfo> mFragments = new ArrayList<FragmentSmartCardInfo>();
-    public SmartCardFragmentViewPageAdapter(android.support.v4.app.FragmentManager fm) {
+    private List<SmartCardInfoVO> mSmartinfos;
+    private SmartCardInfoVO smartCard;
+
+    public SmartCardFragmentViewPageAdapter(android.support.v4.app.FragmentManager fm, List<SmartCardInfoVO> mSmartinfos) {
         super(fm);
+        this.mSmartinfos = mSmartinfos;
     }
 
-
-    public void addFragment(List<FragmentSmartCardInfo> fragments)
-    {
-        this.mFragments = fragments;
+    public void setSmartInfos(List<SmartCardInfoVO> smartinfos) {
+        this.mSmartinfos = smartinfos;
         notifyDataSetChanged();
     }
 
     @Override
-    public FragmentSmartCardInfo getItem(int position) {
-        return mFragments.get(position);
+    public Fragment getItem(int position) {
+        FragmentSmartCardInfo fsc = FragmentSmartCardInfo.newInstance(mSmartinfos.get(position));
+        smartCard = mSmartinfos.get(position);
+        return fsc;
     }
 
     @Override
     public int getCount() {
-        return mFragments.size();
+        return mSmartinfos.size();
     }
 
     @Override
     public int getIconResId(int index) {
         return resId;
-    }
-
-    @Override
-    public void destroyItem(ViewGroup container, int position, Object object) {
-        // Yet another bug in FragmentStatePagerAdapter that destroyItem is called on fragment that hasnt been added. Need to catch
-        try {
-            super.destroyItem(container, position, object);
-        } catch (IllegalStateException ex) {
-            ex.printStackTrace();
-        }
     }
 
     @Override
