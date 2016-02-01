@@ -12,6 +12,7 @@ import android.os.Message;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -296,10 +297,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(getActivity(),ChannelRateActivity.class);
-				if(mTotalChannels.size()>position){
-
-					intent.putExtra("channel", mTotalChannels.get(position));
-				}
+				intent.putExtra("channel", mCurrentChannel);
 				CommonUtil.startActivity(getActivity(), intent);
 			}
 		});
@@ -451,12 +449,10 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 	 */
 	public void initChannels(List<ChannelVO> chns) {
 		mTotalChannels.clear();
-		setDatasForAdapter();
 		mTotalChannels.addAll(chns);
 		setDatasForAdapter();
 		addFragmentView();
 		mChannelId = SharedPreferencesUtil.getCurrentChannel(getActivity());
-		Log.i(TAG,"mChannelId="+mChannelId);
 		if (mChannelId != null && mChannelId != 0) {
 			setCurrentChannel();
 		}else{
@@ -464,13 +460,12 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 			mChannelId = Constants.BUNDESLIGA_CHANNEL_ID;
 			setCurrentChannel();
 		}
-		setInitData();
 	}
 
 	/**
 	 * 设置初始化数据
 	 */
-	private void setInitData() {
+	private void setInitData(int position) {
 		hideFavoriteCollectRL();
 		if (mTotalChannels != null && mTotalChannels.size() > 0) {
 			mFancyCoverFlowAdapter.setSelectPosition(position);
@@ -485,11 +480,15 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 		}
 	}
 
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		return super.onOptionsItemSelected(item);
+	}
+
 	/**
 	 * 显示收藏
 	 */
 	private void showFavorite(int position) {
-		mCurrentChannel = mTotalChannels.get(position);
 		if (mCurrentChannel.isFav()) {
 			mFavoriteSmallImageView.setVisibility(View.VISIBLE);
 		} else {
@@ -659,11 +658,12 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 	 */
 	@Override
 	public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+		mCurrentChannel = mTotalChannels.get(position);
 		this.position = position;
 		this.mSelectItemId = id;
 		//显示收藏
 		showFavorite(position);
-		setInitData();
+		setInitData(position);
 	}
 
 	/**
@@ -672,8 +672,8 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 	 * @param position
 	 */
 	private void setChannelData(int position) {
-		if (mTotalChannels.get(position) != null) {
-			setChannelInfo(mTotalChannels.get(position));
+		if (mCurrentChannel != null) {
+			setChannelInfo(mCurrentChannel);
 			if (cachedViews != null && cachedViews.size() > 0) {
 				for (View v : cachedViews) {
 					ChannelDetailView channelDetailView = (ChannelDetailView) v;
@@ -685,7 +685,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 				cachedViews.add(mViewDatas.get(position % mViewDatas.size()));
 				ChannelDetailView channelDetailView = (ChannelDetailView) mViewDatas.get(position % mViewDatas.size());
 				channelDetailView.setChannelControlView(channelControlView);
-				channelDetailView.setChannel(mTotalChannels.get(position));
+				channelDetailView.setChannel(mCurrentChannel);
 			}
 		}
 	}
@@ -693,7 +693,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 	private void loadVideo(int position) {
 		if (mViewDatas != null && mViewDatas.size() > 0) {
 			ChannelDetailView channelDetailView = (ChannelDetailView) mViewDatas.get(position % mViewDatas.size());
-			channelDetailView.loadVideo(mTotalChannels.get(position));
+			channelDetailView.loadVideo(mCurrentChannel);
 			resetDrawerView();
 		}
 	}
@@ -781,23 +781,26 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 	}
 
 	@Override
+	public void onStop() {
+		saveCurrentChannelId();
+		super.onStop();
+	}
+
+	@Override
 	public void onDestroyView() {
 		// 获得选中图片的位置，在程序被隐藏时记录这个位置，下次打开的时候还在这个位置。
-		if (mFancyCoverFlow != null) {
-			int position = mFancyCoverFlow.getSelectedItemPosition();
-			if (position != AdapterView.INVALID_POSITION) {
-				if (mTotalChannels != null && mTotalChannels.size() > 0) {
-					ChannelVO channelVO = mTotalChannels.get(position);
-					if (channelVO != null) {
-						Long channelId = channelVO.getId();
-						if (channelId != null) {
-							SharedPreferencesUtil.setCurrentChannel(channelId, getActivity());
-						}
-					}
-				}
-			}
-		}
+		saveCurrentChannelId();
 		super.onDestroy();
+	}
+
+	/**
+	 * 保存当前的频道
+	 */
+	private void saveCurrentChannelId() {
+		Long currentChannelId = mCurrentChannel.getId();
+		if (currentChannelId != null){
+			SharedPreferencesUtil.setCurrentChannel(currentChannelId, getActivity());
+		}
 	}
 
 	@Override
