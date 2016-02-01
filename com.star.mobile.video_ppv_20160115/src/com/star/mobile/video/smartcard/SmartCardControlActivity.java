@@ -4,27 +4,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import com.star.cms.model.Area;
-import com.star.cms.model.vo.SmartCardInfoVO;
-import com.star.mobile.video.R;
-import com.star.mobile.video.adapter.CustomerServiceTimeAdapter;
-import com.star.mobile.video.model.FunctionType;
-import com.star.mobile.video.ppv.ppvorder.PuuchasePPVActivity;
-import com.star.mobile.video.search.SearchActivity;
-import com.star.mobile.video.service.EggAppearService;
-import com.star.mobile.video.service.FunctionService;
-import com.star.mobile.video.service.UserService;
-import com.star.mobile.video.shared.SharedPreferencesUtil;
-import com.star.mobile.video.util.CommonUtil;
-import com.star.mobile.video.util.CommonUtil.PromptDialogClickListener;
-import com.star.mobile.video.util.DensityUtil;
-import com.star.mobile.video.util.ToastUtil;
-import com.star.mobile.video.view.NoScrollListView;
-import com.star.mobile.video.widget.indicator.CirclePageIndicator;
-import com.star.util.app.GA;
-import com.star.util.loader.OnListResultListener;
-import com.star.util.loader.OnResultListener;
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -42,6 +21,26 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.ScrollView;
 import android.widget.TextView;
+
+import com.star.cms.model.Area;
+import com.star.cms.model.vo.SmartCardInfoVO;
+import com.star.mobile.video.R;
+import com.star.mobile.video.adapter.CustomerServiceTimeAdapter;
+import com.star.mobile.video.model.FunctionType;
+import com.star.mobile.video.search.SearchActivity;
+import com.star.mobile.video.service.EggAppearService;
+import com.star.mobile.video.service.FunctionService;
+import com.star.mobile.video.service.UserService;
+import com.star.mobile.video.shared.SharedPreferencesUtil;
+import com.star.mobile.video.util.CommonUtil;
+import com.star.mobile.video.util.CommonUtil.PromptDialogClickListener;
+import com.star.mobile.video.util.DensityUtil;
+import com.star.mobile.video.util.ToastUtil;
+import com.star.mobile.video.view.NoScrollListView;
+import com.star.mobile.video.widget.indicator.CirclePageIndicator;
+import com.star.util.app.GA;
+import com.star.util.loader.OnListResultListener;
+import com.star.util.loader.OnResultListener;
 
 /**
  * smart card控制页面

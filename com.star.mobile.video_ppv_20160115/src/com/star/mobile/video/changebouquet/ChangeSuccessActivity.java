@@ -38,6 +38,7 @@ public class ChangeSuccessActivity extends BaseActivity implements OnClickListen
 		switch (v.getId()) {
 		case R.id.btn_change_ok:
 			intent = new Intent(this,SmartCardControlActivity.class);
+
 			CommonUtil.startActivity(this, intent);
 			finish();
 			break;

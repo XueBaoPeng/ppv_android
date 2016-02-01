@@ -1,8 +1,5 @@
 package com.star.mobile.video.account;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -22,6 +19,9 @@ import com.star.mobile.video.util.CommonUtil;
 import com.star.mobile.video.view.PhoneAndEmailView;
 import com.star.mobile.video.view.PhoneAndEmailView.CallBack;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class RegisterActivity extends FragmentActivity implements OnClickListener{
 
 	public PhoneAndEmailView headView;
@@ -29,7 +29,7 @@ public class RegisterActivity extends FragmentActivity implements OnClickListene
 	public String verifCode; //验证码
 	public String mobileNumber;//手机号
 	public String selAreaNumber;//选中的区号
-//	public boolean isSelMobileRegister = false;
+ //	public boolean isSelMobileRegister = false;
 	public String inviteCode;//邀请码
 	private View contentView;
 	private LinearLayout RegisterContentLinearLayout;

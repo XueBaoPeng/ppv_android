@@ -3,6 +3,7 @@ package com.star.mobile.video.dao;
 import java.util.List;
 
 import com.star.cms.model.vo.ProgramVO;
+import com.star.ott.ppvup.model.enums.CategoryType;
 
 public interface IProgramDAO{
 
@@ -14,4 +15,7 @@ public interface IProgramDAO{
 	List<ProgramVO> query(boolean isChange);
 	List<ProgramVO> query(long channelId, long startDate, long endDate, int index, int count);
 	boolean updateFavStatus(ProgramVO program, boolean isSync);
+	
+	CategoryType getCategoryType(long programId);
+	void updateCategoryType(long programId, CategoryType categoryType);
 }

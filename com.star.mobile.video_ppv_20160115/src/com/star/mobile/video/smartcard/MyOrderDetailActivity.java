@@ -1,6 +1,7 @@
 package com.star.mobile.video.smartcard;
 
 import java.util.Date;
+import java.util.List;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,18 +15,28 @@ import android.widget.TextView;
 
 import com.star.cms.model.BindCardCommand;
 import com.star.cms.model.Command;
+import com.star.cms.model.PpvCMD;
+import com.star.cms.model.ProgramPPV;
 import com.star.cms.model.RechargeCMD;
 import com.star.cms.model.User;
 import com.star.cms.model.code.ChangePackageCode;
 import com.star.cms.model.dto.RechargeResult;
 import com.star.cms.model.vo.ChangePackageCMDVO;
+import com.star.cms.model.vo.SmartCardInfoVO;
 import com.star.mobile.video.R;
 import com.star.mobile.video.account.AccountService;
 import com.star.mobile.video.base.BaseActivity;
+import com.star.mobile.video.ppv.ppvorder.PPVOrderDetailView;
 import com.star.mobile.video.shared.SharedPreferencesUtil;
+import com.star.mobile.video.util.Constant;
 import com.star.mobile.video.util.DateFormat;
 import com.star.mobile.video.util.ImageUtil;
 import com.star.mobile.video.util.ToastUtil;
+import com.star.ott.ppvup.model.enums.RentleType;
+import com.star.ott.ppvup.model.remote.Content;
+import com.star.ott.ppvup.model.remote.EpgContent;
+import com.star.ott.ppvup.model.remote.LiveContent;
+import com.star.ott.ppvup.model.remote.Product;
 import com.star.ui.ImageView.Finisher;
 import com.star.util.loader.OnResultListener;
 
@@ -38,6 +49,7 @@ import com.star.util.loader.OnResultListener;
  *
  */
 public class MyOrderDetailActivity extends BaseActivity implements OnClickListener {
+	private PPVOrderDetailView mPPVOrderDetailView;
 	private com.star.ui.ImageView mUserHeader;
 	private TextView mMyOrderDetailType;
 	private TextView mMyOrderDetailCardNumber;
@@ -66,7 +78,9 @@ public class MyOrderDetailActivity extends BaseActivity implements OnClickListen
 	private SmartCardService mSmartCardService;
 	private Long mSmsHistoryID;
 	private Integer mSmsHistoryType;
+	private PpvCMD mPPVCMD;
 
+	private String mTotalPrice;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -77,6 +91,8 @@ public class MyOrderDetailActivity extends BaseActivity implements OnClickListen
 			if (bundle != null) {
 				mSmsHistoryID = (Long) bundle.get("smsHistoryID");
 				mSmsHistoryType = (Integer) bundle.get("smsHistoryType");
+				mTotalPrice = intent.getStringExtra("totalPrice");
+				mPPVCMD = (PpvCMD)intent.getSerializableExtra("ppvcmd");
 			}
 		}
 		initView();
@@ -89,6 +105,9 @@ public class MyOrderDetailActivity extends BaseActivity implements OnClickListen
 	private void initView() {
 		((ImageView) findViewById(R.id.iv_actionbar_back)).setOnClickListener(this);
 		((TextView) findViewById(R.id.tv_actionbar_title)).setText(getString(R.string.my_order));
+
+		mPPVOrderDetailView = (PPVOrderDetailView) findViewById(R.id.ppv_order_detail_view);
+
 		mSmartCardLoading = (View) findViewById(R.id.smartcard_loadingView);
 		mUserHeader = (com.star.ui.ImageView) findViewById(R.id.my_order_detail_user_header);
 		mMyOrderDetailType = (TextView) findViewById(R.id.my_order_type);
@@ -125,17 +144,96 @@ public class MyOrderDetailActivity extends BaseActivity implements OnClickListen
 		getUserInfo();
 		switch (mSmsHistoryType) {
 		case Command.BIND_CARD:
+			mPPVOrderDetailView.setVisibility(View.GONE);
 			getBindCardOrderDetail();
 			break;
 		case Command.CHANGE_PACKAGE:
+			mPPVOrderDetailView.setVisibility(View.GONE);
 			getChangePackageDetail();
 			break;
 		case Command.RECARGE:
+			mPPVOrderDetailView.setVisibility(View.GONE);
 			getRechargeDetail();
 			break;
+		case Command.PPV:
+			mPPVOrderDetailView.setVisibility(View.VISIBLE);
+			//设置ppv的订单详情
+			if (mPPVCMD != null){
+				
+				mPPVOrderDetailView.setOrderDate(mPPVCMD);
+
+			}
+			getPPVDetail();
+			break;
 		}
+
+
+
 	}
 
+	private void getPPVDetail(){
+		mSmartCardService.getPPVDetail(mSmsHistoryID, new OnResultListener<PpvCMD>() {
+			@Override
+			public boolean onIntercept() {
+				return false;
+			}
+
+			@Override
+			public void onSuccess(PpvCMD result) {
+				mSmartCardLoading.setVisibility(View.GONE);
+				showAllView();
+				if (result != null) {
+
+					String failedReason = null;
+					int acceptStatus = result.getAcceptStatus();
+					switch (acceptStatus) {
+
+						case RechargeResult.CARD_DOES_NOT_EXIST:
+							failedReason = getString(R.string.recharge_card_number_is_invalid);
+							break;
+						case RechargeResult.CUSTOMER_PASSWORD_IS_NOT_CORRECT:
+							failedReason = getString(R.string.client_password_is_incorrect);
+							break;
+						case RechargeResult.CARD_IS_ALREADY_IN_USE:
+							failedReason = getString(R.string.recharge_card_number_has_been_used_before);
+							break;
+						case RechargeResult.CARD_HAS_EXPIRED:
+							failedReason = getString(R.string.recharge_card_has_expired);
+							break;
+						default:
+							failedReason = getString(R.string.service_abnormal) + "(" + acceptStatus + ")";
+							break;
+					}
+//					String dec = "";
+//					Double money = result.getRechargeMoney();
+//					if (money != null && money > 0) {
+//						dec = SharedPreferencesUtil.getCurrencSymbol(MyOrderDetailActivity.this) + money;
+//					}
+					setMyOrderDetailInfo(getString(R.string.recharge), result.getSmartcardNo(), "",
+							result.getCreateDate(), R.drawable.ic_cancel, result.getUpdateDate(),
+							failedReason, R.drawable.ic_alert, result.getCreateDate(),
+							result.getUpdateDate(), getString(R.string.recharge_success),
+							result.getProgress(), result.getAcceptStatus());
+				} else {
+					ToastUtil.centerShowToast(MyOrderDetailActivity.this, getString(R.string.no_data));
+				}
+
+			}
+
+			@Override
+			public void onFailure(int errorCode, String msg) {
+				mSmartCardLoading.setVisibility(View.GONE);
+				showAllView();
+				ToastUtil.centerShowToast(MyOrderDetailActivity.this, getString(R.string.service_abnormal) + "(" + errorCode + ")");
+			}
+		});
+
+
+	}
+
+	/**
+	 * 充值详情
+	 */
 	private void getRechargeDetail() {
 		mSmartCardService.getChargeDetail(mSmsHistoryID, new OnResultListener<RechargeCMD>() {
 
@@ -153,27 +251,27 @@ public class MyOrderDetailActivity extends BaseActivity implements OnClickListen
 					String failedReason = null;
 					int acceptStatus = result.getAcceptStatus();
 					switch (acceptStatus) {
-					
-					case RechargeResult.CARD_DOES_NOT_EXIST:
-						failedReason = getString(R.string.recharge_card_number_is_invalid);
-						break;
-					case RechargeResult.CUSTOMER_PASSWORD_IS_NOT_CORRECT:
-						failedReason = getString(R.string.client_password_is_incorrect);
-						break;
-					case RechargeResult.CARD_IS_ALREADY_IN_USE:
-						failedReason = getString(R.string.recharge_card_number_has_been_used_before);
-						break;
-					case RechargeResult.CARD_HAS_EXPIRED:
-						failedReason = getString(R.string.recharge_card_has_expired);
-						break;
-					default:
-						failedReason = getString(R.string.service_abnormal)+"("+acceptStatus+")";
-						break;
+
+						case RechargeResult.CARD_DOES_NOT_EXIST:
+							failedReason = getString(R.string.recharge_card_number_is_invalid);
+							break;
+						case RechargeResult.CUSTOMER_PASSWORD_IS_NOT_CORRECT:
+							failedReason = getString(R.string.client_password_is_incorrect);
+							break;
+						case RechargeResult.CARD_IS_ALREADY_IN_USE:
+							failedReason = getString(R.string.recharge_card_number_has_been_used_before);
+							break;
+						case RechargeResult.CARD_HAS_EXPIRED:
+							failedReason = getString(R.string.recharge_card_has_expired);
+							break;
+						default:
+							failedReason = getString(R.string.service_abnormal) + "(" + acceptStatus + ")";
+							break;
 					}
 					String dec = "";
 					Double money = result.getRechargeMoney();
-					if(money != null && money > 0) {
-						dec=SharedPreferencesUtil.getCurrencSymbol(MyOrderDetailActivity.this)+money;
+					if (money != null && money > 0) {
+						dec = SharedPreferencesUtil.getCurrencSymbol(MyOrderDetailActivity.this) + money;
 					}
 					setMyOrderDetailInfo(getString(R.string.recharge), result.getSmartCardNo(), dec,
 							result.getCreateDate(), R.drawable.ic_cancel, result.getUpdateDate(),
@@ -189,7 +287,7 @@ public class MyOrderDetailActivity extends BaseActivity implements OnClickListen
 			public void onFailure(int errorCode, String msg) {
 				mSmartCardLoading.setVisibility(View.GONE);
 				showAllView();
-				ToastUtil.centerShowToast(MyOrderDetailActivity.this, getString(R.string.service_abnormal)+"("+errorCode+")");
+				ToastUtil.centerShowToast(MyOrderDetailActivity.this, getString(R.string.service_abnormal) + "(" + errorCode + ")");
 			}
 		});
 	}
@@ -276,25 +374,25 @@ public class MyOrderDetailActivity extends BaseActivity implements OnClickListen
 					String failedReason = null;
 					int acceptStatus = bindCardCommand.getAcceptStatus();
 					switch (acceptStatus) {
-					case BindCardCommand.CARD_IS_BIND_RESULT:
-						// 智能卡已经绑定
-						failedReason = getString(R.string.smart_card_has_been_bound);
-						break;
-					case BindCardCommand.MORE_THAN:
-						// 绑定智能卡超出限制的次数
-						failedReason = getString(R.string.smart_card_count_more_than_5);
-						break;
-					case BindCardCommand.NO_CARD_RESULT:
-						// 智能卡不存在
-						failedReason = getString(R.string.smart_card_not_exist);
-						break;
-					case BindCardCommand.SMS_ERROR_RESULT:
-						// Boss异常
-						failedReason = getString(R.string.service_abnormal);
-						break;
-					default:
-						failedReason = getString(R.string.service_abnormal)+"("+acceptStatus+")";
-						break;
+						case BindCardCommand.CARD_IS_BIND_RESULT:
+							// 智能卡已经绑定
+							failedReason = getString(R.string.smart_card_has_been_bound);
+							break;
+						case BindCardCommand.MORE_THAN:
+							// 绑定智能卡超出限制的次数
+							failedReason = getString(R.string.smart_card_count_more_than_5);
+							break;
+						case BindCardCommand.NO_CARD_RESULT:
+							// 智能卡不存在
+							failedReason = getString(R.string.smart_card_not_exist);
+							break;
+						case BindCardCommand.SMS_ERROR_RESULT:
+							// Boss异常
+							failedReason = getString(R.string.service_abnormal);
+							break;
+						default:
+							failedReason = getString(R.string.service_abnormal) + "(" + acceptStatus + ")";
+							break;
 					}
 
 					setMyOrderDetailInfo(getString(R.string.bingding_card), bindCardCommand.getSmartCardNo(), "",
@@ -302,7 +400,7 @@ public class MyOrderDetailActivity extends BaseActivity implements OnClickListen
 							failedReason, R.drawable.ic_alert, bindCardCommand.getCreateDate(),
 							bindCardCommand.getUpdateDate(), getString(R.string.binding_card_successfully),
 							bindCardCommand.getProgress(), bindCardCommand.getAcceptStatus());
-				}else {
+				} else {
 					ToastUtil.centerShowToast(MyOrderDetailActivity.this, getString(R.string.no_data));
 				}
 
@@ -312,7 +410,7 @@ public class MyOrderDetailActivity extends BaseActivity implements OnClickListen
 			public void onFailure(int errorCode, String msg) {
 				mSmartCardLoading.setVisibility(View.GONE);
 				showAllView();
-				ToastUtil.centerShowToast(MyOrderDetailActivity.this, getString(R.string.service_abnormal)+"("+errorCode+")");
+				ToastUtil.centerShowToast(MyOrderDetailActivity.this, getString(R.string.service_abnormal) + "(" + errorCode + ")");
 			}
 		});
 	}
@@ -337,33 +435,33 @@ public class MyOrderDetailActivity extends BaseActivity implements OnClickListen
 					String failedReason = null;
 					int acceptStatus = changePackageCMD.getAccepStatus();
 					switch (acceptStatus) {
-					case ChangePackageCode.BOX_NUMBER_NOT_MATCH:
-						// 更换产品包输入的机顶盒号不匹配
-						failedReason = getString(R.string.decoder_is_correct);
-						break;
-					case ChangePackageCode.CHANGE_PACKAGE_ERROR:
-						// 该用户没有此智能卡
-						failedReason = getString(R.string.smart_card_not_exist);
-						break;
-					case ChangePackageCode.STB_CODE_NULL:
-						// 机顶盒号为空
-						failedReason = getString(R.string.set_top_is_empty);
-						break;
-					case ChangePackageCode.LACK_BALANCE:
-						// 账户余额不足新包费用
-						failedReason = getString(R.string.balance_cannot_bouquet);
-						break;
-					case ChangePackageCode.PHONE_NO_MATCHING:
-						// 输入的手机号不匹配
-						failedReason = getString(R.string.phone_number_not_match);
-						break;
-					case ChangePackageCode.CHECK_NUMBER_LOSE:
-						// 验证码无效
-						failedReason = getString(R.string.invalid_verification_code);
-						break;
-					default:
-						failedReason = getString(R.string.service_abnormal)+"("+acceptStatus+")";
-						break;
+						case ChangePackageCode.BOX_NUMBER_NOT_MATCH:
+							// 更换产品包输入的机顶盒号不匹配
+							failedReason = getString(R.string.decoder_is_correct);
+							break;
+						case ChangePackageCode.CHANGE_PACKAGE_ERROR:
+							// 该用户没有此智能卡
+							failedReason = getString(R.string.smart_card_not_exist);
+							break;
+						case ChangePackageCode.STB_CODE_NULL:
+							// 机顶盒号为空
+							failedReason = getString(R.string.set_top_is_empty);
+							break;
+						case ChangePackageCode.LACK_BALANCE:
+							// 账户余额不足新包费用
+							failedReason = getString(R.string.balance_cannot_bouquet);
+							break;
+						case ChangePackageCode.PHONE_NO_MATCHING:
+							// 输入的手机号不匹配
+							failedReason = getString(R.string.phone_number_not_match);
+							break;
+						case ChangePackageCode.CHECK_NUMBER_LOSE:
+							// 验证码无效
+							failedReason = getString(R.string.invalid_verification_code);
+							break;
+						default:
+							failedReason = getString(R.string.service_abnormal) + "(" + acceptStatus + ")";
+							break;
 					}
 
 					String desc = String.format(getString(R.string.change_bouquet_desc),
@@ -374,7 +472,7 @@ public class MyOrderDetailActivity extends BaseActivity implements OnClickListen
 							failedReason, R.drawable.ic_alert, changePackageCMD.getCreateDate(),
 							changePackageCMD.getUpdateDate(), getString(R.string.change_bouquet_successfully),
 							changePackageCMD.getProgress(), changePackageCMD.getAccepStatus());
-				}else {
+				} else {
 					ToastUtil.centerShowToast(MyOrderDetailActivity.this, getString(R.string.no_data));
 				}
 			}
@@ -383,7 +481,7 @@ public class MyOrderDetailActivity extends BaseActivity implements OnClickListen
 			public void onFailure(int errorCode, String msg) {
 				mSmartCardLoading.setVisibility(View.GONE);
 				showAllView();
-				ToastUtil.centerShowToast(MyOrderDetailActivity.this, getString(R.string.service_abnormal)+"("+errorCode+")");
+				ToastUtil.centerShowToast(MyOrderDetailActivity.this, getString(R.string.service_abnormal) + "(" + errorCode + ")");
 			}
 		});
 	}
@@ -521,5 +619,6 @@ public class MyOrderDetailActivity extends BaseActivity implements OnClickListen
 		mResultReasonTV.setVisibility(View.VISIBLE);
 		mResultReasonContentTV.setVisibility(View.VISIBLE);
 	}
-	
+
+
 }

@@ -36,8 +36,8 @@ import com.star.mobile.video.util.ApplicationUtil;
 import com.star.mobile.video.util.DataCache;
 import com.star.mobile.video.util.LoadingDataTask;
 import com.star.mobile.video.util.ToastUtil;
+import com.star.ott.ppvup.model.enums.CategoryType;
 import com.star.util.app.GA;
-import com.star.util.loader.OnResultListener;
 
 public class BaseEpgItemView extends LinearLayout implements OnClickListener{
 
@@ -65,7 +65,7 @@ public class BaseEpgItemView extends LinearLayout implements OnClickListener{
 	private boolean isPlay = false;
 	private boolean isClickable = false;
 	private boolean isNewProgram = true;
-	
+	protected CategoryType categoryType;
 	
 	protected Context mContext;
 	
@@ -363,13 +363,17 @@ public class BaseEpgItemView extends LinearLayout implements OnClickListener{
 				boolean isFav = program.isIsFav();
 				program.setFavCount(isFav?program.getFavCount()-1:program.getFavCount()+1);
 				program.setIsFav(!isFav);
-				favStatus = epgService.updateFavStatus(program);
+				favStatus = epgService.updateFavStatus(program, categoryType);
 				if(!isFav) {
 					TenbService tenbService = new TenbService(getContext());
 					tenbService.doTenbData(Tenb.TENB_FAV_EPG, program.getId());
 				}
 			}
 		}.execute();
+	}
+	
+	public void setProgramCategoryType(CategoryType type){
+		categoryType = type;
 	}
 
 	@Override

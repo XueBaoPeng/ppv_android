@@ -510,11 +510,11 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.star.mobile.video.ppv.ppvorder.PuuchasePPVActivity"
+            android:name=".ppv.ppvorder.PurchasePPVActivity"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.star.mobile.video.ppv.ppvorder.PPVOrderDetail"
+            android:name=".ppv.ppvorder.PPVOrderDetailActivity"
             android:screenOrientation="portrait" >
         </activity>
         <activity

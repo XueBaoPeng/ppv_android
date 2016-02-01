@@ -1,5 +1,6 @@
 package com.star.mobile.video.view;
 
+import java.util.Iterator;
 import java.util.List;
 
 import android.content.Context;
@@ -8,12 +9,10 @@ import android.graphics.drawable.BitmapDrawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.LinearLayout.LayoutParams;
 
 import com.star.cms.model.vo.ChannelVO;
 import com.star.cms.model.vo.ProgramVO;
@@ -24,11 +23,13 @@ import com.star.mobile.video.util.CommonUtil;
 import com.star.mobile.video.util.Constant;
 import com.star.mobile.video.util.LoadingDataTask;
 import com.star.mobile.video.util.ToastUtil;
+import com.star.ott.ppvup.model.enums.CategoryType;
 
 public class EpgOnAlertItemView extends BaseEpgItemView {
 
 	private EpgOnAlertListAdapter mListAdapter;
 	private ImageView iv;
+	private View ppvIcon;
 	public EpgOnAlertItemView(Context context, EpgOnAlertListAdapter mListAdapter) {
 		super(context);
 		initView(context);
@@ -49,13 +50,13 @@ public class EpgOnAlertItemView extends BaseEpgItemView {
 		ivEpgItemMenu = (ImageView) findViewById(R.id.iv_epg_alert_item_menu);
 		iv = (ImageView) findViewById(R.id.iv_epg_alert_item_icon);
 		menuParentView = findViewById(R.id.v_menu_parent);
+		ppvIcon = findViewById(R.id.tv_ppv_item_icon);
 //		iv_alert_cancle = (ImageView) findViewById(R.id.iv_alert_cancle);
 //		iv_alert_cancle.setOnClickListener(this);
 		iv_channel_icon.setOnClickListener(this);
 	}
 
 	public void fillProgramData(ProgramVO program) {
-		iv.setVisibility(View.VISIBLE);
 		loadChannelLogoTask();
 		updateUI(program);
 	}
@@ -66,6 +67,12 @@ public class EpgOnAlertItemView extends BaseEpgItemView {
 		tv_epg_name.setTextColor(getContext().getResources().getColor(R.color.list_text_color));
 		tv_epg_startime.setText(Constant.format.format(program.getStartDate()));
 		scheduleEPGProgress();
+		
+		iv.setVisibility(View.VISIBLE);
+		categoryType = epgService.getCategoryType(program.getId());
+		if(categoryType!=null&&categoryType.equals(CategoryType.PPV)){
+			ppvIcon.setVisibility(View.VISIBLE);
+		}
 	}
 	
 	public void fillChannelData(ChannelVO channel){
@@ -96,7 +103,7 @@ public class EpgOnAlertItemView extends BaseEpgItemView {
 			@Override
 			public void doInBackground() {
 				program.setIsFav(false);
-				favStatus = epgService.updateFavStatus(program);
+				favStatus = epgService.updateFavStatus(program, categoryType);
 			}
 		}.execute();
 	}
@@ -104,11 +111,18 @@ public class EpgOnAlertItemView extends BaseEpgItemView {
 	public void removeFullProgram() {
 		if(mListAdapter != null){
 			List<ProgramVO> epgs = mListAdapter.getData();
-			epgs.remove(program);
-			program = null;
-			mChannel = null;
-			mListAdapter.updateChnDataAndRefreshUI(epgs);
-			AlertManager.getInstance(getContext()).startAlertTimer();
+			Iterator<ProgramVO> iterator = epgs.iterator();
+			while (iterator.hasNext()) {
+				ProgramVO vo = iterator.next();
+				if(vo.getId().equals(program.getId())){
+					iterator.remove();
+					program = null;
+					mChannel = null;
+					mListAdapter.updateChnDataAndRefreshUI(epgs);
+					AlertManager.getInstance(getContext()).startAlertTimer();
+					break;
+				}
+			}
 		}
 	}
 	

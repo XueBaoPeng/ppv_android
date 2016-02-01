@@ -12,13 +12,6 @@
         android:background="@drawable/pic_programe_detail"
         android:scaleType="fitXY" />
 
-    <!--<ImageView-->
-        <!--android:id="@+id/iv_program_play_img"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:scaleType="center"-->
-        <!--android:src="@drawable/pic_programe_detail" />-->
-
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -31,8 +24,7 @@
         android:layout_height="@dimen/channel_icon_height"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="@dimen/action_bar_margin_8"
-        android:layout_marginLeft="8dp"
-        android:src="@drawable/c_99014694" />
+        android:layout_marginLeft="8dp"/>
 
     <TextView
         android:id="@+id/tv_program_name"
@@ -48,8 +40,6 @@
         android:marqueeRepeatLimit="marquee_forever"
         android:scrollHorizontally="true"
         android:singleLine="true"
-        android:text="Program name | Attribute"
-
         />
 
     <TextView
@@ -60,7 +50,6 @@
         android:layout_marginLeft="@dimen/dp_8"
         android:layout_marginRight="@dimen/dp_16"
         android:layout_toRightOf="@id/iv_program_channel_icon"
-        android:text="JAN. 01"
         android:textColor="@color/white" />
 
     <TextView
@@ -69,8 +58,8 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="@dimen/action_bar_margin_8"
         android:layout_marginLeft="@dimen/dp_8"
+        android:singleLine="true"
         android:layout_toRightOf="@id/tv_program_stardate"
-        android:text="10:00/16:00/20:00"
         android:textColor="@color/white" />
 </RelativeLayout>
 

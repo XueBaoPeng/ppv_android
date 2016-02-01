@@ -11,17 +11,15 @@ import android.util.Log;
 
 import com.google.gson.reflect.TypeToken;
 import com.star.cms.model.ProgramPPV;
-import com.star.cms.model.enm.OrderType;
-import com.star.cms.model.vo.ChannelVO;
 import com.star.cms.model.vo.ProgramVO;
 import com.star.mobile.video.AlertManager;
 import com.star.mobile.video.base.AbstractService;
-import com.star.mobile.video.base.BaseService;
 import com.star.mobile.video.dao.db.DBHelper;
 import com.star.mobile.video.dao.impl.ProgramDAO;
 import com.star.mobile.video.util.Constant;
 import com.star.mobile.video.util.DataCache;
 import com.star.mobile.video.util.IOUtil;
+import com.star.ott.ppvup.model.enums.CategoryType;
 import com.star.util.json.JSONUtil;
 import com.star.util.loader.LoadMode;
 import com.star.util.loader.OnResultListener;
@@ -167,14 +165,18 @@ public class ProgramService extends AbstractService {
 		return programDao.updateFavStatus(program, isSync);
 	}
 	
-	public boolean updateFavStatus(ProgramVO program){
+	public boolean updateFavStatus(ProgramVO program, CategoryType categoryType){
+		boolean result = false;
 		if(programDao.queryIsExist(program.getId())){
-			return programDao.updateFavStatus(program, false);
+			result = programDao.updateFavStatus(program, false);
 		}else{
-			boolean result =  programDao.addOutline(program);
+			result =  programDao.addOutline(program);
 			setOutLinePrograms();
-			return result;
 		}
+		if(result&&categoryType!=null){
+			programDao.updateCategoryType(program.getId(), categoryType);
+		}
+		return result;
 	}
 	
 	public void setOutLinePrograms(){
@@ -249,7 +251,7 @@ public class ProgramService extends AbstractService {
 		return new ArrayList<ProgramPPV>();
 	}
 	
-	public List<ProgramVO> getEpgs(long channelId, long currentTime, int index, int count){
+	/*public List<ProgramVO> getEpgs(long channelId, long currentTime, int index, int count){
 		List<ProgramVO> localEpgs = null;
 		if(!SyncService.getInstance(context).isLoading()){
 			try{
@@ -275,27 +277,45 @@ public class ProgramService extends AbstractService {
 			}
 		}
 		return programs;
-	}
+	}*/
 	public List<ProgramPPV> getEpgsppv(long channelId, long currentTime, int index, int count,boolean isLoacl){
-		List<ProgramPPV> localEpgs = null;
+		List<ProgramVO> localEpgs = null;
+		List<ProgramPPV> ppvs = new ArrayList<ProgramPPV>();
+		if(!SyncService.getInstance(context).isLoading()){
+			try{
+				localEpgs = programDao.query(channelId, -1, currentTime, index, count);
+				if(localEpgs.size()==Constant.request_item_count){
+					Log.d(TAG, "program list come from local! channelID="+channelId+", index="+index+",count="+count);
+					for(ProgramVO vo : localEpgs){
+						ProgramPPV ppv = new ProgramPPV(vo);
+						ppv.setCategoryType(getCategoryType(vo.getId()));
+						ppvs.add(ppv);
+					}
+					return ppvs;
+				}
+				Log.e(TAG, "from local, programs size is "+localEpgs.size());
+			}catch (Exception e) {
+				Log.e(TAG, "get program list from local error!", e);
+			}
+		}
 		String url = Constant.getEpgListUrl()+"?channelID="+channelId+"&index="+index+"&count="+count;
 		List<ProgramPPV> programs = getProgramFromppvServer(url,isLoacl,index);
 		if(localEpgs!=null && localEpgs.size()!=0){
-			for(ProgramPPV program : localEpgs){
-				for(ProgramPPV vo : programs){
-					if(vo.getId().equals(program.getId())){
-						vo.setIsFav(program.isIsFav());
+			for(ProgramVO vo : localEpgs){
+				for(ProgramPPV vp : programs){
+					if(vo.getId().equals(vp.getId())){
+						vo.setIsFav(vp.isIsFav());
 					}
 				}
 			}
 		}
 		return programs;
 	}
-	public List<ProgramVO> getEpgs(OrderType orderType, int index, int count){
+	/*public List<ProgramVO> getEpgs(OrderType orderType, int index, int count){
 		String url = requestURL+"?orderBy="+orderType.getNum()+"&index="+index+"&count="+count;
 		String json = null;
 		try{
-			json = /*isUseAsync ? IOUtilAsync.httpGetToJSON(url, true) : */IOUtil.httpGetToJSON(url, true);
+			json = isUseAsync ? IOUtilAsync.httpGetToJSON(url, true) : IOUtil.httpGetToJSON(url, true);
 			if(json != null){
 				ArrayList<ProgramVO> list = JSONUtil.getFromJSON(json, new TypeToken<ArrayList<ProgramVO>>() {}.getType());
 				if(list!=null && list.size()>0){
@@ -313,7 +333,7 @@ public class ProgramService extends AbstractService {
 			e.printStackTrace();
 		}
 		return new ArrayList<ProgramVO>();
-	}
+	}*/
 
 	private int index = 0;
 	private String getSnapshotProgramUrl(long channelID, long startDate, long endDate, int count){
@@ -378,5 +398,8 @@ public class ProgramService extends AbstractService {
 		}
 	}
 	
+	public CategoryType getCategoryType(long programId){
+		return programDao.getCategoryType(programId);
+	}
 	
 }
