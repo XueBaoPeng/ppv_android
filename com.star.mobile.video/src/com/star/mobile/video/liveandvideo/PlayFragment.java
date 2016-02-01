@@ -121,7 +121,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 	private List<View> cachedViews = new ArrayList<View>();
 	private int star = 0;
 	private Thread thread;
-	private int position;
+//	private int position;
 	private int recordPosition;
 	private boolean isfav;
 	private Package selectPkg = null;
@@ -158,7 +158,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
 			case 1:
-				loadVideo(position);
+				loadVideo();
 				break;
 
 			default:
@@ -307,6 +307,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 			public void OnResize(int w, int h, int oldw, int oldh) {
 				if (h > oldh) {
 					if (mViewDatas != null && mViewDatas.size() > 0) {
+						int position = mHomeViewPager.getCurrentItem();
 						ChannelDetailView channelDetailView = (ChannelDetailView) mViewDatas.get(position % mViewDatas.size());
 						channelDetailView.updateUiChat();
 					}
@@ -376,6 +377,11 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 	public void onStart() {
 		setCurrentChannel();
 		super.onStart();
+	}
+
+	@Override
+	public boolean onContextItemSelected(MenuItem item) {
+		return super.onContextItemSelected(item);
 	}
 
 	/**
@@ -659,7 +665,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 	@Override
 	public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 		mCurrentChannel = mTotalChannels.get(position);
-		this.position = position;
+//		this.position = position;
 		this.mSelectItemId = id;
 		//显示收藏
 		showFavorite(position);
@@ -690,8 +696,9 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 		}
 	}
 
-	private void loadVideo(int position) {
+	private void loadVideo() {
 		if (mViewDatas != null && mViewDatas.size() > 0) {
+			int position = mHomeViewPager.getCurrentItem();
 			ChannelDetailView channelDetailView = (ChannelDetailView) mViewDatas.get(position % mViewDatas.size());
 			channelDetailView.loadVideo(mCurrentChannel);
 			resetDrawerView();
@@ -782,24 +789,20 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 
 	@Override
 	public void onStop() {
-		saveCurrentChannelId();
-		super.onStop();
-	}
-
-	@Override
-	public void onDestroyView() {
 		// 获得选中图片的位置，在程序被隐藏时记录这个位置，下次打开的时候还在这个位置。
 		saveCurrentChannelId();
-		super.onDestroy();
+		super.onStop();
 	}
 
 	/**
 	 * 保存当前的频道
 	 */
 	private void saveCurrentChannelId() {
-		Long currentChannelId = mCurrentChannel.getId();
-		if (currentChannelId != null){
-			SharedPreferencesUtil.setCurrentChannel(currentChannelId, getActivity());
+		if (mCurrentChannel !=null){
+			Long currentChannelId = mCurrentChannel.getId();
+			if (currentChannelId != null){
+				SharedPreferencesUtil.setCurrentChannel(currentChannelId, getActivity());
+			}
 		}
 	}
 
