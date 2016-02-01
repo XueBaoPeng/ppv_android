@@ -22,6 +22,7 @@ import com.star.mobile.video.smartcard.recharge.RechargeSmartCardActivity;
 import com.star.mobile.video.util.CommonUtil;
 import com.star.mobile.video.util.ToastUtil;
 import com.star.mobile.video.view.LoadingView;
+import com.star.util.Logger;
 import com.star.util.loader.OnResultListener;
 
 import java.io.Serializable;
@@ -48,7 +49,7 @@ public class SmartCardInfoView extends RelativeLayout implements View.OnClickLis
     private String mChangePkgSmartCardNumber;
     private SmartCardService mSmartcardService;
     private static boolean isAllowDeleteSmartCard = false;
-
+    private boolean hasLoad = false;
 
     public SmartCardInfoView(Context context) {
         this(context, null);
@@ -84,8 +85,11 @@ public class SmartCardInfoView extends RelativeLayout implements View.OnClickLis
     }
 
     public void initData(SmartCardInfoVO smartCardInfoVO) {
-        if (smartCardInfoVO != null) {
-            getDetailSmartCardInfo(smartCardInfoVO);
+        if (!hasLoad){
+            if (smartCardInfoVO != null) {
+                hasLoad = true;
+                getDetailSmartCardInfo(smartCardInfoVO);
+            }
         }
     }
 

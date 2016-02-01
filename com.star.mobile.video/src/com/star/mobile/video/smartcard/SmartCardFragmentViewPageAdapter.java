@@ -70,6 +70,9 @@ public class SmartCardFragmentViewPageAdapter extends PagerAdapter implements Ic
             ViewGroup parent = (ViewGroup) vp;
             parent.removeView(view);
         }
+        if(view instanceof SmartCardInfoView){
+            ((SmartCardInfoView)view).initData(mSmartinfos.get(position));
+        }
         container.addView(view);
         return view;
     }
