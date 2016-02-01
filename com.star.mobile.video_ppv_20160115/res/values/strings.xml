@@ -1025,4 +1025,7 @@
     <string name="login_big">LOGIN</string>
 
     <string name="performed">We already received your request, please check the progress center.</string>
+    <string name="ppv_detail">PPV Detail</string>
+    <string name="product_code">Product code:</string>
+    <string name="all_day_deal">All day deal</string>
 </resources>

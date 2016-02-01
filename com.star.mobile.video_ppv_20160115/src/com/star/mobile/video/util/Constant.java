@@ -322,6 +322,14 @@ public class Constant {
 	public static String getChangeBouquetUrl() {
 		return SERVER_URL+"/sms/change/package";
 	}
+
+	/**
+	 * PPV订单的url
+	 * @return
+	 */
+	public static String getPPVOrderDetailUrl(){
+		return SERVER_URL+"/ppv/order";
+	}
 	/**提交意见url*/
 //	public static String getFeedbackUrl() {
 //		return SERVER_URL+"/users/feedback";
@@ -671,7 +679,16 @@ public class Constant {
 	public static String getChargeDetailUrl(long id){
 		return SERVER_URL+"/sms/recharge/order/"+id;
 	}
-	
+
+	/**
+	 * 获得ppv详情的url
+	 * @param id
+	 * @return
+	 */
+	public static String getPPVDetailUrl(long id){
+		return SERVER_URL+"/ppv/order/"+id;
+	}
+
 	public static int request_item_count = 6;
 	
 	public static String REMIND_TIME_POS = "remind_time_pos";

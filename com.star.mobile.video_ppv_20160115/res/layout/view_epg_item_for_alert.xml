@@ -2,8 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-     >
+    android:orientation="vertical" >
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -27,70 +26,84 @@
             android:layout_marginLeft="@dimen/channel_item_margin"
             android:layout_marginRight="@dimen/channel_item_margin"
             android:background="@drawable/list_channel_cover" />
-		<View
-		    android:id="@+id/v_menu_parent"
-		    android:layout_width="50dp"
-		    android:layout_alignParentRight="true"
-		    android:layout_marginRight="@dimen/dp_20"
-		    android:layout_height="@dimen/action_bar_margin_5"
-		    />
+
+        <View
+            android:id="@+id/v_menu_parent"
+            android:layout_width="50dp"
+            android:layout_height="@dimen/action_bar_margin_5"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/dp_20" />
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@+id/pb_play_rate"
             android:layout_toRightOf="@id/iv_channel_icon" >
-            <LinearLayout 
-				android:layout_width="match_parent"
-				android:layout_height="match_parent"   
-				android:orientation="vertical"             
-                >
-            	<LinearLayout 
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"   
-					android:orientation="horizontal"      
-					android:layout_weight="1"       
-	                >
-					<TextView
-		                android:id="@id/tv_epg_startime"
-		                style="@style/epg_startime_text_style"
-		                android:drawablePadding="10dp"
-		                android:layout_gravity="bottom"
-		                android:layout_width="wrap_content"
-		                android:layout_height="wrap_content"
-		                />
-					<ImageView
-		                android:id="@+id/iv_epg_alert_item_icon"
-		                style="@style/action_bar_icon_style"
-		                android:layout_gravity="bottom"
-		                android:layout_marginLeft="8dp"
-		                android:layout_marginBottom="4dp"
-		                android:visibility="gone"
-		                android:src="@drawable/ic_access_alarms_18dp_blue"
-	                	/>				
-				</LinearLayout>
-				
-	            <TextView
-	                android:id="@id/tv_epg_name"
-	                android:layout_width="match_parent"
-	                android:layout_height="wrap_content"
-	                android:ellipsize="end"
-	                android:gravity="top"
-	                android:singleLine="true"
-	                android:layout_weight="1"
-	                android:textColor="@color/list_text_color"
-	                android:textSize="@dimen/action_bar_text_size_small" />
-           
-			</LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@id/tv_epg_startime"
+                        style="@style/epg_startime_text_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:drawablePadding="10dp" />
+
+                    <ImageView
+                        android:id="@+id/iv_epg_alert_item_icon"
+                        style="@style/action_bar_icon_style"
+                        android:layout_gravity="bottom"
+                        android:layout_marginBottom="4dp"
+                        android:layout_marginLeft="8dp"
+                        android:visibility="invisible"
+                        android:src="@drawable/ic_access_alarms_18dp_blue" />
+
+                    <TextView
+                        android:id="@id/tv_ppv_item_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginBottom="1dp"
+                        android:layout_gravity="bottom"
+                        android:text="@string/ppv"
+                        android:textColor="#0066CC"
+                        android:visibility="invisible"
+                        android:textSize="@dimen/action_bar_margin_16" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@id/tv_epg_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:gravity="top"
+                    android:singleLine="true"
+                    android:textColor="@color/list_text_color"
+                    android:textSize="@dimen/action_bar_text_size_small" />
+            </LinearLayout>
+
             <ImageView
                 android:id="@+id/iv_epg_alert_item_menu"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_alignParentRight="true"
-                android:src="@drawable/ic_more_vert"
                 android:clickable="true"
                 android:scaleType="center"
+                android:src="@drawable/ic_more_vert"
                 android:visibility="visible" />
         </RelativeLayout>
+
         <ProgressBar
             android:id="@id/pb_play_rate"
             style="@android:style/Widget.ProgressBar.Horizontal"
@@ -106,17 +119,18 @@
     </RelativeLayout>
 
     <ImageView
-        android:id="@+id/iv_epg_line" 
+        android:id="@+id/iv_epg_line"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/separate_line"
-        />
-    
-    <!-- <ImageView
+        android:background="@drawable/separate_line" />
+
+    <!--
+         <ImageView
         android:id="@+id/iv_alert_cancle"
         android:layout_width="@dimen/channel_icon_height"
         android:layout_height="match_parent"
         android:scaleType="center"
-        android:src="@drawable/slide_alert" /> -->
+        android:src="@drawable/slide_alert" />
+    -->
 
 </LinearLayout>

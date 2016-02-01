@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.star.cms.model.BindCardCommand;
 import com.star.cms.model.Command;
+import com.star.cms.model.PpvCMD;
 import com.star.cms.model.code.ChangePackageCode;
 import com.star.cms.model.vo.SMSHistory;
 import com.star.mobile.video.R;
@@ -110,11 +111,11 @@ public class MyOrderAdapter extends BaseAdapter {
 			orderStatus = mContext.getString(R.string.Recept);
 		}
 		SpannableStringBuilder statusStyle = new SpannableStringBuilder(mContext.getString(R.string.Status) + orderStatus);
-		statusStyle.setSpan(new ForegroundColorSpan(R.color.gray_bg), 0, 7, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+		statusStyle.setSpan(new ForegroundColorSpan(mContext.getResources().getColor(R.color.gray_bg)), 0, 7, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
 		String cardNumber = myOrderBean.getSmartCardNo();
 		SpannableStringBuilder cardNumberStyle = new SpannableStringBuilder(mContext.getString(R.string.card_number) + cardNumber);
-		cardNumberStyle.setSpan(new ForegroundColorSpan(R.color.gray_bg), 0, 12, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+		cardNumberStyle.setSpan(new ForegroundColorSpan(mContext.getResources().getColor(R.color.gray_bg)), 0, 12, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
 		int type = getItemViewType(position);
 		switch (type) {
@@ -140,8 +141,8 @@ public class MyOrderAdapter extends BaseAdapter {
 					receptViewHolder.mReceptDateTextview
 							.setText(DateFormat.format(myOrderBean.getCreateDate(), "yyyy-MM-dd HH:mm"));
 				} else {
-					receptViewHolder.mReceptDateTextview
-							.setText(DateFormat.format(myOrderBean.getUpdateDate(), "yyyy-MM-dd HH:mm"));
+//					receptViewHolder.mReceptDateTextview
+//							.setText(DateFormat.format(myOrderBean.getUpdateDate(), "yyyy-MM-dd HH:mm"));
 				}
 				receptViewHolder.mReceptStausTextview.setText(statusStyle);
 				switch (myOrderBean.getType()) {

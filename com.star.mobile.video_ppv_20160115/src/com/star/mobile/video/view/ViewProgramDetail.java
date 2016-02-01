@@ -1,13 +1,25 @@
 package com.star.mobile.video.view;
 
+import java.util.Date;
+
 import android.content.Context;
+import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.star.cms.model.ProgramPPV;
+import com.star.cms.model.vo.ChannelVO;
 import com.star.mobile.video.R;
+import com.star.mobile.video.base.BaseFragmentActivity;
+import com.star.mobile.video.service.ChannelService;
+import com.star.mobile.video.util.CommonUtil;
+import com.star.mobile.video.util.Constant;
+import com.star.mobile.video.util.DateFormat;
+import com.star.mobile.video.util.LoadingDataTask;
+import com.star.ott.ppvup.model.enums.RentleType;
 import com.star.ui.ImageView;
 
 
@@ -18,10 +30,12 @@ public class ViewProgramDetail extends RelativeLayout {
     private LayoutInflater mLayoutInflater;
     private ImageView mProgramPosterImageView;
 //    private ImageView mProgramPlayImg;
-    private ImageView mProgramChannelIcon;
+    private com.star.ui.ImageView mProgramChannelIcon;
     private TextView mProgramName;
     private TextView mProgramStartDate;
     private TextView mProgramStartTime;
+    private ChannelVO mChannel;
+    private ChannelService mChannelService;
 
     public ViewProgramDetail(Context context) {
         this(context, null);
@@ -37,84 +51,85 @@ public class ViewProgramDetail extends RelativeLayout {
     }
 
     private void initView(Context context) {
+    	mChannelService = new ChannelService(context);
         mLayoutInflater = LayoutInflater.from(context);
         View view = mLayoutInflater.inflate(R.layout.view_program_detail, this);
         mProgramPosterImageView = (ImageView) view.findViewById(R.id.iv_program_poster);
 //        mProgramPlayImg = (ImageView) view.findViewById(R.id.iv_program_play_img);
-        mProgramChannelIcon = (ImageView) view.findViewById(R.id.iv_program_channel_icon);
+        mProgramChannelIcon = (com.star.ui.ImageView) view.findViewById(R.id.iv_program_channel_icon);
         mProgramName = (TextView) view.findViewById(R.id.tv_program_name);
         mProgramStartDate = (TextView) view.findViewById(R.id.tv_program_stardate);
         mProgramStartTime = (TextView) view.findViewById(R.id.tv_program_startime);
     }
-
-    /**
-     * …Ë÷√posterÕº∆¨
-     *
-     * @param url
-     */
-    public void setProgramPosterImg(String url) {
-        mProgramPosterImageView.setUrl(url);
+    
+    public void setProgram(ProgramPPV program){
+    	executeChannelInfoTask(program);
+    	setProgramDetail(program);
     }
 
-    public ImageView getProgramPosterImageView() {
-        return mProgramPosterImageView;
+    public void executeChannelInfoTask(final ProgramPPV program) {
+        new LoadingDataTask() {
+            @Override
+            public void onPreExecute() {
+            }
+
+            @Override
+            public void onPostExecute() {
+                if (mChannel == null)
+                    return;
+                try {
+                	mProgramChannelIcon.setUrl(mChannel.getLogo().getResources().get(0).getUrl());
+                	mProgramChannelIcon.setOnClickListener(mChannelIconClickListener);
+                } catch (Exception e) {
+                	mProgramChannelIcon.setVisibility(View.INVISIBLE);
+                }
+            }
+
+            @Override
+            public void doInBackground() {
+                mChannel = mChannelService.getChannelById(program.getChannelId());
+            }
+        }.execute();
     }
 
-//    public ImageView getProgramPlayImg() {
-//        return mProgramPlayImg;
-//    }
+    private View.OnClickListener mChannelIconClickListener = new View.OnClickListener() {
 
-    public ImageView getProgramChannelIcon() {
-        return mProgramChannelIcon;
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(getContext(), BaseFragmentActivity.class);
+            intent.putExtra("channel", mChannel);
+            CommonUtil.startActivity(getContext(), intent);
+        }
+    };
+
+    private void setProgramDetail(ProgramPPV program) {
+        try {
+            String url = null;
+            for (int i = 0; i < program.getPpvContent().getPosterResourceList().size(); i++) {
+                for (int a = 0; a < program.getPpvContent().getPosterResourceList().size(); a++) {
+                    if (program.getPpvContent().getPosterResourceList().get(i).getSize() > program.getPpvContent().getPosterResourceList().get(a).getSize()) {
+                        url = program.getPpvContent().getPosterResourceList().get(i).getResourceURL();
+                        break;
+                    }
+                }
+            }
+            //È¢ëÈÅìÂõæÁâá
+            mProgramPosterImageView.setUrl(url);
+        } catch (Exception e) {
+        }
+        //ËÆæÁΩÆprogram name
+        mProgramName.setText(program.getName());
+        long startDate = 0;
+        String startime = "";
+        for (int i = 0; i < program.getPpvContent().getProductList().size(); i++) {
+            if (program.getPpvContent().getProductList().get(i).getRentleType().equals(RentleType.SINGLE)) {
+                startDate = program.getPpvContent().getProductList().get(i).getEpgContentList().get(0).getStartDate();
+                startime = startime + Constant.format.format(program.getPpvContent().getProductList().get(i).getEpgContentList().get(0).getStartDate()) + "/";
+            }
+        }
+        //ÂºÄÂßãÊó•Êúü
+        mProgramStartDate.setText(DateFormat.formatMonth(new Date(startDate)));
+        //ÂºÄÂßãÊó∂Èó¥
+        mProgramStartTime.setText(startime.substring(0, startime.length() - 1));
     }
-
-    /**
-     * …Ë÷√∆µµ¿µƒÕº∆¨
-     *
-     * @param url
-     */
-    public void setProgramChannelIcon(String url) {
-        mProgramChannelIcon.setUrl(url);
-    }
-
-    public TextView getProgramStartDate() {
-        return mProgramStartDate;
-    }
-
-    /**
-     * programø™ ºµƒ»’∆⁄
-     *
-     * @param programStratDate
-     */
-    public void setProgramStartDate(String programStratDate) {
-        mProgramStartDate.setText(programStratDate);
-    }
-
-    public TextView getProgramName() {
-        return mProgramName;
-    }
-
-    /**
-     * …Ë÷√programµƒ√˚◊÷
-     *
-     * @param programName
-     */
-    public void setProgramName(String programName) {
-        mProgramName.setText(programName);
-    }
-
-    public TextView getProgramStartTime() {
-        return mProgramStartTime;
-    }
-
-    /**
-     * programø™ ºµƒ ±º‰
-     *
-     * @param programStartTime
-     */
-    public void setProgramStartTime(String programStartTime) {
-        mProgramStartTime.setText(programStartTime);
-    }
-
-
 }

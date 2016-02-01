@@ -106,6 +106,10 @@ public class MyOrderActivity extends BaseActivity implements OnClickListener{
 							Intent it = new Intent();
 							it.putExtra("smsHistoryID", smsHistory.getId());
 							it.putExtra("smsHistoryType", smsHistory.getType());
+							if (smsHistory.getType() == Command.PPV){
+								it.putExtra("ppvcmd",smsHistory.getPpvCMD());
+								it.putExtra("totalPrice",smsHistory.getPrice());
+							}
 							it.setClass(MyOrderActivity.this, MyOrderDetailActivity .class);
 							CommonUtil.startActivityForResult(MyOrderActivity.this, it, 200);
 						}

@@ -1015,6 +1015,7 @@
     <string name="recharege_result">We are glad to inform you that %1$s will be recharged into your smart card: %2$s successfully.</string>
     <string name="recharge_result_coins">We are glad to inform you that %1$s will be recharged into your smart card: %2$s successfully. And %3$s Coins have been send to your account!</string>
     <string name="performed">We already received your request, please check the progress center.</string>
+    <string name="runing_exchange_recharge">This coupon is being recharged, please check on progress centre.</string>
     <string name="faq_name">Lisa</string>
     <string name="balance_s">Balance</string>
     <string name="exchange_failue">Sorry, Your coupon has been expired.</string>

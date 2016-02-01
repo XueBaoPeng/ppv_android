@@ -7,6 +7,7 @@ import java.util.Map;
 
 import com.google.gson.reflect.TypeToken;
 import com.star.cms.model.BindCardCommand;
+import com.star.cms.model.PpvCMD;
 import com.star.cms.model.RechargeCMD;
 import com.star.cms.model.User;
 import com.star.cms.model.dto.RechargeResult;
@@ -15,6 +16,7 @@ import com.star.cms.model.vo.ChannelVO;
 import com.star.cms.model.vo.SMSHistory;
 import com.star.cms.model.vo.SmartCardInfoVO;
 import com.star.mobile.video.base.AbstractService;
+import com.star.mobile.video.ppv.ppvorder.PPVOrderDetailActivity;
 import com.star.mobile.video.util.Constant;
 import com.star.mobile.video.util.IOUtil;
 import com.star.util.InternalStorage;
@@ -82,10 +84,6 @@ public class SmartCardService extends AbstractService {
 	 * 
 	 * @param cardNum
 	 *            只能卡号
-	 * @param stbCode
-	 *            机顶盒号后四位
-	 * @param versionCode
-	 *            当前app的versionCode
 	 * @param listener
 	 */
 
@@ -204,6 +202,14 @@ public class SmartCardService extends AbstractService {
 	public void getChargeDetail(long id,OnResultListener<RechargeCMD> listener){
 		doGet(Constant.getChargeDetailUrl(id), RechargeCMD.class, LoadMode.CACHE_NET, listener);
 	}
+
+	/**
+	 * 获得ppv详情
+	 */
+	public void getPPVDetail(long id,OnResultListener<PpvCMD> listener){
+		doGet(Constant.getPPVDetailUrl(id), PpvCMD.class, LoadMode.CACHE_NET, listener);
+	}
+
 	/**
 	 * 获得绑卡的订单详情
 	 */

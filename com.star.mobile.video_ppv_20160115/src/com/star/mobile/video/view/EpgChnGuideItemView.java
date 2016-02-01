@@ -9,7 +9,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.star.cms.model.ProgramPPV;
-import com.star.cms.model.vo.ProgramVO;
 import com.star.mobile.video.R;
 import com.star.mobile.video.util.Constant;
 
@@ -46,6 +45,7 @@ public class EpgChnGuideItemView extends BaseEpgItemView {
 		if(vo.equals(program)){
 			return;
 		}
+		setProgramCategoryType(vo.getCategoryType());
 		if(vo.getPpvContent()!=null){
 			tv_ppv_item_icon.setVisibility(View.VISIBLE);
 		}else{

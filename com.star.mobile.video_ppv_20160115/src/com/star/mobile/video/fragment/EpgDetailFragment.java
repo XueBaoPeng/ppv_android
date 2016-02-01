@@ -15,13 +15,11 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.loopj.android.http.RequestHandle;
-import com.star.cms.model.Content;
 import com.star.cms.model.Program;
 import com.star.cms.model.Task.TaskCode;
 import com.star.cms.model.Tenb;
@@ -34,10 +32,8 @@ import com.star.mobile.video.AlertManager;
 import com.star.mobile.video.R;
 import com.star.mobile.video.base.BaseFragment;
 import com.star.mobile.video.channel.NewVideoAdapter;
-import com.star.mobile.video.channel.VideoAdapter;
 import com.star.mobile.video.epg.AllCommentActivity;
 import com.star.mobile.video.epg.CommentListView;
-import com.star.mobile.video.epg.EpgDetailActivity;
 import com.star.mobile.video.me.mycoins.TaskService;
 import com.star.mobile.video.service.CommentService_old;
 import com.star.mobile.video.service.EggAppearService;
@@ -52,8 +48,6 @@ import com.star.mobile.video.util.LoadingDataTask;
 import com.star.mobile.video.util.ShareUtil;
 import com.star.mobile.video.util.ToastUtil;
 import com.star.mobile.video.util.http.HTTPInvoker;
-import com.star.mobile.video.view.ClipTextView;
-import com.star.mobile.video.view.EpgOnAlertItemView;
 import com.star.mobile.video.view.NoScrollListView;
 import com.star.util.loader.OnResultListener;
 
@@ -534,7 +528,7 @@ public class EpgDetailFragment extends BaseFragment {
 				@Override
 				public void doInBackground() {
 					rechangeFavStatus();
-					favStatus = getProgramService().updateFavStatus(program);
+					favStatus = getProgramService().updateFavStatus(program, null);
 					if(isFav) {
 						tenbService.doTenbData(Tenb.TENB_FAV_EPG, program.getId());
 					}

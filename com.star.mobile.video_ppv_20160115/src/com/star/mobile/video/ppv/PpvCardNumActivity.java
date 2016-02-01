@@ -8,10 +8,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.star.cms.model.ProgramPPV;
 import com.star.cms.model.vo.SmartCardInfoVO;
 import com.star.mobile.video.R;
 import com.star.mobile.video.base.BaseActivity;
-import com.star.mobile.video.ppv.ppvorder.PuuchasePPVActivity;
+import com.star.mobile.video.ppv.ppvorder.PurchasePPVActivity;
 import com.star.mobile.video.util.CommonUtil;
 import com.star.mobile.video.view.AllSmardCardListView;
 
@@ -21,6 +22,7 @@ public class PpvCardNumActivity extends BaseActivity implements OnClickListener,
 
     List<SmartCardInfoVO> smartCardInfos;
     private Button btnGo;
+    private ProgramPPV program;
     private AllSmardCardListView allSmardCardListView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,7 @@ public class PpvCardNumActivity extends BaseActivity implements OnClickListener,
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card_num);
         smartCardInfos=(List<SmartCardInfoVO>) getIntent().getSerializableExtra("smartCardInfos");
+        program=(ProgramPPV)getIntent().getSerializableExtra("program");
         initView();
         allSmardCardListView.setData(smartCardInfos);
     }
@@ -54,7 +57,9 @@ public class PpvCardNumActivity extends BaseActivity implements OnClickListener,
         }
         if(v.getId()==R.id.bt_mob_reg_go){
             if(allSmardCardListView.getData()!=null){
-                Intent intent = new Intent(this, PuuchasePPVActivity.class);
+                Intent intent = new Intent(this, PurchasePPVActivity.class);
+                intent.putExtra("smartCardInfoVO", allSmardCardListView.getData());
+                intent.putExtra("program", program);
                 CommonUtil.startActivity(this, intent);
             }else{
             }

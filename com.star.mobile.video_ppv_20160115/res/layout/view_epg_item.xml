@@ -2,8 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-     >
+    android:orientation="vertical" >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,13 +10,14 @@
         android:background="@color/white"
         android:orientation="vertical"
         android:padding="0dp" >
-		<View
-		    android:id="@+id/v_menu_parent"
-		    android:layout_width="50dp"
-		    android:layout_gravity="right"
-		    android:layout_marginRight="@dimen/dp_20"
-		    android:layout_height="@dimen/action_bar_margin_5"
-		    />
+
+        <View
+            android:id="@+id/v_menu_parent"
+            android:layout_width="50dp"
+            android:layout_height="@dimen/action_bar_margin_5"
+            android:layout_gravity="right"
+            android:layout_marginRight="@dimen/dp_20" />
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -27,34 +27,36 @@
             <TextView
                 android:id="@id/tv_epg_startime"
                 style="@style/epg_startime_text_style" />
+
             <TextView
                 android:id="@+id/tv_ppv_item_icon"
                 style="@style/action_bar_icon_style"
-                android:layout_toRightOf="@id/tv_epg_startime"
                 android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@id/tv_epg_startime"
                 android:drawableLeft="@drawable/ic_ppv_24dp"
+                android:drawablePadding="@dimen/action_bar_margin_2"
+                android:gravity="center"
                 android:text="@string/ppv"
                 android:textColor="#0066CC"
                 android:textSize="@dimen/action_bar_margin_16"
-                android:gravity="center"
-                android:drawablePadding="@dimen/action_bar_margin_2"
-                android:visibility="gone"/>
+                android:visibility="gone" />
+
             <ImageView
                 android:id="@id/iv_alert_item_icon"
                 style="@style/action_bar_icon_style"
-                android:layout_toRightOf="@+id/tv_ppv_item_icon"
                 android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@+id/tv_ppv_item_icon"
                 android:src="@drawable/ic_access_alarms_18dp"
                 android:visibility="invisible" />
-            
-             <ImageView
+
+            <ImageView
                 android:id="@+id/iv_epg_item_menu"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_alignParentRight="true"
-                android:src="@drawable/ic_more_vert"
                 android:clickable="true"
                 android:scaleType="center"
+                android:src="@drawable/ic_more_vert"
                 android:visibility="visible" />
         </RelativeLayout>
 
@@ -84,17 +86,18 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/iv_epg_line" 
+        android:id="@+id/iv_epg_line"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/separate_line"
-        />
-    
-    <!-- <ImageView
+        android:background="@drawable/separate_line" />
+
+    <!--
+         <ImageView
         android:id="@+id/iv_alert_cancle"
         android:layout_width="@dimen/channel_icon_height"
         android:layout_height="match_parent"
         android:scaleType="center"
-        android:src="@drawable/slide_alert" /> -->
-	
+        android:src="@drawable/slide_alert" />
+    -->
+
 </LinearLayout>
