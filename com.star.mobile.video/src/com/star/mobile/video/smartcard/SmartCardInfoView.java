@@ -261,7 +261,6 @@ public class SmartCardInfoView extends RelativeLayout implements View.OnClickLis
 
     private void setData(final SmartCardInfoVO vo, SmartCardInfoVO scv) {
         mSmartCardInfoVO = scv;
-//		MemoryCacheUtil.setSmartCardInfoVO(vo.getSmardCardNo(), scv);
         fillData(scv);
     }
 
@@ -292,12 +291,6 @@ public class SmartCardInfoView extends RelativeLayout implements View.OnClickLis
                 setNoInfoVisibility(View.VISIBLE);
             }
         }
-//		String programName = sc.getProgramName();
-//		if (programName != null) {
-//			setPackageName(programName);
-//		}else {
-//			setPackageName(getString(R.string.no_bouquet));
-//		}
         setSmartCardNo(formatSmarCardNo(sc.getSmardCardNo()));
         // 设置用户名和用户电话
         if (sc.getAccountName() != null) {
@@ -327,26 +320,6 @@ public class SmartCardInfoView extends RelativeLayout implements View.OnClickLis
     public void setRemainingDaysTextColor(int color) {
         mSmartCardDeadLine.setTextColor(color);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     @Override
     public void onClick(View v) {

@@ -23,7 +23,6 @@ public class SmartCardFragmentViewPageAdapter extends PagerAdapter implements Ic
     private final int resId = R.drawable.point_group;
     private List<SmartCardInfoVO> mSmartinfos;
     private List<SmartCardInfoView> mViewDatas;
-    private SmartCardInfoVO smartCard;
 
     public SmartCardFragmentViewPageAdapter(List<SmartCardInfoVO> mSmartinfos, List<SmartCardInfoView> viewDatas) {
         this.mSmartinfos = mSmartinfos;
