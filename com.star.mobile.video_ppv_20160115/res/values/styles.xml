@@ -53,14 +53,14 @@
 
     <style name="action_bar_btn_style">
         <item name="android:layout_width">@dimen/menu_btn_width</item>
-        <item name="android:layout_height">@dimen/dp_44</item>
+        <item name="android:layout_height">@dimen/dp_52</item>
         <item name="android:scaleType">center</item>
         <item name="android:background">@drawable/actionbar_btn_bg</item>
     </style>
     
     <style name="action_bar_login_btn_style">
         <item name="android:layout_width">@dimen/menu_btn_width</item>
-        <item name="android:layout_height">@dimen/dp_44</item>
+        <item name="android:layout_height">@dimen/dp_52</item>
         <item name="android:scaleType">center</item>
         <item name="android:background">@drawable/actionbar_login_btn_bg</item>
     </style>
@@ -211,10 +211,4 @@
 		<item name="android:minHeight">14dp</item>
 		<item name="android:maxHeight">14dp</item>
 	</style>
-    <style name="checkboxTheme" parent="@android:style/Widget.CompoundButton.CheckBox">
-        <item name="android:button">@drawable/checkbox_style</item>
-    </style>
-    <style name="radiobuttonTheme" parent="@android:style/Widget.CompoundButton.RadioButton">
-        <item name="android:button">@drawable/radiobutton_style</item>
-    </style>
 </resources>

@@ -13,6 +13,7 @@ import android.util.Log;
 import com.star.cms.model.vo.ProgramVO;
 import com.star.mobile.video.dao.IProgramDAO;
 import com.star.mobile.video.dao.db.DBHelper;
+import com.star.ott.ppvup.model.enums.CategoryType;
 
 public class ProgramDAO implements IProgramDAO {
 
@@ -317,5 +318,29 @@ public class ProgramDAO implements IProgramDAO {
 		}
 		c.close();
 		return programList;
+	}
+
+	@Override
+	public CategoryType getCategoryType(long programId) {
+		String sql = "select category_type from program where programId="+programId;
+		Log.d(TAG, "Now SQL:"+sql);
+		Cursor c = db.rawQuery(sql, null);
+		if (c.getCount() < 1) {
+			c.close();
+			return null;
+		}
+		c.moveToNext();
+		String type = c.getString(c.getColumnIndex("category_type"));
+		c.close();
+		return type==null?null:CategoryType.valueof(type);
+	}
+
+	@Override
+	public void updateCategoryType(long programId, CategoryType categoryType) {
+		String sql = "update program set category_type='"+categoryType.getName() +"' where programId="+programId;
+		try{
+			db.execSQL(sql);
+		}catch (Exception e) {
+		}
 	}
 }

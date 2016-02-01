@@ -38,7 +38,7 @@ import com.star.mobile.video.epg.CommentListView.OnFaceClick;
 import com.star.mobile.video.me.mycoins.TaskService;
 import com.star.mobile.video.ppv.PpvCardNumActivity;
 import com.star.mobile.video.ppv.PpvSharesPre;
-import com.star.mobile.video.ppv.ppvorder.PuuchasePPVActivity;
+import com.star.mobile.video.ppv.ppvorder.PurchasePPVActivity;
 import com.star.mobile.video.service.ChannelService;
 import com.star.mobile.video.service.EggAppearService;
 import com.star.mobile.video.service.ProgramService;
@@ -57,6 +57,7 @@ import com.star.mobile.video.util.LoadingDataTask;
 import com.star.mobile.video.util.ShareUtil;
 import com.star.mobile.video.util.ToastUtil;
 import com.star.mobile.video.view.NoScrollListView;
+import com.star.ott.ppvup.model.enums.CategoryType;
 import com.star.ott.ppvup.model.enums.RentleType;
 import com.star.ott.ppvup.model.remote.Content;
 import com.star.ott.ppvup.model.remote.Product;
@@ -255,9 +256,12 @@ public class EpgDetailActivity extends BaseActivity {
 					if (smartCardInfos.size() > 1) {
 						Intent intent = new Intent(EpgDetailActivity.this, PpvCardNumActivity.class);
 						intent.putExtra("smartCardInfos", (Serializable) smartCardInfos);
+						intent.putExtra("program", program);
 						CommonUtil.startActivity(EpgDetailActivity.this, intent);
 					} else {
-						Intent intent = new Intent(EpgDetailActivity.this, PuuchasePPVActivity.class);
+						Intent intent = new Intent(EpgDetailActivity.this, PurchasePPVActivity.class);
+						intent.putExtra("smartCardInfoVO", smartCardInfos.get(0));
+						intent.putExtra("program", program);
 						CommonUtil.startActivity(EpgDetailActivity.this, intent);
 					}
 				} else {
@@ -770,7 +774,7 @@ public class EpgDetailActivity extends BaseActivity {
 				@Override
 				public void doInBackground() {
 					rechangeFavStatus();
-					favStatus = programService.updateFavStatus(program);
+					favStatus = programService.updateFavStatus(program, program.getCategoryType());
 					if(isFav) {
 						TenbService tenbService = new TenbService(EpgDetailActivity.this);
 						tenbService.doTenbData(Tenb.TENB_FAV_EPG, program.getId());
@@ -790,13 +794,23 @@ public class EpgDetailActivity extends BaseActivity {
 	private void currentIntent(Intent intent) {
 		long programId = intent.getLongExtra("programId", -1);
 		ppvContent =(Content)intent.getSerializableExtra("content");
+		program=(ProgramPPV)intent.getSerializableExtra("program");
 		if(ppvContent!=null){
 			setCurrentProgram(ppvContent);
 		}else{
-			if(programId == -1) {
-				return;
+			if(program!=null){
+				if(program.getPpvContent()!=null&&program.getCategoryType().equals(CategoryType.PPV)){
+					programService.compareProgram(EpgDetailActivity.this, program);
+					updateUI();
+				}else{
+					setCurrentProgram(program.getId());
+				}
+			}else {
+				if(programId == -1) {
+					return;
+				}
+				setCurrentProgram(programId);
 			}
-			setCurrentProgram(programId);
 		}
 	}
 

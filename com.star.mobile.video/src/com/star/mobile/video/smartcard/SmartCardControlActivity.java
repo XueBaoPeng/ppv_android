@@ -1,13 +1,26 @@
 package com.star.mobile.video.smartcard;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.ScrollView;
+import android.widget.TextView;
 
 import com.star.cms.model.Area;
 import com.star.cms.model.vo.SmartCardInfoVO;
 import com.star.mobile.video.R;
 import com.star.mobile.video.adapter.CustomerServiceTimeAdapter;
+import com.star.mobile.video.base.BaseActivity;
 import com.star.mobile.video.model.FunctionType;
 import com.star.mobile.video.search.SearchActivity;
 import com.star.mobile.video.service.EggAppearService;
@@ -24,33 +37,19 @@ import com.star.util.app.GA;
 import com.star.util.loader.OnListResultListener;
 import com.star.util.loader.OnResultListener;
 
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.PopupWindow;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.ScrollView;
-import android.widget.TextView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * smart card控制页面
- * 
+ *
  * @author Lee
  * @version 1.0
  * @date 2015/11/20
  * @notify 2015/11/27 lee
  */
-public class SmartCardControlActivity extends FragmentActivity implements OnClickListener, OnPageChangeListener {
+public class SmartCardControlActivity extends BaseActivity implements OnClickListener{
 	private ScrollView mSmartCardScrollView;
 	private RelativeLayout mSmartCardInfoLL;
 	private CirclePageIndicator mCirclePageIndicator;
@@ -64,6 +63,7 @@ public class SmartCardControlActivity extends FragmentActivity implements OnClic
 	private SmartCardService mSmartcardService;
 	private PopupWindow popupWindow;
 	private List<SmartCardInfoVO> mSmartinfos = new ArrayList<SmartCardInfoVO>();
+	private List<SmartCardInfoView> mViewDatas = new ArrayList<SmartCardInfoView>();
 	// 初始的时候布局宽度
 	private int INITLAYOUTHEIGHT = 233;
 	// 有数据时的布局宽度
@@ -71,8 +71,10 @@ public class SmartCardControlActivity extends FragmentActivity implements OnClic
 	private String mShowPhoneNo;
 	private boolean isFirstEnter = false;
 	private String mBindSmartCardNO = null;// 绑卡的号码
-	
+
 	private String mChangePkgSmartCardNumber; //换包的卡号
+	// viewpager加载的view数量
+	private int VIEW_COUNT = 10;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -106,19 +108,52 @@ public class SmartCardControlActivity extends FragmentActivity implements OnClic
 	private void initData() {
 		mUserService = new UserService();
 		mSmartcardService = new SmartCardService(this);
-		mSmartCardFragmentViewPagerAdapter = new SmartCardFragmentViewPageAdapter(getSupportFragmentManager(),
-				mSmartinfos);
-		mViewPager.setAdapter(mSmartCardFragmentViewPagerAdapter);
-		mViewPager.setOnPageChangeListener(this);
-		mCirclePageIndicator.setViewPager(mViewPager);
+		addFragmentView();
 		List<Area> datas = getPhoneData();
 		CustomerServiceTimeAdapter adapter = new CustomerServiceTimeAdapter(this, datas, this);
 		lvCustomerService.setAdapter(adapter);
 	}
 
 	/**
+	 * 添加view
+	 */
+	private void addFragmentView() {
+		for (int i = 0; i < VIEW_COUNT; i++) {
+			SmartCardInfoView view = new SmartCardInfoView(this);
+			mViewDatas.add(view);
+		}
+		mSmartCardFragmentViewPagerAdapter = new SmartCardFragmentViewPageAdapter(mSmartinfos,mViewDatas);
+		mViewPager.setAdapter(mSmartCardFragmentViewPagerAdapter);
+		mViewPager.setOnPageChangeListener(new OnPageChangeListener() {
+
+			@Override
+			public void onPageScrolled(int i, float v, int i1) {
+//				Log.e("TAG","onPageScrolled="+i+" arg1="+v+" arg2="+i1);
+//				System.out.println("onPageScrolled="+i+" arg1="+v+" arg2="+i1);
+			}
+
+			@Override
+			public void onPageSelected(int i) {
+//				Log.e("TAG","onPageSelected="+i);
+//				System.out.print("onPageSelected="+i);
+				if (mSmartinfos != null && mSmartinfos.size()>0){
+					SmartCardInfoView smartCardInfoView = mViewDatas.get(i);
+					smartCardInfoView.initData(mSmartinfos.get(i));
+				}
+			}
+
+			@Override
+			public void onPageScrollStateChanged(int i) {
+//				Log.e("TAG","onPageScrollStateChanged="+i);
+//				System.out.println("onPageScrollStateChanged="+i);
+			}
+		});
+		mCirclePageIndicator.setViewPager(mViewPager);
+	}
+
+	/**
 	 * 获得手机号码数据
-	 * 
+	 *
 	 * @return
 	 */
 	private List<Area> getPhoneData() {
@@ -163,13 +198,17 @@ public class SmartCardControlActivity extends FragmentActivity implements OnClic
 				initSmartCard(smartCardInfos);
 			}
 		});
-		
+
 	}
 
 	private void initSmartCard(List<SmartCardInfoVO> smartCardInfos) {
 		if (smartCardInfos != null && smartCardInfos.size() > 0) {
 			mSmartinfos.clear();
 			mSmartinfos.addAll(smartCardInfos);
+			for (int i = 0; i<mSmartinfos.size();i++){
+				SmartCardInfoView smartCardInfoView = mViewDatas.get(i % mViewDatas.size());
+				smartCardInfoView.initData(mSmartinfos.get(i));
+			}
 			mSmartCardFragmentViewPagerAdapter.setSmartInfos(mSmartinfos);
 			setLayoutParamsData(INCLUDEDATALAYOUTHEIGHT);
 			mNoSmartCardIV.setVisibility(View.GONE);
@@ -194,11 +233,13 @@ public class SmartCardControlActivity extends FragmentActivity implements OnClic
 			}
 		} else {
 			mSmartinfos.clear();
-			mSmartCardFragmentViewPagerAdapter.setSmartInfos(mSmartinfos);
+			mSmartCardFragmentViewPagerAdapter = new SmartCardFragmentViewPageAdapter(mSmartinfos,mViewDatas);
+			mViewPager.setAdapter(mSmartCardFragmentViewPagerAdapter);
 			setLayoutParamsData(INITLAYOUTHEIGHT);
 			// indicator隐藏，显示没有绑卡的图片
 			mCirclePageIndicator.setVisibility(View.INVISIBLE);
 			mNoSmartCardIV.setVisibility(View.VISIBLE);
+
 			//判断用户有没有绑过卡，如果没有绑卡getcoins文字显示
 			mSmartcardService.isBindSmartCard(new OnResultListener<Integer>() {
 
@@ -211,14 +252,14 @@ public class SmartCardControlActivity extends FragmentActivity implements OnClic
 				public void onSuccess(Integer value) {
 					if (value == 1) {
 						mGetCoinsTV.setVisibility(View.VISIBLE);
-					}else {
+					} else {
 						mGetCoinsTV.setVisibility(View.GONE);
 					}
 				}
 
 				@Override
 				public void onFailure(int errorCode, String msg) {
-					
+
 				}
 			});
 		}
@@ -229,13 +270,13 @@ public class SmartCardControlActivity extends FragmentActivity implements OnClic
 
 	/**
 	 * smartcard loading和smartcard 详情的布局参数
-	 * 
+	 *
 	 * @param height
 	 */
 	private void setLayoutParamsData(int height) {
 		mSmartCardInfoLL.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, DensityUtil.dip2px(this, height)));
 		mSmartCardLoading
-				.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, DensityUtil.dip2px(this, height)));
+                .setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, DensityUtil.dip2px(this, height)));
 	}
 
 	@Override
@@ -329,7 +370,7 @@ public class SmartCardControlActivity extends FragmentActivity implements OnClic
 
 	/**
 	 * 弹出popupwindow
-	 * 
+	 *
 	 * @param view
 	 */
 	private void showPopupWindow(View view) {
@@ -360,35 +401,33 @@ public class SmartCardControlActivity extends FragmentActivity implements OnClic
 					SmartCardInfoVO smartCardInfoVO = getSmartCard();
 					if (smartCardInfoVO != null) {
 						int currentItem = mViewPager.getCurrentItem();
-						Fragment fragment = mSmartCardFragmentViewPagerAdapter.getItem(currentItem);
-						if (fragment instanceof FragmentSmartCardInfo) {
-							boolean allowDeleteSmartCard = ((FragmentSmartCardInfo)fragment).isAllowDeleteSmartCard();
-							if (!allowDeleteSmartCard || isSmartCardLoading) {
-								ToastUtil.centerShowToast(SmartCardControlActivity.this, getResources().getString(R.string.loading_delete_smartcard));
-							}else {
-								// 删除处理
-								CommonUtil.getInstance().showPromptDialog(SmartCardControlActivity.this, getString(R.string.tips),
-										String.format(getString(R.string.delete_smart_card_prompt), getSmartCardNO()),
-										getString(R.string.forum_confirm), getString(R.string.forum_later),
-										new PromptDialogClickListener() {
+						SmartCardInfoView fragment = mViewDatas.get(currentItem);
+						boolean allowDeleteSmartCard = fragment.isAllowDeleteSmartCard();
+						if (!allowDeleteSmartCard || isSmartCardLoading) {
+							ToastUtil.centerShowToast(SmartCardControlActivity.this, getResources().getString(R.string.loading_delete_smartcard));
+						}else {
+							// 删除处理
+							CommonUtil.getInstance().showPromptDialog(SmartCardControlActivity.this, getString(R.string.tips),
+									String.format(getString(R.string.delete_smart_card_prompt), getSmartCardNO()),
+									getString(R.string.forum_confirm), getString(R.string.forum_later),
+									new PromptDialogClickListener() {
 
-									@Override
-									public void onConfirmClick() {
-										// 删除当前的viewpager里的内容
-										popupWindow.dismiss();
-										delUserSmardCartNo(getSmartCardID());
-									}
-									
-									@Override
-									public void onCancelClick() {
-										popupWindow.dismiss();
-									}
-								});
-							}
+								@Override
+								public void onConfirmClick() {
+									// 删除当前的viewpager里的内容
+									popupWindow.dismiss();
+									delUserSmardCartNo(getSmartCardID());
+								}
+
+								@Override
+								public void onCancelClick() {
+									popupWindow.dismiss();
+								}
+							});
 						}
 					}
 				}
-				
+
 			}
 		});
 
@@ -429,7 +468,7 @@ public class SmartCardControlActivity extends FragmentActivity implements OnClic
 	}
 	/**
 	 * 获得智能卡id
-	 * 
+	 *
 	 * @return
 	 */
 	private long getSmartCardID() {
@@ -442,7 +481,7 @@ public class SmartCardControlActivity extends FragmentActivity implements OnClic
 
 	/**
 	 * 获得卡号
-	 * 
+	 *
 	 * @return
 	 */
 	private String getSmartCardNO() {
@@ -472,11 +511,10 @@ public class SmartCardControlActivity extends FragmentActivity implements OnClic
 				CommonUtil.closeProgressDialog();
 				// 成功
 				mUserService.delCachedAllSmartCardNo();
-//				getSmartCrad();
 				Iterator<SmartCardInfoVO> iterator = mSmartinfos.iterator();
 				while (iterator.hasNext()) {
 					SmartCardInfoVO info = iterator.next();
-					if(info.getId().equals(smartCardId)){
+					if (info.getId().equals(smartCardId)) {
 						iterator.remove();
 						break;
 					}
@@ -496,16 +534,7 @@ public class SmartCardControlActivity extends FragmentActivity implements OnClic
 		});
 	}
 
-	@Override
-	public void onPageScrollStateChanged(int arg0) {
-	}
 
-	@Override
-	public void onPageScrolled(int arg0, float arg1, int arg2) {
-	}
 
-	@Override
-	public void onPageSelected(int arg0) {
-	}
 
 }
