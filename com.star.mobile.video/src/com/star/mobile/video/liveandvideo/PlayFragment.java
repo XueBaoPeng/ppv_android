@@ -999,6 +999,9 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 	 * @param tv
 	 */
 	private void setFlowLayoutTextView(final TextView tv) {
+		if (tv == null){
+			return;
+		}
 		tv.setBackgroundResource(0);
 		tv.setTextColor(getResources().getColor(R.color.white));
 	}
@@ -1009,6 +1012,9 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 	 * @param tv
 	 */
 	private void setFlowLayoutChooseTextView(final TextView tv) {
+		if (tv == null){
+			return;
+		}
 		tv.setBackgroundResource(R.drawable.play_flowlayout_textview_bg);
 		tv.setTextColor(getResources().getColor(R.color.orange_red));
 	}
