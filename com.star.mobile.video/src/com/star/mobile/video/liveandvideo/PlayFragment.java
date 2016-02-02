@@ -1,9 +1,5 @@
 package com.star.mobile.video.liveandvideo;
 
-import java.lang.Thread.State;
-import java.util.ArrayList;
-import java.util.List;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -67,9 +63,12 @@ import com.star.ui.DragTopLayout;
 import com.star.ui.DragTopLayout.PanelListener;
 import com.star.ui.DragTopLayout.PanelState;
 import com.star.ui.FlowLayout;
-import com.star.util.Log;
 import com.star.util.Logger;
 import com.star.util.app.GA;
+
+import java.lang.Thread.State;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 
@@ -153,6 +152,14 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 	private String FAVORITE_DOUBLE = "Favourite_double";
 	private String FAVORITE_LONG = "Favourite_long";
 	private String FAVORITE_ICON = "Favourite_icon";
+
+	//平台提示dish decoder
+	private RelativeLayout decoder_dish_left;
+	private RelativeLayout decoder_dish_right;
+	private ImageView  decoder_image;
+	private ImageView  dish_image;
+	private TextView  decoder_text;
+	private TextView  dish_text;
 	
 	Handler handler = new Handler() {
 		public void handleMessage(Message msg) {
@@ -314,9 +321,44 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 				}
 			}
 		});
-		
+		decoder_dish_left= (RelativeLayout) mView.findViewById(R.id.decoder_layout_left);
+		decoder_dish_right= (RelativeLayout) mView.findViewById(R.id.decoder_layout_right);
+		decoder_image= (ImageView) mView.findViewById(R.id.image_question_left);
+		dish_image= (ImageView) mView.findViewById(R.id.image_question_right);
+		decoder_text= (TextView) mView.findViewById(R.id.tv_decoder);
+		dish_text= (TextView) mView.findViewById(R.id.tv_dish);
+		//通过平台类型改变提示
+		change_platform();
 	}
 
+	/**
+	 * 改变平台
+	 */
+	private void  change_platform(){
+
+		decoder_dish_left.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				decoder_dish_left.setBackground(getResources().getDrawable(R.drawable.decoder_dish_bg_left_press));
+				decoder_dish_right.setBackground(getResources().getDrawable(R.drawable.decoder_dish_bg_right));
+				decoder_image.setImageResource(R.drawable.ic_info_question_orange);
+ 				dish_image.setImageResource(R.drawable.ic_info_question_white);
+				decoder_text.setTextColor(getResources().getColor(R.color.orange_color));
+				dish_text.setTextColor(getResources().getColor(R.color.white));
+			}
+		});
+		decoder_dish_right.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				decoder_dish_left.setBackground(getResources().getDrawable(R.drawable.decoder_dish_bg_left));
+				decoder_dish_right.setBackground(getResources().getDrawable(R.drawable.decoder_dish_bg_right_press));
+ 				decoder_image.setImageResource(R.drawable.ic_info_question_white);
+ 				dish_image.setImageResource(R.drawable.ic_info_question_orange);
+				decoder_text.setTextColor(getResources().getColor(R.color.white));
+				dish_text.setTextColor(getResources().getColor(R.color.orange_color));
+			}
+		});
+	}
 	/**
 	 * 初始化数据
 	 */
