@@ -52,7 +52,6 @@ public class AccountBillActivity extends BaseActivity implements OnClickListener
 		viewPager.setOnPageChangeListener(this);
 		tab.add(getResources().getString(R.string.bill_recharge));
 		tab.add(getResources().getString(R.string.bill_deduct_refund));
-
 		controlTabView.setTabData(tab);
 		controlTabView.setViewPager(viewPager);
 		smartCardInfoView.setData(smartCardInfoVO);
