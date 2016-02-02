@@ -50,7 +50,6 @@ public class AccountBillActivity extends BaseActivity implements OnClickListener
 		viewPager.setAdapter(adapter);
 		findViewById(R.id.iv_actionbar_back).setOnClickListener(this);
 		viewPager.setOnPageChangeListener(this);
-
 		tab.add(getResources().getString(R.string.bill_recharge));
 		tab.add(getResources().getString(R.string.bill_deduct_refund));
 		controlTabView.setTabData(tab);
