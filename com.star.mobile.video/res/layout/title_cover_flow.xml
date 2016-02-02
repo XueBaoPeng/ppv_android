@@ -35,11 +35,121 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_below="@id/fancy_favorite_rl"
+            android:layout_marginTop="-8dp">
+           <RelativeLayout
+               android:layout_width="wrap_content"
+               android:layout_height="match_parent"
+               android:layout_centerInParent="true"
+               android:layout_marginRight="96dp"
+               android:layout_centerVertical="true">
+                <RelativeLayout
+                    android:id="@+id/decoder_relativelayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    >
+                    <ImageView
+                        android:id="@+id/channel_dtt_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/dtt_channel"
+                        android:layout_centerVertical="true"
+                        />
+                    <TextView
+                        android:id="@+id/channel_dtt_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:textColor="@color/white"
+                        android:textSize="22sp"
+                        android:layout_toRightOf="@id/channel_dtt_image"
+                        android:layout_centerVertical="true"/>
+                </RelativeLayout>
+               <RelativeLayout
+                   android:id="@+id/dish_relativelayout"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_toRightOf="@id/decoder_relativelayout"
+                   android:layout_marginLeft="@dimen/dp_8"
+                   android:layout_marginRight="@dimen/dp_12"
+                   android:layout_centerVertical="true">
+                   <ImageView
+                       android:id="@+id/channel_dth_image"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:src="@drawable/dth_channel"
+                       android:layout_centerVertical="true"
+                       />
+                   <TextView
+                       android:id="@+id/channel_dth_number"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:singleLine="true"
+                       android:textColor="@color/white"
+                       android:textSize="22sp"
+                       android:layout_centerVertical="true"
+                       android:layout_toRightOf="@id/channel_dth_image"/>
+               </RelativeLayout>
+               <RelativeLayout
+                   android:id="@+id/channel_name_relativelayout"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_toRightOf="@id/dish_relativelayout"
+                   android:layout_centerVertical="true">
+                   <TextView
+                       android:id="@+id/channel_name"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_centerInParent="true"
+                       android:ellipsize="marquee"
+                       android:focusable="true"
+                       android:focusableInTouchMode="true"
+                       android:singleLine="true"
+                       android:marqueeRepeatLimit="marquee_forever"
+                       android:scrollHorizontally="true"
+                       android:textColor="@color/white"
+                       android:textSize="22sp"
+                       android:layout_centerVertical="true"/>
+               </RelativeLayout>
+           </RelativeLayout>
+           
+            <ImageView
+                android:id="@+id/favority_imageview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="16dp"
+                android:src="@drawable/outline" />
+
+            <RelativeLayout
+                android:id="@+id/favorit_small_rl"
+                android:layout_width="48dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:orientation="vertical" >
+                <ImageView
+                    android:id="@+id/favority_small_imageview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="16dp"
+                    android:src="@drawable/fill_small" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+
+      <!--  <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_below="@id/fancy_favorite_rl"
             android:layout_marginTop="-8dp" >
 
             <com.star.mobile.video.view.AlwaysMarqueeTextView
                 android:id="@+id/channel_number_name"
-                android:layout_width="wrap_content"
+                android:layout_width="true"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:layout_marginRight="96dp"
@@ -79,7 +189,7 @@
                     android:layout_marginRight="16dp"
                     android:src="@drawable/fill_small" />
             </RelativeLayout>
-        </RelativeLayout>
+        </RelativeLayout>-->
     </RelativeLayout>
 
     <com.star.ui.DragTopLayout

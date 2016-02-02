@@ -57,7 +57,6 @@ import com.star.mobile.video.util.Constants;
 import com.star.mobile.video.util.DensityUtil;
 import com.star.mobile.video.util.ImageUtil;
 import com.star.mobile.video.util.LoadingDataTask;
-import com.star.mobile.video.view.AlwaysMarqueeTextView;
 import com.star.mobile.video.widget.FancyCoverFlow;
 import com.star.ui.DragTopLayout;
 import com.star.ui.DragTopLayout.PanelListener;
@@ -95,7 +94,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 	/**
 	 * 频道信息
 	 */
-	private AlwaysMarqueeTextView mChannelNumberName;
+	private TextView mChannelName;
 	private TextView mChannelPackage;
 	private TextView mChannelCategory;
 	// 流失布局
@@ -160,6 +159,9 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 	private ImageView  dish_image;
 	private TextView  decoder_text;
 	private TextView  dish_text;
+
+	private TextView channel_dtt_number;
+	private TextView channel_dth_number;
 	
 	Handler handler = new Handler() {
 		public void handleMessage(Message msg) {
@@ -282,7 +284,9 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 		channelControlView = (ChannelControlView) mView.findViewById(R.id.cc_contro_view);
 		chatBottomInputView = (ChatBottomInputView) mView.findViewById(R.id.cb_chat_view);
 		channelControlView.setChatCustomizeCallback(this);
-		mChannelNumberName = (AlwaysMarqueeTextView) mView.findViewById(R.id.channel_number_name);
+		mChannelName = (TextView) mView.findViewById(R.id.channel_name);
+		channel_dtt_number= (TextView) mView.findViewById(R.id.channel_dtt_number);
+		channel_dth_number= (TextView) mView.findViewById(R.id.channel_dth_number);
 		mChannelPackage = (TextView) mView.findViewById(R.id.channel_package);
 		mChannelCategory = (TextView) mView.findViewById(R.id.channel_category);
 
@@ -434,7 +438,9 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 			mChannelId = channel.getId();
 			if (channel.getChannelNumber() != null && channel.getName() != null && !channel.getName().isEmpty()) {
 				String channelNumber = channel.getChannelNumber() + "";
-				mChannelNumberName.setText(channelNumber + " " + channel.getName());
+				mChannelName.setText(channel.getName());
+				channel_dth_number.setText(channelNumber);
+				channel_dtt_number.setText(channelNumber);
 			}
 			if (channel.getOfPackage() != null) {
 				Package channelPackage = channel.getOfPackage();
