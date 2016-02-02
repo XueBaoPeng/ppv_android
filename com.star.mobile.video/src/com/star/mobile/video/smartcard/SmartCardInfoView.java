@@ -22,6 +22,7 @@ import com.star.mobile.video.smartcard.recharge.RechargeSmartCardActivity;
 import com.star.mobile.video.util.CommonUtil;
 import com.star.mobile.video.util.ToastUtil;
 import com.star.mobile.video.view.LoadingView;
+import com.star.util.Logger;
 import com.star.util.loader.OnResultListener;
 
 import java.io.Serializable;
@@ -48,7 +49,7 @@ public class SmartCardInfoView extends RelativeLayout implements View.OnClickLis
     private String mChangePkgSmartCardNumber;
     private SmartCardService mSmartcardService;
     private static boolean isAllowDeleteSmartCard = false;
-
+    private boolean hasLoad = false;
 
     public SmartCardInfoView(Context context) {
         this(context, null);
@@ -84,8 +85,11 @@ public class SmartCardInfoView extends RelativeLayout implements View.OnClickLis
     }
 
     public void initData(SmartCardInfoVO smartCardInfoVO) {
-        if (smartCardInfoVO != null) {
-            getDetailSmartCardInfo(smartCardInfoVO);
+        if (!hasLoad){
+            if (smartCardInfoVO != null) {
+                hasLoad = true;
+                getDetailSmartCardInfo(smartCardInfoVO);
+            }
         }
     }
 
@@ -326,7 +330,7 @@ public class SmartCardInfoView extends RelativeLayout implements View.OnClickLis
         switch (v.getId()) {
             case R.id.balance_rl:
                 // 跳转到Balance页面
-                if (mSmartCardInfoVO.getMoney() != null) {
+                if (mSmartCardInfoVO != null && mSmartCardInfoVO.getMoney() != null) {
                     Intent i = new Intent();
                     i.putExtra("smartcardinfovo", (Serializable) mSmartCardInfoVO);
                     // i.putExtra("smartinfos", (Serializable) mSmartinfos);
@@ -339,7 +343,7 @@ public class SmartCardInfoView extends RelativeLayout implements View.OnClickLis
                 break;
             case R.id.bouquet_rl:
                 // 跳转到Bouquet页面
-                if (mSmartCardInfoVO.getMoney() != null) {
+                if (mSmartCardInfoVO != null && mSmartCardInfoVO.getMoney() != null) {
                     Intent intent = new Intent();
                     intent.putExtra("smartCardInfoVO", mSmartCardInfoVO);
                     intent.setClass(mContext, ChangeBouquetActivity.class);
@@ -350,7 +354,7 @@ public class SmartCardInfoView extends RelativeLayout implements View.OnClickLis
                 break;
             case R.id.account_bill_rl:
                 // 点击AccountBill跳转
-                if (mSmartCardInfoVO.getMoney() != null) {
+                if (mSmartCardInfoVO != null && mSmartCardInfoVO.getMoney() != null) {
                     Intent accountBillIntent = new Intent(mContext, AccountBillActivity.class);
                     accountBillIntent.putExtra("smartCardInfo", mSmartCardInfoVO);
                     CommonUtil.startActivity(mContext, accountBillIntent);

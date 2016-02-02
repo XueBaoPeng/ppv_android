@@ -4,6 +4,7 @@
     <color name="offWhite">#DDDDDD</color>
     <color name="darkGray">#333333</color>
     <color name="lightGray">#777777</color>
+    <color name="remote_number_bg_press">#3D3D3D</color>
     <color name="brightRed">#FF0000</color>
     <color name="brightGreen">#00FF00</color>
     <color name="brightBlue">#2222EF</color>
@@ -72,10 +73,12 @@
     <color name="egg_red">#EA5418</color>
     <color name="egg_yellow">#E9AE06</color>
     <color name="egg_blue">#0E6EB8</color>
+    <color name="remote_number_bg">#606060</color>
     <color name="egg_green">#14AE67</color>
     <color name="egg_orange">#FB6E04</color>
     <color name="error_msg">#D0021B</color>
     <color name="orange_color">#FF5C05</color>
+    <color name="remote_power_number_color">#D54A00</color>
     <color name="gray_bg">#444444</color>
     <color name="white_smoke">#F5F5F5</color>
     <color name="orange_red">#FF5C05</color>
@@ -98,5 +101,6 @@
     <color name="chat_time">#9B9593</color>
     <color name="chat_bg">#FDEFE7</color>
     <color name="ppv_comment">#A9A9A9</color>
+    <color name="decoder_dish_bg_orange">#D04800</color>
 
 </resources>

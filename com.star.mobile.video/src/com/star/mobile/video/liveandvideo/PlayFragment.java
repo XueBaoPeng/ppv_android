@@ -1,9 +1,5 @@
 package com.star.mobile.video.liveandvideo;
 
-import java.lang.Thread.State;
-import java.util.ArrayList;
-import java.util.List;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +8,7 @@ import android.os.Message;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -66,9 +63,12 @@ import com.star.ui.DragTopLayout;
 import com.star.ui.DragTopLayout.PanelListener;
 import com.star.ui.DragTopLayout.PanelState;
 import com.star.ui.FlowLayout;
-import com.star.util.Log;
 import com.star.util.Logger;
 import com.star.util.app.GA;
+
+import java.lang.Thread.State;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 
@@ -120,7 +120,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 	private List<View> cachedViews = new ArrayList<View>();
 	private int star = 0;
 	private Thread thread;
-	private int position;
+//	private int position;
 	private int recordPosition;
 	private boolean isfav;
 	private Package selectPkg = null;
@@ -152,12 +152,20 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 	private String FAVORITE_DOUBLE = "Favourite_double";
 	private String FAVORITE_LONG = "Favourite_long";
 	private String FAVORITE_ICON = "Favourite_icon";
+
+	//平台提示dish decoder
+	private RelativeLayout decoder_dish_left;
+	private RelativeLayout decoder_dish_right;
+	private ImageView  decoder_image;
+	private ImageView  dish_image;
+	private TextView  decoder_text;
+	private TextView  dish_text;
 	
 	Handler handler = new Handler() {
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
 			case 1:
-				loadVideo(position);
+				loadVideo();
 				break;
 
 			default:
@@ -296,10 +304,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(getActivity(),ChannelRateActivity.class);
-				if(mTotalChannels.size()>position){
-
-					intent.putExtra("channel", mTotalChannels.get(position));
-				}
+				intent.putExtra("channel", mCurrentChannel);
 				CommonUtil.startActivity(getActivity(), intent);
 			}
 		});
@@ -309,15 +314,51 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 			public void OnResize(int w, int h, int oldw, int oldh) {
 				if (h > oldh) {
 					if (mViewDatas != null && mViewDatas.size() > 0) {
+						int position = mHomeViewPager.getCurrentItem();
 						ChannelDetailView channelDetailView = (ChannelDetailView) mViewDatas.get(position % mViewDatas.size());
 						channelDetailView.updateUiChat();
 					}
 				}
 			}
 		});
-		
+		decoder_dish_left= (RelativeLayout) mView.findViewById(R.id.decoder_layout_left);
+		decoder_dish_right= (RelativeLayout) mView.findViewById(R.id.decoder_layout_right);
+		decoder_image= (ImageView) mView.findViewById(R.id.image_question_left);
+		dish_image= (ImageView) mView.findViewById(R.id.image_question_right);
+		decoder_text= (TextView) mView.findViewById(R.id.tv_decoder);
+		dish_text= (TextView) mView.findViewById(R.id.tv_dish);
+		//通过平台类型改变提示
+		change_platform();
 	}
 
+	/**
+	 * 改变平台
+	 */
+	private void  change_platform(){
+
+		decoder_dish_left.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				decoder_dish_left.setBackground(getResources().getDrawable(R.drawable.decoder_dish_bg_left_press));
+				decoder_dish_right.setBackground(getResources().getDrawable(R.drawable.decoder_dish_bg_right));
+				decoder_image.setImageResource(R.drawable.ic_info_question_orange);
+ 				dish_image.setImageResource(R.drawable.ic_info_question_white);
+				decoder_text.setTextColor(getResources().getColor(R.color.orange_color));
+				dish_text.setTextColor(getResources().getColor(R.color.white));
+			}
+		});
+		decoder_dish_right.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				decoder_dish_left.setBackground(getResources().getDrawable(R.drawable.decoder_dish_bg_left));
+				decoder_dish_right.setBackground(getResources().getDrawable(R.drawable.decoder_dish_bg_right_press));
+ 				decoder_image.setImageResource(R.drawable.ic_info_question_white);
+ 				dish_image.setImageResource(R.drawable.ic_info_question_orange);
+				decoder_text.setTextColor(getResources().getColor(R.color.white));
+				dish_text.setTextColor(getResources().getColor(R.color.orange_color));
+			}
+		});
+	}
 	/**
 	 * 初始化数据
 	 */
@@ -378,6 +419,11 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 	public void onStart() {
 		setCurrentChannel();
 		super.onStart();
+	}
+
+	@Override
+	public boolean onContextItemSelected(MenuItem item) {
+		return super.onContextItemSelected(item);
 	}
 
 	/**
@@ -451,12 +497,10 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 	 */
 	public void initChannels(List<ChannelVO> chns) {
 		mTotalChannels.clear();
-		setDatasForAdapter();
 		mTotalChannels.addAll(chns);
 		setDatasForAdapter();
 		addFragmentView();
 		mChannelId = SharedPreferencesUtil.getCurrentChannel(getActivity());
-		Log.i(TAG,"mChannelId="+mChannelId);
 		if (mChannelId != null && mChannelId != 0) {
 			setCurrentChannel();
 		}else{
@@ -464,13 +508,12 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 			mChannelId = Constants.BUNDESLIGA_CHANNEL_ID;
 			setCurrentChannel();
 		}
-		setInitData();
 	}
 
 	/**
 	 * 设置初始化数据
 	 */
-	private void setInitData() {
+	private void setInitData(int position) {
 		hideFavoriteCollectRL();
 		if (mTotalChannels != null && mTotalChannels.size() > 0) {
 			mFancyCoverFlowAdapter.setSelectPosition(position);
@@ -485,11 +528,15 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 		}
 	}
 
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		return super.onOptionsItemSelected(item);
+	}
+
 	/**
 	 * 显示收藏
 	 */
 	private void showFavorite(int position) {
-		mCurrentChannel = mTotalChannels.get(position);
 		if (mCurrentChannel.isFav()) {
 			mFavoriteSmallImageView.setVisibility(View.VISIBLE);
 		} else {
@@ -659,11 +706,12 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 	 */
 	@Override
 	public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-		this.position = position;
+		mCurrentChannel = mTotalChannels.get(position);
+//		this.position = position;
 		this.mSelectItemId = id;
 		//显示收藏
 		showFavorite(position);
-		setInitData();
+		setInitData(position);
 	}
 
 	/**
@@ -672,8 +720,8 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 	 * @param position
 	 */
 	private void setChannelData(int position) {
-		if (mTotalChannels.get(position) != null) {
-			setChannelInfo(mTotalChannels.get(position));
+		if (mCurrentChannel != null) {
+			setChannelInfo(mCurrentChannel);
 			if (cachedViews != null && cachedViews.size() > 0) {
 				for (View v : cachedViews) {
 					ChannelDetailView channelDetailView = (ChannelDetailView) v;
@@ -685,15 +733,16 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 				cachedViews.add(mViewDatas.get(position % mViewDatas.size()));
 				ChannelDetailView channelDetailView = (ChannelDetailView) mViewDatas.get(position % mViewDatas.size());
 				channelDetailView.setChannelControlView(channelControlView);
-				channelDetailView.setChannel(mTotalChannels.get(position));
+				channelDetailView.setChannel(mCurrentChannel);
 			}
 		}
 	}
 
-	private void loadVideo(int position) {
+	private void loadVideo() {
 		if (mViewDatas != null && mViewDatas.size() > 0) {
+			int position = mHomeViewPager.getCurrentItem();
 			ChannelDetailView channelDetailView = (ChannelDetailView) mViewDatas.get(position % mViewDatas.size());
-			channelDetailView.loadVideo(mTotalChannels.get(position));
+			channelDetailView.loadVideo(mCurrentChannel);
 			resetDrawerView();
 		}
 	}
@@ -781,23 +830,22 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 	}
 
 	@Override
-	public void onDestroyView() {
+	public void onStop() {
 		// 获得选中图片的位置，在程序被隐藏时记录这个位置，下次打开的时候还在这个位置。
-		if (mFancyCoverFlow != null) {
-			int position = mFancyCoverFlow.getSelectedItemPosition();
-			if (position != AdapterView.INVALID_POSITION) {
-				if (mTotalChannels != null && mTotalChannels.size() > 0) {
-					ChannelVO channelVO = mTotalChannels.get(position);
-					if (channelVO != null) {
-						Long channelId = channelVO.getId();
-						if (channelId != null) {
-							SharedPreferencesUtil.setCurrentChannel(channelId, getActivity());
-						}
-					}
-				}
+		saveCurrentChannelId();
+		super.onStop();
+	}
+
+	/**
+	 * 保存当前的频道
+	 */
+	private void saveCurrentChannelId() {
+		if (mCurrentChannel !=null){
+			Long currentChannelId = mCurrentChannel.getId();
+			if (currentChannelId != null){
+				SharedPreferencesUtil.setCurrentChannel(currentChannelId, getActivity());
 			}
 		}
-		super.onDestroy();
 	}
 
 	@Override
@@ -993,6 +1041,9 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 	 * @param tv
 	 */
 	private void setFlowLayoutTextView(final TextView tv) {
+		if (tv == null){
+			return;
+		}
 		tv.setBackgroundResource(0);
 		tv.setTextColor(getResources().getColor(R.color.white));
 	}
@@ -1003,6 +1054,9 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 	 * @param tv
 	 */
 	private void setFlowLayoutChooseTextView(final TextView tv) {
+		if (tv == null){
+			return;
+		}
 		tv.setBackgroundResource(R.drawable.play_flowlayout_textview_bg);
 		tv.setTextColor(getResources().getColor(R.color.orange_red));
 	}
