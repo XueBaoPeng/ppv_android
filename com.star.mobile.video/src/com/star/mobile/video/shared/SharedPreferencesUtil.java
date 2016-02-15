@@ -840,7 +840,6 @@ public class SharedPreferencesUtil {
 	}
 	/**
 	 * 存储channel name
-	 * @param channelName
 	 * @param context
 	 */
 	public static void setCurrentChannel(Long channelId,Context context) {

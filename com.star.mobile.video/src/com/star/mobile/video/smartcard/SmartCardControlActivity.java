@@ -124,30 +124,6 @@ public class SmartCardControlActivity extends BaseActivity implements OnClickLis
 		}
 		mSmartCardFragmentViewPagerAdapter = new SmartCardFragmentViewPageAdapter(mSmartinfos,mViewDatas);
 		mViewPager.setAdapter(mSmartCardFragmentViewPagerAdapter);
-		mViewPager.setOnPageChangeListener(new OnPageChangeListener() {
-			@Override
-			public void onPageScrolled(int i, float v, int i1) {
-				Log.e("TAG","onPageScrolled="+i+" arg1="+v+" arg2="+i1);
-				System.out.println("onPageScrolled="+i+" arg1="+v+" arg2="+i1);
-			}
-
-			@Override
-			public void onPageSelected(int i) {
-				Log.e("TAG","onPageSelected="+i);
-				System.out.print("onPageSelected="+i);
-				if (mSmartinfos != null && mSmartinfos.size()>0){
-					SmartCardInfoView smartCardInfoView = mViewDatas.get(i);
-					smartCardInfoView.initData(mSmartinfos.get(i));
-				}
-
-			}
-
-			@Override
-			public void onPageScrollStateChanged(int i) {
-				Log.e("TAG","onPageScrollStateChanged="+i);
-				System.out.println("onPageScrollStateChanged="+i);
-			}
-		});
 		mCirclePageIndicator.setViewPager(mViewPager);
 	}
 
@@ -205,10 +181,6 @@ public class SmartCardControlActivity extends BaseActivity implements OnClickLis
 		if (smartCardInfos != null && smartCardInfos.size() > 0) {
 			mSmartinfos.clear();
 			mSmartinfos.addAll(smartCardInfos);
-			for (int i = 0; i<mSmartinfos.size();i++){
-				SmartCardInfoView smartCardInfoView = mViewDatas.get(i % mViewDatas.size());
-				smartCardInfoView.initData(mSmartinfos.get(i));
-			}
 			mSmartCardFragmentViewPagerAdapter.setSmartInfos(mSmartinfos);
 			setLayoutParamsData(INCLUDEDATALAYOUTHEIGHT);
 			mNoSmartCardIV.setVisibility(View.GONE);
@@ -233,11 +205,13 @@ public class SmartCardControlActivity extends BaseActivity implements OnClickLis
 			}
 		} else {
 			mSmartinfos.clear();
-			mSmartCardFragmentViewPagerAdapter.setSmartInfos(mSmartinfos);
+			mSmartCardFragmentViewPagerAdapter = new SmartCardFragmentViewPageAdapter(mSmartinfos,mViewDatas);
+			mViewPager.setAdapter(mSmartCardFragmentViewPagerAdapter);
 			setLayoutParamsData(INITLAYOUTHEIGHT);
 			// indicator隐藏，显示没有绑卡的图片
 			mCirclePageIndicator.setVisibility(View.INVISIBLE);
 			mNoSmartCardIV.setVisibility(View.VISIBLE);
+
 			//判断用户有没有绑过卡，如果没有绑卡getcoins文字显示
 			mSmartcardService.isBindSmartCard(new OnResultListener<Integer>() {
 

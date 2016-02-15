@@ -35,11 +35,121 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_below="@id/fancy_favorite_rl"
+            android:layout_marginTop="-8dp">
+           <RelativeLayout
+               android:layout_width="wrap_content"
+               android:layout_height="match_parent"
+               android:layout_centerInParent="true"
+               android:layout_marginRight="96dp"
+               android:layout_centerVertical="true">
+                <RelativeLayout
+                    android:id="@+id/decoder_relativelayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    >
+                    <ImageView
+                        android:id="@+id/channel_dtt_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/dtt_channel"
+                        android:layout_centerVertical="true"
+                        />
+                    <TextView
+                        android:id="@+id/channel_dtt_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:layout_toRightOf="@id/channel_dtt_image"
+                        android:layout_centerVertical="true"/>
+                </RelativeLayout>
+               <RelativeLayout
+                   android:id="@+id/dish_relativelayout"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_toRightOf="@id/decoder_relativelayout"
+                   android:layout_marginLeft="@dimen/dp_8"
+                   android:layout_marginRight="@dimen/dp_12"
+                   android:layout_centerVertical="true">
+                   <ImageView
+                       android:id="@+id/channel_dth_image"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:src="@drawable/dth_channel"
+                       android:layout_centerVertical="true"
+                       />
+                   <TextView
+                       android:id="@+id/channel_dth_number"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:singleLine="true"
+                       android:textColor="@color/white"
+                       android:textSize="20sp"
+                       android:layout_centerVertical="true"
+                       android:layout_toRightOf="@id/channel_dth_image"/>
+               </RelativeLayout>
+               <RelativeLayout
+                   android:id="@+id/channel_name_relativelayout"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_toRightOf="@id/dish_relativelayout"
+                   android:layout_centerVertical="true">
+                   <TextView
+                       android:id="@+id/channel_name"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_centerInParent="true"
+                       android:ellipsize="marquee"
+                       android:focusable="true"
+                       android:focusableInTouchMode="true"
+                       android:singleLine="true"
+                       android:marqueeRepeatLimit="marquee_forever"
+                       android:scrollHorizontally="true"
+                       android:textColor="@color/white"
+                       android:textSize="20sp"
+                       android:layout_centerVertical="true"/>
+               </RelativeLayout>
+           </RelativeLayout>
+           
+            <ImageView
+                android:id="@+id/favority_imageview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="16dp"
+                android:src="@drawable/outline" />
+
+            <RelativeLayout
+                android:id="@+id/favorit_small_rl"
+                android:layout_width="48dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:orientation="vertical" >
+                <ImageView
+                    android:id="@+id/favority_small_imageview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="16dp"
+                    android:src="@drawable/fill_small" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+
+      <!--  <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_below="@id/fancy_favorite_rl"
             android:layout_marginTop="-8dp" >
 
             <com.star.mobile.video.view.AlwaysMarqueeTextView
                 android:id="@+id/channel_number_name"
-                android:layout_width="wrap_content"
+                android:layout_width="true"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:layout_marginRight="96dp"
@@ -79,7 +189,7 @@
                     android:layout_marginRight="16dp"
                     android:src="@drawable/fill_small" />
             </RelativeLayout>
-        </RelativeLayout>
+        </RelativeLayout>-->
     </RelativeLayout>
 
     <com.star.ui.DragTopLayout
@@ -210,23 +320,84 @@
         android:layout_height="match_parent"
         android:background="@color/translucent_99"
         android:orientation="vertical"
-        android:visibility="gone" >
+        android:visibility="gone">
 
         <LinearLayout
             android:id="@+id/ll_drag_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/orange_red" >
-
+                 <LinearLayout
+                     android:id="@+id/decoder_layout"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="@dimen/dp_24"
+                     android:layout_marginRight="@dimen/dp_24"
+                     android:layout_marginTop="@dimen/action_bar_margin_16"
+                     android:orientation="horizontal">
+                     <RelativeLayout
+                         android:id="@+id/decoder_layout_left"
+                         android:layout_width="0dp"
+                         android:layout_weight="1"
+                         android:layout_height="@dimen/dp_32"
+                         android:background="@drawable/decoder_dish_bg_left_press">
+                         <TextView
+                             android:id="@+id/tv_decoder"
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:text="@string/choose_decoder"
+                             android:textSize="16sp"
+                             android:textColor="@color/orange_color"
+                             android:layout_centerHorizontal="true"
+                             android:layout_centerVertical="true"
+                             />
+                         <ImageView
+                             android:id="@+id/image_question_left"
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:src="@drawable/ic_info_question_orange"
+                             android:scaleType="centerCrop"
+                             android:layout_centerVertical="true"
+                             android:layout_alignParentRight="true"
+                             android:layout_marginRight="@dimen/dp_8"/>
+                     </RelativeLayout>
+                     <RelativeLayout
+                         android:id="@+id/decoder_layout_right"
+                         android:layout_width="0dp"
+                         android:layout_weight="1"
+                         android:layout_height="@dimen/dp_32"
+                         android:background="@drawable/decoder_dish_bg_right">
+                         <TextView
+                             android:id="@+id/tv_dish"
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:text="@string/choose_dish"
+                             android:textSize="16sp"
+                             android:textColor="@color/white"
+                             android:layout_centerHorizontal="true"
+                             android:layout_centerVertical="true"
+                             />
+                         <ImageView
+                             android:id="@+id/image_question_right"
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:src="@drawable/ic_info_question_white"
+                             android:scaleType="centerCrop"
+                             android:layout_centerVertical="true"
+                             android:layout_alignParentRight="true"
+                             android:layout_marginRight="@dimen/dp_8"/>
+                     </RelativeLayout>
+                 </LinearLayout>
                 <RelativeLayout
                     android:id="@+id/view_flowlayout_rl"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" >
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/decoder_layout"
+                    android:layout_marginTop="@dimen/dp_4">
 
                     <com.star.ui.FlowLayout
                         android:id="@+id/view_flowlayout_packages"
@@ -270,8 +441,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
+            android:layout_height="match_parent">
             <GridView
                 android:id="@+id/gv_favorite_collect"
                 android:layout_width="match_parent"
@@ -286,7 +456,8 @@
                 android:numColumns="4"
                 android:scrollbars="none"
                 android:transcriptMode="alwaysScroll"
-                android:verticalSpacing="12dp" />
+                android:verticalSpacing="12dp"
+                />
         </LinearLayout>
     </com.star.ui.DragTopLayout>
 
