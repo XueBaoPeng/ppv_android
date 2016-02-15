@@ -4,9 +4,9 @@
     <solid android:color="@color/decoder_dish_bg_orange"/>
             <corners
                 android:bottomLeftRadius="0dip"
-                android:bottomRightRadius="8dip"
+                android:bottomRightRadius="4dip"
                 android:topLeftRadius="0dip"
-                android:topRightRadius="8dip"
+                android:topRightRadius="4dip"
                  />
 </shape>
 

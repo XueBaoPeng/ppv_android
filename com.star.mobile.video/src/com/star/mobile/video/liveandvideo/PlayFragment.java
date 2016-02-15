@@ -40,6 +40,7 @@ import com.star.cms.model.Category;
 import com.star.cms.model.Package;
 import com.star.cms.model.vo.ChannelVO;
 import com.star.mobile.video.R;
+import com.star.mobile.video.activity.ChoosePlatformActivity;
 import com.star.mobile.video.channel.ChannelControlView;
 import com.star.mobile.video.channel.ChannelDetailView;
 import com.star.mobile.video.channel.ChannelRateActivity;
@@ -333,6 +334,27 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 		dish_text= (TextView) mView.findViewById(R.id.tv_dish);
 		//通过平台类型改变提示
 		change_platform();
+		//设置平台介绍详细信息
+		show_platform();
+	}
+
+	private void show_platform() {
+		decoder_image.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(getActivity(), ChoosePlatformActivity.class);
+				intent.putExtra("platform_type", 0);
+				CommonUtil.startActivity(getActivity() , intent);
+			}
+		});
+		dish_image.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(getActivity(), ChoosePlatformActivity.class);
+				intent.putExtra("platform_type", 1);
+				CommonUtil.startActivity(getActivity() , intent);
+			}
+		});
 	}
 
 	/**
@@ -362,6 +384,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 				dish_text.setTextColor(getResources().getColor(R.color.orange_color));
 			}
 		});
+
 	}
 	/**
 	 * 初始化数据
