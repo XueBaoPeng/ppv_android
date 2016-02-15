@@ -92,8 +92,8 @@ public class Player extends BaseActivity implements OnClickListener{
 	private GestureDetector gestureDetector = null;
 	// handler
 	public final int MSG_FINISH = 7;
-	public final int MSG_LOAD_FINISHED = 10;
-	public final int MSG_LOAD_UNFINISHED = 11;
+	public static final int MSG_LOAD_FINISHED = 10;
+	public static final int MSG_LOAD_UNFINISHED = 11;
 	public final int MSG_OPEN_ERROR = 12;
 	public final int MSG_OPEN_OK = 13;
 	public final int MSG_SEEK_UPDATE = 30;
