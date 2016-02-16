@@ -127,7 +127,7 @@ public class ChannelDAO implements IChannelDAO {
 	@Override
 	public List<ChannelVO> query(boolean isChange) {
 		StringBuilder querySQL = new StringBuilder("select * from channel where 1=1 ");
-		querySQL.append(" and isChange="+ (isChange?1:-1));
+		querySQL.append(" and isChange=" + (isChange ? 1 : -1));
 		String sql = querySQL.toString();
 		return execQuery(sql);
 	}
@@ -263,7 +263,7 @@ public class ChannelDAO implements IChannelDAO {
 	@Override
 	public List<ChannelVO> query(boolean isfav, int index, int count) {
 		StringBuilder querySQL = new StringBuilder("select * from channel");
-		querySQL.append(" where isFav = "+(isfav?1:0));
+		querySQL.append(" where isFav = " + (isfav ? 1 : 0));
 		if(index != -1 && count != -1){
 			querySQL.append(" limit " + count + " offset " + index);
 		}
@@ -272,8 +272,8 @@ public class ChannelDAO implements IChannelDAO {
 	}
 
 	@Override
-	public List<ChannelVO> query(long categoryId, boolean isfav, Package p) {
-		StringBuilder querySQL = new StringBuilder("select distinct c.* from channel c, cat_chn cc, package p");
+	public List<ChannelVO> query(long categoryId, boolean isfav, Package p, TVPlatForm tvPlatForm) {
+		StringBuilder querySQL = new StringBuilder("select distinct c.* from channel c, cat_chn cc, package p, channel_platform cp");
 		boolean append = false;
 		if (categoryId != -1) {
 			querySQL.append(" where c.channelId=cc.chn_id and cc.cat_id=" + categoryId);
@@ -288,6 +288,10 @@ public class ChannelDAO implements IChannelDAO {
 				querySQL.append((append?" and ":" where ")+"c.packageId=p.packageId and p.code="+p.getCode()+" and p.type=3");
 			else
 				querySQL.append((append?" and ":" where ")+"c.packageId=p.packageId and p.code<="+p.getCode()+" and p.type="+p.getType());
+			append = true;
+		}
+		if(tvPlatForm!=null){
+			querySQL.append((append?" and ":" where ")+"cp.platform_type="+tvPlatForm.getNum());
 		}
 		String sql = querySQL.toString();
 		return execQuery(sql);

@@ -226,7 +226,7 @@ public class AllChannelFragment extends Fragment implements OnClickListener, OnI
 			}
 			@Override
 			public void doInBackground() {
-				chns = chnService.getChannels(selectCgy, isfav, selectPkg);
+				chns = chnService.getChannels(selectCgy, isfav, selectPkg, null);
 			}
 		}.execute();
 	}

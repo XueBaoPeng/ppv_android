@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.star.cms.model.Package;
 import com.star.cms.model.enm.OrderType;
+import com.star.cms.model.enm.TVPlatForm;
 import com.star.cms.model.vo.ChannelVO;
 
 public interface IChannelDAO{
@@ -13,7 +14,7 @@ public interface IChannelDAO{
 	List<ChannelVO> query();
 	ChannelVO query(Long channelId);
 	List<ChannelVO> query(boolean isfav, int index, int count);
-	List<ChannelVO> query(long categoryId, boolean isfav, Package p);
+	List<ChannelVO> query(long categoryId, boolean isfav, Package p, TVPlatForm tvPlatForm);
 	List<ChannelVO> query(long categoryId, OrderType orderType, int index, int count);
 	boolean addChannelToCategory(long cat_id, long chn_id);
 	List<ChannelVO> query(boolean isChange);

@@ -941,7 +941,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 
 			@Override
 			public void doInBackground() {
-				chns = mChannelService.getChannels(selectCgy, isfav, selectPkg);
+				chns = mChannelService.getChannels(selectCgy, isfav, selectPkg, TVPlatForm.DTT);
 			}
 		}.execute();
 	}

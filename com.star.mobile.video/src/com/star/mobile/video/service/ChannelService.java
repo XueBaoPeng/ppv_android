@@ -33,10 +33,10 @@ public class ChannelService {
 		channelDao = new ChannelDAO(DBHelper.getInstence(context));
 	}
 	
-	public List<ChannelVO> getChannels(Category category, boolean isFav, Package p) {
+	public List<ChannelVO> getChannels(Category category, boolean isFav, Package p, TVPlatForm tvPlatForm) {
 		long categoryId = category==null?-1:category.getId();
 		if(SyncService.getInstance(context).isDBReady()){
-			List<ChannelVO> channels = channelDao.query(categoryId, isFav, p);
+			List<ChannelVO> channels = channelDao.query(categoryId, isFav, p, tvPlatForm);
 			return channels;
 		}
 		String url = requestURL;
