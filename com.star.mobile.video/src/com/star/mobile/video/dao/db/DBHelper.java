@@ -39,7 +39,7 @@ public class DBHelper extends SQLiteOpenHelper {
 			e.printStackTrace();
 		}
 		if(sqlLists==null || sqlLists.length==0){
-			sqlLists = new String[]{"init.sql", "update_5.sql", "update_19.sql", "update_23.sql", "update_28.sql", "update_40.sql", "update_75.sql"};
+			sqlLists = new String[]{"init.sql", "update_5.sql", "update_19.sql", "update_23.sql", "update_28.sql", "update_40.sql", "update_75.sql", "update_81.sql"};
 		}
 		Collections.sort(Arrays.asList(sqlLists), new SqlSortComparator());
         Log.d(TAG, "DBHelper created.");

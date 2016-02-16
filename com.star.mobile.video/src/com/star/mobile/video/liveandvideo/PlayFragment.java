@@ -38,6 +38,7 @@ import com.nineoldandroids.animation.AnimatorSet;
 import com.nineoldandroids.animation.ObjectAnimator;
 import com.star.cms.model.Category;
 import com.star.cms.model.Package;
+import com.star.cms.model.enm.TVPlatForm;
 import com.star.cms.model.vo.ChannelVO;
 import com.star.mobile.video.R;
 import com.star.mobile.video.activity.ChoosePlatformActivity;
@@ -912,7 +913,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 
 			@Override
 			public void doInBackground() {
-				mPackages = mPackageService.getPackages();
+				mPackages = mPackageService.getPackages(TVPlatForm.DTT);
 				mCategorys = mCategoryService.getCategorys();
 			}
 		}.execute();

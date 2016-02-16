@@ -1,23 +1,26 @@
 package com.star.mobile.video.dao.impl;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.star.cms.model.AreaTVPlatform;
 import com.star.cms.model.Category;
 import com.star.cms.model.Content;
 import com.star.cms.model.Package;
 import com.star.cms.model.Resource;
+import com.star.cms.model.TVPlatformInfo;
 import com.star.cms.model.enm.OrderType;
+import com.star.cms.model.enm.TVPlatForm;
 import com.star.cms.model.vo.ChannelVO;
 import com.star.mobile.video.dao.IChannelDAO;
 import com.star.mobile.video.dao.db.DBHelper;
 import com.star.util.Logger;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class ChannelDAO implements IChannelDAO {
 
@@ -33,7 +36,7 @@ public class ChannelDAO implements IChannelDAO {
 		ContentValues cv = new ContentValues();
 		cv.put("channelId", channel.getId());
 		cv.put("name", channel.getName());
-		cv.put("channelNumber", channel.getChannelNumber());
+//		cv.put("channelNumber", channel.getChannelNumber());
 		cv.put("favCount", channel.getFavCount());
 		cv.put("commentCount", channel.getCommentCount());
 		cv.put("description", channel.getDescription());
@@ -59,6 +62,20 @@ public class ChannelDAO implements IChannelDAO {
 			Logger.e("Channel insert error. id:"+channel.getId());
 		}else{
 			Logger.d("Insert a channel. id:"+channel.getId()+", name is "+channel.getName());
+			savePlatFormInfo(channel);
+		}
+	}
+
+	private void savePlatFormInfo(ChannelVO channel){
+		List<AreaTVPlatform> infos = channel.getOfAreaTVPlatforms();
+		if(infos!=null&&infos.size()>0) {
+			for (TVPlatformInfo info : infos.get(0).getPlatformInfos()) {
+				ContentValues cv = new ContentValues();
+				cv.put("fk_channel", channel.getId());
+				cv.put("platform_type", info.getTvPlatForm().getNum());
+				cv.put("channel_number", info.getChannelNumber());
+				db.insert("channel_platform", null, cv);
+			}
 		}
 	}
 
@@ -133,12 +150,39 @@ public class ChannelDAO implements IChannelDAO {
 		c.close();
 		return ids;
 	}
+
+	private List<AreaTVPlatform> queryPlatInfos(long channelId){
+		String sql = "select * from channel_platform where fk_channel="+channelId;
+		Logger.d("Now SQL:"+sql);
+		List<AreaTVPlatform> plats = new ArrayList<AreaTVPlatform>();
+		Cursor c = db.rawQuery(sql, null);
+		if (c == null || c.getCount() < 1) {
+			return plats;
+		}
+		List<TVPlatformInfo> pfs = new ArrayList<TVPlatformInfo>();
+		while (true) {
+			c.moveToNext();
+			TVPlatformInfo info = new TVPlatformInfo();
+			info.setTvPlatForm(TVPlatForm.getTVPlatForm(c.getInt(c.getColumnIndex("platform_type"))));
+			info.setChannelNumber(c.getString(c.getColumnIndex("channel_number")));
+			pfs.add(info);
+			if (c.isLast()) {
+				break;
+			}
+		}
+		AreaTVPlatform apf = new AreaTVPlatform();
+		apf.setPlatformInfos(pfs);
+		plats.add(apf);
+		c.close();
+		return plats;
+	}
 	
 	private ChannelVO extractChannelModel(Cursor c) {
 		ChannelVO channel = new ChannelVO();
 		channel.setId(c.getLong(c.getColumnIndex("channelId")));
 		channel.setName(c.getString(c.getColumnIndex("name")));
-		channel.setChannelNumber(c.getInt(c.getColumnIndex("channelNumber")));
+//		channel.setChannelNumber(c.getInt(c.getColumnIndex("channelNumber")));
+		channel.setOfAreaTVPlatforms(queryPlatInfos(c.getLong(c.getColumnIndex("channelId"))));
 		channel.setFavCount(c.getLong(c.getColumnIndex("favCount")));
 		channel.setCommentCount(c.getLong(c.getColumnIndex("commentCount")));
 		channel.setDescription(c.getString(c.getColumnIndex("description")));

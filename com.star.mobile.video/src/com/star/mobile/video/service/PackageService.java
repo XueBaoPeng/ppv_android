@@ -10,6 +10,7 @@ import android.content.Context;
 import com.google.gson.reflect.TypeToken;
 import com.star.cms.model.APPInfo;
 import com.star.cms.model.Package;
+import com.star.cms.model.enm.TVPlatForm;
 import com.star.mobile.video.base.AbstractService;
 import com.star.mobile.video.dao.db.DBHelper;
 import com.star.mobile.video.dao.impl.PackageDAO;
@@ -49,9 +50,9 @@ public class PackageService extends AbstractService {
 	public void getPackagesFromServer(List<Integer> types,OnListResultListener<Package> listener){
 		doGet(Constant.getPackageUrl(context,types), Package.class, LoadMode.CACHE_NET, listener);
 	}
-	public List<Package> getPackages(){
+	public List<Package> getPackages(TVPlatForm platForm){
 		try{
-			List<Package> packages = packageDao.query();
+			List<Package> packages = packageDao.query(platForm);
 			
 			if(packages.size()==0){
 				Log.e(TAG, "no categorys in local!");

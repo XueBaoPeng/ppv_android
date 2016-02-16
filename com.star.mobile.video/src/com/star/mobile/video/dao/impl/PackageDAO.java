@@ -10,6 +10,7 @@ import android.util.Log;
 import com.star.cms.model.Content;
 import com.star.cms.model.Package;
 import com.star.cms.model.Resource;
+import com.star.cms.model.enm.TVPlatForm;
 import com.star.mobile.video.dao.IPackageDAO;
 import com.star.mobile.video.dao.db.DBHelper;
 
@@ -27,6 +28,7 @@ public class PackageDAO implements IPackageDAO {
 		cv.put("name", p.getName());
 		cv.put("code", p.getCode());
 		cv.put("type", p.getType());
+		cv.put("platform_type", p.getTvPlatForm().getNum());
 		try{
 			String logoUrl = p.getPoster().getResources().get(0).getUrl();
 			cv.put("logoUrl", logoUrl);
@@ -45,9 +47,9 @@ public class PackageDAO implements IPackageDAO {
 	}
 
 	@Override
-	public List<Package> query() {
+	public List<Package> query(TVPlatForm platform) {
 		List<Package> packageList = new ArrayList<Package>();
-		Cursor c = db.rawQuery("select * from package", null);
+		Cursor c = db.rawQuery("select * from package where platform_type="+platform.getNum(), null);
 		if (c == null || c.getCount() < 1) {
 			return packageList;
 		}
@@ -69,6 +71,7 @@ public class PackageDAO implements IPackageDAO {
 		p.setName(c.getString(c.getColumnIndex("name")));
 		p.setCode(c.getString(c.getColumnIndex("code")));
 		p.setType(c.getInt(c.getColumnIndex("type")));
+		p.setTvPlatForm(TVPlatForm.getTVPlatForm(c.getInt(c.getColumnIndex("platform_type"))));
 		List<Resource> res = new ArrayList<Resource>();
 		Resource resource = new Resource();
 		resource.setUrl(c.getString(c.getColumnIndex("logoUrl")));
