@@ -164,6 +164,8 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 
 	private TextView channel_dtt_number;
 	private TextView channel_dth_number;
+
+	private TVPlatForm currentTv=TVPlatForm.DTT;
 	
 	Handler handler = new Handler() {
 		public void handleMessage(Message msg) {
@@ -366,6 +368,8 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 		decoder_dish_left.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				currentTv=TVPlatForm.DTT;
+				getChannelsAndUpdateUI();
 				decoder_dish_left.setBackground(getResources().getDrawable(R.drawable.decoder_dish_bg_left_press));
 				decoder_dish_right.setBackground(getResources().getDrawable(R.drawable.decoder_dish_bg_right));
 				decoder_image.setImageResource(R.drawable.ic_info_question_orange);
@@ -377,6 +381,8 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 		decoder_dish_right.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				currentTv=TVPlatForm.DTH;
+				getChannelsAndUpdateUI();
 				decoder_dish_left.setBackground(getResources().getDrawable(R.drawable.decoder_dish_bg_left));
 				decoder_dish_right.setBackground(getResources().getDrawable(R.drawable.decoder_dish_bg_right_press));
  				decoder_image.setImageResource(R.drawable.ic_info_question_white);
@@ -941,7 +947,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 
 			@Override
 			public void doInBackground() {
-				chns = mChannelService.getChannels(selectCgy, isfav, selectPkg, TVPlatForm.DTT);
+				chns = mChannelService.getChannels(selectCgy, isfav, selectPkg, currentTv);
 			}
 		}.execute();
 	}
