@@ -62,6 +62,7 @@ import com.star.mobile.video.view.VideoLiveViewControl;
 import com.star.mobile.video.view.VideoQualitySettingView;
 import com.star.mobile.video.view.VideoQualitySettingView.Quality;
 import com.star.mobile.video.view.VideoSeekBar;
+import com.star.util.Logger;
 
 public class Player extends BaseActivity implements OnClickListener{
 	private String TAG = "Player";
@@ -200,8 +201,10 @@ public class Player extends BaseActivity implements OnClickListener{
 				case MSG_UPDATE_CURRENT_TIME:
 					int currentPos = mSdlActivity.getCurrentPosition();
 					int totalTime = mSdlActivity.getDuration();
+					int videoBuffer = mSdlActivity.getBuffer();
 					mSeekBar.setMax(totalTime);
 					mSeekBar.setProgress(currentPos);
+					mSeekBar.setSecondaryProgress(currentPos+videoBuffer);
 					if (!isLive && currentPos > totalTime)
 						currentPos = totalTime;
 					if (PlayerUtil.isPlayStart() == 1 && playerPB.getVisibility() == View.VISIBLE
@@ -821,7 +824,6 @@ public class Player extends BaseActivity implements OnClickListener{
 	/**
 	 * 设置视频的播放
 	 * @param position
-	 * @param type
 	 */
 	public void settingVideoPlay(int position){
 		transferHorizontalListView(position,false);
@@ -833,7 +835,7 @@ public class Player extends BaseActivity implements OnClickListener{
 		tTime.setVisibility(View.GONE);
 	}
 	
-	private void showBottomBar(){
+	private void showBottomBar() {
 		mSeekBar.setVisibility(View.VISIBLE);
 		currentTime.setVisibility(View.VISIBLE);
 		tTime.setVisibility(View.VISIBLE);
