@@ -101,7 +101,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener,Gu
 	private long channelId = 0;
 	private ImageView coin;
 	public static int phoneNumber;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

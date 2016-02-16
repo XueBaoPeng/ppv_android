@@ -109,7 +109,7 @@ public class SmartCardInfoView extends RelativeLayout implements View.OnClickLis
     }
 
     /**
-     * ÉèÖÃ¿¨ºÅ
+     * è®¾ç½®å¡å·
      *
      * @param cardNo
      */
@@ -118,7 +118,7 @@ public class SmartCardInfoView extends RelativeLayout implements View.OnClickLis
     }
 
     /**
-     * ÉèÖÃ¿¨µÄÓà¶î
+     * è®¾ç½®å¡çš„ä½™é¢
      *
      * @param money
      */
@@ -127,7 +127,7 @@ public class SmartCardInfoView extends RelativeLayout implements View.OnClickLis
     }
 
     /**
-     * ÓÃ»§Ãû
+     * ç”¨æˆ·å
      *
      * @param customerName
      */
@@ -136,7 +136,7 @@ public class SmartCardInfoView extends RelativeLayout implements View.OnClickLis
     }
 
     /**
-     * ÓÃ»§µç»°
+     * ç”¨æˆ·ç”µè¯
      *
      * @param customerPhone
      */
@@ -153,7 +153,7 @@ public class SmartCardInfoView extends RelativeLayout implements View.OnClickLis
     }
 
     /**
-     * ÉèÖÃ½ÚÄ¿°üÃû³Æ
+     * è®¾ç½®èŠ‚ç›®åŒ…åç§°
      *
      * @param name
      */
@@ -166,7 +166,7 @@ public class SmartCardInfoView extends RelativeLayout implements View.OnClickLis
     }
 
     /**
-     * Ê£Óà¶àÉÙÌì
+     * å‰©ä½™å¤šå°‘å¤©
      *
      * @param days
      */
@@ -175,7 +175,7 @@ public class SmartCardInfoView extends RelativeLayout implements View.OnClickLis
     }
 
     /**
-     * Ê£Óà¶àÉÙÌì
+     * å‰©ä½™å¤šå°‘å¤©
      *
      * @param days
      */
@@ -199,7 +199,7 @@ public class SmartCardInfoView extends RelativeLayout implements View.OnClickLis
 
 
     /**
-     * »ñµÃÖÇÄÜ¿¨µÄÏêÇéĞÅÏ¢
+     * è·å¾—æ™ºèƒ½å¡çš„è¯¦æƒ…ä¿¡æ¯
      * @param vo
      */
     private void getDetailSmartCardInfo(final SmartCardInfoVO vo) {
@@ -242,7 +242,7 @@ public class SmartCardInfoView extends RelativeLayout implements View.OnClickLis
         this.isAllowDeleteSmartCard = isAllowDeleteSmartCard;
     }
     /**
-     * ÉèÖÃ°üÃû
+     * è®¾ç½®åŒ…å
      * @param scv
      */
     private void setPackageNameData(SmartCardInfoVO scv) {
@@ -254,7 +254,7 @@ public class SmartCardInfoView extends RelativeLayout implements View.OnClickLis
         }
     }
     /**
-     * Òş²Øloading
+     * éšè—loading
      */
     private void hideDetailLoading() {
         setAllowDeleteSmartCard(true);
@@ -269,7 +269,7 @@ public class SmartCardInfoView extends RelativeLayout implements View.OnClickLis
     }
 
     /**
-     * ÉèÖÃÊı¾İ
+     * è®¾ç½®æ•°æ®
      *
      * @param sc
      */
@@ -296,7 +296,7 @@ public class SmartCardInfoView extends RelativeLayout implements View.OnClickLis
             }
         }
         setSmartCardNo(formatSmarCardNo(sc.getSmardCardNo()));
-        // ÉèÖÃÓÃ»§ÃûºÍÓÃ»§µç»°
+        // è®¾ç½®ç”¨æˆ·åå’Œç”¨æˆ·ç”µè¯
         if (sc.getAccountName() != null) {
             setCustomerName(sc.getAccountName());
         }
@@ -329,7 +329,7 @@ public class SmartCardInfoView extends RelativeLayout implements View.OnClickLis
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.balance_rl:
-                // Ìø×ªµ½BalanceÒ³Ãæ
+                // è·³è½¬åˆ°Balanceé¡µé¢
                 if (mSmartCardInfoVO != null && mSmartCardInfoVO.getMoney() != null) {
                     Intent i = new Intent();
                     i.putExtra("smartcardinfovo", (Serializable) mSmartCardInfoVO);
@@ -342,7 +342,7 @@ public class SmartCardInfoView extends RelativeLayout implements View.OnClickLis
                 }
                 break;
             case R.id.bouquet_rl:
-                // Ìø×ªµ½BouquetÒ³Ãæ
+                // è·³è½¬åˆ°Bouqueté¡µé¢
                 if (mSmartCardInfoVO != null && mSmartCardInfoVO.getMoney() != null) {
                     Intent intent = new Intent();
                     intent.putExtra("smartCardInfoVO", mSmartCardInfoVO);
@@ -353,7 +353,7 @@ public class SmartCardInfoView extends RelativeLayout implements View.OnClickLis
                 }
                 break;
             case R.id.account_bill_rl:
-                // µã»÷AccountBillÌø×ª
+                // ç‚¹å‡»AccountBillè·³è½¬
                 if (mSmartCardInfoVO != null && mSmartCardInfoVO.getMoney() != null) {
                     Intent accountBillIntent = new Intent(mContext, AccountBillActivity.class);
                     accountBillIntent.putExtra("smartCardInfo", mSmartCardInfoVO);
