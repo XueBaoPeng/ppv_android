@@ -1093,24 +1093,24 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 				public void onClick(View v) {
 					resetChannelTextViewBG(mPlayFlowLayoutCategorys);
 
+					TextView textView = (TextView) mPlayFlowLayoutPackages.getChildAt(0);
+					if (textView != null) {
+						textView.setBackgroundResource(0);
+						textView.setTextColor(getResources().getColor(R.color.white));
+					}
 					mCategroyChooseInfos.clear();
 					if (category.equals(selectCgy)) {
 						selectCgy = null;
 						tv.setBackgroundResource(0);
 						tv.setTextColor(getResources().getColor(R.color.white));
-						if (mPlayFlowLayoutCategorys.getChildAt(0) != null) {
-							setFlowLayoutChooseTextView((TextView) mPlayFlowLayoutCategorys.getChildAt(0));
+						if (mPlayFlowLayoutPackages.getChildAt(0) != null) {
+							setFlowLayoutChooseTextView((TextView) mPlayFlowLayoutPackages.getChildAt(0));
 						}
 					} else {
 						selectCgy = category;
 						setFlowLayoutChooseTextView(tv);
 
 						mCategroyChooseInfos.add(tv);
-					}
-					TextView textView = (TextView) mPlayFlowLayoutPackages.getChildAt(0);
-					if (textView != null) {
-						textView.setBackgroundResource(0);
-						textView.setTextColor(getResources().getColor(R.color.white));
 					}
 					getChannelsAndUpdateUI();
 				}
