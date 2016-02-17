@@ -494,6 +494,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 			mChannelId = channel.getId();
 			mChannelName.setText(channel.getName());
 			try {
+
 				dtt_layout.setVisibility(View.GONE);
 				dth_layout.setVisibility(View.GONE);
 				List<TVPlatformInfo> infos = channel.getOfAreaTVPlatforms().get(0).getPlatformInfos();
