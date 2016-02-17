@@ -76,6 +76,7 @@ public class PackageService extends AbstractService {
 			String url = Constant.getPackageUrl(context,types);
 			if(SharedPreferencesUtil.getAreaId(context)!=0)
 				url += ("&areaId="+SharedPreferencesUtil.getAreaId(context));
+			url += "&platformTypes="+ TVPlatForm.DTH.getNum()+"&platformTypes="+TVPlatForm.DTT.getNum();
 			Log.i(TAG, "getPackage url="+url);
 			String json = IOUtil.httpGetToJSON(url);
 			if(json != null){

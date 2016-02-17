@@ -145,7 +145,7 @@ public class AllChannelFragment extends Fragment implements OnClickListener, OnI
 			}
 			@Override
 			public void doInBackground() {
-				packages = pkgService.getPackages(TVPlatForm.DTT);
+				packages = pkgService.getPackages(null);
 				categorys = cateService.getCategorys();
 			}
 		}.execute();

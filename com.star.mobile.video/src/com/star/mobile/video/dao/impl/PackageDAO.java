@@ -38,7 +38,7 @@ public class PackageDAO implements IPackageDAO {
 		if (rowid == -1) {
 			Log.e(TAG, "Insert package error.");
 		}
-		Log.d(TAG, "Insert a package, name is "+p.getName());
+		Log.d(TAG, "Insert a package, name is " + p.getName());
 	}
 
 	@Override
@@ -49,7 +49,11 @@ public class PackageDAO implements IPackageDAO {
 	@Override
 	public List<Package> query(TVPlatForm platform) {
 		List<Package> packageList = new ArrayList<Package>();
-		Cursor c = db.rawQuery("select * from package where platform_type="+platform.getNum(), null);
+		String sql = "select * from package";
+		if(platform!=null){
+			sql += " where platform_type="+platform.getNum();
+		}
+		Cursor c = db.rawQuery(sql, null);
 		if (c == null || c.getCount() < 1) {
 			return packageList;
 		}
