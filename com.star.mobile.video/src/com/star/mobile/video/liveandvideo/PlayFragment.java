@@ -56,6 +56,7 @@ import com.star.mobile.video.service.ChannelService;
 import com.star.mobile.video.service.PackageService;
 import com.star.mobile.video.shared.SharedPreferencesUtil;
 import com.star.mobile.video.util.CommonUtil;
+import com.star.mobile.video.util.Constant;
 import com.star.mobile.video.util.Constants;
 import com.star.mobile.video.util.DensityUtil;
 import com.star.mobile.video.util.ImageUtil;
@@ -168,8 +169,6 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 	private View dtt_layout;
 	private View dth_layout;
 
-	private TVPlatForm currentTv=TVPlatForm.DTT;
-	
 	Handler handler = new Handler() {
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
@@ -373,10 +372,10 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 		decoder_dish_left.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				if(currentTv.equals(TVPlatForm.DTT)){
+				if(Constant.CURRENT_PLATFORM.equals(TVPlatForm.DTT)){
 					return;
 				}
-				currentTv=TVPlatForm.DTT;
+				Constant.CURRENT_PLATFORM=TVPlatForm.DTT;
 				clearAndRefreshData();
 				decoder_dish_left.setBackground(getResources().getDrawable(R.drawable.decoder_dish_bg_left_press));
 				decoder_dish_right.setBackground(getResources().getDrawable(R.drawable.decoder_dish_bg_right));
@@ -389,10 +388,10 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 		decoder_dish_right.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				if(currentTv.equals(TVPlatForm.DTH)){
+				if(Constant.CURRENT_PLATFORM.equals(TVPlatForm.DTH)){
 					return;
 				}
-				currentTv=TVPlatForm.DTH;
+				Constant.CURRENT_PLATFORM=TVPlatForm.DTH;
 				clearAndRefreshData();
 				decoder_dish_left.setBackground(getResources().getDrawable(R.drawable.decoder_dish_bg_left));
 				decoder_dish_right.setBackground(getResources().getDrawable(R.drawable.decoder_dish_bg_right_press));
@@ -431,7 +430,17 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 		mChannelExpandIV.setOnClickListener(this);
 		mPackageService = new PackageService(getActivity());
 		mCategoryService = new CategoryService(getActivity());
-		clearAndRefreshData();
+//		clearAndRefreshData();
+//		mChooseInfos.clear();
+//		//清空packages和category的数据
+//		mPackageChooseInfos.clear();
+//		mCategroyChooseInfos.clear();
+////		isfav = false;
+//		selectPkg = null;
+//		selectCgy = null;
+		loadingCategory();
+		loadingPackage();
+		getChannelsAndUpdateUI();
 	}
 
 	/**
@@ -569,6 +578,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 	 *            后台获得的数据集
 	 */
 	public void initChannels(List<ChannelVO> chns) {
+		Constant.CURRENT_PLATFORM=TVPlatForm.DTT;
 		mTotalChannels.clear();
 		mTotalChannels.addAll(chns);
 		setDatasForAdapter();
@@ -980,7 +990,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 
 			@Override
 			public void doInBackground() {
-				ps = mPackageService.getPackages(currentTv);
+				ps = mPackageService.getPackages(Constant.CURRENT_PLATFORM);
 			}
 		}.execute();
 	}
@@ -1007,7 +1017,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 
 			@Override
 			public void doInBackground() {
-				chns = mChannelService.getChannels(selectCgy, isfav, selectPkg, currentTv);
+				chns = mChannelService.getChannels(selectCgy, isfav, selectPkg, Constant.CURRENT_PLATFORM);
 			}
 		}.execute();
 	}

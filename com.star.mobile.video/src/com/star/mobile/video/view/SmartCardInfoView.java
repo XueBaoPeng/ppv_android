@@ -2,12 +2,14 @@ package com.star.mobile.video.view;
 
 import java.util.List;
 
+import com.star.cms.model.enm.TVPlatForm;
 import com.star.cms.model.sms.Product;
 import com.star.cms.model.vo.SmartCardInfoVO;
 import com.star.mobile.video.R;
 import com.star.mobile.video.changebouquet.ChangeBouquetActivity;
 import com.star.mobile.video.service.UserService;
 import com.star.mobile.video.shared.SharedPreferencesUtil;
+import com.star.mobile.video.util.Constant;
 import com.star.mobile.video.util.LoadingDataTask;
 
 import android.content.Context;
@@ -25,6 +27,7 @@ import android.widget.TextView;
 public class SmartCardInfoView extends LinearLayout {
 	
 	private TextView smart_card_number;
+	private TextView tv_platefromConten;
 	private TextView tv_bouque;
 	private TextView tv_recharge_package_name;
 	private TextView tv_recharge_package_price;
@@ -62,6 +65,12 @@ public class SmartCardInfoView extends LinearLayout {
 		smart_card_number=(TextView) findViewById(R.id.smart_card_number);
 		tv_balance=(TextView) findViewById(R.id.tv_balance);
 		tv_bouque=(TextView) findViewById(R.id.tv_bouque);
+		tv_platefromConten = (TextView) findViewById(R.id.tv_plateform_content);
+		if(Constant.CURRENT_PLATFORM.equals(TVPlatForm.DTH)){
+			tv_platefromConten.setText(mContext.getString(R.string.choose_dish));
+		}else{
+			tv_platefromConten.setText(mContext.getString(R.string.choose_decoder));
+		}
 		tv_recharge_package_name=(TextView) findViewById(R.id.tv_recharge_package_name);
 		tv_recharge_package_price=(TextView) findViewById(R.id.tv_recharge_package_price);
 		tv_recharge_account_balance=(TextView) findViewById(R.id.tv_recharge_account_balance);
