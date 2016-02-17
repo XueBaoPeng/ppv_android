@@ -1022,7 +1022,8 @@
     <string name="platform_Decoder">Decoder</string>
     <string name="platform_Dish">Dish</string>
     <string name="dtt_dth">Platform</string>
-    <string name="choose_platform">Choose Platform</string>
+    <string name="decoder_dtt">Decoder [DTT]</string>
+    <string name="dish_dth">Dish [DTH]</string>
     <string name="choose_dialog_message">Do you want to change your Platform to dish?</string>
     <string name="choose_decoder">DECODER</string>
     <string name="choose_dish">DISH</string>

@@ -245,6 +245,10 @@ public class PlayerUtil
     public int getBuffer(){
         return PlayerUtil.PlayerGetBuffer();
     }
+    
+    public int getLoadingProgress(){
+        return PlayerUtil.PlayerGetLoadingProgress();
+    }
 	
 	/**
      * A Handler class for Messages from native SDL applications.
@@ -352,7 +356,11 @@ public class PlayerUtil
     public static native int isPlayFinish();
     public static native int isInitStart();
     public static native int PlayerGetBuffer();
+    public static native int PlayerGetLoadingProgress();
     public static native int SetBuffer(int bufSize);
+    public static native int SetMinFrames(int bufSize);
+    public static native int SetStartLoadingFrames(int bufSize);
+    public static native int SetFinishLoadingFrames(int bufSize);
     public static native int SetRatio(int num, int den);
 
 
@@ -385,14 +393,21 @@ public class PlayerUtil
     
   public static void loadingStart() {
 		Log.d(TAG, "====================================loadingStart");
-		//if((PlayerUtil.PlayerIsPlay()==1?true:false) == true)
-		//	PlayerUtil.PlayerPause();
+		if((PlayerUtil.PlayerIsPlay()==1?true:false) == true)
+			PlayerUtil.PlayerPause();
+		if(mHandler!=null){
+    		mHandler.sendEmptyMessage(Player.MSG_LOAD_UNFINISHED);
+    	}
 	}
     
 	public static void loadingFinish() {
 		Log.d(TAG, "====================================loadingFinish");
-		//if((PlayerUtil.PlayerIsPlay()==1?true:false) == false)
-		//	PlayerUtil.PlayerPause();
+		if((PlayerUtil.PlayerIsPlay()==1?true:false) == false)
+			PlayerUtil.PlayerPause();
+		if(mHandler!=null){
+    		mHandler.sendEmptyMessage(Player.MSG_LOAD_FINISHED);
+    	}
+		Log.d(TAG, "buffer="+PlayerUtil.PlayerGetBuffer());
 	}
     public static void stopPlay() {
 		Log.d(TAG, "====================================stopPlay");
@@ -721,7 +736,10 @@ class SDLMain implements Runnable {
     	args[3] = liveVideo;
     	args[4] = lastPlayPos;
     	
-//    	PlayerActivity.SetBuffer(100*1024);
+    	PlayerUtil.SetBuffer(150*1024);
+    	PlayerUtil.SetMinFrames(50);//org=5
+    	PlayerUtil.SetStartLoadingFrames(2);//if that size is 0, pause will not happen when buffer is low 
+    	PlayerUtil.SetFinishLoadingFrames(10);//if that size is bigger than that MinFrames was set the resume will not happen
     	Log.e("wl", "wl mUrl = "+args[3]);
     	PlayerUtil.nativeInit(args);
     }

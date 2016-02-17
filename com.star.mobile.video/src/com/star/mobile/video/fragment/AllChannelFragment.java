@@ -1,8 +1,5 @@
 package com.star.mobile.video.fragment;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -18,6 +15,7 @@ import android.widget.TextView;
 
 import com.star.cms.model.Category;
 import com.star.cms.model.Package;
+import com.star.cms.model.enm.TVPlatForm;
 import com.star.cms.model.vo.ChannelVO;
 import com.star.mobile.video.R;
 import com.star.mobile.video.adapter.CategoryAdapter;
@@ -32,6 +30,9 @@ import com.star.mobile.video.util.ToastUtil;
 import com.star.mobile.video.view.NoScrollGridView;
 import com.star.util.app.GA;
 import com.star.util.loader.OnListResultListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AllChannelFragment extends Fragment implements OnClickListener, OnItemClickListener {
 	private View mView;
@@ -144,7 +145,7 @@ public class AllChannelFragment extends Fragment implements OnClickListener, OnI
 			}
 			@Override
 			public void doInBackground() {
-				packages = pkgService.getPackages();
+				packages = pkgService.getPackages(TVPlatForm.DTT);
 				categorys = cateService.getCategorys();
 			}
 		}.execute();
@@ -225,7 +226,7 @@ public class AllChannelFragment extends Fragment implements OnClickListener, OnI
 			}
 			@Override
 			public void doInBackground() {
-				chns = chnService.getChannels(selectCgy, isfav, selectPkg);
+				chns = chnService.getChannels(selectCgy, isfav, selectPkg, null);
 			}
 		}.execute();
 	}

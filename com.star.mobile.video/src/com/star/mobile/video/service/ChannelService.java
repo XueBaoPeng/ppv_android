@@ -11,6 +11,7 @@ import com.star.cms.model.Category;
 import com.star.cms.model.Channel;
 import com.star.cms.model.Package;
 import com.star.cms.model.enm.OrderType;
+import com.star.cms.model.enm.TVPlatForm;
 import com.star.cms.model.vo.ChannelVO;
 import com.star.mobile.video.dao.db.DBHelper;
 import com.star.mobile.video.dao.impl.ChannelDAO;
@@ -32,10 +33,10 @@ public class ChannelService {
 		channelDao = new ChannelDAO(DBHelper.getInstence(context));
 	}
 	
-	public List<ChannelVO> getChannels(Category category, boolean isFav, Package p) {
+	public List<ChannelVO> getChannels(Category category, boolean isFav, Package p, TVPlatForm tvPlatForm) {
 		long categoryId = category==null?-1:category.getId();
 		if(SyncService.getInstance(context).isDBReady()){
-			List<ChannelVO> channels = channelDao.query(categoryId, isFav, p);
+			List<ChannelVO> channels = channelDao.query(categoryId, isFav, p, tvPlatForm);
 			return channels;
 		}
 		String url = requestURL;
@@ -173,7 +174,7 @@ public class ChannelService {
 		types.add(Channel.DEMAND_TYPE);
 		types.add(Channel.LIVE_TYPE);
 		types.add(Channel.APPLY_TYPE);
-		String url =  Constant.getSnapshotChannelUrl(types)+"&count="+Integer.MAX_VALUE;
+		String url =  Constant.getSnapshotChannelUrl(types)+"&count="+Integer.MAX_VALUE+"&platformType="+ TVPlatForm.DTH.getNum()+"&platformType="+TVPlatForm.DTT.getNum();
 		List<ChannelVO> channels = getChannelsFromServer(url);
 		if(channels==null || channels.size()==0)
 			return false;

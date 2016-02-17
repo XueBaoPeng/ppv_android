@@ -414,7 +414,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, OnTou
 	    };
 		getChatList(0);
 	}
-	
+
 	@Override
 	protected void onStop() {
 		mDefaultHandler.removeCallbacks(mChatTimerTask);

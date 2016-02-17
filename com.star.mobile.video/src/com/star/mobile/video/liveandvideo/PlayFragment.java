@@ -38,8 +38,10 @@ import com.nineoldandroids.animation.AnimatorSet;
 import com.nineoldandroids.animation.ObjectAnimator;
 import com.star.cms.model.Category;
 import com.star.cms.model.Package;
+import com.star.cms.model.enm.TVPlatForm;
 import com.star.cms.model.vo.ChannelVO;
 import com.star.mobile.video.R;
+import com.star.mobile.video.activity.ChoosePlatformActivity;
 import com.star.mobile.video.channel.ChannelControlView;
 import com.star.mobile.video.channel.ChannelDetailView;
 import com.star.mobile.video.channel.ChannelRateActivity;
@@ -162,6 +164,8 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 
 	private TextView channel_dtt_number;
 	private TextView channel_dth_number;
+
+	private TVPlatForm currentTv=TVPlatForm.DTT;
 	
 	Handler handler = new Handler() {
 		public void handleMessage(Message msg) {
@@ -333,6 +337,27 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 		dish_text= (TextView) mView.findViewById(R.id.tv_dish);
 		//通过平台类型改变提示
 		change_platform();
+		//设置平台介绍详细信息
+		show_platform();
+	}
+
+	private void show_platform() {
+		decoder_image.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(getActivity(), ChoosePlatformActivity.class);
+				intent.putExtra("platform_type", 0);
+				CommonUtil.startActivity(getActivity() , intent);
+			}
+		});
+		dish_image.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(getActivity(), ChoosePlatformActivity.class);
+				intent.putExtra("platform_type", 1);
+				CommonUtil.startActivity(getActivity() , intent);
+			}
+		});
 	}
 
 	/**
@@ -343,6 +368,8 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 		decoder_dish_left.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				currentTv=TVPlatForm.DTT;
+				getChannelsAndUpdateUI();
 				decoder_dish_left.setBackground(getResources().getDrawable(R.drawable.decoder_dish_bg_left_press));
 				decoder_dish_right.setBackground(getResources().getDrawable(R.drawable.decoder_dish_bg_right));
 				decoder_image.setImageResource(R.drawable.ic_info_question_orange);
@@ -354,6 +381,8 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 		decoder_dish_right.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				currentTv=TVPlatForm.DTH;
+				getChannelsAndUpdateUI();
 				decoder_dish_left.setBackground(getResources().getDrawable(R.drawable.decoder_dish_bg_left));
 				decoder_dish_right.setBackground(getResources().getDrawable(R.drawable.decoder_dish_bg_right_press));
  				decoder_image.setImageResource(R.drawable.ic_info_question_white);
@@ -362,6 +391,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 				dish_text.setTextColor(getResources().getColor(R.color.orange_color));
 			}
 		});
+
 	}
 	/**
 	 * 初始化数据
@@ -889,7 +919,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 
 			@Override
 			public void doInBackground() {
-				mPackages = mPackageService.getPackages();
+				mPackages = mPackageService.getPackages(TVPlatForm.DTT);
 				mCategorys = mCategoryService.getCategorys();
 			}
 		}.execute();
@@ -917,7 +947,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 
 			@Override
 			public void doInBackground() {
-				chns = mChannelService.getChannels(selectCgy, isfav, selectPkg);
+				chns = mChannelService.getChannels(selectCgy, isfav, selectPkg, currentTv);
 			}
 		}.execute();
 	}

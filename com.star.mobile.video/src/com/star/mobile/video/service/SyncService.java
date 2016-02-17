@@ -19,6 +19,7 @@ import com.star.cms.model.ChatroomProperty;
 import com.star.cms.model.Package;
 import com.star.cms.model.dto.SYNCResult;
 import com.star.cms.model.dto.SyncAppStatus;
+import com.star.cms.model.enm.TVPlatForm;
 import com.star.cms.model.vo.ChannelVO;
 import com.star.cms.model.vo.ProgramVO;
 import com.star.mobile.video.R;
@@ -156,7 +157,7 @@ public class SyncService extends AbstractService{
 		public void run() {
 			try{
 				synchronized (SyncService.this) {
-					syncPacakge();
+//					syncPacakge();
 					long start = System.currentTimeMillis();
 					List<ChannelVO> channels = channelService.getNeedSyncChannels();
 					List<ProgramVO> programs = programService.getNeedSyncPrograms();
@@ -228,7 +229,7 @@ public class SyncService extends AbstractService{
 	}
 
 	protected void syncPacakge() {
-		List<Package> ps = packageService.getPackages();
+		List<Package> ps = packageService.getPackages(TVPlatForm.DTT);
 		if(ps!=null && ps.size()>0){
 			Package p = ps.get(0);
 			if(p.getType()==0){

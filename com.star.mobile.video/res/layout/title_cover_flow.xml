@@ -61,7 +61,7 @@
                         android:layout_height="wrap_content"
                         android:singleLine="true"
                         android:textColor="@color/white"
-                        android:textSize="22sp"
+                        android:textSize="20sp"
                         android:layout_toRightOf="@id/channel_dtt_image"
                         android:layout_centerVertical="true"/>
                 </RelativeLayout>
@@ -86,7 +86,7 @@
                        android:layout_height="wrap_content"
                        android:singleLine="true"
                        android:textColor="@color/white"
-                       android:textSize="22sp"
+                       android:textSize="20sp"
                        android:layout_centerVertical="true"
                        android:layout_toRightOf="@id/channel_dth_image"/>
                </RelativeLayout>
@@ -108,7 +108,7 @@
                        android:marqueeRepeatLimit="marquee_forever"
                        android:scrollHorizontally="true"
                        android:textColor="@color/white"
-                       android:textSize="22sp"
+                       android:textSize="20sp"
                        android:layout_centerVertical="true"/>
                </RelativeLayout>
            </RelativeLayout>
