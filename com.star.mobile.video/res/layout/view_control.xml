@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:id="@+id/number_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/number_down"
+            android:background="@drawable/remote_control_right" />
+
+        <ImageView
+            android:id="@+id/number_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/remote_control_left" />
+
+         <ImageView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:scaleType="centerCrop"
+             android:layout_marginLeft="-3dp"
+             android:layout_marginTop="-3dp"
+             android:layout_marginRight="-3dp"
+             android:layout_marginBottom="-3dp"
+             android:layout_above="@+id/number_down"
+             android:layout_below="@+id/number_up"
+             android:layout_toLeftOf="@+id/number_right"
+             android:layout_toRightOf="@id/number_left"
+             android:background="@drawable/ok_bg" />
+
+        <ImageView
+            android:id="@+id/number_center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/number_down"
+            android:layout_below="@+id/number_up"
+            android:layout_toLeftOf="@+id/number_right"
+            android:layout_toRightOf="@id/number_left"
+			android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:background="@drawable/remote_control_center"
+            android:scaleType="centerCrop" />
+
+        <ImageView
+            android:id="@+id/number_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/remote_control_up"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/number_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/number_right"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/remote_control_down" />
+
+    </RelativeLayout>
+   
+</FrameLayout>

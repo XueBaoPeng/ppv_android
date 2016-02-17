@@ -251,6 +251,7 @@ public class MeFragment extends TabFragment implements OnClickListener {
 			 */
 			// TellFriend
 			MeMenuItemRes tellRes = new MeMenuItemRes(getString(R.string.invititions), TellFriendActivity.class);
+			//MeMenuItemRes tellRes = new MeMenuItemRes(getString(R.string.invititions), RemoteControlActivity.class);
 			tellRes.setUnfocusRes(R.drawable.ic_share);
 			MenuItem<MeMenuItemRes> tellFriend = new MenuItem<MeMenuItemRes>(tellRes);
 			meItems.add(tellFriend);

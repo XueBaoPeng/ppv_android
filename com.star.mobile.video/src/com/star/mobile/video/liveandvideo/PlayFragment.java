@@ -168,6 +168,8 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 	private View dtt_layout;
 	private View dth_layout;
 
+	private TextView dtt_dth;
+
 	private TVPlatForm currentTv=TVPlatForm.DTT;
 	
 	Handler handler = new Handler() {
@@ -340,6 +342,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 		dish_image= (ImageView) mView.findViewById(R.id.image_question_right);
 		decoder_text= (TextView) mView.findViewById(R.id.tv_decoder);
 		dish_text= (TextView) mView.findViewById(R.id.tv_dish);
+		dtt_dth=(TextView)mView.findViewById(R.id.dth_dtt_text);
 		//通过平台类型改变提示
 		change_platform();
 		//设置平台介绍详细信息
@@ -359,7 +362,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(getActivity(), ChoosePlatformActivity.class);
-				intent.putExtra("platform_type", 1);
+				intent.putExtra("platform_type",1);
 				CommonUtil.startActivity(getActivity(), intent);
 			}
 		});
@@ -373,35 +376,36 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 		decoder_dish_left.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				if(currentTv.equals(TVPlatForm.DTT)){
-					return;
-				}
-				currentTv=TVPlatForm.DTT;
-				loadingPackage();
-				getChannelsAndUpdateUI();
-				decoder_dish_left.setBackground(getResources().getDrawable(R.drawable.decoder_dish_bg_left_press));
-				decoder_dish_right.setBackground(getResources().getDrawable(R.drawable.decoder_dish_bg_right));
-				decoder_image.setImageResource(R.drawable.ic_info_question_orange);
- 				dish_image.setImageResource(R.drawable.ic_info_question_white);
-				decoder_text.setTextColor(getResources().getColor(R.color.orange_color));
-				dish_text.setTextColor(getResources().getColor(R.color.white));
+						if (currentTv.equals(TVPlatForm.DTT)) {
+							return;
+						}
+						currentTv = TVPlatForm.DTT;
+						loadingPackage();
+						getChannelsAndUpdateUI();
+						decoder_dish_left.setBackground(getResources().getDrawable(R.drawable.decoder_dish_bg_left_press));
+						decoder_dish_right.setBackground(getResources().getDrawable(R.drawable.decoder_dish_bg_right));
+						decoder_image.setImageResource(R.drawable.ic_info_question_orange);
+						dish_image.setImageResource(R.drawable.ic_info_question_white);
+						decoder_text.setTextColor(getResources().getColor(R.color.orange_color));
+						dish_text.setTextColor(getResources().getColor(R.color.white));
+
 			}
 		});
 		decoder_dish_right.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				if(currentTv.equals(TVPlatForm.DTH)){
-					return;
-				}
-				currentTv=TVPlatForm.DTH;
-				loadingPackage();
-				getChannelsAndUpdateUI();
-				decoder_dish_left.setBackground(getResources().getDrawable(R.drawable.decoder_dish_bg_left));
-				decoder_dish_right.setBackground(getResources().getDrawable(R.drawable.decoder_dish_bg_right_press));
- 				decoder_image.setImageResource(R.drawable.ic_info_question_white);
- 				dish_image.setImageResource(R.drawable.ic_info_question_orange);
-				decoder_text.setTextColor(getResources().getColor(R.color.white));
-				dish_text.setTextColor(getResources().getColor(R.color.orange_color));
+ 				if (currentTv.equals(TVPlatForm.DTH)) {
+							return;
+						}
+						currentTv = TVPlatForm.DTH;
+						loadingPackage();
+						getChannelsAndUpdateUI();
+						decoder_dish_left.setBackground(getResources().getDrawable(R.drawable.decoder_dish_bg_left));
+						decoder_dish_right.setBackground(getResources().getDrawable(R.drawable.decoder_dish_bg_right_press));
+						decoder_image.setImageResource(R.drawable.ic_info_question_white);
+						dish_image.setImageResource(R.drawable.ic_info_question_orange);
+						decoder_text.setTextColor(getResources().getColor(R.color.white));
+						dish_text.setTextColor(getResources().getColor(R.color.orange_color));
 			}
 		});
 
@@ -486,15 +490,23 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 				dtt_layout.setVisibility(View.GONE);
 				dth_layout.setVisibility(View.GONE);
 				List<TVPlatformInfo> infos = channel.getOfAreaTVPlatforms().get(0).getPlatformInfos();
+				String platStr = "";
 				for(TVPlatformInfo info : infos) {
 					if (TVPlatForm.DTT.equals(info.getTvPlatForm())) {
+						platStr += "/DTT";
 						channel_dtt_number.setText(info.getChannelNumber());
 						dtt_layout.setVisibility(View.VISIBLE);
 					}else if(TVPlatForm.DTH.equals(info.getTvPlatForm())){
+						platStr += "/DTH";
 						channel_dth_number.setText(info.getChannelNumber());
 						dth_layout.setVisibility(View.VISIBLE);
 					}
 				}
+				if(platStr.startsWith("/")){
+					platStr = platStr.substring(1);
+				}
+				dtt_dth.setText(platStr);
+
 			}catch (Exception e){
 			}
 			if (channel.getOfPackage() != null) {

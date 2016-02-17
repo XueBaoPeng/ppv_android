@@ -3,7 +3,7 @@
 
 -dontusemixedcaseclassnames
 -dontskipnonpubliclibraryclasses
--verbose
+-verbose                                                                           # 混淆时是否记录日志
 
 # Optimization is turned off by default. Dex does not like code run
 # through the ProGuard optimize and preverify steps (and performs some
