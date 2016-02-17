@@ -168,6 +168,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 	private TextView channel_dth_number;
 	private View dtt_layout;
 	private View dth_layout;
+	private TextView dtt_dish;
 
 	Handler handler = new Handler() {
 		public void handleMessage(Message msg) {
@@ -339,6 +340,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 		dish_image= (ImageView) mView.findViewById(R.id.image_question_right);
 		decoder_text= (TextView) mView.findViewById(R.id.tv_decoder);
 		dish_text= (TextView) mView.findViewById(R.id.tv_dish);
+		dtt_dish= (TextView) mView.findViewById(R.id.dth_dtt_text);
 		//通过平台类型改变提示
 		change_platform();
 		//设置平台介绍详细信息
@@ -494,19 +496,25 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 			mChannelId = channel.getId();
 			mChannelName.setText(channel.getName());
 			try {
-
 				dtt_layout.setVisibility(View.GONE);
 				dth_layout.setVisibility(View.GONE);
 				List<TVPlatformInfo> infos = channel.getOfAreaTVPlatforms().get(0).getPlatformInfos();
+				String platform="";
 				for(TVPlatformInfo info : infos) {
 					if (TVPlatForm.DTT.equals(info.getTvPlatForm())) {
 						channel_dtt_number.setText(info.getChannelNumber());
 						dtt_layout.setVisibility(View.VISIBLE);
+						platform+="/DTT";
 					}else if(TVPlatForm.DTH.equals(info.getTvPlatForm())){
 						channel_dth_number.setText(info.getChannelNumber());
 						dth_layout.setVisibility(View.VISIBLE);
+						platform+="/DTH";
 					}
 				}
+				if (platform.startsWith("/")){
+					platform+="";
+				}
+				dtt_dish.setText(platform);
 			}catch (Exception e){
 			}
 			if (channel.getOfPackage() != null) {
