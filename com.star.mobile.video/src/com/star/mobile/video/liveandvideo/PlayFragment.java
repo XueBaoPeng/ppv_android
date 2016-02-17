@@ -430,17 +430,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 		mChannelExpandIV.setOnClickListener(this);
 		mPackageService = new PackageService(getActivity());
 		mCategoryService = new CategoryService(getActivity());
-//		clearAndRefreshData();
-//		mChooseInfos.clear();
-//		//清空packages和category的数据
-//		mPackageChooseInfos.clear();
-//		mCategroyChooseInfos.clear();
-////		isfav = false;
-//		selectPkg = null;
-//		selectCgy = null;
-		loadingCategory();
-		loadingPackage();
-		getChannelsAndUpdateUI();
+		clearAndRefreshData();
 	}
 
 	/**
