@@ -1006,6 +1006,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 	private void setPackagesData() {
 		LayoutInflater mInflater = LayoutInflater.from(getActivity());
 		mPackages.add(0, null);
+		mPackages.add(1, null);
 		mPlayFlowLayoutPackages.removeAllViews();
 		for (int i = 0; i < mPackages.size(); i++) {
 			final TextView tv = (TextView) mInflater.inflate(R.layout.play_flowlayout_textview, mPlayFlowLayoutPackages,
@@ -1015,13 +1016,11 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 			if (i == 0) {
 				tv.setText("All");
 				setFlowLayoutChooseTextView(tv);
+			} else if(i == 1){
+				tv.setText("Favorite");
 			} else {
-				if (i == 1) {
-					tv.setText("Favorite");
-				} else {
-					if (p != null) {
-						tv.setText(p.getName());
-					}
+				if (p != null) {
+					tv.setText(p.getName());
 				}
 			}
 			mPlayFlowLayoutPackages.addView(tv);
