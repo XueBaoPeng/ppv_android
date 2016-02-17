@@ -55,8 +55,8 @@
     <string name="comfim_pwd">Confirmez le mot de passe</string>
     <string name="inivated_hin">Code d\'invitation</string>
     <string name="invitation_code">Code d\'invitation</string>
-    <string name="invititions">d\'invitation</string>
-    <string name="MyReminders">My Reminders</string>
+    <string name="invititions">Invitation</string>
+    <string name="MyReminders">Mes rappels</string>
     <string name="ReminderNotification">Notification Rappel</string>
     <string name="login_btn">Sign in</string>
     <string name="register_btn">Inscription</string>
@@ -101,7 +101,7 @@
     <string name="topup_activity_title">Recharger</string>
     <string name="smart_card_activity_title">Carte à puce de StarTimes</string>
     <string name="feedback">Commentaires</string>
-    <string name="tenb">Mes donnees</string>
+    <string name="tenb">Mes flux</string>
     <string name="new_pass">Nouveau mot de passe</string>
     <string name="confirm_new_pass">Confirmez le nouveau mot de passe</string>
     <string name="reset_pass">Réinitialiser le mot de passe</string>
@@ -702,7 +702,7 @@
     <string name="updata_sex_success">Update successfully</string>
     <string name="update_nickname_hint">La longueur doit être comprise entre 4 a 20 lettres</string>
     <string name="tell_friend_title">Inviter des amis, gagner des  coupons gratuits!</string>
-    <string name="tell_friend_content_one">Inviter des amis et obtenir des coupons %1$s gratuits pour une recharge instantanée. Plus d\'amis vous invitez, plus de coupons gratuits vous aurez.</string>
+    <string name="tell_friend_content_one">Inviter des amis et obtenez %1$s coupons gratuits pour une recharge instantanée. Plus d\'amis que vous invitiez, plus de coupons gratuits vous gagnerez.</string>
     <string name="tell_friend_content_two">Cliquez sur le bouton  partager maintenant</string>
     <string name="tell_friend_content_three">3. C\'est facile d\'obtenir un coupon, il suffit de cliquer sur le bouton Partager et partager via SMS. Si l\'on clique sur le lien que vous avez partagé, et rejoint StarTimes APP, vous obtiendrez un coupon gratuit,  au fait votre ami en aura un %1$s aussi!</string>
 	<string name="tell_friend_content_four">4. Il suffit de cliquer sur  Partager et demander à vos amis de cliquer sur le lien!</string>
