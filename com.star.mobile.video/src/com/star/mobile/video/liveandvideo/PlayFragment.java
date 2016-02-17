@@ -377,16 +377,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 					return;
 				}
 				currentTv=TVPlatForm.DTT;
-				mChooseInfos.clear();
-				//清空packages和category的数据
-				mPackageChooseInfos.clear();
-				mCategroyChooseInfos.clear();
-				isfav = false;
-				selectPkg = null;
-				selectCgy = null;
-				loadingPackage();
-				loadingCategory();
-				getChannelsAndUpdateUI();
+				clearAndRefreshData();
 				decoder_dish_left.setBackground(getResources().getDrawable(R.drawable.decoder_dish_bg_left_press));
 				decoder_dish_right.setBackground(getResources().getDrawable(R.drawable.decoder_dish_bg_right));
 				decoder_image.setImageResource(R.drawable.ic_info_question_orange);
@@ -402,16 +393,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 					return;
 				}
 				currentTv=TVPlatForm.DTH;
-				mChooseInfos.clear();
-				//清空packages和category的数据
-				mPackageChooseInfos.clear();
-				mCategroyChooseInfos.clear();
-				isfav = false;
-				selectPkg = null;
-				selectCgy = null;
-				loadingPackage();
-				loadingCategory();
-				getChannelsAndUpdateUI();
+				clearAndRefreshData();
 				decoder_dish_left.setBackground(getResources().getDrawable(R.drawable.decoder_dish_bg_left));
 				decoder_dish_right.setBackground(getResources().getDrawable(R.drawable.decoder_dish_bg_right_press));
  				decoder_image.setImageResource(R.drawable.ic_info_question_white);
@@ -449,6 +431,20 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 		mChannelExpandIV.setOnClickListener(this);
 		mPackageService = new PackageService(getActivity());
 		mCategoryService = new CategoryService(getActivity());
+		clearAndRefreshData();
+	}
+
+	/**
+	 * 情况并刷新下拉列表数据
+	 */
+	private void clearAndRefreshData() {
+		mChooseInfos.clear();
+		//清空packages和category的数据
+		mPackageChooseInfos.clear();
+		mCategroyChooseInfos.clear();
+		isfav = false;
+		selectPkg = null;
+		selectCgy = null;
 		loadingCategory();
 		loadingPackage();
 		getChannelsAndUpdateUI();
