@@ -174,7 +174,7 @@ public class ChannelService {
 		types.add(Channel.DEMAND_TYPE);
 		types.add(Channel.LIVE_TYPE);
 		types.add(Channel.APPLY_TYPE);
-		String url =  Constant.getSnapshotChannelUrl(types)+"&count="+Integer.MAX_VALUE+"&platformType="+ TVPlatForm.DTH.getNum()+"&platformType="+TVPlatForm.DTT.getNum();
+		String url =  Constant.getSnapshotChannelUrl(types)+"&count="+Integer.MAX_VALUE+"&platformTypes="+ TVPlatForm.DTH.getNum()+"&platformTypes="+TVPlatForm.DTT.getNum();
 		List<ChannelVO> channels = getChannelsFromServer(url);
 		if(channels==null || channels.size()==0)
 			return false;

@@ -229,7 +229,7 @@ public class SyncService extends AbstractService{
 	}
 
 	protected void syncPacakge() {
-		List<Package> ps = packageService.getPackages(TVPlatForm.DTT);
+		List<Package> ps = packageService.getPackages(null);
 		if(ps!=null && ps.size()>0){
 			Package p = ps.get(0);
 			if(p.getType()==0){
