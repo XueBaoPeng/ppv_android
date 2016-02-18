@@ -495,12 +495,17 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 		if (channel != null) {
 			mChannelId = channel.getId();
 			mChannelName.setText(channel.getName());
+			mChannelPackage.setText("");
+			dtt_dish.setText("");
 			try {
 				dtt_layout.setVisibility(View.GONE);
 				dth_layout.setVisibility(View.GONE);
 				List<TVPlatformInfo> infos = channel.getOfAreaTVPlatforms().get(0).getPlatformInfos();
 				String platform="";
+				String pkg = "";
 				for(TVPlatformInfo info : infos) {
+					if(info.getOfPackage()!=null)
+						pkg += "/"+info.getOfPackage().getName();
 					if (TVPlatForm.DTT.equals(info.getTvPlatForm())) {
 						channel_dtt_number.setText(info.getChannelNumber());
 						dtt_layout.setVisibility(View.VISIBLE);
@@ -514,21 +519,21 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 				if (platform.startsWith("/")){
 					platform=platform.substring(1);
 				}
-
-					dtt_dish.setText(platform);
-
-			}catch (Exception e){
-			}
-			if (channel.getOfPackage() != null) {
+				if (pkg.startsWith("/")){
+					pkg=pkg.substring(1);
+				}
+				mChannelPackage.setText(pkg);
+				dtt_dish.setText(platform);
 				Package channelPackage = channel.getOfPackage();
 				if (channelPackage.getName() != null && !channelPackage.getName().isEmpty()) {
 					mChannelPackage.setText(channelPackage.getName());
 				}
+			}catch (Exception e){
 			}
 			if(channel.getCommentTotalScore()>0){
 				float channelScore=(float)channel.getCommentTotalScore()/channel.getCommentTotalCount();
 				ratingChannel.setRating(channelScore);
-			}else{
+			} else {
 				ratingChannel.setRating(0f);
 			}
 
