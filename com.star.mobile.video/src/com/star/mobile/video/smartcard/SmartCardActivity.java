@@ -167,9 +167,10 @@ public class SmartCardActivity extends BaseActivity implements OnClickListener,C
 		}
 
 		for (int i = 0;i<mSmartinfos.size();i++){
-			if (mSmartinfos.get(i).equals(cardNum)){
-				//TODO
-
+			String smartCardNo = mSmartinfos.get(i).getSmardCardNo().trim();
+			if (cardNum.trim().equals(smartCardNo)){
+				ToastUtil.centerShowToast(this,getString(R.string.smart_cart_has_bound));
+				return ;
 			}
 		}
 

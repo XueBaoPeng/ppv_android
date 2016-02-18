@@ -1038,5 +1038,5 @@
 •	Terrestrial television uses a network of transmission towers. Those who are close the tower get strong signal
 •	Clear picture with resolution up to 720i resolution
 </string>
-
+    <string name="smart_cart_has_bound">This smart card has already been bound</string>
 </resources>
