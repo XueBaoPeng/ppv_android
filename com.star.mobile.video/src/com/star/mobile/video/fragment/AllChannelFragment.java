@@ -179,7 +179,10 @@ public class AllChannelFragment extends Fragment implements OnClickListener, OnI
 	}
 	private void getChannelPackage(){
 		List<Integer> types = new ArrayList<Integer>();
-		pkgService.getPackagesFromServer(types, new OnListResultListener<Package>() {
+		List<Integer> platFormTypes = new ArrayList<Integer>();
+		platFormTypes.add(TVPlatForm.DTH.getNum());
+		platFormTypes.add(TVPlatForm.DTT.getNum());
+		pkgService.getPackagesFromServer(types,platFormTypes, new OnListResultListener<Package>() {
 
 			@Override
 			public boolean onIntercept() {
