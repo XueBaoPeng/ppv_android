@@ -77,9 +77,9 @@ public class SmartCardInfoView extends LinearLayout {
 	public void setSmartCardPlateForm(TVPlatForm plateForm){
 		if (plateForm != null){
 			if(plateForm.getNum()==TVPlatForm.DTT.getNum()){
-				tv_platefromConten.setText(mContext.getString(R.string.choose_dish));
-			}else{
 				tv_platefromConten.setText(mContext.getString(R.string.choose_decoder));
+			}else{
+				tv_platefromConten.setText(mContext.getString(R.string.choose_dish));
 			}
 		}
 
@@ -144,7 +144,7 @@ public class SmartCardInfoView extends LinearLayout {
 			}
 		}.execute();
 	}
-	public void setData(SmartCardInfoVO smvo){
+	public void setData(SmartCardInfoVO smvo,TVPlatForm platForm){
 		setSmartCardNumber(smvo.getSmardCardNo());
 		String currency = SharedPreferencesUtil.getCurrencSymbol(mContext);
 		setRechargeAccountBalance(currency+smvo.getMoney());
@@ -158,7 +158,8 @@ public class SmartCardInfoView extends LinearLayout {
 		}else{
 			getProgramPackage(smvo.getSmardCardNo());	
 		}
-		setSmartCardPlateForm(smvo.getTvPlatForm());
+
+		setSmartCardPlateForm(platForm);
 
 	}
 	public void setBalance(String balance){
