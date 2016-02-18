@@ -85,7 +85,7 @@ public class ChangeBouquetActivity extends BaseActivity implements OnClickListen
 		}
 		setNoClickButton();
 	}
-	public void updatePackageList() {
+	public void updatePackageList(SmartCardInfoVO smartCardInfoVO) {
 //		new LoadingDataTask() {
 //			List<Package> pkgs;
 //			@Override
@@ -112,7 +112,13 @@ public class ChangeBouquetActivity extends BaseActivity implements OnClickListen
 		List<Integer> types = new ArrayList<Integer>();
 		types.add(Package.BASIC_TYPE);
 		types.add(Package.SPECIAL_TYPE);
-		pkgService.getPackagesFromServer(types, new OnListResultListener<Package>() {
+		List<Integer> platformTypes = new ArrayList<Integer>();
+		if (smartCardInfoVO != null){
+			if (smartCardInfoVO.getTvPlatForm() != null){
+				platformTypes.add(smartCardInfoVO.getTvPlatForm().getNum());
+			}
+		}
+		pkgService.getPackagesFromServer(types,platformTypes, new OnListResultListener<Package>() {
 			
 			@Override
 			public boolean onIntercept() {
@@ -310,7 +316,7 @@ public class ChangeBouquetActivity extends BaseActivity implements OnClickListen
 				if (bundle != null) {
 					String string = bundle.getString("refreshResult");
 					if ("refresh".equals(string)) {
-						updatePackageList();
+						updatePackageList(mSmartCardInfoVO);
 					}
 				} else {
 					Log.i("initData", "bundle is null");
@@ -324,6 +330,6 @@ public class ChangeBouquetActivity extends BaseActivity implements OnClickListen
 
 	@Override
 	public void getChangeBouquet() {
-		updatePackageList();
+		updatePackageList(mSmartCardInfoVO);
 	}
 }

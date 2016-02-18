@@ -138,10 +138,13 @@ public class Constant {
 		return SERVER_URL+"/vods/play";
 	}
 	
-	public static String getPackageUrl(Context context, List<Integer> types){
+	public static String getPackageUrl(Context context, List<Integer> types,List<Integer> platformTypes){
 		String url = "?version="+ApplicationUtil.getAppVerison(context);
 		for(int i = 0;i<types.size();i++) {
 			url+="&types="+types.get(i);
+		}
+		for(Integer type:platformTypes) {
+			url +="&platformTypes="+type;
 		}
 		return SERVER_URL+"/packages"+url;
 	}
