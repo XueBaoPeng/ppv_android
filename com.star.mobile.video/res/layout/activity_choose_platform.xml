@@ -8,15 +8,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="none" >
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dp_8"
-            android:layout_marginRight="@dimen/dp_8">
+            android:orientation="vertical">
             <LinearLayout
                 android:id="@+id/plat_name_imageview_ll"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/action_bar_margin_16"
+                android:layout_marginBottom="@dimen/dp_8"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:layout_marginRight="@dimen/dp_8"
                 android:orientation="horizontal" >
 
                 <TextView
@@ -25,27 +28,40 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:textColor="@color/taks_blue"
-                    android:textSize="20sp" />
+                    android:textSize="16dp" />
 
                 <ImageView
                     android:id="@+id/platform_imageview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
-                    android:visibility="gone"
                     android:layout_gravity="center_vertical"
-                    android:layout_toRightOf="@id/tv_platform_name"
-                    android:src="@drawable/ic_thumb_up_blue_12dp" />
+                    android:layout_toRightOf="@id/tv_platform_name"/>
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/tv_platform_distion"
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/dicobery_content_txt"
+                android:layout_marginBottom="@dimen/dp_8"
+                />
+                <TextView
+                    android:id="@+id/tv_platform_distion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_marginRight="@dimen/dp_10"
+                    android:textColor="@color/black_color"
+                    android:textSize="14dp" />
+            <ImageView
+                android:id="@+id/platform_big_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/plat_name_imageview_ll"
-                android:layout_marginLeft="10dp"
-                android:textColor="@color/text_default"
-                android:textSize="12sp" />
-        </RelativeLayout>
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_8"
+                android:layout_gravity="center_vertical"
+                 />
+        </LinearLayout>
+
         </ScrollView>
 </LinearLayout>

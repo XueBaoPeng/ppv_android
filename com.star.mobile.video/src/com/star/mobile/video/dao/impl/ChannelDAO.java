@@ -291,7 +291,7 @@ public class ChannelDAO implements IChannelDAO {
 			append = true;
 		}
 		if(tvPlatForm!=null){
-			querySQL.append((append?" and ":" where ")+"cp.platform_type="+tvPlatForm.getNum());
+			querySQL.append((append?" and ":" where ")+"cp.fk_channel=c.channelId and cp.platform_type="+tvPlatForm.getNum());
 		}
 		String sql = querySQL.toString();
 		return execQuery(sql);

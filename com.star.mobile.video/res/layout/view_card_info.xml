@@ -30,12 +30,35 @@
             android:layout_below="@id/smart_card_number"
             android:layout_marginLeft="8dp" >
 
+
+            <TextView
+                android:id="@+id/tv_plateform"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:text="@string/dtt_dth"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_plateform_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="2dp"
+                android:layout_toRightOf="@id/tv_plateform"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+
             <TextView
                 android:id="@+id/tv_bouque"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_below="@id/tv_plateform"
                 android:textColor="@color/white"
                 android:textSize="14sp" />
 
@@ -44,7 +67,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_below="@id/tv_plateform"
                 android:layout_toRightOf="@id/tv_bouque"
                 android:textColor="@color/white"
                 android:textSize="14sp" />
@@ -53,7 +77,8 @@
                 android:id="@+id/tv_recharge_package_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_below="@id/tv_plateform"
                 android:layout_toRightOf="@id/tv_recharge_package_name"
                 android:textColor="@color/white"
                 android:textSize="14sp" />

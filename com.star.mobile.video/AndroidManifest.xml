@@ -109,6 +109,12 @@
             android:configChanges="locale">
         </activity>
         <activity
+            android:name="com.star.mobile.video.HomeMedia.RemoteControlActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:configChanges="locale">
+        </activity>
+        <activity
             android:name="com.star.mobile.video.activity.ChatActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
@@ -298,10 +304,11 @@
             android:launchMode="singleTask"
             android:theme="@style/translucent" >
         </activity>
-        <activity android:name="com.star.mobile.video.ppv.PpvActivity"
+        <activity android:name="com.star.mobile.video.activity.ChoosePlatformActivity"
             android:launchMode="singleTask"
-            android:theme="@style/translucent">
+            android:screenOrientation="portrait">
         </activity>
+
         <activity
             android:name="com.star.mobile.video.activity.ComingSoonActivity"
             android:launchMode="singleTask"

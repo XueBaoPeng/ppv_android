@@ -56,6 +56,7 @@ import com.star.mobile.video.service.ChannelService;
 import com.star.mobile.video.service.PackageService;
 import com.star.mobile.video.shared.SharedPreferencesUtil;
 import com.star.mobile.video.util.CommonUtil;
+import com.star.mobile.video.util.Constant;
 import com.star.mobile.video.util.Constants;
 import com.star.mobile.video.util.DensityUtil;
 import com.star.mobile.video.util.ImageUtil;
@@ -167,9 +168,8 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 	private TextView channel_dth_number;
 	private View dtt_layout;
 	private View dth_layout;
+	private TextView dtt_dish;
 
-	private TVPlatForm currentTv=TVPlatForm.DTT;
-	
 	Handler handler = new Handler() {
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
@@ -340,6 +340,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 		dish_image= (ImageView) mView.findViewById(R.id.image_question_right);
 		decoder_text= (TextView) mView.findViewById(R.id.tv_decoder);
 		dish_text= (TextView) mView.findViewById(R.id.tv_dish);
+		dtt_dish= (TextView) mView.findViewById(R.id.dth_dtt_text);
 		//通过平台类型改变提示
 		change_platform();
 		//设置平台介绍详细信息
@@ -373,12 +374,11 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 		decoder_dish_left.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				if(currentTv.equals(TVPlatForm.DTT)){
+				if(Constant.CURRENT_PLATFORM.equals(TVPlatForm.DTT)){
 					return;
 				}
-				currentTv=TVPlatForm.DTT;
-				loadingPackage();
-				getChannelsAndUpdateUI();
+				Constant.CURRENT_PLATFORM=TVPlatForm.DTT;
+				clearAndRefreshData();
 				decoder_dish_left.setBackground(getResources().getDrawable(R.drawable.decoder_dish_bg_left_press));
 				decoder_dish_right.setBackground(getResources().getDrawable(R.drawable.decoder_dish_bg_right));
 				decoder_image.setImageResource(R.drawable.ic_info_question_orange);
@@ -390,12 +390,11 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 		decoder_dish_right.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				if(currentTv.equals(TVPlatForm.DTH)){
+				if(Constant.CURRENT_PLATFORM.equals(TVPlatForm.DTH)){
 					return;
 				}
-				currentTv=TVPlatForm.DTH;
-				loadingPackage();
-				getChannelsAndUpdateUI();
+				Constant.CURRENT_PLATFORM=TVPlatForm.DTH;
+				clearAndRefreshData();
 				decoder_dish_left.setBackground(getResources().getDrawable(R.drawable.decoder_dish_bg_left));
 				decoder_dish_right.setBackground(getResources().getDrawable(R.drawable.decoder_dish_bg_right_press));
  				decoder_image.setImageResource(R.drawable.ic_info_question_white);
@@ -433,6 +432,20 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 		mChannelExpandIV.setOnClickListener(this);
 		mPackageService = new PackageService(getActivity());
 		mCategoryService = new CategoryService(getActivity());
+		clearAndRefreshData();
+	}
+
+	/**
+	 * 情况并刷新下拉列表数据
+	 */
+	private void clearAndRefreshData() {
+		mChooseInfos.clear();
+		//清空packages和category的数据
+		mPackageChooseInfos.clear();
+		mCategroyChooseInfos.clear();
+		isfav = false;
+		selectPkg = null;
+		selectCgy = null;
 		loadingCategory();
 		loadingPackage();
 		getChannelsAndUpdateUI();
@@ -486,15 +499,24 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 				dtt_layout.setVisibility(View.GONE);
 				dth_layout.setVisibility(View.GONE);
 				List<TVPlatformInfo> infos = channel.getOfAreaTVPlatforms().get(0).getPlatformInfos();
+				String platform="";
 				for(TVPlatformInfo info : infos) {
 					if (TVPlatForm.DTT.equals(info.getTvPlatForm())) {
 						channel_dtt_number.setText(info.getChannelNumber());
 						dtt_layout.setVisibility(View.VISIBLE);
+						platform+="/DTT";
 					}else if(TVPlatForm.DTH.equals(info.getTvPlatForm())){
 						channel_dth_number.setText(info.getChannelNumber());
 						dth_layout.setVisibility(View.VISIBLE);
+						platform+="/DTH";
 					}
 				}
+				if (platform.startsWith("/")){
+					platform=platform.substring(1);
+				}
+
+					dtt_dish.setText(platform);
+
 			}catch (Exception e){
 			}
 			if (channel.getOfPackage() != null) {
@@ -509,7 +531,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 			}else{
 				ratingChannel.setRating(0f);
 			}
-			
+
 			getCategorys(channel);
 		}
 	}
@@ -557,6 +579,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 	 *            后台获得的数据集
 	 */
 	public void initChannels(List<ChannelVO> chns) {
+		Constant.CURRENT_PLATFORM=TVPlatForm.DTT;
 		mTotalChannels.clear();
 		mTotalChannels.addAll(chns);
 		setDatasForAdapter();
@@ -968,7 +991,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 
 			@Override
 			public void doInBackground() {
-				ps = mPackageService.getPackages(currentTv);
+				ps = mPackageService.getPackages(Constant.CURRENT_PLATFORM);
 			}
 		}.execute();
 	}
@@ -995,7 +1018,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 
 			@Override
 			public void doInBackground() {
-				chns = mChannelService.getChannels(selectCgy, isfav, selectPkg, currentTv);
+				chns = mChannelService.getChannels(selectCgy, isfav, selectPkg, Constant.CURRENT_PLATFORM);
 			}
 		}.execute();
 	}
@@ -1006,6 +1029,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 	private void setPackagesData() {
 		LayoutInflater mInflater = LayoutInflater.from(getActivity());
 		mPackages.add(0, null);
+		mPackages.add(1, null);
 		mPlayFlowLayoutPackages.removeAllViews();
 		for (int i = 0; i < mPackages.size(); i++) {
 			final TextView tv = (TextView) mInflater.inflate(R.layout.play_flowlayout_textview, mPlayFlowLayoutPackages,
@@ -1015,13 +1039,11 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 			if (i == 0) {
 				tv.setText("All");
 				setFlowLayoutChooseTextView(tv);
+			} else if(i == 1){
+				tv.setText("Favorite");
 			} else {
-				if (i == 1) {
-					tv.setText("Favorite");
-				} else {
-					if (p != null) {
-						tv.setText(p.getName());
-					}
+				if (p != null) {
+					tv.setText(p.getName());
 				}
 			}
 			mPlayFlowLayoutPackages.addView(tv);
@@ -1083,6 +1105,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 	 */
 	private void setCategorysData() {
 		LayoutInflater mInflater = LayoutInflater.from(getActivity());
+		mPlayFlowLayoutCategorys.removeAllViews();
 		for (int i = 0; i < mCategorys.size(); i++) {
 			final TextView tv = (TextView) mInflater.inflate(R.layout.play_flowlayout_textview,
 					mPlayFlowLayoutCategorys, false);
@@ -1094,24 +1117,24 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 				public void onClick(View v) {
 					resetChannelTextViewBG(mPlayFlowLayoutCategorys);
 
+					TextView textView = (TextView) mPlayFlowLayoutPackages.getChildAt(0);
+					if (textView != null) {
+						textView.setBackgroundResource(0);
+						textView.setTextColor(getResources().getColor(R.color.white));
+					}
 					mCategroyChooseInfos.clear();
 					if (category.equals(selectCgy)) {
 						selectCgy = null;
 						tv.setBackgroundResource(0);
 						tv.setTextColor(getResources().getColor(R.color.white));
-						if (mPlayFlowLayoutCategorys.getChildAt(0) != null) {
-							setFlowLayoutChooseTextView((TextView) mPlayFlowLayoutCategorys.getChildAt(0));
+						if (mPlayFlowLayoutPackages.getChildAt(0) != null) {
+							setFlowLayoutChooseTextView((TextView) mPlayFlowLayoutPackages.getChildAt(0));
 						}
 					} else {
 						selectCgy = category;
 						setFlowLayoutChooseTextView(tv);
 
 						mCategroyChooseInfos.add(tv);
-					}
-					TextView textView = (TextView) mPlayFlowLayoutPackages.getChildAt(0);
-					if (textView != null) {
-						textView.setBackgroundResource(0);
-						textView.setTextColor(getResources().getColor(R.color.white));
 					}
 					getChannelsAndUpdateUI();
 				}

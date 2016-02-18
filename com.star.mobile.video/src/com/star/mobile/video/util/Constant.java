@@ -5,6 +5,7 @@ import java.util.List;
 
 import android.content.Context;
 
+import com.star.cms.model.enm.TVPlatForm;
 import com.star.mobile.video.StarApplication;
 
 public class Constant {
@@ -715,4 +716,7 @@ public class Constant {
 	
 	public static final String SCHEAM = "tenbre://com.star.mobile.video";
 	public static final String UID = "uid";
+
+	//平台信息
+	public static TVPlatForm CURRENT_PLATFORM = TVPlatForm.DTT;
 }

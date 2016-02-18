@@ -1022,7 +1022,7 @@
     <string name="platform_Decoder">Decoder</string>
     <string name="platform_Dish">Dish</string>
     <string name="dtt_dth">Platform</string>
-    <string name="decoder_dtt">Decoder [DTT]</string>
+    <string name="decoder_dtt">Antenna [DTT]</string>
     <string name="dish_dth">Dish [DTH]</string>
     <string name="choose_dialog_message">Do you want to change your Platform to dish?</string>
     <string name="choose_decoder">DECODER</string>
@@ -1030,4 +1030,13 @@
     
     <string name="my_order_nodata">You can check the service history and get the process status here.</string>
     <string name="big_bouquet">BOUQUET</string>
+    <string name="platform_distion_dth">DTH is a digital satellite service that provides television viewing services directly to subscribers through satellite transmission anywhere in the country. In this a dish is placed outside a home which helps in receiving the signals and broadcasting the transmission onto a television. The signals are digital by nature and are received directly from the satellite
+</string>
+    <string name="platform_distion_dtt">DTT (digital terrestrial television, sometimes also abbreviated DTT) is digital television (DTT) broadcast entirely over earthbound circuits. A satellite is not used for any part of the link between the broadcaster and the end user.
+•	DTT provides a clearer picture and superior sound quality when compared to analog TV
+•	Use antenna (or aerial) instead of a satellite dish or cable connection
+•	Terrestrial television uses a network of transmission towers. Those who are close the tower get strong signal
+•	Clear picture with resolution up to 720i resolution
+</string>
+
 </resources>
