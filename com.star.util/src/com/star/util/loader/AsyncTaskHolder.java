@@ -1,12 +1,5 @@
 package com.star.util.loader;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
 import android.content.Context;
 
 import com.star.util.InternalStorage;
@@ -14,6 +7,13 @@ import com.star.util.Logger;
 import com.star.util.NetworkUtil;
 import com.star.util.json.JSONUtil;
 import com.star.util.loader.AsyncTask.Request;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * 
@@ -45,7 +45,8 @@ public class AsyncTaskHolder {
 	 * 
 	 * @param url 地址
 	 * @param listener 回调监听器
-	 * @param context 上下文环境
+	 * @param clzz 请求数据模型类对象
+	 * @param mode 数据请求方式
 	 */
 	public synchronized <T> void sendGet(String url, Class<T> clzz, OnResultListener<T> listener, LoadMode mode) {
 		if(listener!=null && listener.onIntercept()){
@@ -70,10 +71,18 @@ public class AsyncTaskHolder {
 		async.req = Request.GET;
 		params.listener = listener;
 		params.mode = mode;
-		async.executeOnExecutor(service, params);
+		executeTask(params, async);
 		addAsync(url, async);
 	}
-	
+
+	private <T> void executeTask(RequestVO<T> params, AsyncTask<T> async) {
+		if (android.os.Build.VERSION.SDK_INT >= 11) {
+			async.executeOnExecutor(service, params);
+		}else{
+			async.execute(params);
+		}
+	}
+
 	private <T> boolean loadLocal(String url, Class<T> clazz, OnResultListener<T> listener) {
 		try {
 			String json = InternalStorage.getStorage(context).get(url);
@@ -95,7 +104,7 @@ public class AsyncTaskHolder {
 	 * @param url
 	 * @param params key=value
 	 * @param listener
-	 * @param context
+	 * @param clzz 请求数据模型类对象
 	 */
 	public synchronized <T> void sendPost(String url, Map<String, Object> params, Class<T> clzz, OnResultListener<T> listener) {
 		if(listener!=null && listener.onIntercept()){
@@ -111,7 +120,7 @@ public class AsyncTaskHolder {
 		AsyncTask<T> async = new AsyncTask<T>(context);
 		async.req = Request.POST;
 		param.listener = listener;
-		async.executeOnExecutor(service, param);
+		executeTask(param, async);
 		addAsync(url, async);
 	}
 	
@@ -119,9 +128,8 @@ public class AsyncTaskHolder {
 	 * 发送delete请求到服务器
 	 * 
 	 * @param url
-	 * @param params key=value
 	 * @param listener
-	 * @param context
+	 * @param clzz 请求数据模型类对象
 	 */
 	public synchronized <T> void sendDelete(String url, Class<T> clzz, OnResultListener<T> listener) {
 		if(listener!=null && listener.onIntercept()){
@@ -136,13 +144,12 @@ public class AsyncTaskHolder {
 		AsyncTask<T> async = new AsyncTask<T>(context);
 		async.req = Request.DELETE;
 		param.listener = listener;
-		async.executeOnExecutor(service, param);
+		executeTask(param, async);
 		addAsync(url, async);
 	}
 	
 	/**
 	 * 发送图片
-	 * @param url
 	 * @param clzz
 	 * @param listener
 	 */
@@ -165,7 +172,7 @@ public class AsyncTaskHolder {
 		AsyncTask<T> async = new AsyncTask<T>(context);
 		async.req = Request.POST_IMAGE;
 		param.listener = listener;
-		async.executeOnExecutor(service, param);
+		executeTask(param, async);
 		addAsync("post image.....", async);
 	}
 	
