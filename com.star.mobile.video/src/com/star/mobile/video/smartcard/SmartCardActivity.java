@@ -1,5 +1,6 @@
 package com.star.mobile.video.smartcard;
 
+import java.util.List;
 import java.util.Random;
 
 import android.content.Intent;
@@ -17,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.star.cms.model.dto.BindCardResult;
+import com.star.cms.model.vo.SmartCardInfoVO;
 import com.star.mobile.video.R;
 import com.star.mobile.video.base.BaseActivity;
 import com.star.mobile.video.service.UserService;
@@ -33,6 +35,7 @@ public class SmartCardActivity extends BaseActivity implements OnClickListener,C
 
 //	private EditText etCardNum;
 	// private EditText etStbNum;
+	private List<SmartCardInfoVO> mSmartinfos;
 	private Button btnOk;
 	private UserService userService;
 	private SharedPreferences mSharePre;
@@ -109,6 +112,8 @@ public class SmartCardActivity extends BaseActivity implements OnClickListener,C
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_smartcard);
+		Intent intent = getIntent();
+		mSmartinfos = (List<SmartCardInfoVO>) intent.getSerializableExtra("smartinfos");
 		userService = new UserService();
 		abSharePre = new ABTestSharedPre(this);
 //		sharedPre = new SmartCardSharedPre(this);
@@ -160,6 +165,14 @@ public class SmartCardActivity extends BaseActivity implements OnClickListener,C
 		}else{
 			cardNum = bindCardEditViewB.getEditText();
 		}
+
+		for (int i = 0;i<mSmartinfos.size();i++){
+			if (mSmartinfos.get(i).equals(cardNum)){
+				//TODO
+
+			}
+		}
+
 		bindCardDialog.showDialog();
 //		CommonUtil.showProgressDialog(SmartCardActivity.this, null, getString(R.string.binding));
 
