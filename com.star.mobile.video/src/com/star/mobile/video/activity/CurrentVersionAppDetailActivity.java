@@ -54,48 +54,6 @@ public class CurrentVersionAppDetailActivity extends BaseActivity implements OnC
 	
 	private void initData() {
 		
-//		new LoadingDataTask() {
-//			@Override
-//			public void onPreExecute() {
-//				CommonUtil.showProgressDialog(CurrentVersionAppDetailActivity.this, null, getString(R.string.loading));
-//			}
-//			
-//			@Override
-//			public void onPostExecute() {
-//				CommonUtil.closeProgressDialog();
-//				if(appInfo != null) {
-//					AppDetailHeadView headView = new AppDetailHeadView(CurrentVersionAppDetailActivity.this,appInfo.getDescription(),appInfo.getApkSize());
-//					AppDetailFootView footView = new AppDetailFootView(CurrentVersionAppDetailActivity.this);
-//					footView.setFastUserButtonOnClick(CurrentVersionAppDetailActivity.this);
-//					headView.setNewVersionBtnOnClick(CurrentVersionAppDetailActivity.this);
-//					headView.setNewVersionBtnText(getString(R.string.new_version));
-//					lvAppInfo.addHeaderView(headView);
-//					if(!(FunctionService.doHideFuncation(FunctionType.FastReport)||StarApplication.CURRENT_VERSION==Constant.FINAL_VERSION))
-//						lvAppInfo.addFooterView(footView);
-//					List<String> datas = new ArrayList<String>();
-//					if(appInfo.getUpdateInfo()!=null){
-//						String [] data = appInfo.getUpdateInfo().split("\n");
-//						for(int i = 0;i < data.length;i++) {
-//							if(!"".equals(data[i])) {
-//								datas.add(data[i]);
-//							}
-//						}
-//					}else{
-//						ToastUtil.centerShowToast(CurrentVersionAppDetailActivity.this, getString(R.string.no_version_info));
-//					}
-//					AppDetailAdapter adapter = new AppDetailAdapter(datas, CurrentVersionAppDetailActivity.this);
-//					lvAppInfo.setAdapter(adapter);
-//				} else {
-//					ToastUtil.centerShowToast(CurrentVersionAppDetailActivity.this, getString(R.string.error_network));
-//				}
-//				
-//			}
-//			
-//			@Override
-//			public void doInBackground() {
-//				appInfo = applicationService.getDetailAppInfo(ApplicationUtil.getAppVerison(CurrentVersionAppDetailActivity.this));
-//			}
-//		}.execute();
 		applicationService.getDetailAppInfo(ApplicationUtil.getAppVerison(CurrentVersionAppDetailActivity.this), new OnResultListener<APPInfo>() {
 			
 			@Override
