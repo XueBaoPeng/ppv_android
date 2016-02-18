@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.star.cms.model.enm.SmartCardType;
+import com.star.cms.model.enm.TVPlatForm;
 import com.star.cms.model.vo.SmartCardInfoVO;
 import com.star.mobile.video.R;
 import com.star.mobile.video.activity.AccountBillActivity;
@@ -274,11 +275,12 @@ public class SmartCardInfoView extends RelativeLayout implements View.OnClickLis
      * @param sc
      */
     private void fillData(SmartCardInfoVO sc) {
-        int smartCardType = SharedPreferencesUtil.getSmartCardType(mContext);
-        if (SmartCardType.DTH.getNum() == smartCardType) {
-            mSmartCardImageView.setImageResource(R.drawable.smartcard_dth);
-        } else if (SmartCardType.DTT.getNum() == smartCardType) {
-            mSmartCardImageView.setImageResource(R.drawable.smartcard_dtt);
+        if(sc.getTvPlatForm() != null){
+            if (sc.getTvPlatForm().equals(TVPlatForm.DTT)){
+                mSmartCardImageView.setImageResource(R.drawable.smartcard_dtt);
+            }else {
+                mSmartCardImageView.setImageResource(R.drawable.smartcard_dth);
+            }
         }
 
         if (sc.getStopDays() != null) {

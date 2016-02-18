@@ -37,6 +37,7 @@ import com.star.util.app.GA;
 import com.star.util.loader.OnListResultListener;
 import com.star.util.loader.OnResultListener;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -336,6 +337,7 @@ public class SmartCardControlActivity extends BaseActivity implements OnClickLis
 	 */
 	private void goSmartCardActivity() {
 		Intent it = new Intent();
+		it.putExtra("smartinfos",(Serializable)mSmartinfos);
 		it.setClass(this, SmartCardActivity.class);
 		CommonUtil.startActivityForResult(this, it, 200);
 	}

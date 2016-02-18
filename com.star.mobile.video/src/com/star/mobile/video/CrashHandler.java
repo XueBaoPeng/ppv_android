@@ -114,28 +114,39 @@ public class CrashHandler implements UncaughtExceptionHandler {
 					public void handleMessage(Message msg) {
 						switch (msg.what){
 							case 1:
-								CommonUtil.getInstance().showPromptSystemDialog(mContext,
-										null, mContext.getString(R.string.crash_message), mContext.getString(R.string.confirm), null, new PromptDialogClickListener() {
+								if(mContext.getString(R.string.is_show_crash_dialog).equals("1")) {
+									CommonUtil.getInstance().showPromptSystemDialog(mContext,
+											null, mContext.getString(R.string.crash_message), mContext.getString(R.string.confirm), null, new PromptDialogClickListener() {
 
-											@Override
-											public void onConfirmClick() {
-												Intent intent = new Intent(mContext, WelcomeActivity.class);
-												PendingIntent restartIntent = PendingIntent.getActivity(mContext, 0, intent, Intent.FLAG_ACTIVITY_NEW_TASK);
-												AlarmManager mgr = (AlarmManager)application.getSystemService(Context.ALARM_SERVICE);
-												mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 1000,restartIntent); // 1秒钟后重启应用
-												//退出程序
-												System.exit(1);
-											}
+												@Override
+												public void onConfirmClick() {
+													Intent intent = new Intent(mContext, WelcomeActivity.class);
+													PendingIntent restartIntent = PendingIntent.getActivity(mContext, 0, intent, Intent.FLAG_ACTIVITY_NEW_TASK);
+													AlarmManager mgr = (AlarmManager) application.getSystemService(Context.ALARM_SERVICE);
+													mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 1000, restartIntent); // 1秒钟后重启应用
+//													退出程序
+													System.exit(1);
+												}
 
-											@Override
-											public void onCancelClick() {
+												@Override
+												public void onCancelClick() {
 
-											}
-										});
+												}
+											});
+								}
 								//收集设备参数信息
 								collectDeviceInfo(mContext);
 								//保存日志文件
 								saveCrashInfo2File(ex);
+								if(mContext.getString(R.string.is_show_crash_dialog).equals("0")) {
+									try {
+										Thread.sleep(1000);
+									} catch (InterruptedException e) {
+										Log.e(TAG, "error : ", e);
+									}
+									//退出程序
+									System.exit(1);
+								}
 								break;
 						}
 					}
