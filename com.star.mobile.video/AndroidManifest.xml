@@ -308,7 +308,6 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
         </activity>
-
         <activity
             android:name="com.star.mobile.video.activity.ComingSoonActivity"
             android:launchMode="singleTask"
