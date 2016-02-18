@@ -38,12 +38,13 @@ public class SmartCardInfoView extends LinearLayout {
 	private String curPackageName;
 	private String currency;
 	private String productCode;
+	private TextView getTv_platefrom;
 	/**
 	 * 
 	 */
 	public SmartCardInfoView(Context context) {
 		// TODO Auto-generated constructor stub
-		this(context,null);
+		this(context, null);
 	}
 
 	/**
@@ -65,6 +66,7 @@ public class SmartCardInfoView extends LinearLayout {
 		smart_card_number=(TextView) findViewById(R.id.smart_card_number);
 		tv_balance=(TextView) findViewById(R.id.tv_balance);
 		tv_bouque=(TextView) findViewById(R.id.tv_bouque);
+		getTv_platefrom = (TextView) findViewById(R.id.tv_plateform);
 		tv_platefromConten = (TextView) findViewById(R.id.tv_plateform_content);
 		tv_recharge_package_name=(TextView) findViewById(R.id.tv_recharge_package_name);
 		tv_recharge_package_price=(TextView) findViewById(R.id.tv_recharge_package_price);
@@ -81,6 +83,9 @@ public class SmartCardInfoView extends LinearLayout {
 			}else{
 				tv_platefromConten.setText(mContext.getString(R.string.choose_dish));
 			}
+		}else{
+			getTv_platefrom.setVisibility(View.GONE);
+			tv_platefromConten.setVisibility(View.GONE);
 		}
 
 	}

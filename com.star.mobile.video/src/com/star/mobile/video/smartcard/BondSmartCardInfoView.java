@@ -83,10 +83,10 @@ public class BondSmartCardInfoView extends RelativeLayout implements View.OnClic
 
     public void initData(SmartCardInfoVO smartCardInfoVO) {
         if (!hasLoad){
-            if (smartCardInfoVO != null) {
-                hasLoad = true;
-                getDetailSmartCardInfo(smartCardInfoVO);
-            }
+        }
+        if (smartCardInfoVO != null) {
+            hasLoad = true;
+            getDetailSmartCardInfo(smartCardInfoVO);
         }
     }
 
