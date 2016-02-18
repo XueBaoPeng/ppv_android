@@ -13,6 +13,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.star.cms.model.enm.TVPlatForm;
 import com.star.cms.model.vo.SmartCardInfoVO;
 import com.star.mobile.video.R;
 import com.star.mobile.video.base.BaseActivity;
@@ -27,9 +28,11 @@ public class AccountBillActivity extends BaseActivity implements OnClickListener
 	private ControlTabView controlTabView;
 	private SmartCardInfoView smartCardInfoView;
 	private List<String> tab =new ArrayList<String>();
+	private TVPlatForm platForm;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		platForm = (TVPlatForm)getIntent().getSerializableExtra("platForm");
 		setContentView(R.layout.activity_account_bill);
 		currentIntetn(getIntent());
 		initView();
@@ -54,7 +57,7 @@ public class AccountBillActivity extends BaseActivity implements OnClickListener
 		tab.add(getResources().getString(R.string.bill_deduct_refund));
 		controlTabView.setTabData(tab);
 		controlTabView.setViewPager(viewPager);
-		smartCardInfoView.setData(smartCardInfoVO);
+		smartCardInfoView.setData(smartCardInfoVO,platForm);
 	}
 	
 	private void currentIntetn(Intent intent) {
