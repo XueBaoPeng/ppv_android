@@ -15,6 +15,7 @@ public class FragmentActivity extends android.support.v4.app.FragmentActivity {
 	private SparseArray<String> activitys;
 	private long exitTime = 0;
 	public static int flag = 100; //无实际意义，只是为了使用SparseArray类
+	private boolean backAlreadyPressed = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +50,15 @@ public class FragmentActivity extends android.support.v4.app.FragmentActivity {
 	
 	@Override
 	public void onBackPressed() {
+		/**
+		 * 连续执行会出现下面的异常
+		 * java.lang.NullPointerException at android.app.FragmentManagerImpl.popBackStackImmediate(FragmentManager.java:495)
+		 */
+		if(backAlreadyPressed){
+			return;
+		}
+		backAlreadyPressed = true;
+
 		if(!(this instanceof HomeActivity)){
 			CommonUtil.finishActivityAnimation(this);
 		}

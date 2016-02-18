@@ -38,7 +38,7 @@ public class ChannelDAO implements IChannelDAO {
 		cv.put("name", channel.getName());
 //		cv.put("channelNumber", channel.getChannelNumber());
 		cv.put("favCount", channel.getFavCount());
-		cv.put("commentCount", channel.getCommentCount());
+		cv.put("commentCount", channel.getCommentCount()==null?0:channel.getCommentCount());
 		cv.put("description", channel.getDescription());
 		cv.put("type", channel.getType());
 		cv.put("comment_score", channel.getCommentTotalScore());
@@ -48,10 +48,10 @@ public class ChannelDAO implements IChannelDAO {
 		else
 			cv.put("isFav",  channel.isFav() ? 1 : 0);
 		cv.put("isChange", 0);
-		try{
-			cv.put("packageId", channel.getOfPackage().getId());
-		}catch(Exception e){
-		}
+//		try{
+//			cv.put("packageId", channel.getOfPackage().getId());
+//		}catch(Exception e){
+//		}
 		try{
 			String logoUrl = channel.getLogo().getResources().get(0).getUrl();
 			cv.put("logoUrl", logoUrl);
@@ -72,8 +72,11 @@ public class ChannelDAO implements IChannelDAO {
 			for (TVPlatformInfo info : infos.get(0).getPlatformInfos()) {
 				ContentValues cv = new ContentValues();
 				cv.put("fk_channel", channel.getId());
-				cv.put("platform_type", info.getTvPlatForm().getNum());
+				if(info.getTvPlatForm()!=null)
+					cv.put("platform_type", info.getTvPlatForm().getNum());
 				cv.put("channel_number", info.getChannelNumber());
+				if(info.getOfPackage()!=null)
+					cv.put("packageId", info.getOfPackage().getId());
 				db.insert("channel_platform", null, cv);
 			}
 		}
@@ -82,6 +85,7 @@ public class ChannelDAO implements IChannelDAO {
 	@Override
 	public void clear() {
 		db.execSQL("delete from channel");
+		db.execSQL("delete from channel_platform");
 		Logger.d("clear all channel");
 	}
 
@@ -152,7 +156,7 @@ public class ChannelDAO implements IChannelDAO {
 	}
 
 	private List<AreaTVPlatform> queryPlatInfos(long channelId){
-		String sql = "select * from channel_platform where fk_channel="+channelId;
+		String sql = "select cp.platform_type, cp.channel_number, cp.packageId, p.name, p.code from channel_platform cp left join package p on cp.packageId=p.packageId where cp.channel_number is not null and cp.fk_channel="+channelId;
 		Logger.d("Now SQL:"+sql);
 		List<AreaTVPlatform> plats = new ArrayList<AreaTVPlatform>();
 		Cursor c = db.rawQuery(sql, null);
@@ -163,8 +167,19 @@ public class ChannelDAO implements IChannelDAO {
 		while (true) {
 			c.moveToNext();
 			TVPlatformInfo info = new TVPlatformInfo();
-			info.setTvPlatForm(TVPlatForm.getTVPlatForm(c.getInt(c.getColumnIndex("platform_type"))));
-			info.setChannelNumber(c.getString(c.getColumnIndex("channel_number")));
+			info.setTvPlatForm(TVPlatForm.getTVPlatForm(c.getInt(c.getColumnIndex("cp.platform_type"))));
+			info.setChannelNumber(c.getString(c.getColumnIndex("cp.channel_number")));
+			Package pa = new Package();
+			pa.setName(c.getString(c.getColumnIndex("p.name")));
+			pa.setCode(c.getString(c.getColumnIndex("p.code")));
+//			List<Resource> list = new ArrayList<Resource>();
+//			Resource re = new Resource();
+//			re.setUrl(c.getString(c.getColumnIndex("logoUrl")));
+//			list.add(re);
+//			Content content = new Content();
+//			content.setResources(list);
+//			pa.setPoster(content);
+			info.setOfPackage(pa);
 			pfs.add(info);
 			if (c.isLast()) {
 				break;
@@ -190,26 +205,6 @@ public class ChannelDAO implements IChannelDAO {
 		channel.setType(c.getInt(c.getColumnIndex("type")));
 		channel.setCommentTotalCount(c.getLong(c.getColumnIndex("comment_count")));
 		channel.setCommentTotalScore(c.getLong(c.getColumnIndex("comment_score")));
-		//package
-		Package pa = new Package();
-		String sql = "select * from package where packageId = "+c.getLong(c.getColumnIndex("packageId"));
-		Cursor pc = db.rawQuery(sql, null);
-		if(pc.getCount()<1){
-			pa.setId(c.getLong(c.getColumnIndex("packageId")));
-		}else{
-			pc.moveToNext();
-			pa.setName(pc.getString(pc.getColumnIndex("name")));
-			pa.setCode(pc.getString(pc.getColumnIndex("code")));
-			List<Resource> list = new ArrayList<Resource>();
-			Resource re = new Resource();
-			re.setUrl(pc.getString(pc.getColumnIndex("logoUrl")));
-			list.add(re);
-			Content content = new Content();
-			content.setResources(list);
-			pa.setPoster(content);
-		}
-		pc.close();
-		channel.setOfPackage(pa);
 		//logo
 		List<Resource> res = new ArrayList<Resource>();
 		Resource resource = new Resource();
