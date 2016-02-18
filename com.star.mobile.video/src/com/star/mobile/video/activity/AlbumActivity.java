@@ -1,10 +1,5 @@
 package com.star.mobile.video.activity;
 
-import java.io.File;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -28,6 +23,11 @@ import com.star.mobile.video.util.CommonUtil;
 import com.star.mobile.video.util.LoadingDataTask;
 import com.star.mobile.video.util.ToastUtil;
 import com.star.util.loader.ImageLoader;
+
+import java.io.File;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AlbumActivity extends BaseActivity implements OnClickListener{
 	
@@ -127,7 +127,7 @@ public class AlbumActivity extends BaseActivity implements OnClickListener{
 	public void takePhoto() {
 		String sdcardStatus = Environment.getExternalStorageState();
 		if (sdcardStatus.equals(Environment.MEDIA_MOUNTED)) {
-			File dir = new File(Environment.getExternalStorageDirectory() + "/shonngo/image/");
+			File dir = new File(Environment.getExternalStorageDirectory() + "/StarTimes/image/");
 			if (!dir.exists())
 				dir.mkdirs();
 			Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
