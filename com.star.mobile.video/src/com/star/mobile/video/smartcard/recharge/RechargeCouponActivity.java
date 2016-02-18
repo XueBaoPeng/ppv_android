@@ -95,7 +95,7 @@ public class RechargeCouponActivity extends BaseActivity implements OnClickListe
 	 * 
 	 */
 	private void initView() {
-		smView.setData(smartcardVo);
+		smView.setData(smartcardVo,null);
 	}
 	private void getDetailSmartCardInfo(final SmartCardInfoVO vo) {
 		CommonUtil.showProgressDialog(RechargeCouponActivity.this, null, getString(R.string.loading));
