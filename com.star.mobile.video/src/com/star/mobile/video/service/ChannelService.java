@@ -228,6 +228,7 @@ public class ChannelService {
 					return channels;
 				}
 			}catch (Exception e) {
+				Log.d("ChannelService", "get from local error!", e);
 			}
 		}
 		return null;

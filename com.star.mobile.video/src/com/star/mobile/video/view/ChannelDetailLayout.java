@@ -24,7 +24,9 @@ import android.widget.TextView;
 import com.loopj.android.http.RequestHandle;
 import com.star.cms.model.Content;
 import com.star.cms.model.Resource;
+import com.star.cms.model.TVPlatformInfo;
 import com.star.cms.model.Tenb;
+import com.star.cms.model.enm.TVPlatForm;
 import com.star.cms.model.vo.ChannelVO;
 import com.star.cms.model.vo.ProgramVO;
 import com.star.cms.model.vo.VOD;
@@ -84,6 +86,7 @@ public class ChannelDetailLayout extends LinearLayout implements OnClickListener
 	private Long contentId_one;
 	private Long contentId_two;
 	private Long contentId_three;
+	private TextView tv_platform;
 	
 	private boolean isLoading;//加载状态
 	private int mOffset = 0;//获取数据的偏移位置
@@ -113,6 +116,7 @@ public class ChannelDetailLayout extends LinearLayout implements OnClickListener
 		tv_categoryName = (TextView) findViewById(R.id.tv_category_name);
 		iv_categoryIcon = (com.star.ui.ImageView) findViewById(R.id.iv_category_icon);
 		ll_channel_video=(LinearLayout)findViewById(R.id.ll_channel_video);
+		tv_platform = (TextView) findViewById(R.id.tv_platform);
 		
 		mChannelGuideHorizontalListView = (MyHorizontalListView)findViewById(R.id.channel_vedio_horizontal_listview);
 		mLoadingView = findViewById(R.id.loadingView);
@@ -224,7 +228,6 @@ public class ChannelDetailLayout extends LinearLayout implements OnClickListener
 		if(mChannel == null)
 			return;
 		tv_channelName.setText(mChannel.getName());
-		tv_channelNum.setText(String.valueOf(mChannel.getChannelNumber()));
 		getChannelCommentCount();
 		if(mChannel.getDescription()!=null){
 			tv_chnDescription.setText(mChannel.getDescription());
@@ -235,8 +238,34 @@ public class ChannelDetailLayout extends LinearLayout implements OnClickListener
 			iv_channelIcon.setUrl(logoUrl);
 		}catch(Exception e){
 		}
-		if(mChannel.getOfPackage()!=null)
-			tv_packageName.setText(mChannel.getOfPackage().getName());
+		tv_channelNum.setText("");
+		tv_packageName.setText("");
+		tv_platform.setText("");
+		try {
+			List<TVPlatformInfo> infos = mChannel.getOfAreaTVPlatforms().get(0).getPlatformInfos();
+			String chnNo = "";
+			String plat = "";
+			String pkg = "";
+			for (TVPlatformInfo info : infos) {
+				chnNo += "\n"+info.getChannelNumber();
+				pkg += "\n"+info.getOfPackage().getName();
+				if (TVPlatForm.DTT.equals(info.getTvPlatForm())) {
+					plat += "\nDTT";
+				} else if (TVPlatForm.DTH.equals(info.getTvPlatForm())) {
+					plat += "\nDTH";
+				}
+			}
+			if(chnNo.startsWith("\n"))
+				chnNo = chnNo.substring(1);
+			if(plat.startsWith("\n"))
+				plat = plat.substring(1);
+			if(pkg.startsWith("\n"))
+				pkg = pkg.substring(1);
+			tv_channelNum.setText(chnNo);
+			tv_packageName.setText(pkg);
+			tv_platform.setText(plat);
+		}catch (Exception e){
+		}
 		if(mChannel.getCategories()==null || mChannel.getCategories().size()==0)
 			getCategorys();
 		else

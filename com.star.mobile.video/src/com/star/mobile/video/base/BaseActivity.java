@@ -23,6 +23,7 @@ public abstract class BaseActivity extends Activity {
 	private SparseArray<String> activitys;
 	private long exitTime = 0;
 	public static int flag = 1; //无实际意义，只是为了使用SparseArray类
+	private boolean backAlreadyPressed = false;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -83,16 +84,16 @@ public abstract class BaseActivity extends Activity {
 	
 	@Override
 	public void onBackPressed() {
-		if(this instanceof MyOrderDetailActivity){
-			if(getApplication() instanceof StarApplication) {
-				boolean nomore = ((StarApplication) getApplication()).getActivitys().size()==1;
-				if(nomore){
-					CommonUtil.startActivityFromLeft(this, HomeActivity.class);
-				}else{
-					CommonUtil.finishActivityAnimation(this);
-				}
-			}
-		}else if(this instanceof ChatActivity){
+		/**
+		 * 连续执行会出现下面的异常
+		 * java.lang.NullPointerException at android.app.FragmentManagerImpl.popBackStackImmediate(FragmentManager.java:495)
+		 */
+		if(backAlreadyPressed){
+			return;
+		}
+		backAlreadyPressed = true;
+
+		if(this instanceof MyOrderDetailActivity||this instanceof ChatActivity){
 			if(getApplication() instanceof StarApplication) {
 				boolean nomore = ((StarApplication) getApplication()).getActivitys().size()==1;
 				if(nomore){
