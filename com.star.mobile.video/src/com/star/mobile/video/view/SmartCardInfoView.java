@@ -66,16 +66,25 @@ public class SmartCardInfoView extends LinearLayout {
 		tv_balance=(TextView) findViewById(R.id.tv_balance);
 		tv_bouque=(TextView) findViewById(R.id.tv_bouque);
 		tv_platefromConten = (TextView) findViewById(R.id.tv_plateform_content);
-		if(Constant.CURRENT_PLATFORM.equals(TVPlatForm.DTH)){
-			tv_platefromConten.setText(mContext.getString(R.string.choose_dish));
-		}else{
-			tv_platefromConten.setText(mContext.getString(R.string.choose_decoder));
-		}
 		tv_recharge_package_name=(TextView) findViewById(R.id.tv_recharge_package_name);
 		tv_recharge_package_price=(TextView) findViewById(R.id.tv_recharge_package_price);
 		tv_recharge_account_balance=(TextView) findViewById(R.id.tv_recharge_account_balance);
 	}
-	
+
+	/**
+	 * 设置平台信息
+	 */
+	public void setSmartCardPlateForm(TVPlatForm plateForm){
+		if (plateForm != null){
+			if(plateForm.getNum()==TVPlatForm.DTT.getNum()){
+				tv_platefromConten.setText(mContext.getString(R.string.choose_decoder));
+			}else{
+				tv_platefromConten.setText(mContext.getString(R.string.choose_dish));
+			}
+		}
+
+	}
+
 	public void setSmartCardNumber(String num){
 		smart_card_number.setText(formatSmarCardNo(num));
 	}
@@ -135,7 +144,7 @@ public class SmartCardInfoView extends LinearLayout {
 			}
 		}.execute();
 	}
-	public void setData(SmartCardInfoVO smvo){
+	public void setData(SmartCardInfoVO smvo,TVPlatForm platForm){
 		setSmartCardNumber(smvo.getSmardCardNo());
 		String currency = SharedPreferencesUtil.getCurrencSymbol(mContext);
 		setRechargeAccountBalance(currency+smvo.getMoney());
@@ -149,6 +158,9 @@ public class SmartCardInfoView extends LinearLayout {
 		}else{
 			getProgramPackage(smvo.getSmardCardNo());	
 		}
+
+		setSmartCardPlateForm(platForm);
+
 	}
 	public void setBalance(String balance){
 		tv_balance.setText(balance);

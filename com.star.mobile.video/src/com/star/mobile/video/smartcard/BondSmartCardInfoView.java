@@ -2,7 +2,6 @@ package com.star.mobile.video.smartcard;
 
 import android.content.Context;
 import android.content.Intent;
-import android.text.Layout;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -10,9 +9,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.star.cms.model.enm.SmartCardType;
+import com.star.cms.model.enm.TVPlatForm;
 import com.star.cms.model.vo.SmartCardInfoVO;
 import com.star.mobile.video.R;
 import com.star.mobile.video.activity.AccountBillActivity;
@@ -22,7 +20,6 @@ import com.star.mobile.video.smartcard.recharge.RechargeSmartCardActivity;
 import com.star.mobile.video.util.CommonUtil;
 import com.star.mobile.video.util.ToastUtil;
 import com.star.mobile.video.view.LoadingView;
-import com.star.util.Logger;
 import com.star.util.loader.OnResultListener;
 
 import java.io.Serializable;
@@ -31,7 +28,7 @@ import java.util.List;
 /**
  * Created by Lee on 2016/2/1.
  */
-public class SmartCardInfoView extends RelativeLayout implements View.OnClickListener{
+public class BondSmartCardInfoView extends RelativeLayout implements View.OnClickListener{
     private LayoutInflater mLayoutInflater;
     private Context mContext;
     private ImageView mSmartCardImageView;
@@ -51,15 +48,15 @@ public class SmartCardInfoView extends RelativeLayout implements View.OnClickLis
     private static boolean isAllowDeleteSmartCard = false;
     private boolean hasLoad = false;
 
-    public SmartCardInfoView(Context context) {
+    public BondSmartCardInfoView(Context context) {
         this(context, null);
     }
 
-    public SmartCardInfoView(Context context, AttributeSet attrs) {
+    public BondSmartCardInfoView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public SmartCardInfoView(Context context, AttributeSet attrs, int defStyle) {
+    public BondSmartCardInfoView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         this.mContext = context;
         initView(context);
@@ -267,18 +264,20 @@ public class SmartCardInfoView extends RelativeLayout implements View.OnClickLis
         mSmartCardInfoVO = scv;
         fillData(scv);
     }
-
+   private  TVPlatForm platForm;
     /**
      * 设置数据
      *
      * @param sc
      */
     private void fillData(SmartCardInfoVO sc) {
-        int smartCardType = SharedPreferencesUtil.getSmartCardType(mContext);
-        if (SmartCardType.DTH.getNum() == smartCardType) {
-            mSmartCardImageView.setImageResource(R.drawable.smartcard_dth);
-        } else if (SmartCardType.DTT.getNum() == smartCardType) {
-            mSmartCardImageView.setImageResource(R.drawable.smartcard_dtt);
+        if(sc.getTvPlatForm() != null){
+            platForm = sc.getTvPlatForm();
+            if (sc.getTvPlatForm().getNum()==TVPlatForm.DTT.getNum()){
+                mSmartCardImageView.setImageResource(R.drawable.smartcard_dtt);
+            }else {
+                mSmartCardImageView.setImageResource(R.drawable.smartcard_dth);
+            }
         }
 
         if (sc.getStopDays() != null) {
@@ -335,6 +334,7 @@ public class SmartCardInfoView extends RelativeLayout implements View.OnClickLis
                     i.putExtra("smartcardinfovo", (Serializable) mSmartCardInfoVO);
                     // i.putExtra("smartinfos", (Serializable) mSmartinfos);
                     // i.setClass(getActivity(), TopupActivity.class);
+                    i.putExtra("platForm",platForm);
                     i.setClass(mContext, RechargeSmartCardActivity.class);
                     CommonUtil.startActivity(mContext, i);
                 }else {
@@ -346,6 +346,7 @@ public class SmartCardInfoView extends RelativeLayout implements View.OnClickLis
                 if (mSmartCardInfoVO != null && mSmartCardInfoVO.getMoney() != null) {
                     Intent intent = new Intent();
                     intent.putExtra("smartCardInfoVO", mSmartCardInfoVO);
+                    intent.putExtra("platForm",platForm);
                     intent.setClass(mContext, ChangeBouquetActivity.class);
                     CommonUtil.startActivity(mContext, intent);
                 }else {

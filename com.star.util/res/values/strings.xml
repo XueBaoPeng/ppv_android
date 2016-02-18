@@ -14,7 +14,8 @@
 	<string name="html_prefix_url">http://cdnt.tenbre.me/html5</string>
 	<string name="bundesliga_url">http://tenbre.me/bund/bundesliga.php?areaId=</string>
 	<string name="serie_a_url">http://tenbre.me/bund/serie_a.php?areaId=</string>
-	<string name="resource_prefix_url">http://portal.tenbre.me</string> 
+	<string name="resource_prefix_url">http://portal.tenbre.me</string>
+	<string name="is_show_crash_dialog">0</string>
 	<string name="robot_icon_url">http://portal.tenbre.me/portal/img/image/official_avatar.png</string>-->
 
     
@@ -31,7 +32,8 @@
 	<string name="html_prefix_url">http://cdnt.tenbre.me/html5</string>
 	<string name="bundesliga_url">http://tenbre.me/bund/bundesliga.php?areaId=</string>
 	<string name="serie_a_url">http://tenbre.me/bund/serie_a.php?areaId=</string>
-	<string name="resource_prefix_url">http://portal.tenbre.me</string> 
+	<string name="resource_prefix_url">http://portal.tenbre.me</string>
+	<string name="is_show_crash_dialog">0</string>
 	<string name="robot_icon_url">http://portal.tenbre.me/portal/img/image/official_avatar.png</string>-->
 
 	<!-- 当前app版本，1为开发版，0为正式版 -->
@@ -56,8 +58,9 @@
 	<string name="bundesliga_url">http://218.205.169.218:8581/bundesliga/bundesliga.php?areaId=</string>
 	<string name="serie_a_url">http://218.205.169.218:8581/bundesliga/serie_a.php?areaId=</string>
 	<string name="resource_prefix_url">http://218.205.169.218:8581</string>
+	<string name="is_show_crash_dialog">1</string>
 	<string name="robot_icon_url">http://portal.tenbre.me/portal/img/bg/official_avatar.png</string> -->
-	
+
 	<!-- https本地测试环境 --><!-- tenb调用的发帖地址  本地环境-->
 	<string name="server_url">http://10.0.63.242:8281/cms</string>
 	<string name="html_prefix_url">http://10.0.63.242:8281</string>
@@ -71,8 +74,10 @@
 	<string name="bbs_detail">http://10.0.63.242:8281/bbs/tenbrePosts/list/%1$s.page</string>
 	<string name="bundesliga_url">http://10.0.63.242:8281/bundesliga/bundesliga.php?areaId=</string>
 	<string name="serie_a_url">http://10.0.63.242:8281/bundesliga/serie_a.php?areaId=</string>
-	<string name="resource_prefix_url">http://10.0.63.242:8281</string> 
+	<string name="resource_prefix_url">http://10.0.63.242:8281</string>
 	<string name="robot_icon_url">http://portal.tenbre.me/portal/img/bg/official_avatar.png</string>
+	<string name="is_show_crash_dialog">1</string>
+
 	  
 	<!-- 当前app版本，1为开发版，0为正式版 -->
 	 <string name="app_current_version">1</string>

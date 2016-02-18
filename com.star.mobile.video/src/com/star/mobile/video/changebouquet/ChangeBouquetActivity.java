@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.star.cms.model.Package;
+import com.star.cms.model.enm.TVPlatForm;
 import com.star.cms.model.vo.SmartCardInfoVO;
 import com.star.mobile.video.R;
 import com.star.mobile.video.base.BaseActivity;
@@ -51,6 +52,7 @@ public class ChangeBouquetActivity extends BaseActivity implements OnClickListen
 	private String mCurrentSmartCardNO;
 	private SmartCardInfoVO mSmartCardInfoVO;
 	private View mLoading;
+	private TVPlatForm platForm;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -58,6 +60,7 @@ public class ChangeBouquetActivity extends BaseActivity implements OnClickListen
 		Intent intent = getIntent();
 		if (intent != null) {
 			mSmartCardInfoVO = (SmartCardInfoVO) intent.getSerializableExtra("smartCardInfoVO");
+			platForm = (TVPlatForm)getIntent().getSerializableExtra("platForm");
 		}
 		pkgService = new PackageService(this);
 		initView();
@@ -80,12 +83,12 @@ public class ChangeBouquetActivity extends BaseActivity implements OnClickListen
 	private void initData(){
 		mSmartCardInfoView.setChangeBouquetListner(this);
 		if (mSmartCardInfoVO != null) {
-			mSmartCardInfoView.setData(mSmartCardInfoVO);
+			mSmartCardInfoView.setData(mSmartCardInfoVO,platForm);
 			mCurrentSmartCardNO =  mSmartCardInfoVO.getSmardCardNo();
 		}
 		setNoClickButton();
 	}
-	public void updatePackageList() {
+	public void updatePackageList(SmartCardInfoVO smartCardInfoVO) {
 //		new LoadingDataTask() {
 //			List<Package> pkgs;
 //			@Override
@@ -112,7 +115,13 @@ public class ChangeBouquetActivity extends BaseActivity implements OnClickListen
 		List<Integer> types = new ArrayList<Integer>();
 		types.add(Package.BASIC_TYPE);
 		types.add(Package.SPECIAL_TYPE);
-		pkgService.getPackagesFromServer(types, new OnListResultListener<Package>() {
+		List<Integer> platformTypes = new ArrayList<Integer>();
+		if (smartCardInfoVO != null){
+			if (smartCardInfoVO.getTvPlatForm() != null){
+				platformTypes.add(smartCardInfoVO.getTvPlatForm().getNum());
+			}
+		}
+		pkgService.getPackagesFromServer(types,platformTypes, new OnListResultListener<Package>() {
 			
 			@Override
 			public boolean onIntercept() {
@@ -310,7 +319,7 @@ public class ChangeBouquetActivity extends BaseActivity implements OnClickListen
 				if (bundle != null) {
 					String string = bundle.getString("refreshResult");
 					if ("refresh".equals(string)) {
-						updatePackageList();
+						updatePackageList(mSmartCardInfoVO);
 					}
 				} else {
 					Log.i("initData", "bundle is null");
@@ -324,6 +333,6 @@ public class ChangeBouquetActivity extends BaseActivity implements OnClickListen
 
 	@Override
 	public void getChangeBouquet() {
-		updatePackageList();
+		updatePackageList(mSmartCardInfoVO);
 	}
 }

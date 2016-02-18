@@ -47,8 +47,8 @@ public class PackageService extends AbstractService {
 //		}
 //		return new ArrayList<Package>();
 //	}
-	public void getPackagesFromServer(List<Integer> types,OnListResultListener<Package> listener){
-		doGet(Constant.getPackageUrl(context,types), Package.class, LoadMode.CACHE_NET, listener);
+	public void getPackagesFromServer(List<Integer> types,List<Integer> platformType,OnListResultListener<Package> listener){
+		doGet(Constant.getPackageUrl(context,types,platformType), Package.class, LoadMode.CACHE_NET, listener);
 	}
 	public List<Package> getPackages(TVPlatForm platForm){
 		try{
@@ -73,10 +73,12 @@ public class PackageService extends AbstractService {
 	public boolean  initPackages(){
 		List<Integer> types = new ArrayList<Integer>();
 		try{
-			String url = Constant.getPackageUrl(context,types);
+			List<Integer> platformTypes = new ArrayList<Integer>();
+			platformTypes.add(TVPlatForm.DTH.getNum());
+			platformTypes.add(TVPlatForm.DTT.getNum());
+			String url = Constant.getPackageUrl(context,types,platformTypes);
 			if(SharedPreferencesUtil.getAreaId(context)!=0)
 				url += ("&areaId="+SharedPreferencesUtil.getAreaId(context));
-			url += "&platformTypes="+ TVPlatForm.DTH.getNum()+"&platformTypes="+TVPlatForm.DTT.getNum();
 			Log.i(TAG, "getPackage url="+url);
 			String json = IOUtil.httpGetToJSON(url);
 			if(json != null){

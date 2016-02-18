@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.star.cms.model.enm.TVPlatForm;
 import com.star.cms.model.vo.ExchangeVO;
 import com.star.cms.model.vo.SmartCardInfoVO;
 import com.star.mobile.video.R;
@@ -45,13 +46,14 @@ public class RechargeSmartCardActivity extends BaseActivity implements OnClickLi
 	private boolean doHide;
 	private Double money;
 	private SmartCardService mSmartCardService;
-
+	private TVPlatForm platForm;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_recharge_smartcard);
 		smartcardinfo = (SmartCardInfoVO) getIntent().getSerializableExtra("smartcardinfovo");
 		rechargeEx = (ExchangeVO) getIntent().getSerializableExtra("exchange");
+		platForm = (TVPlatForm)getIntent().getSerializableExtra("platForm");
 		doHide = getIntent().getBooleanExtra("hideCoupon", false);
 		unit = SharedPreferencesUtil.getCurrencSymbol(RechargeSmartCardActivity.this);
 		userService = new UserService();
@@ -65,7 +67,7 @@ public class RechargeSmartCardActivity extends BaseActivity implements OnClickLi
 	 * 
 	 */
 	private void initData() {
-		smartcardinfoView.setData(smartcardinfo);
+		smartcardinfoView.setData(smartcardinfo,platForm);
 	}
 
 	private void getDetailSmartCardInfo(final SmartCardInfoVO vo) {

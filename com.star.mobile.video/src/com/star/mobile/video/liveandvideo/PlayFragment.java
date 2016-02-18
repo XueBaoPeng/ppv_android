@@ -592,6 +592,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 			mChannelId = Constants.BUNDESLIGA_CHANNEL_ID;
 			setCurrentChannel();
 		}
+		setInitData(recordPosition);
 	}
 
 	/**
@@ -839,6 +840,16 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 			hideTitleCoverFlowGridView();
 			controlHomeActionBar();
 		}
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+	}
+
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
 	}
 
 	/**

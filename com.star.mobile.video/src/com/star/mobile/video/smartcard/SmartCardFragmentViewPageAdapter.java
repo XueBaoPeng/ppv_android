@@ -22,9 +22,9 @@ import android.view.ViewParent;
 public class SmartCardFragmentViewPageAdapter extends PagerAdapter implements IconPagerAdapter {
     private final int resId = R.drawable.point_group;
     private List<SmartCardInfoVO> mSmartinfos;
-    private List<SmartCardInfoView> mViewDatas;
+    private List<BondSmartCardInfoView> mViewDatas;
 
-    public SmartCardFragmentViewPageAdapter(List<SmartCardInfoVO> mSmartinfos, List<SmartCardInfoView> viewDatas) {
+    public SmartCardFragmentViewPageAdapter(List<SmartCardInfoVO> mSmartinfos, List<BondSmartCardInfoView> viewDatas) {
         this.mSmartinfos = mSmartinfos;
         this.mViewDatas = viewDatas;
     }
@@ -70,8 +70,8 @@ public class SmartCardFragmentViewPageAdapter extends PagerAdapter implements Ic
             ViewGroup parent = (ViewGroup) vp;
             parent.removeView(view);
         }
-        if(view instanceof SmartCardInfoView){
-            ((SmartCardInfoView)view).initData(mSmartinfos.get(position));
+        if(view instanceof BondSmartCardInfoView){
+            ((BondSmartCardInfoView)view).initData(mSmartinfos.get(position));
         }
         container.addView(view);
         return view;
