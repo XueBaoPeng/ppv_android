@@ -73,7 +73,7 @@ public class MyOrderActivity extends BaseActivity implements OnClickListener{
 		}
 		getOrderList();
 	}
-	
+
 	@Override
 	protected void onResume() {
 		super.onResume();
@@ -82,16 +82,16 @@ public class MyOrderActivity extends BaseActivity implements OnClickListener{
 //		}
 //		getOrderList();
 	}
-	
+
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.iv_actionbar_back:
-			onBackPressed();
-			break;
+			case R.id.iv_actionbar_back:
+				onBackPressed();
+				break;
 
-		default:
-			break;
+			default:
+				break;
 		}
 	}
 	/**
@@ -99,7 +99,7 @@ public class MyOrderActivity extends BaseActivity implements OnClickListener{
 	 */
 	private void getOrderList(){
 		mMyOrderListView.setLoadingListener(new LoadingListener<SMSHistory>() {
-			
+
 			@Override
 			public List<SMSHistory> loadingS(int offset, int requestCount) {
 				return mSmartCardService.getOrderList(offset,requestCount,true);
@@ -145,7 +145,7 @@ public class MyOrderActivity extends BaseActivity implements OnClickListener{
 			}
 		});
 		mMyOrderListView.loadingData(true);
-		
+
 	}
 
 }
