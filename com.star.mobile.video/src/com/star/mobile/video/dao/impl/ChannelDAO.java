@@ -280,9 +280,9 @@ public class ChannelDAO implements IChannelDAO {
 		}
 		if(p!=null){
 			if(p.getType()==3)
-				querySQL.append((append?" and ":" where ")+"c.packageId=p.packageId and p.code="+p.getCode()+" and p.type=3");
+				querySQL.append((append?" and ":" where ")+"cp.packageId=p.packageId and p.code="+p.getCode()+" and p.type=3");
 			else
-				querySQL.append((append?" and ":" where ")+"c.packageId=p.packageId and p.code<="+p.getCode()+" and p.type="+p.getType());
+				querySQL.append((append?" and ":" where ")+"cp.packageId=p.packageId and p.code<="+p.getCode()+" and p.type="+p.getType());
 			append = true;
 		}
 		if(tvPlatForm!=null){

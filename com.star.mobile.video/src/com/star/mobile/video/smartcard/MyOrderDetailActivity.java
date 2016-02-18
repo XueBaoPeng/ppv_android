@@ -283,7 +283,7 @@ public class MyOrderDetailActivity extends BaseActivity implements OnClickListen
 						break;
 					case BindCardCommand.MORE_THAN:
 						// 绑定智能卡超出限制的次数
-						failedReason = getString(R.string.smart_card_count_more_than_5);
+						failedReason = getString(R.string.failed_ten);
 						break;
 					case BindCardCommand.NO_CARD_RESULT:
 						// 智能卡不存在

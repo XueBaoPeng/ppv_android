@@ -257,6 +257,15 @@ public class SmartCardControlActivity extends BaseActivity implements OnClickLis
 		if (!FunctionService.doHideFuncation(FunctionType.SmartCard)) {
 			getSmartCrad();
 		}
+		View view =mViewDatas.get(mViewPager.getCurrentItem());
+		if (view != null){
+			if(view instanceof BondSmartCardInfoView){
+				if (mSmartinfos != null && mSmartinfos.size()>0){
+					((BondSmartCardInfoView)view).initData(mSmartinfos.get(mViewPager.getCurrentItem()));
+					mSmartCardFragmentViewPagerAdapter.notifyDataSetChanged();
+				}
+			}
+		}
 	}
 
 	@Override

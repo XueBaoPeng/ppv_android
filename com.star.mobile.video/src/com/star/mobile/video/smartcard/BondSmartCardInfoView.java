@@ -83,10 +83,10 @@ public class BondSmartCardInfoView extends RelativeLayout implements View.OnClic
 
     public void initData(SmartCardInfoVO smartCardInfoVO) {
         if (!hasLoad){
-            if (smartCardInfoVO != null) {
-                hasLoad = true;
-                getDetailSmartCardInfo(smartCardInfoVO);
-            }
+        }
+        if (smartCardInfoVO != null) {
+            hasLoad = true;
+            getDetailSmartCardInfo(smartCardInfoVO);
         }
     }
 
@@ -264,7 +264,7 @@ public class BondSmartCardInfoView extends RelativeLayout implements View.OnClic
         mSmartCardInfoVO = scv;
         fillData(scv);
     }
-
+   private  TVPlatForm platForm;
     /**
      * 设置数据
      *
@@ -272,6 +272,7 @@ public class BondSmartCardInfoView extends RelativeLayout implements View.OnClic
      */
     private void fillData(SmartCardInfoVO sc) {
         if(sc.getTvPlatForm() != null){
+            platForm = sc.getTvPlatForm();
             if (sc.getTvPlatForm().getNum()==TVPlatForm.DTT.getNum()){
                 mSmartCardImageView.setImageResource(R.drawable.smartcard_dtt);
             }else {
@@ -333,6 +334,7 @@ public class BondSmartCardInfoView extends RelativeLayout implements View.OnClic
                     i.putExtra("smartcardinfovo", (Serializable) mSmartCardInfoVO);
                     // i.putExtra("smartinfos", (Serializable) mSmartinfos);
                     // i.setClass(getActivity(), TopupActivity.class);
+                    i.putExtra("platForm",platForm);
                     i.setClass(mContext, RechargeSmartCardActivity.class);
                     CommonUtil.startActivity(mContext, i);
                 }else {
@@ -344,6 +346,7 @@ public class BondSmartCardInfoView extends RelativeLayout implements View.OnClic
                 if (mSmartCardInfoVO != null && mSmartCardInfoVO.getMoney() != null) {
                     Intent intent = new Intent();
                     intent.putExtra("smartCardInfoVO", mSmartCardInfoVO);
+                    intent.putExtra("platForm",platForm);
                     intent.setClass(mContext, ChangeBouquetActivity.class);
                     CommonUtil.startActivity(mContext, intent);
                 }else {
@@ -354,6 +357,7 @@ public class BondSmartCardInfoView extends RelativeLayout implements View.OnClic
                 // 点击AccountBill跳转
                 if (mSmartCardInfoVO != null && mSmartCardInfoVO.getMoney() != null) {
                     Intent accountBillIntent = new Intent(mContext, AccountBillActivity.class);
+                    accountBillIntent.putExtra("platForm",platForm);
                     accountBillIntent.putExtra("smartCardInfo", mSmartCardInfoVO);
                     CommonUtil.startActivity(mContext, accountBillIntent);
                 }else {

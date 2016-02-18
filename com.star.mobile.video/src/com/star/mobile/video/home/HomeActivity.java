@@ -101,7 +101,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener,Gu
 	private long channelId = 0;
 	private ImageView coin;
 	public static int phoneNumber;
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -428,16 +427,20 @@ public class HomeActivity extends FragmentActivity implements OnClickListener,Gu
 			break;
 		case R.id.iv_actionbar_more:
 			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-				if (!isActionBarMoreClick) {
-					isActionBarMoreClick = true;
-					Animation anticlockAnimation = AnimationUtils.loadAnimation(this, R.anim.anim_reverse_rotate_anticlock);
-					mActionBarMoreIV.startAnimation(anticlockAnimation);
-					mPlayFragment.showTitleCoverFlowGridView();
-					mPlayFragment.hidePlayCoverFlowCricleImage();
-					ToastUtil.showToast(HomeActivity.this, "Channel_list");
-					GA.sendEvent("channel", "Channel_list", "Channel_list", 1);
+				if(channelVOs != null && channelVOs.size()>0){
+					if (!isActionBarMoreClick) {
+						isActionBarMoreClick = true;
+						Animation anticlockAnimation = AnimationUtils.loadAnimation(this, R.anim.anim_reverse_rotate_anticlock);
+						mActionBarMoreIV.startAnimation(anticlockAnimation);
+						mPlayFragment.showTitleCoverFlowGridView();
+						mPlayFragment.hidePlayCoverFlowCricleImage();
+						ToastUtil.showToast(HomeActivity.this, "Channel_list");
+						GA.sendEvent("channel", "Channel_list", "Channel_list", 1);
+					}else {
+						controlFavoriteCollectAndActionBar();
+					}
 				}else {
-					controlFavoriteCollectAndActionBar();
+					ToastUtil.centerShowToast(this,getString(R.string.no_data));
 				}
 			}else {
 				Log.i(TAG, "系统版本过低！");
@@ -512,6 +515,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener,Gu
 
 	private ChannelService mChannelService;
 	private SmartCardSharedPre mSmartCardSharedPre;
+	private List<ChannelVO> channelVOs = new ArrayList<ChannelVO>();
 	/**
 	 * 从本地加载频道列表
 	 */
@@ -527,6 +531,8 @@ public class HomeActivity extends FragmentActivity implements OnClickListener,Gu
 				if(chns==null || chns.size()==0 ){
 					return;
 				}else {
+					channelVOs.clear();
+					channelVOs.addAll(chns);
 					initChannels(chns);
 				}
 			}
