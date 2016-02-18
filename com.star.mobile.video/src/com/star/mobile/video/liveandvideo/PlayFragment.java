@@ -514,7 +514,9 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 				if (platform.startsWith("/")){
 					platform=platform.substring(1);
 				}
-				dtt_dish.setText(platform);
+
+					dtt_dish.setText(platform);
+
 			}catch (Exception e){
 			}
 			if (channel.getOfPackage() != null) {
@@ -529,7 +531,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 			}else{
 				ratingChannel.setRating(0f);
 			}
-			
+
 			getCategorys(channel);
 		}
 	}
