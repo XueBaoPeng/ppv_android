@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -64,7 +63,7 @@ public class SmartCardControlActivity extends BaseActivity implements OnClickLis
 	private SmartCardService mSmartcardService;
 	private PopupWindow popupWindow;
 	private List<SmartCardInfoVO> mSmartinfos = new ArrayList<SmartCardInfoVO>();
-	private List<SmartCardInfoView> mViewDatas = new ArrayList<SmartCardInfoView>();
+	private List<BondSmartCardInfoView> mViewDatas = new ArrayList<BondSmartCardInfoView>();
 	// 初始的时候布局宽度
 	private int INITLAYOUTHEIGHT = 233;
 	// 有数据时的布局宽度
@@ -120,7 +119,7 @@ public class SmartCardControlActivity extends BaseActivity implements OnClickLis
 	 */
 	private void addFragmentView() {
 		for (int i = 0; i < VIEW_COUNT; i++) {
-			SmartCardInfoView view = new SmartCardInfoView(this);
+			BondSmartCardInfoView view = new BondSmartCardInfoView(this);
 			mViewDatas.add(view);
 		}
 		mSmartCardFragmentViewPagerAdapter = new SmartCardFragmentViewPageAdapter(mSmartinfos,mViewDatas);
@@ -375,7 +374,7 @@ public class SmartCardControlActivity extends BaseActivity implements OnClickLis
 					SmartCardInfoVO smartCardInfoVO = getSmartCard();
 					if (smartCardInfoVO != null) {
 						int currentItem = mViewPager.getCurrentItem();
-						SmartCardInfoView fragment = mViewDatas.get(currentItem);
+						BondSmartCardInfoView fragment = mViewDatas.get(currentItem);
 						boolean allowDeleteSmartCard = fragment.isAllowDeleteSmartCard();
 						if (!allowDeleteSmartCard || isSmartCardLoading) {
 							ToastUtil.centerShowToast(SmartCardControlActivity.this, getResources().getString(R.string.loading_delete_smartcard));

@@ -76,7 +76,7 @@ public class SmartCardInfoView extends LinearLayout {
 	 */
 	public void setSmartCardPlateForm(TVPlatForm plateForm){
 		if (plateForm != null){
-			if(plateForm.equals(TVPlatForm.DTH)){
+			if(plateForm.getNum()==TVPlatForm.DTT.getNum()){
 				tv_platefromConten.setText(mContext.getString(R.string.choose_dish));
 			}else{
 				tv_platefromConten.setText(mContext.getString(R.string.choose_decoder));
