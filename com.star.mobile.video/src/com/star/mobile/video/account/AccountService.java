@@ -52,7 +52,6 @@ public class AccountService extends AbstractService {
 		doPost(Constant.getLoginUrl(), LogonResult.class, params, listener);
 	}
 
-
 	public void logout(OnResultListener<Boolean> listener) {
 		doPost(Constant.getRegisterUrl(), Boolean.class, null, listener);
 	}
