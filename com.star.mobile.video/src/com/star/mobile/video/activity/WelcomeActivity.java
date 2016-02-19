@@ -106,7 +106,7 @@ public class WelcomeActivity extends BaseActivity {
 		TextView tv_version = (TextView) findViewById(R.id.tv_app_version);
 		tv_version.setText("Version "+ApplicationUtil.getAppVerisonName(this));
 		mPosterContainer = ((RelativeLayout)findViewById(R.id.vg_poster_container));
-		if(!SharedPreferencesUtil.isAppGuideDone(this)&& Build.VERSION.SDK_INT>11){
+		if(!SharedPreferencesUtil.isAppGuideDone(this)){
 //			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
 //				WelcomeGuideView container = new WelcomeGuideView(this);
 //				mPosterContainer.addView(container);
