@@ -1,12 +1,12 @@
 package com.star.mobile.video.util;
 
-import java.text.SimpleDateFormat;
-import java.util.List;
-
 import android.content.Context;
 
 import com.star.cms.model.enm.TVPlatForm;
 import com.star.mobile.video.StarApplication;
+
+import java.text.SimpleDateFormat;
+import java.util.List;
 
 public class Constant {
 	
@@ -245,7 +245,12 @@ public class Constant {
 	public static String getAreaUrl() {
 		return SERVER_URL+"/areas";
 	}
-	
+	/**
+	 * 获取国家简称code
+	 */
+	public static String getAreaCode(){
+		return "http://tenbre.me/systemService/IpLocation.php";
+	}
 	/** 分享用户egg*/
 	public static String shareUserEggUrl() {
 		return SERVER_URL+"/egg/shareByUser";

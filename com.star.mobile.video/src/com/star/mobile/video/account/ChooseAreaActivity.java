@@ -2,13 +2,18 @@ package com.star.mobile.video.account;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.star.cms.model.Area;
@@ -36,6 +41,38 @@ public class ChooseAreaActivity extends BaseActivity {
 	private ImageView image_area_flag;
 	private ImageView image_area_map;
 	private ListView lvAreas;
+	private LinearLayout item_layout;
+	private Area purrentArea;//��ǰ���ڵĹ��
+	private String localAreaCode;
+	private android.widget.ImageView place_image;
+	private Handler mHandler=new Handler(){
+		@Override
+		public void handleMessage(Message msg) {
+			super.handleMessage(msg);
+			place_image.getAnimation().cancel();
+			if (msg.what==1){
+				Area area=null;
+				localAreaCode=msg.getData().getString("area");
+				purrentArea=areas.get(areas.size()-1);
+		/*
+		 * ��ȡ���ڹ�Ҽ������ݿ����й�Ҽ�Ʊȶ�
+*/
+				if(localAreaCode!=null){
+					for (int i=0;i<areas.size();i++){
+						area=areas.get(i);
+						if(area.getCode().equals(localAreaCode)){
+							setMaybeOpention(area);
+							purrentArea=area;
+						}else {
+							setMaybeOpention(purrentArea);
+						}
+					}
+				}else{
+					setMaybeOpention(purrentArea);
+				}
+			}
+		}
+	};
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -47,12 +84,38 @@ public class ChooseAreaActivity extends BaseActivity {
 		tv_area_name= (TextView) findViewById(R.id.iv_area_name);
 		image_area_flag= (ImageView) findViewById(R.id.iv_area_flag);
 		image_area_map= (ImageView) findViewById(R.id.iv_area_map);
+		item_layout= (LinearLayout) findViewById(R.id.mabe_item_layout);
+		place_image= (android.widget.ImageView) findViewById(R.id.place_image);
 		lvAreas.setOnItemClickListener(itemClickListener);
 		areaService = new AreaService(this);
 		mAdapter = new AreasAdapter();
 		lvAreas.setAdapter(mAdapter);
 		getAreas(lvAreas);
+		item_layout.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				setOnclick();
+			}
+		});
 	}
+
+	private void setAnimatinon(){
+		Animation translateAnimation = new TranslateAnimation(0.0f, 0.0f,0.f,10.0f);
+		translateAnimation.setDuration(200);
+		translateAnimation.setRepeatCount(-1);
+		place_image.setAnimation(translateAnimation);
+	}
+	private void setOnclick(){
+		String areaCode = SharedPreferencesUtil.getAreaCode(ChooseAreaActivity.this);
+		if(areaCode==null || !areaCode.equals(purrentArea.getCode())) {
+			SyncService.getInstance(ChooseAreaActivity.this).doResetStatus(null, purrentArea.getId());
+			SharedPreferencesUtil.saveArea(ChooseAreaActivity.this, purrentArea);
+		}
+		CommonUtil.startActivity(ChooseAreaActivity.this, LoginActivity.class);
+	}
+	/**
+	 * ��̬����listview�ĸ߶�
+	 */
 	private void setListViewHeight(){
 		int totalHeight = 0;
 		for (int i = 0; i < mAdapter.getCount(); i++) {
@@ -66,9 +129,29 @@ public class ChooseAreaActivity extends BaseActivity {
 				+ (lvAreas.getDividerHeight() * (lvAreas.getCount() - 1));
 		lvAreas.setLayoutParams(params);
 	}
-	private void loadPlace(){
-		Area area=areas.get(0);
-		tv_area_name.setText(areas.get(0).getName());
+	private void loadPlaceByIpcode(){
+		setAnimatinon();
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				String localArea=areaService.getAreaCode();
+				Message message=Message.obtain();
+				message.what=1;
+				Bundle bundle=new Bundle();
+				bundle.putString("area",localArea);
+				message.setData(bundle);
+				mHandler.sendMessage(message);
+			}
+		}).start();
+
+	}
+
+	/**
+	 * ��ݱȶԳ�����area�������ڹ��
+	 * @param area
+	 */
+	private void setMaybeOpention(Area area){
+		tv_area_name.setText(area.getName());
 		image_area_map.setImageDrawable(null);
 		image_area_flag.setImageDrawable(null);
 		try{
@@ -94,7 +177,7 @@ public class ChooseAreaActivity extends BaseActivity {
 
 	}
 	private void getAreas(ListView listview) {
-		listview.setRequestCount(20);
+		listview.setRequestCount(23);
 		listview.setLoadingListener(new LoadingListener<Area>() {
 
 			@Override
@@ -108,7 +191,7 @@ public class ChooseAreaActivity extends BaseActivity {
 				if(responseDatas != null && responseDatas.size() > 0) {
 					areas.addAll(responseDatas);
 					mAdapter.notifyDataSetChanged();
-					loadPlace();
+					loadPlaceByIpcode();
 					setListViewHeight();
 				}
 			}
