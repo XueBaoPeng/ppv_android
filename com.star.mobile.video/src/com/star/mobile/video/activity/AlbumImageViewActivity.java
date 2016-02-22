@@ -246,7 +246,7 @@ public class AlbumImageViewActivity  extends BaseActivity implements OnClickList
 			}
 			position--;
 			ViewHolder holder;
-			if (convertView == null || convertView instanceof LinearLayout) {
+			if (convertView == null || convertView.getTag()==null) {
 				convertView = LayoutInflater.from(context).inflate(R.layout.view_album_item, null);
 				holder = new ViewHolder();
 				holder.iv_pic = (ImageView) convertView.findViewById(R.id.iv_pic);
