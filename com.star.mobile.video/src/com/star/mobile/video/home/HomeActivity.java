@@ -151,7 +151,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener,Gu
 //		startService(intent);
 		
 		replaceFragmentByTag(getIntent());
-		setTag();
 	}
 
 	private void initView() {
@@ -580,46 +579,5 @@ public class HomeActivity extends FragmentActivity implements OnClickListener,Gu
 		CommonUtil.setShow(Constant.GUIDE_DOWN, Constant.GUIDE_BY_VERSION);
 		guideHomeLeft.setVisibility(View.VISIBLE);
 		guideHomeLeft.setGuideCustomizeCallback(HomeActivity.this);
-	}
-	/**
-	 * 设置推送的tag
-	 */
-	public void setTag(){
-		List<String> tags=new ArrayList<String>();
-		if(SharedPreferencesUtil.getUserName(this)!=null){
-			tags.add(SharedPreferencesUtil.getUserName(this));
-			tags.add("C_"+SharedPreferencesUtil.getAreaname(this));
-			if(StarApplication.mUser!=null){
-				tags.add("ID_"+StarApplication.mUser.getId());
-				if (StarApplication.mUser.getSex() != null) {
-					if (StarApplication.mUser.getSex().equals(Sex.MALE)) {
-						tags.add("G_" + getString(R.string.sex_man));
-					} else if (StarApplication.mUser.getSex().equals(Sex.WOMAN)) {
-						tags.add("G_" + getString(R.string.sex_woman));
-					} else {
-						tags.add("G_" + getString(R.string.sex_defalut));
-					}
-				}else{
-					tags.add("G_" + getString(R.string.sex_defalut));
-				}
-				if(StarApplication.mUser.getCoins()!=null){
-					tags.add("Coin_"+(int)Math.floor(StarApplication.mUser.getCoins()/1000)+"k");
-				}else {
-					tags.add("Coin_0k");
-				}
-			}
-		}else{
-			tags.add(android.os.Build.MODEL);
-			tags.add(SharedPreferencesUtil.getAreaname(this));
-
-		}
-		Tag[] tagParam = new Tag[tags.size()];
-		for (int i = 0; i < tags.size(); i++) {
-			Tag t = new Tag();
-			t.setName(tags.get(i));
-			tagParam[i] = t;
-		}
-		int i= PushManager.getInstance().setTag(this, tagParam);
-		Log.d("set tag", String.valueOf(i));
 	}
 }

@@ -1,8 +1,5 @@
 package com.star.mobile.video.account;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -28,11 +25,17 @@ import com.star.mobile.video.view.ListView;
 import com.star.mobile.video.view.ListView.LoadingListener;
 import com.star.ui.ImageView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ChooseAreaActivity extends BaseActivity {
 
 	private List<Area> areas = new ArrayList<Area>();
 	private AreaService areaService;
-
+	private TextView tv_area_name;
+	private ImageView image_area_flag;
+	private ImageView image_area_map;
+	private ListView lvAreas;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -40,14 +43,56 @@ public class ChooseAreaActivity extends BaseActivity {
 		setContentView(R.layout.activity_choose_areas);
 		TextView tvTitle = (TextView) findViewById(R.id.tv_actionbar_title);
 		tvTitle.setText(getString(R.string.choose_country));
-		ListView lvAreas = (com.star.mobile.video.view.ListView)findViewById(R.id.lv_areas);
+		lvAreas = (com.star.mobile.video.view.ListView)findViewById(R.id.lv_areas);
+		tv_area_name= (TextView) findViewById(R.id.iv_area_name);
+		image_area_flag= (ImageView) findViewById(R.id.iv_area_flag);
+		image_area_map= (ImageView) findViewById(R.id.iv_area_map);
 		lvAreas.setOnItemClickListener(itemClickListener);
 		areaService = new AreaService(this);
 		mAdapter = new AreasAdapter();
 		lvAreas.setAdapter(mAdapter);
 		getAreas(lvAreas);
 	}
-	
+	private void setListViewHeight(){
+		int totalHeight = 0;
+		for (int i = 0; i < mAdapter.getCount(); i++) {
+			View listItem = mAdapter.getView(i, null, lvAreas);
+			listItem.measure(0, 0);
+			totalHeight += listItem.getMeasuredHeight();
+		}
+
+		ViewGroup.LayoutParams params = lvAreas.getLayoutParams();
+		params.height = totalHeight
+				+ (lvAreas.getDividerHeight() * (lvAreas.getCount() - 1));
+		lvAreas.setLayoutParams(params);
+	}
+	private void loadPlace(){
+		Area area=areas.get(0);
+		tv_area_name.setText(areas.get(0).getName());
+		image_area_map.setImageDrawable(null);
+		image_area_flag.setImageDrawable(null);
+		try{
+			if(!TextUtils.isEmpty(area.getCountryMap())){
+				image_area_map.setUrl(area.getCountryMap());
+				image_area_map.setVisibility(View.VISIBLE);
+			}else{
+				image_area_map.setVisibility(View.GONE);
+			}
+
+		}catch (Exception e) {
+		}
+		try{
+			if(!TextUtils.isEmpty(area.getNationalFlag())){
+				image_area_flag.setUrl(area.getNationalFlag());
+				image_area_flag.setVisibility(View.VISIBLE);
+			}else{
+				image_area_flag.setVisibility(View.GONE);
+			}
+		}catch (Exception e) {
+
+		}
+
+	}
 	private void getAreas(ListView listview) {
 		listview.setRequestCount(20);
 		listview.setLoadingListener(new LoadingListener<Area>() {
@@ -63,6 +108,8 @@ public class ChooseAreaActivity extends BaseActivity {
 				if(responseDatas != null && responseDatas.size() > 0) {
 					areas.addAll(responseDatas);
 					mAdapter.notifyDataSetChanged();
+					loadPlace();
+					setListViewHeight();
 				}
 			}
 
@@ -78,7 +125,7 @@ public class ChooseAreaActivity extends BaseActivity {
 
 			@Override
 			public void onNoMoreData() {
-				// TODO Auto-generated method stub
+
 			}
 		});
 		CommonUtil.showProgressDialog(ChooseAreaActivity.this, null, getResources().getString(R.string.loading_region_information));

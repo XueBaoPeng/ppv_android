@@ -867,6 +867,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 				ChannelVO channelVO = mTotalChannels.get(i);
 				if (channelVO != null) {
 					if (channelVO.getId().equals(mChannelId)) {
+						SharedPreferencesUtil.setCurrentChannel(mChannelId, getActivity());
 						this.mFancyCoverFlow.setSelection(i, true);
 						recordPosition = i;
 						break;
