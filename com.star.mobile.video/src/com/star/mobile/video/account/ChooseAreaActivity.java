@@ -49,7 +49,6 @@ public class ChooseAreaActivity extends BaseActivity {
 		@Override
 		public void handleMessage(Message msg) {
 			super.handleMessage(msg);
-			place_image.getAnimation().cancel();
 			if (msg.what==1){
 				Area area=null;
 				localAreaCode=msg.getData().getString("area");
@@ -101,7 +100,7 @@ public class ChooseAreaActivity extends BaseActivity {
 
 	private void setAnimatinon(){
 		Animation translateAnimation = new TranslateAnimation(0.0f, 0.0f,0.f,10.0f);
-		translateAnimation.setDuration(200);
+		translateAnimation.setDuration(500);
 		translateAnimation.setRepeatCount(-1);
 		place_image.setAnimation(translateAnimation);
 	}
@@ -151,6 +150,7 @@ public class ChooseAreaActivity extends BaseActivity {
 	 * @param area
 	 */
 	private void setMaybeOpention(Area area){
+		place_image.getAnimation().cancel();
 		tv_area_name.setText(area.getName());
 		image_area_map.setImageDrawable(null);
 		image_area_flag.setImageDrawable(null);
