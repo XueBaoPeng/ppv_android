@@ -28,6 +28,7 @@
                     android:src="@drawable/ic_place"
                     android:layout_centerVertical="true"/>
                 <TextView
+                    android:id="@+id/tv_isLoading"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/place_choose"
@@ -46,6 +47,7 @@
                 android:orientation="horizontal"
                 android:layout_marginLeft="@dimen/dp_8"
                 android:layout_marginRight="@dimen/dp_8"
+                android:visibility="gone"
                 >
                 <LinearLayout
                     android:layout_width="0dp"

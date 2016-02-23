@@ -24,17 +24,14 @@ import com.star.mobile.video.AbsRegisterFragment;
 import com.star.mobile.video.R;
 import com.star.mobile.video.StarApplication;
 import com.star.mobile.video.activity.BrowserActivity;
-import com.star.mobile.video.dialog.AlertDialog;
 import com.star.mobile.video.util.CommonUtil;
-import com.star.mobile.video.util.CommonUtil.PromptDialogClickListener;
 import com.star.mobile.video.util.Constant;
-import com.star.mobile.video.util.DefaultLoadingTask;
 import com.star.mobile.video.util.ToastUtil;
 import com.star.mobile.video.view.CheckCodeView;
 import com.star.mobile.video.view.CheckCodeView.CheckCodeButtonOnClick;
 import com.star.mobile.video.view.CheckCodeView.CodeCallBack;
-import com.star.util.loader.OnResultListener;
 import com.star.mobile.video.view.PhoneNumberInputView;
+import com.star.util.loader.OnResultListener;
 
 /**
  * 填写手机验证码
@@ -135,7 +132,7 @@ public class MobileRegisterCheckFragment extends AbsRegisterFragment implements 
 	public void onStart() {
 		super.onStart();
 		isShowFragment = true;
-		setNextOnClickNull();
+		//setNextOnClickNull();
 	}
 	
 	/**
