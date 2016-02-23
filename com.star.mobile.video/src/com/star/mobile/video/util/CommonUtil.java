@@ -648,7 +648,7 @@ public class CommonUtil {
 	 * @param context
 	 * @param target
 	 *            要转的页面
-	 * @param params
+	 * @param intent
 	 */
 
 	public static void goActivityOrFargment(Context context, Class<?> target, Intent intent) {
@@ -671,18 +671,16 @@ public class CommonUtil {
 	 * @param context
 	 * @param type
 	 *            3:activity 2: html 0:channel 1:program
-	 * @param page
+	 * @param target
 	 *            如:com.star.mobile.video.LoginActivity?
-	 * @param ownId
-	 *            跳转 channel guid 和 epg
-	 * @param htmlUrl
+	 * @param code
 	 *            如： http://tenbre.me
 	 * @param title
 	 *            浏览器标题
 	 */
 
-	public static void goActivityOrFargment(Context context, Type type, String target, String htmlUrl, String title) {
-		goActivityOrFargment(context, type, target, htmlUrl, title, false);
+	public static void goActivityOrFargment(Context context, Type type, String target, String code, String title) {
+		goActivityOrFargment(context, type, target, code, title, false);
 	}
 
 	/**
@@ -690,22 +688,25 @@ public class CommonUtil {
 	 * @param context
 	 * @param type
 	 *            3:activity 2: html 0:channel 1:program
-	 * @param page
+	 * @param target
 	 *            如:com.star.mobile.video.LoginActivity?
-	 * @param ownId
-	 *            跳转 channel guid 和 epg
-	 * @param htmlUrl
+	 * @param code
 	 *            如： http://tenbre.me
 	 * @param title
 	 *            浏览器标题
 	 * @param isAlertEpg
 	 *            是否提示预约节目
 	 */
-	public static void goActivityOrFargment(Context context, Type type, String target, String htmlUrl, String title, boolean isAlertEpg) {
+	public static void goActivityOrFargment(Context context, Type type, String target, String code, String title, boolean isAlertEpg) {
+		Intent intent = extractIntent(context, type, target, code, title);
+		CommonUtil.startActivity(context, intent);
+	}
+
+	public static Intent extractIntent(Context context, Type type, String target, String code, String title) {
+		Intent intent = new Intent();
 		try {
 			String[] arr = target.split("\\?");
 			Class<?> clazz = Class.forName(arr[0]);
-			Intent intent = new Intent();
 			if(arr.length>1){
 				String[] params = arr[1].split("&");
 				for (String param : params) {
@@ -722,15 +723,17 @@ public class CommonUtil {
 			}
 			if(type.equals(Type.Advertisement)){
 				intent.setComponent(new ComponentName(context, clazz));
-				intent.putExtra("loadUrl", htmlUrl);
-				intent.putExtra("pageName", title);
+				intent.putExtra("loadUrl", code);
+				if(title != null) {
+					intent.putExtra("pageName", title);
+				}
 			} else if (type.equals(Type.Page)) {
 					Object object = clazz.getConstructor().newInstance();
 					if (object instanceof Activity) {
 						if (object instanceof AccountConnectActivity || object instanceof InvitationActivity) {
 							if (SharedPreferencesUtil.getUserName(context) == null) {
 								CommonUtil.pleaseLogin(context);
-								return;
+								return intent;
 							}
 						}
 						intent.setComponent(new ComponentName(context, clazz));
@@ -738,17 +741,17 @@ public class CommonUtil {
 						if (object instanceof AccountManagerFragment) {
 							if (SharedPreferencesUtil.getUserName(context) == null) {
 								CommonUtil.pleaseLogin(context);
-								return;
+								return intent;
 							}
-						} 
+						}
 						intent.setComponent(new ComponentName(context, BaseFragmentActivity.class.getName()));
 						intent.putExtra("fragment",  MenuHandle.getFragmentTag(arr[0]));
 					}
 			}
-			CommonUtil.startActivity(context, intent);
 		} catch (Exception e) {
 			Log.i("Recommend", "Parser page code error!", e);
 		}
+		return intent;
 	}
 
 	public static void showNetworkerror(final Activity context) {
@@ -771,7 +774,7 @@ public class CommonUtil {
 	/**
 	 * 跳转到bbs
 	 * 
-	 * @param context
+	 * @param activity
 	 */
 	public static void skipBbs(Activity activity) {
 		Intent intent = new Intent(activity, BrowserActivity.class);
