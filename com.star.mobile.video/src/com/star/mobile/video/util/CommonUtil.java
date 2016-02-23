@@ -673,14 +673,14 @@ public class CommonUtil {
 	 *            3:activity 2: html 0:channel 1:program
 	 * @param target
 	 *            如:com.star.mobile.video.LoginActivity?
-	 * @param htmlUrl
+	 * @param code
 	 *            如： http://tenbre.me
 	 * @param title
 	 *            浏览器标题
 	 */
 
-	public static void goActivityOrFargment(Context context, Type type, String target, String htmlUrl, String title) {
-		goActivityOrFargment(context, type, target, htmlUrl, title, false);
+	public static void goActivityOrFargment(Context context, Type type, String target, String code, String title) {
+		goActivityOrFargment(context, type, target, code, title, false);
 	}
 
 	/**
@@ -690,7 +690,7 @@ public class CommonUtil {
 	 *            3:activity 2: html 0:channel 1:program
 	 * @param target
 	 *            如:com.star.mobile.video.LoginActivity?
-	 * @param htmlUrl
+	 * @param code
 	 *            如： http://tenbre.me
 	 * @param title
 	 *            浏览器标题
