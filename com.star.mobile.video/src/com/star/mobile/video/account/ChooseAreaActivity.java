@@ -154,6 +154,7 @@ public class ChooseAreaActivity extends BaseActivity {
 		tv_area_name.setText(area.getName());
 		image_area_map.setImageDrawable(null);
 		image_area_flag.setImageDrawable(null);
+
 		try{
 			if(!TextUtils.isEmpty(area.getCountryMap())){
 				image_area_map.setUrl(area.getCountryMap());
