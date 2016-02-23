@@ -16,8 +16,8 @@
 	<string name="serie_a_url">http://tenbre.me/bund/serie_a.php?areaId=</string>
 	<string name="resource_prefix_url">http://portal.tenbre.me</string>
 	<string name="is_show_crash_dialog">0</string>
-	<string name="robot_icon_url">http://portal.tenbre.me/portal/img/image/official_avatar.png</string>
--->
+	<string name="robot_icon_url">http://portal.tenbre.me/portal/img/image/official_avatar.png</string>-->
+
     
 	<!-- https准上线测试环境 --><!-- tenb调用的发帖地址  准上线环境-->
 	<!--<string name="server_url">https://52.18.227.87/cms</string>
@@ -45,7 +45,7 @@
 	
 	
 	<!-- 本地测试环境 --><!-- tenb调用的发帖地址  本地环境-->
-	<!--<string name="server_url">http://10.0.63.242:8281/cms</string>
+	<!-- <string name="server_url">http://10.0.63.242:8281/cms</string>
 	<string name="html_prefix_url">http://10.0.63.242:8281</string>
 	<string name="bbs_url">http://10.0.63.242:8281/bbs/forumsCategory/list1.page</string>
 	<string name="bbs_faq_url">http://10.0.63.242:8281/bbs/forumsCategory/show/36.page</string>
@@ -55,11 +55,11 @@
 	<string name="bbs_new_topic_url">http://10.63.242:8281/bbs/forumsCategory/isNewMessage.page</string>
 	<string name="tenb_post_bbs_url">http://10.0.63.242:8281/bbs/forumsCategory/chooseTag.page?appPost=1</string>
 	<string name="bbs_detail">http://10.0.63.242:8281/bbs/tenbrePosts/list/%1$s.page</string>
-	<string name="bundesliga_url">http://10.0.63.242:8281/bundesliga/bundesliga.php?areaId=</string>
-	<string name="serie_a_url">http://10.0.63.242:8281/bundesliga/serie_a.php?areaId=</string>
-	<string name="resource_prefix_url">http://10.0.63.242:8281</string>
+	<string name="bundesliga_url">http://218.205.169.218:8581/bundesliga/bundesliga.php?areaId=</string>
+	<string name="serie_a_url">http://218.205.169.218:8581/bundesliga/serie_a.php?areaId=</string>
+	<string name="resource_prefix_url">http://218.205.169.218:8581</string>
 	<string name="is_show_crash_dialog">1</string>
-	<string name="robot_icon_url">http://portal.tenbre.me/portal/img/bg/official_avatar.png</string>-->
+	<string name="robot_icon_url">http://portal.tenbre.me/portal/img/bg/official_avatar.png</string> -->
 
 	<!-- https本地测试环境 --><!-- tenb调用的发帖地址  本地环境-->
 	<string name="server_url">http://10.0.63.242:8281/cms</string>
