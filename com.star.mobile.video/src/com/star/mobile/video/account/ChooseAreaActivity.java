@@ -42,7 +42,7 @@ public class ChooseAreaActivity extends BaseActivity {
 	private ImageView image_area_map;
 	private ListView lvAreas;
 	private LinearLayout item_layout;
-	private Area purrentArea;//��ǰ���ڵĹ��
+	private Area purrentArea;//当前的地区
 	private String localAreaCode;
 	private android.widget.ImageView place_image;
 	private Handler mHandler=new Handler(){
@@ -54,7 +54,7 @@ public class ChooseAreaActivity extends BaseActivity {
 				localAreaCode=msg.getData().getString("area");
 				purrentArea=areas.get(areas.size()-1);
 		/*
-		 * ��ȡ���ڹ�Ҽ������ݿ����й�Ҽ�Ʊȶ�
+		 * 通过定位回来的地区，跟新当前位置
 */
 				if(localAreaCode!=null){
 					for (int i=0;i<areas.size();i++){
@@ -113,7 +113,7 @@ public class ChooseAreaActivity extends BaseActivity {
 		CommonUtil.startActivity(ChooseAreaActivity.this, LoginActivity.class);
 	}
 	/**
-	 * ��̬����listview�ĸ߶�
+	 *动态设置listview的高度
 	 */
 	private void setListViewHeight(){
 		int totalHeight = 0;
@@ -146,7 +146,7 @@ public class ChooseAreaActivity extends BaseActivity {
 	}
 
 	/**
-	 * ��ݱȶԳ�����area�������ڹ��
+	 * 初始化位置界面
 	 * @param area
 	 */
 	private void setMaybeOpention(Area area){
@@ -154,6 +154,7 @@ public class ChooseAreaActivity extends BaseActivity {
 		tv_area_name.setText(area.getName());
 		image_area_map.setImageDrawable(null);
 		image_area_flag.setImageDrawable(null);
+
 		try{
 			if(!TextUtils.isEmpty(area.getCountryMap())){
 				image_area_map.setUrl(area.getCountryMap());
