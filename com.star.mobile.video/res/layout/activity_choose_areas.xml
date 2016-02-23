@@ -38,6 +38,7 @@
                     android:layout_marginLeft="@dimen/dp_8"/>
             </RelativeLayout>
             <LinearLayout
+                android:id="@+id/mabe_item_layout"
                 android:layout_below="@id/maybe_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
