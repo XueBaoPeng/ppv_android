@@ -78,7 +78,6 @@
 	<string name="robot_icon_url">http://portal.tenbre.me/portal/img/bg/official_avatar.png</string>
 	<string name="is_show_crash_dialog">1</string>
 
-
 	  
 	<!-- 当前app版本，1为开发版，0为正式版 -->
 	 <!--<string name="app_current_version">1</string>-->
