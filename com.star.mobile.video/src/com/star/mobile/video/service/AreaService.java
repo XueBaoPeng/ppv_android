@@ -11,6 +11,8 @@ import com.star.mobile.video.util.Constant;
 import com.star.mobile.video.util.IOUtil;
 import com.star.util.InternalStorage;
 import com.star.util.json.JSONUtil;
+import com.star.util.loader.LoadMode;
+import com.star.util.loader.OnResultListener;
 
 import org.apache.http.HttpResponse;
 import org.json.JSONArray;
@@ -31,8 +33,10 @@ public class AreaService extends AbstractService{
 	private static final String TAG = AreaService.class.getName();
 	private String QUERYADDRESS = "http://maps.googleapis.com/maps/api/geocode/json?latlng=%s,%s&sensor=true&language=en";
 
-	//获取用户所在国家的简称
-	public String getAreaCode(){
+	public void getAreaCode(OnResultListener<String> listener){
+		doGet(Constant.getAreaCode(),String.class, LoadMode.NET,listener);
+	}
+	/*public String getAreaCode(){
 		String code=null;
 		try{
 			String json=IOUtil.httpGetToJSON(Constant.getAreaCode(),true);
@@ -43,7 +47,7 @@ public class AreaService extends AbstractService{
 			Log.e(TAG,"",e);
 		}
 		return code;
-	}
+	}*/
 	public ArrayList<Area> getAreas(int versionCode/*, OnListResultListener<Area> listener*/) {
 		try{
 			String json = IOUtil.httpGetToJSON(Constant.getAreaUrl()+"?versionCode="+versionCode, true);

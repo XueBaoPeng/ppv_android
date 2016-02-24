@@ -724,7 +724,9 @@ public class CommonUtil {
 			if(type.equals(Type.Advertisement)){
 				intent.setComponent(new ComponentName(context, clazz));
 				intent.putExtra("loadUrl", code);
-				intent.putExtra("pageName", title);
+				if(title != null) {
+					intent.putExtra("pageName", title);
+				}
 			} else if (type.equals(Type.Page)) {
 					Object object = clazz.getConstructor().newInstance();
 					if (object instanceof Activity) {

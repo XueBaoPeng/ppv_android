@@ -1,5 +1,6 @@
 package com.star.mobile.video.receiver;
 
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -9,11 +10,18 @@ import com.igexin.sdk.PushConsts;
 import com.igexin.sdk.PushManager;
 import com.igexin.sdk.Tag;
 import com.star.cms.model.enm.Sex;
+import com.star.cms.model.enm.Type;
 import com.star.mobile.video.R;
 import com.star.mobile.video.StarApplication;
+import com.star.mobile.video.activity.BrowserActivity;
 import com.star.mobile.video.home.HomeActivity;
 import com.star.mobile.video.shared.SharedPreferencesUtil;
 import com.star.mobile.video.util.CommonUtil;
+import com.star.mobile.video.util.NotificationUtil;
+import com.star.mobile.video.util.ToastUtil;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,13 +43,29 @@ public class PushTenbreReceiver extends BroadcastReceiver {
 
 			// smartPush第三方回执调用接口，actionid范围为90000-90999，可根据业务场景执行
 			boolean result = PushManager.getInstance().sendFeedbackMessage(context, taskid, messageid, 90001);
-			System.out.println("第三方回执接口调用" + (result ? "成功" : "失败"));
-			
-			if (payload != null) {
-				CommonUtil.startActivity(context, HomeActivity.class);
+//			System.out.println("第三方回执接口调用" + (result ? "成功" : "失败"));
+//			if (payload != null) {
+//				CommonUtil.startActivity(context, HomeActivity.class);
+//			}
 
-				
+			String str = new String(payload);
+			try {
+				JSONObject jb =	new JSONObject(str);
+				if(jb != null) {
+					String title = jb.getString("title");
+					String content = jb.getString("des");
+					String target = jb.getString("target");
+					String code = jb.getString("code");
+					int type = jb.getInt("type");
+					Intent i = CommonUtil.extractIntent(context, Type.getType(type), target, code, null);
+					NotificationUtil.showNotification(content,title,title,i,context);
+				}
+			} catch (JSONException e) {
+				e.printStackTrace();
 			}
+
+
+
 			break;
 		case PushConsts.GET_CLIENTID:
 			List<String> tags=new ArrayList<String>();

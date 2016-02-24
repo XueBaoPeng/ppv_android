@@ -42,7 +42,11 @@
 	<!--<string name="ga_trackingId">UA-55969660-1</string>-->
 	<!--<string name="apk_url">http://tenbre.me/release/startimes.apk</string>-->
 	 <!--<string name="apk_url">http://tenbre.me/startimes.apk</string>-->
-	
+	<!--推送正式地址-->
+	<!--<string name="getui_appId">Aee7pGAme78dzyoDS5Nxq7</string>
+	<string name="getui_appKey">aBkdhG2HHp5MWPxqayJ6U5</string>
+	<string name="getui_appSecret">rK07UCmhnp8RMc3Lm8lrU7</string>
+	<string name="getui_masterSecret">jSK3qyaDtbAzjmUVCT7b47</string>-->
 	
 	<!-- 本地测试环境 --><!-- tenb调用的发帖地址  本地环境-->
 	<!-- <string name="server_url">http://10.0.63.242:8281/cms</string>
@@ -83,7 +87,11 @@
 	<!-- 本地测试apk更新地址  GA地址-->
     <string name="ga_trackingId">UA-55965871-1</string>
     <string name="apk_url">http://218.205.169.218:8581/portal/apk/shonngo.apk</string>
-	
+	<!--推送测试地址-->
+	<string name="getui_appId">C2EKc0u59i9WfZozdHWZ79</string>
+	<string name="getui_appKey">ZBfnHiRSNi6hyR5bWEy549</string>
+	<string name="getui_appSecret">P5y4IbDFJb5vhMG5jvNIp9</string>
+	<string name="getui_masterSecret">OJn73LtJ1q7xeMkoUTUub5</string>
 	
 
     <bool name="ga_autoActivityTracking">true</bool>

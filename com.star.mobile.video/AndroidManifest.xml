@@ -583,13 +583,13 @@
         <!-- 配置的第三方参数属性 -->
         <meta-data
             android:name="PUSH_APPID"
-            android:value="Aee7pGAme78dzyoDS5Nxq7" />
+            android:value="@string/getui_appId" />
         <meta-data
             android:name="PUSH_APPSECRET"
-            android:value="rK07UCmhnp8RMc3Lm8lrU7" />
+            android:value="@string/getui_appSecret" />
         <meta-data
             android:name="PUSH_APPKEY"
-            android:value="aBkdhG2HHp5MWPxqayJ6U5" />
+            android:value="@string/getui_appKey" />
         <meta-data
             android:name="PUSH_GROUPID"
             android:value="" />
@@ -600,7 +600,8 @@
             <intent-filter>
 
                 <!-- 替换为action android:name="com.igexin.sdk.action.第三方应用APPID" -->
-                <action android:name="com.igexin.sdk.action.Aee7pGAme78dzyoDS5Nxq7" />
+                <!--<action android:name="com.igexin.sdk.action.Aee7pGAme78dzyoDS5Nxq7" />-->
+                <action android:name="com.igexin.sdk.action.C2EKc0u59i9WfZozdHWZ79" />
             </intent-filter>
         </receiver>
         <receiver
@@ -662,7 +663,8 @@
                 <!-- 这个com.igexin.sdk.action.7fjUl2Z3LH6xYy7NQK4ni4固定，不能修改 -->
                 <action android:name="com.igexin.sdk.action.7fjUl2Z3LH6xYy7NQK4ni4" />
                 <!-- android:name="com.igexin.sdk.action.第三方的appId" -->
-                <action android:name="com.igexin.sdk.action.Aee7pGAme78dzyoDS5Nxq7" />
+                <!--<action android:name="com.igexin.sdk.action.Aee7pGAme78dzyoDS5Nxq7" />-->
+                <action android:name="com.igexin.sdk.action.C2EKc0u59i9WfZozdHWZ79" />
             </intent-filter>
         </receiver>
 
