@@ -436,6 +436,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener,Gu
 			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
 				if(channelVOs != null && channelVOs.size()>0){
 					if (!isActionBarMoreClick) {
+						mPlayFragment.clearAndRefreshData();
 						isActionBarMoreClick = true;
 						Animation anticlockAnimation = AnimationUtils.loadAnimation(this, R.anim.anim_reverse_rotate_anticlock);
 						mActionBarMoreIV.startAnimation(anticlockAnimation);
