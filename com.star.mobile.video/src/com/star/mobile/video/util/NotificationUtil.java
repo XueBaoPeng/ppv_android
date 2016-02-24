@@ -11,6 +11,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.widget.RemoteViews;
 
 import com.star.mobile.video.R;
 import com.star.mobile.video.activity.NewVersionAppDetailActivity;
@@ -108,8 +109,8 @@ public class NotificationUtil {
 //			notif.defaults |= Notification.DEFAULT_SOUND;  
 //			notif.defaults |= Notification.DEFAULT_VIBRATE;  
 //			notif.defaults |= Notification.DEFAULT_LIGHTS;  
-			notif.flags |= Notification.FLAG_AUTO_CANCEL;  
-			notif.setLatestEventInfo(context,title, message, pIntent); 
+			notif.flags |= Notification.FLAG_AUTO_CANCEL;
+			notif.setLatestEventInfo(context,title, message, pIntent);
 			nm.notify(notId, notif);
 			free_coupon_msg_list.add(notId);
 			notId++;
@@ -128,5 +129,32 @@ public class NotificationUtil {
 			nm.cancel(notId);
 		}
 		free_coupon_msg_list.remove(notId);
+	}
+
+
+	public static void showNotification(String message,String title,Intent intent,Context context){
+		if(nm == null) {
+			nm = (NotificationManager)context.getSystemService(context.NOTIFICATION_SERVICE);
+		}
+		intent.putExtra("notId", notId);
+		PendingIntent pIntent = PendingIntent.getActivity(context, UUID.randomUUID().hashCode(), intent, PendingIntent.FLAG_UPDATE_CURRENT);
+//	    	PendingIntent pIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+		Notification notif = new Notification();
+		notif.icon = R.drawable.app_icon;
+//			notif.defaults |= Notification.DEFAULT_SOUND;
+//			notif.defaults |= Notification.DEFAULT_VIBRATE;
+//			notif.defaults |= Notification.DEFAULT_LIGHTS;
+		notif.flags |= Notification.FLAG_AUTO_CANCEL;
+//		RemoteViews rv = new RemoteViews(context.getPackageName(),R.layout.notification_view);
+//		rv.setImageViewResource(R.id.iv_logo, R.drawable.app_icon);
+//		rv.setTextViewText(R.id.title, title);
+//		rv.setTextViewText(R.id.text, message);
+//		PendingIntent pi = new PendingIntent();
+//		rv.setOnClickPendingIntent(R.id.rl_notification,pi);
+//		notif.contentView = rv;
+		notif.setLatestEventInfo(context,title, message, pIntent);
+		nm.notify(notId, notif);
+		free_coupon_msg_list.add(notId);
+		notId++;
 	}
 }
