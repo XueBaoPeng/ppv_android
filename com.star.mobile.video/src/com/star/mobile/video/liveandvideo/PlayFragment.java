@@ -61,6 +61,7 @@ import com.star.mobile.video.util.Constants;
 import com.star.mobile.video.util.DensityUtil;
 import com.star.mobile.video.util.ImageUtil;
 import com.star.mobile.video.util.LoadingDataTask;
+import com.star.mobile.video.util.ToastUtil;
 import com.star.mobile.video.widget.FancyCoverFlow;
 import com.star.ui.DragTopLayout;
 import com.star.ui.DragTopLayout.PanelListener;
@@ -432,13 +433,12 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 		mChannelExpandIV.setOnClickListener(this);
 		mPackageService = new PackageService(getActivity());
 		mCategoryService = new CategoryService(getActivity());
-		clearAndRefreshData();
 	}
 
 	/**
 	 * 情况并刷新下拉列表数据
 	 */
-	private void clearAndRefreshData() {
+	public void clearAndRefreshData() {
 		mChooseInfos.clear();
 		//清空packages和category的数据
 		mPackageChooseInfos.clear();
