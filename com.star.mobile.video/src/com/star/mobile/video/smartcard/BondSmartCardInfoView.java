@@ -206,7 +206,7 @@ public class BondSmartCardInfoView extends RelativeLayout implements View.OnClic
             public void onSuccess(SmartCardInfoVO scv) {
                 hideDetailLoading();
                 if (scv != null) {
-                    setData(vo, scv);
+                    setData(scv);
                     setPackageNameData(scv);
                 }
             }
@@ -260,7 +260,7 @@ public class BondSmartCardInfoView extends RelativeLayout implements View.OnClic
         mLoadDetailCustomerName.setVisibility(View.GONE);
     }
 
-    private void setData(final SmartCardInfoVO vo, SmartCardInfoVO scv) {
+    private void setData( SmartCardInfoVO scv) {
         mSmartCardInfoVO = scv;
         fillData(scv);
     }

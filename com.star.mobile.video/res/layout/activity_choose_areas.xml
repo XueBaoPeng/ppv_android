@@ -7,10 +7,109 @@
 
     <include layout="@layout/window_titlebar_5" />
 
-    <com.star.mobile.video.view.ListView
-        android:id="@+id/lv_areas"
-        style="@style/listview_style"
-        android:layout_margin="8dp"
-        android:dividerHeight="8dp" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:id="@+id/maybe_layout"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:layout_marginRight="@dimen/dp_8"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_48">
+                <ImageView
+                    android:id="@+id/place_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_place"
+                    android:layout_centerVertical="true"/>
+                <TextView
+                    android:id="@+id/tv_isLoading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/place_choose"
+                    android:textColor="@color/taks_blue"
+                    android:textSize="16sp"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/place_image"
+                    android:layout_marginLeft="@dimen/dp_8"/>
+            </RelativeLayout>
+            <LinearLayout
+                android:id="@+id/mabe_item_layout"
+                android:layout_below="@id/maybe_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/areas_item_bg"
+                android:orientation="horizontal"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:layout_marginRight="@dimen/dp_8"
+                android:visibility="gone"
+                >
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:paddingLeft="20dp" >
+
+                    <TextView
+                        android:id="@+id/iv_area_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="2"
+                        android:textColor="#444444"
+                        android:textSize="22sp"
+                        android:layout_marginBottom="6dp"
+                        android:textStyle="bold" />
+                    <com.star.ui.ImageView
+                        android:id="@+id/iv_area_flag"
+                        android:layout_width="40dp"
+                        android:layout_height="30dp"
+                        android:scaleType="center" />
+                </LinearLayout>
+                <com.star.ui.ImageView
+                    android:id="@+id/iv_area_map"
+                    android:layout_width="0dp"
+                    android:layout_height="75dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_marginLeft="@dimen/dp_8"
+                android:layout_marginRight="@dimen/dp_8"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_48">
+                <ImageView
+                    android:id="@+id/all_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_world"
+                    android:layout_centerVertical="true"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/all"
+                    android:textColor="@color/taks_blue"
+                    android:textSize="16sp"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/all_image"
+                    android:layout_marginLeft="@dimen/dp_8"/>
+            </RelativeLayout>
+            <com.star.mobile.video.view.ListView
+                android:id="@+id/lv_areas"
+                style="@style/listview_style"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:layout_marginRight="@dimen/dp_8"
+                android:dividerHeight="8dp" />
+        </LinearLayout>
+    </ScrollView>
+
 
 </LinearLayout>

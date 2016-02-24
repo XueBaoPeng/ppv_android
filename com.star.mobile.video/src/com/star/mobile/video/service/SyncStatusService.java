@@ -1,11 +1,5 @@
 package com.star.mobile.video.service;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.TimerTask;
-import java.util.UUID;
-
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -15,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.IBinder;
+import android.os.Message;
 import android.util.Log;
 
 import com.star.cms.model.BindCardCommand;
@@ -40,6 +35,12 @@ import com.star.util.loader.LoadMode;
 import com.star.util.loader.OnListResultListener;
 import com.star.util.loader.OnResultListener;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.TimerTask;
+import java.util.UUID;
+
 public class SyncStatusService extends BaseService {
 	
 	private MyTimer syncTimer;
@@ -50,6 +51,15 @@ public class SyncStatusService extends BaseService {
 	private final long periodtime_syncstatus = 30000;
 	
 	private PostTimer mHandler = new PostTimer(){
+
+		@Override
+		public void handleMessage(Message msg) {
+			switch (msg.what){
+				case 0:
+					sycnStatus();
+					break;
+			}
+		}
 
 		@Override
 		public void execute() {
@@ -77,7 +87,7 @@ public class SyncStatusService extends BaseService {
 		try {
 			rmNotification(intent.getLongExtra("roomId", 0));
 		} catch (Exception e) {
-			Log.e(TAG, "", e);
+//			Log.e(TAG, "", e);
 		}
 	}
 	@Override
@@ -108,7 +118,9 @@ public class SyncStatusService extends BaseService {
 			
 			@Override
 			public void run() {
-				sycnStatus();
+				Message msg = mHandler.obtainMessage();
+				msg.what = 0;
+				mHandler.sendMessage(msg);
 			}
 		};
 		syncTimer.schedule(syncTimer.innerTask, 0, periodtime_syncstatus);
@@ -220,6 +232,7 @@ public class SyncStatusService extends BaseService {
 			
 			@Override
 			public void onSuccess(SyncAppStatus value) {
+				Logger.d("SyncAppStatus--->"+value);
 				if(value!= null){
 					EggBreakResult breakResult = value.getEggBreakResult();
 					if(breakResult!=null && breakResult.getBreakResult()==EggBreakResult.BreakReceive_Success){
