@@ -557,7 +557,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener,Gu
 	}
 	
 	private void initChannels(List<ChannelVO> chns) {
-//		mPlayFragment.initChannels(chns);
+		mPlayFragment.initChannels(chns);
 	}
 	
 	/**
