@@ -73,7 +73,7 @@ public class SmartCardAsyncResult {
                 break;
             case BindCardCommand.NOT_IDENTIFY://不识别的智能卡
                 result = "NOT_MATCH";
-                message = context.getString(R.string.smartcard_number_does);
+                message = context.getString(R.string.not_identify);
                 showDialog(context, bindCardCommand, null, message, notifManager, null);
 
             default:
