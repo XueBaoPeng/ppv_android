@@ -406,7 +406,6 @@ public class ChannelDetailLayout extends LinearLayout implements OnClickListener
 			@Override
 			public void onPostExecute() {
 				CommonUtil.closeProgressDialog();
-				Logger.e("homeActivity="+homeActivity);
 				final SyncDialog dialog = SyncDialog.getInstance(homeActivity);
 				dialog.setDialogContent(day, mChannel, vo);
 				dialog.setButtonOnClickListener(new OnClickListener() {
