@@ -27,6 +27,7 @@ import com.star.mobile.video.util.DateFormat;
 import com.star.mobile.video.util.ImageUtil;
 import com.star.mobile.video.util.ToastUtil;
 import com.star.ui.ImageView.Finisher;
+import com.star.util.Logger;
 import com.star.util.loader.OnResultListener;
 
 /**
@@ -154,27 +155,27 @@ public class MyOrderDetailActivity extends BaseActivity implements OnClickListen
 					String failedReason = null;
 					int acceptStatus = result.getAcceptStatus();
 					switch (acceptStatus) {
-					
-					case RechargeResult.CARD_DOES_NOT_EXIST:
-						failedReason = getString(R.string.recharge_card_number_is_invalid);
-						break;
-					case RechargeResult.CUSTOMER_PASSWORD_IS_NOT_CORRECT:
-						failedReason = getString(R.string.client_password_is_incorrect);
-						break;
-					case RechargeResult.CARD_IS_ALREADY_IN_USE:
-						failedReason = getString(R.string.recharge_card_number_has_been_used_before);
-						break;
-					case RechargeResult.CARD_HAS_EXPIRED:
-						failedReason = getString(R.string.recharge_card_has_expired);
-						break;
-					default:
-						failedReason = getString(R.string.service_abnormal)+"("+acceptStatus+")";
-						break;
+
+						case RechargeResult.CARD_DOES_NOT_EXIST:
+							failedReason = getString(R.string.recharge_card_number_is_invalid);
+							break;
+						case RechargeResult.CUSTOMER_PASSWORD_IS_NOT_CORRECT:
+							failedReason = getString(R.string.client_password_is_incorrect);
+							break;
+						case RechargeResult.CARD_IS_ALREADY_IN_USE:
+							failedReason = getString(R.string.recharge_card_number_has_been_used_before);
+							break;
+						case RechargeResult.CARD_HAS_EXPIRED:
+							failedReason = getString(R.string.recharge_card_has_expired);
+							break;
+						default:
+							failedReason = getString(R.string.service_abnormal) + "(" + acceptStatus + ")";
+							break;
 					}
 					String dec = "";
 					Double money = result.getRechargeMoney();
-					if(money != null && money > 0) {
-						dec=SharedPreferencesUtil.getCurrencSymbol(MyOrderDetailActivity.this)+money;
+					if (money != null && money > 0) {
+						dec = SharedPreferencesUtil.getCurrencSymbol(MyOrderDetailActivity.this) + money;
 					}
 					setMyOrderDetailInfo(getString(R.string.recharge), result.getSmartCardNo(), dec,
 							result.getCreateDate(), R.drawable.ic_cancel, result.getUpdateDate(),
@@ -190,7 +191,7 @@ public class MyOrderDetailActivity extends BaseActivity implements OnClickListen
 			public void onFailure(int errorCode, String msg) {
 				mSmartCardLoading.setVisibility(View.GONE);
 				showAllView();
-				ToastUtil.centerShowToast(MyOrderDetailActivity.this, getString(R.string.service_abnormal)+"("+errorCode+")");
+				ToastUtil.centerShowToast(MyOrderDetailActivity.this, getString(R.string.service_abnormal) + "(" + errorCode + ")");
 			}
 		});
 	}
@@ -277,25 +278,25 @@ public class MyOrderDetailActivity extends BaseActivity implements OnClickListen
 					String failedReason = null;
 					int acceptStatus = bindCardCommand.getAcceptStatus();
 					switch (acceptStatus) {
-					case BindCardCommand.CARD_IS_BIND_RESULT:
-						// 智能卡已经绑定
-						failedReason = getString(R.string.smart_card_has_been_bound);
-						break;
-					case BindCardCommand.MORE_THAN:
-						// 绑定智能卡超出限制的次数
-						failedReason = getString(R.string.failed_ten);
-						break;
-					case BindCardCommand.NO_CARD_RESULT:
-						// 智能卡不存在
-						failedReason = getString(R.string.smart_card_not_exist);
-						break;
-					case BindCardCommand.SMS_ERROR_RESULT:
-						// Boss异常
-						failedReason = getString(R.string.service_abnormal);
-						break;
-					default:
-						failedReason = getString(R.string.service_abnormal)+"("+acceptStatus+")";
-						break;
+						case BindCardCommand.CARD_IS_BIND_RESULT:
+							// 智能卡已经绑定
+							failedReason = getString(R.string.smart_card_has_been_bound);
+							break;
+						case BindCardCommand.MORE_THAN:
+							// 绑定智能卡超出限制的次数
+							failedReason = getString(R.string.failed_ten);
+							break;
+						case BindCardCommand.NO_CARD_RESULT:
+							// 智能卡不存在
+							failedReason = getString(R.string.smart_card_not_exist);
+							break;
+						case BindCardCommand.SMS_ERROR_RESULT:
+							// Boss异常
+							failedReason = getString(R.string.service_abnormal);
+							break;
+						default:
+							failedReason = getString(R.string.service_abnormal) + "(" + acceptStatus + ")";
+							break;
 					}
 
 					setMyOrderDetailInfo(getString(R.string.bingding_card), bindCardCommand.getSmartCardNo(), "",
@@ -303,7 +304,7 @@ public class MyOrderDetailActivity extends BaseActivity implements OnClickListen
 							failedReason, R.drawable.ic_alert, bindCardCommand.getCreateDate(),
 							bindCardCommand.getUpdateDate(), getString(R.string.binding_card_successfully),
 							bindCardCommand.getProgress(), bindCardCommand.getAcceptStatus());
-				}else {
+				} else {
 					ToastUtil.centerShowToast(MyOrderDetailActivity.this, getString(R.string.no_data));
 				}
 
@@ -313,7 +314,7 @@ public class MyOrderDetailActivity extends BaseActivity implements OnClickListen
 			public void onFailure(int errorCode, String msg) {
 				mSmartCardLoading.setVisibility(View.GONE);
 				showAllView();
-				ToastUtil.centerShowToast(MyOrderDetailActivity.this, getString(R.string.service_abnormal)+"("+errorCode+")");
+				ToastUtil.centerShowToast(MyOrderDetailActivity.this, getString(R.string.service_abnormal) + "(" + errorCode + ")");
 			}
 		});
 	}
@@ -338,33 +339,33 @@ public class MyOrderDetailActivity extends BaseActivity implements OnClickListen
 					String failedReason = null;
 					int acceptStatus = changePackageCMD.getAccepStatus();
 					switch (acceptStatus) {
-					case ChangePackageCode.BOX_NUMBER_NOT_MATCH:
-						// 更换产品包输入的机顶盒号不匹配
-						failedReason = getString(R.string.decoder_is_correct);
-						break;
-					case ChangePackageCode.CHANGE_PACKAGE_ERROR:
-						// 该用户没有此智能卡
-						failedReason = getString(R.string.smart_card_not_exist);
-						break;
-					case ChangePackageCode.STB_CODE_NULL:
-						// 机顶盒号为空
-						failedReason = getString(R.string.set_top_is_empty);
-						break;
-					case ChangePackageCode.LACK_BALANCE:
-						// 账户余额不足新包费用
-						failedReason = getString(R.string.balance_cannot_bouquet);
-						break;
-					case ChangePackageCode.PHONE_NO_MATCHING:
-						// 输入的手机号不匹配
-						failedReason = getString(R.string.phone_number_not_match);
-						break;
-					case ChangePackageCode.CHECK_NUMBER_LOSE:
-						// 验证码无效
-						failedReason = getString(R.string.invalid_verification_code);
-						break;
-					default:
-						failedReason = getString(R.string.service_abnormal)+"("+acceptStatus+")";
-						break;
+						case ChangePackageCode.BOX_NUMBER_NOT_MATCH:
+							// 更换产品包输入的机顶盒号不匹配
+							failedReason = getString(R.string.decoder_is_correct);
+							break;
+						case ChangePackageCode.CHANGE_PACKAGE_ERROR:
+							// 该用户没有此智能卡
+							failedReason = getString(R.string.smart_card_not_exist);
+							break;
+						case ChangePackageCode.STB_CODE_NULL:
+							// 机顶盒号为空
+							failedReason = getString(R.string.set_top_is_empty);
+							break;
+						case ChangePackageCode.LACK_BALANCE:
+							// 账户余额不足新包费用
+							failedReason = getString(R.string.balance_cannot_bouquet);
+							break;
+						case ChangePackageCode.PHONE_NO_MATCHING:
+							// 输入的手机号不匹配
+							failedReason = getString(R.string.phone_number_not_match);
+							break;
+						case ChangePackageCode.CHECK_NUMBER_LOSE:
+							// 验证码无效
+							failedReason = getString(R.string.invalid_verification_code);
+							break;
+						default:
+							failedReason = getString(R.string.service_abnormal) + "(" + acceptStatus + ")";
+							break;
 					}
 
 					String desc = String.format(getString(R.string.change_bouquet_desc),
@@ -375,7 +376,7 @@ public class MyOrderDetailActivity extends BaseActivity implements OnClickListen
 							failedReason, R.drawable.ic_alert, changePackageCMD.getCreateDate(),
 							changePackageCMD.getUpdateDate(), getString(R.string.change_bouquet_successfully),
 							changePackageCMD.getProgress(), changePackageCMD.getAccepStatus());
-				}else {
+				} else {
 					ToastUtil.centerShowToast(MyOrderDetailActivity.this, getString(R.string.no_data));
 				}
 			}
@@ -384,11 +385,10 @@ public class MyOrderDetailActivity extends BaseActivity implements OnClickListen
 			public void onFailure(int errorCode, String msg) {
 				mSmartCardLoading.setVisibility(View.GONE);
 				showAllView();
-				ToastUtil.centerShowToast(MyOrderDetailActivity.this, getString(R.string.service_abnormal)+"("+errorCode+")");
+				ToastUtil.centerShowToast(MyOrderDetailActivity.this, getString(R.string.service_abnormal) + "(" + errorCode + ")");
 			}
 		});
 	}
-
 	/**
 	 * 设置订单详情的信息
 	 * 
@@ -455,6 +455,8 @@ public class MyOrderDetailActivity extends BaseActivity implements OnClickListen
 			mResultReasonTV.setVisibility(View.GONE);
 			mResultReasonContentTV.setVisibility(View.GONE);
 		}
+
+		sendSatus(status,resultStatus);
 	}
 
 	private String formatSmarCardNo(String cmardNo) {
@@ -476,6 +478,20 @@ public class MyOrderDetailActivity extends BaseActivity implements OnClickListen
 		}
 
 	}
+
+
+	/**
+	 * 发送状态给调用者
+	 */
+	private void sendSatus(int status,int resultStatus) {
+		Logger.e("my order detail resultStatus=" + resultStatus);
+		Intent intent = new Intent();
+		intent.putExtra("resultSatus", resultStatus);
+		intent.putExtra("status", status);
+		//设置返回数据
+		setResult(RESULT_OK, intent);
+	}
+
 	/**
 	 * 隐藏所有View
 	 */
