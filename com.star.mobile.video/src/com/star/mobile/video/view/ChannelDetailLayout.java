@@ -50,6 +50,7 @@ import com.star.mobile.video.util.DensityUtil;
 import com.star.mobile.video.util.LoadingDataTask;
 import com.star.mobile.video.util.http.HTTPInvoker;
 import com.star.ui.ImageView.Finisher;
+import com.star.util.Logger;
 
 public class ChannelDetailLayout extends LinearLayout implements OnClickListener{
 	public static final String TAG = ChannelDetailLayout.class.getSimpleName();
@@ -137,7 +138,7 @@ public class ChannelDetailLayout extends LinearLayout implements OnClickListener
 	 * 初始化数据
 	 */
 	private void initData(){
-		mChannelGuideAdapter = new VideoHorizontalListViewAdapter(homeActivity, mVideoContent); 
+		mChannelGuideAdapter = new VideoHorizontalListViewAdapter(homeActivity, mVideoContent);
 		mChannelGuideHorizontalListView.setAdapter(mChannelGuideAdapter);
 		mChannelGuideHorizontalListView.setOnItemClickListener(new MyOnItemClickListener());
 	}
@@ -193,7 +194,7 @@ public class ChannelDetailLayout extends LinearLayout implements OnClickListener
 			break;
 		case R.id.ll_comment:
 			intent = new Intent();
-			intent.setClass(homeActivity,  ChannelCommentActivity.class);
+			intent.setClass(homeActivity, ChannelCommentActivity.class);
 			intent.putExtra("channel", mChannel);
 			CommonUtil.startActivity(homeActivity, intent);
 			break;
@@ -405,6 +406,7 @@ public class ChannelDetailLayout extends LinearLayout implements OnClickListener
 			@Override
 			public void onPostExecute() {
 				CommonUtil.closeProgressDialog();
+				Logger.e("homeActivity="+homeActivity);
 				final SyncDialog dialog = SyncDialog.getInstance(homeActivity);
 				dialog.setDialogContent(day, mChannel, vo);
 				dialog.setButtonOnClickListener(new OnClickListener() {
