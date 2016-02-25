@@ -148,7 +148,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener,Gu
 		//四格体验服务不在监听
 //		Intent intent = new Intent(this,FourLayerService.class);
 //		startService(intent);
-		checkLoginStatus();
+//		checkLoginStatus();
 	}
 
 	private void checkLoginStatus(){
@@ -185,7 +185,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener,Gu
 		mActionBarMoreIV.setOnClickListener(this);
 		findViewById(R.id.iv_actionbar_search).setOnClickListener(this);
 		mPlayFragment = new PlayFragment();
-		mPlayFragment.setFragmentActivity(this);
 //		getSmartCardInfo();//判断是否绑卡
 		initBottomBar();
 		getDisplayWidthHeight();
@@ -558,7 +557,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener,Gu
 	}
 	
 	private void initChannels(List<ChannelVO> chns) {
-		mPlayFragment.initChannels(chns);	
+//		mPlayFragment.initChannels(chns);
 	}
 	
 	/**
