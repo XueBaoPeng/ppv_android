@@ -627,7 +627,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 	 * 显示收藏
 	 */
 	private void showFavorite(int position) {
-		if (mCurrentChannel.isFav()) {
+		if (mCurrentChannel!=null&&mCurrentChannel.isFav()) {
 			mFavoriteSmallImageView.setVisibility(View.VISIBLE);
 		} else {
 			mFavoriteSmallImageView.setVisibility(View.GONE);

@@ -115,9 +115,6 @@ public class ChatRoomsAdapter extends BaseAdapter {
 			public void onClick(View v) {
 				Intent intent = new Intent();
 				intent.setClass(context, ChatActivity.class);
-				if(ChatRoom.ROBOT_CASH_CODE.equals(room.getCode())) {
-					room.setCashId(room.getFaqCashId(StarApplication.mUser.getId()));
-				}
 				intent.putExtra("chatroom", room);
 				CommonUtil.startActivity((Activity)context, intent);
 				new Handler().postDelayed(new Runnable() {

@@ -167,11 +167,11 @@ public class ChannelDAO implements IChannelDAO {
 		while (true) {
 			c.moveToNext();
 			TVPlatformInfo info = new TVPlatformInfo();
-			info.setTvPlatForm(TVPlatForm.getTVPlatForm(c.getInt(c.getColumnIndex("cp.platform_type"))));
-			info.setChannelNumber(c.getString(c.getColumnIndex("cp.channel_number")));
+			info.setTvPlatForm(TVPlatForm.getTVPlatForm(c.getInt(c.getColumnIndex("platform_type"))));
+			info.setChannelNumber(c.getString(c.getColumnIndex("channel_number")));
 			Package pa = new Package();
-			pa.setName(c.getString(c.getColumnIndex("p.name")));
-			pa.setCode(c.getString(c.getColumnIndex("p.code")));
+			pa.setName(c.getString(c.getColumnIndex("name")));
+			pa.setCode(c.getString(c.getColumnIndex("code")));
 //			List<Resource> list = new ArrayList<Resource>();
 //			Resource re = new Resource();
 //			re.setUrl(c.getString(c.getColumnIndex("logoUrl")));
