@@ -5,6 +5,7 @@ import java.util.List;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.text.SpannableString;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.star.cms.model.Comment;
+import com.star.cms.model.User;
 import com.star.mobile.video.R;
 import com.star.mobile.video.StarApplication;
 import com.star.mobile.video.shared.SharedPreferencesUtil;
@@ -24,9 +26,9 @@ import com.star.mobile.video.util.CommonUtil;
 import com.star.mobile.video.util.ExpressionUtil;
 import com.star.ui.ImageView;
 import com.star.ui.ImageView.Finisher;
+import com.star.util.app.Application;
 
 public class CommentListAdapter extends BaseAdapter{
-	
 	private Context context;
 	private List<Comment> datas;
 	private String regExpres = "f0[0-9]{2}|f10[0-7]";
@@ -92,7 +94,7 @@ public class CommentListAdapter extends BaseAdapter{
 		setText(holder.commentContent, comment.getMsg(),regExpres);
 		//holder.commentContent.setText(comment.getMsg());
 		if(datas.get(position).getNickName() == null || "".equals(datas.get(position).getNickName())){
-			holder.userName.setText("Guest");
+			holder.userName.setText(new Build().MODEL);
 		} else {
 			if(SharedPreferencesUtil.getUserName(context) != null) {
 				if(StarApplication.mUser != null && StarApplication.mUser.getId().equals(comment.getUserId())) {
