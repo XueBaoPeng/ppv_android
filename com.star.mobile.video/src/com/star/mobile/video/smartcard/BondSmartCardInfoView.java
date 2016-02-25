@@ -15,6 +15,8 @@ import com.star.cms.model.vo.SmartCardInfoVO;
 import com.star.mobile.video.R;
 import com.star.mobile.video.activity.AccountBillActivity;
 import com.star.mobile.video.changebouquet.ChangeBouquetActivity;
+import com.star.mobile.video.model.FunctionType;
+import com.star.mobile.video.service.FunctionService;
 import com.star.mobile.video.shared.SharedPreferencesUtil;
 import com.star.mobile.video.smartcard.recharge.RechargeSmartCardActivity;
 import com.star.mobile.video.util.CommonUtil;
@@ -276,6 +278,7 @@ public class BondSmartCardInfoView extends RelativeLayout implements View.OnClic
             if (sc.getTvPlatForm().getNum()==TVPlatForm.DTT.getNum()){
                 mSmartCardImageView.setImageResource(R.drawable.smartcard_dtt);
             }else {
+                disimssRechargeAndBouquet();
                 mSmartCardImageView.setImageResource(R.drawable.smartcard_dth);
             }
         }
@@ -302,6 +305,11 @@ public class BondSmartCardInfoView extends RelativeLayout implements View.OnClic
         if (sc.getPhoneNumber() != null) {
             setCustomerPhone(sc.getPhoneNumber());
         }
+    }
+
+    private void disimssRechargeAndBouquet() {
+        findViewById(R.id.balance_rl).setVisibility(View.GONE);
+        findViewById(R.id.bouquet_rl).setVisibility(View.GONE);
     }
 
     private String formatSmarCardNo(String cmardNo) {
