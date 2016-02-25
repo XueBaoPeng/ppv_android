@@ -121,31 +121,29 @@ public class ChooseAreaActivity extends BaseActivity {
 
 			@Override
 			public void onSuccess(String value) {
-				if (value!=null){
 				/*
 		 * 通过定位回来的地区，跟新当前位置*/
 				Area area=null;
-					if(value!=null){
-						try {
-							localAreaCode=new JSONObject(value).getString("code");
-						} catch (JSONException e) {
-							e.printStackTrace();
-						}
-						for (int i=0;i<areas.size();i++){
-							area=areas.get(i);
-							if(area.getCode().equals(localAreaCode)){
-								setMaybeOpention(area);
-								purrentArea=area;
-							}
-						}
-					}else{
-						setMaybeOpention(purrentArea);
+				if(value!=null){
+					try {
+						localAreaCode=new JSONObject(value).getString("code");
+					} catch (JSONException e) {
+						e.printStackTrace();
 					}
+					for (int i=0;i<areas.size();i++){
+						area=areas.get(i);
+						if(area.getCode().equals(localAreaCode)){
+							setMaybeOpention(area);
+							purrentArea=area;
+						}
+					}
+				}else{
+					setMaybeOpention(purrentArea);
 				}
 			}
 			@Override
 			public void onFailure(int errorCode, String msg) {
-
+				setMaybeOpention(purrentArea);
 			}
 		});
 
@@ -156,9 +154,14 @@ public class ChooseAreaActivity extends BaseActivity {
 	 * @param area
 	 */
 	private void setMaybeOpention(Area area){
+		if(place_image==null||place_image.getAnimation()==null)
+			return;
 		if (area==null){
 			tv_isLoading.setText(R.string.request_fail);
-			place_image.getAnimation().cancel();
+//			if (place_image!=null&&place_image.getAnimation()!=null){
+				place_image.getAnimation().cancel();
+//			}
+
 			return;
 		}
 		place_image.getAnimation().cancel();
