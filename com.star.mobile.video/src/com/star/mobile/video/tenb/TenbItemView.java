@@ -13,13 +13,9 @@ import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import java.util.List;
-
-import com.star.cms.model.Tenb;
-import com.star.cms.model.TenbMe;
-import com.star.cms.model.TenbTopic;
-import com.star.cms.model.User;
+import com.star.cms.model.*;
 import com.star.cms.model.enm.Status;
+import com.star.cms.model.enm.TVPlatForm;
 import com.star.cms.model.vo.ChannelVO;
 import com.star.cms.model.vo.CommentVO;
 import com.star.cms.model.vo.ProgramVO;
@@ -34,9 +30,9 @@ import com.star.mobile.video.util.Constant;
 import com.star.mobile.video.util.DateFormat;
 import com.star.mobile.video.util.LoadingDataTask;
 import com.star.util.loader.LoadMode;
-import com.star.util.loader.OnListResultListener;
-import com.star.util.loader.OnResultListener;
 import com.star.util.loader.OnResultTagListener;
+
+import java.util.List;
 
 public class TenbItemView extends LinearLayout {
 	
@@ -51,13 +47,11 @@ public class TenbItemView extends LinearLayout {
 	private LinearLayout llTwoLive;
 	private LinearLayout llThreeLive;
 	private LinearLayout llFourLive;
-	private TextView tvChannelDeatil;//频道描述
+	private TextView tvChannelDeatil;
 	private TextView tvProgramDate;
-	private TextView tvChannelNumber;
 	private TextView tvTenbDetail;
 	
 	
-	private TextView tv_four_channelNum;
 	private TextView tv_four_programData;
 	private TextView tv_four_programTime;
 	private LinearLayout llTenbContent;
@@ -72,7 +66,28 @@ public class TenbItemView extends LinearLayout {
 	private RelativeLayout rlBbsPrz;
 	private TextView tvFavCount;
 	private TextView tvCmmCount;
-	
+
+	private TextView channel_dtt_number;
+	private TextView channel_dth_number;
+	private View dtt_layout;
+	private View dth_layout;
+	private RelativeLayout channel_name;
+	private RelativeLayout channel_layout;
+
+	private TextView channel_dtt_number_1;
+	private TextView channel_dth_number_1;
+	private View dtt_layout_1;
+	private View dth_layout_1;
+	private RelativeLayout channel_name_1;
+	private RelativeLayout channel_layout_1;
+
+	private TextView channel_dtt_number_2;
+	private TextView channel_dth_number_2;
+	private View dtt_layout_2;
+	private View dth_layout_2;
+	private RelativeLayout channel_name_2;
+	private RelativeLayout channel_layout_2;
+
 	public TenbItemView(Context context) {
 		this(context, null);
 	}
@@ -96,7 +111,6 @@ public class TenbItemView extends LinearLayout {
 		llFourLive=(LinearLayout) findViewById(R.id.ll_four_live);
 		tvChannelDeatil = (TextView) findViewById(R.id.tv_channel_detail);
 		tvProgramDate = (TextView) findViewById(R.id.tv_program_date);
-		tvChannelNumber = (TextView) findViewById(R.id.tv_channel_number);
 		tvTenbDetail = (TextView) findViewById(R.id.tv_tenb_detail);
 		llTenbContent = (LinearLayout) findViewById(R.id.ll_tenb_content);
 		rlBbsPrz = (RelativeLayout) findViewById(R.id.rl_bbs_prz);
@@ -104,9 +118,26 @@ public class TenbItemView extends LinearLayout {
 		tvCmmCount = (TextView) findViewById(R.id.tv_cmm_count);
 		tvTenbComment=(TextView) findViewById(R.id.comment_content);
 		ratingBar=(RatingBar) findViewById(R.id.rating_channel);
-		tv_four_channelNum=(TextView)findViewById(R.id.tv_channel_num);
 		tv_four_programData=(TextView) findViewById(R.id.tv_programdata);
 		tv_four_programTime=(TextView) findViewById(R.id.tv_program_time);
+		channel_dtt_number= (TextView) findViewById(R.id.channel_dtt_number);
+		channel_dth_number= (TextView) findViewById(R.id.channel_dth_number);
+		dtt_layout = findViewById(R.id.decoder_relativelayout);
+		dth_layout = findViewById(R.id.dish_relativelayout);
+		channel_name= (RelativeLayout) findViewById(R.id.channel_name_relativelayout);
+		channel_layout= (RelativeLayout) findViewById(R.id.channel_layout);
+		channel_dtt_number_1= (TextView) findViewById(R.id.channel_dtt_number_1);
+		channel_dth_number_1= (TextView) findViewById(R.id.channel_dth_number_1);
+		dtt_layout_1 = findViewById(R.id.decoder_relativelayout_1);
+		dth_layout_1 = findViewById(R.id.dish_relativelayout_1);
+		channel_name_1= (RelativeLayout) findViewById(R.id.channel_name_relativelayout_1);
+		channel_layout_1= (RelativeLayout) findViewById(R.id.channel_layout_1);
+		channel_dtt_number_2= (TextView) findViewById(R.id.channel_dtt_number_2);
+		channel_dth_number_2= (TextView) findViewById(R.id.channel_dth_number_2);
+		dtt_layout_2 = findViewById(R.id.decoder_relativelayout_2);
+		dth_layout_2 = findViewById(R.id.dish_relativelayout_2);
+		channel_name_2= (RelativeLayout) findViewById(R.id.channel_name_relativelayout_2);
+		channel_layout_2= (RelativeLayout) findViewById(R.id.channel_layout_2);
 	}
 	private void initView() {
 		flChannelLogoLayout.setVisibility(View.GONE);
@@ -119,8 +150,6 @@ public class TenbItemView extends LinearLayout {
 		tvTenbTitle.setText("");
 		tvChannelDeatil.setText("");
 		tvProgramDate.setText("");
-		tvChannelNumber.setText("");
-		tv_four_channelNum.setText("");
 		tv_four_programData.setText("");
 		tv_four_programTime.setText("");
 		tvTenbDetail.setText("");
@@ -289,7 +318,7 @@ public class TenbItemView extends LinearLayout {
 		if(channel==null)
 			return;
 		ivChannelLogo.setUrl(channel.getLogo().getResources().get(0).getUrl());
-		tvTenbTitle.setText("Channel - "+channel.getChannelNumber());
+		tvTenbTitle.setText(channel.getName());
 		if(type == Tenb.TENB_FAV_CHANNEL)
 			tvChannelDeatil.setText(mContext.getString(R.string.fav_channel, channel.getName()));
 		else if(type == Tenb.TENB_DOWNLOAD_EPG)
@@ -298,24 +327,43 @@ public class TenbItemView extends LinearLayout {
 	}
 	
 	private void initChnEpgData(ChannelVO channel, ProgramVO program) {
-		if(channel!=null){
+		setChannelInfo(channel);
+		if (channel != null) {
 			ivChannelLogo.setUrl(channel.getLogo().getResources().get(0).getUrl());
-			tvChannelNumber.setText("Channel - "+channel.getChannelNumber());
-			tv_four_channelNum.setText("Channel - "+channel.getChannelNumber());
-			tv_four_channelNum.setText("Channel: "+channel.getChannelNumber()+"-"+channel.getName());
+			try {
+				channel_layout.setVisibility(View.VISIBLE);
+				dtt_layout.setVisibility(View.GONE);
+				dth_layout.setVisibility(View.GONE);
+				channel_name.setVisibility(View.GONE);
+				List<TVPlatformInfo> infos = channel.getOfAreaTVPlatforms().get(0).getPlatformInfos();
+				for(TVPlatformInfo info : infos) {
+					if(info.getOfPackage()!=null)
+						if (TVPlatForm.DTT.equals(info.getTvPlatForm())) {
+							channel_dtt_number.setText(info.getChannelNumber());
+							dtt_layout.setVisibility(View.VISIBLE);
+							channel_name.setVisibility(View.VISIBLE);
+						}else if(TVPlatForm.DTH.equals(info.getTvPlatForm())){
+							channel_dth_number.setText(info.getChannelNumber());
+							dth_layout.setVisibility(View.VISIBLE);
+							channel_name.setVisibility(View.VISIBLE);
+						}
+				}
+			}catch (Exception e){
+			}
 		}
 		if(program!=null){
 			tvProgramDate.setText(DateFormat.formatDateMonth(program.getStartDate(), "HH:mm MM-dd"));
 			tvTenbTitle.setText(program.getName());
-			tv_four_programTime.setText("Time: "+DateFormat.formatTime(program.getStartDate())+"-"+DateFormat.formatTime(program.getEndDate()));
+			tv_four_programTime.setText("Time: " + DateFormat.formatTime(program.getStartDate()) + "-" + DateFormat.formatTime(program.getEndDate()));
 			tv_four_programData.setText("Date: "+DateFormat.formatDayAndMonth(program.getStartDate()));
 		}
 	}	
 	private void initChnSource(ChannelVO channel) {//初始化频道评分
 		 if(channel!=null){ 
 			ivChannelLogo.setUrl(channel.getLogo().getResources().get(0).getUrl());
-			tvChannelDeatil.setText("Channel - "+channel.getChannelNumber());
-			tvTenbTitle.setText(channel.getName());	
+			 tvChannelDeatil.setVisibility(View.GONE);
+			 setChannelInfo_for_one(channel);
+			 tvTenbTitle.setText(channel.getName());
 		}
 	}
 	
@@ -356,7 +404,7 @@ public class TenbItemView extends LinearLayout {
 		tvTenbTitle.setText("Welcome to tenbre play");
 		tvTenbDetail.setText("Click here to set  your nickname & avatar,Start your tenbre jouney!");
 	}
-  
+
 	private void getProgram(final long programId,final int type) {
 		new LoadingDataTask() {
 			ProgramVO program;
@@ -414,8 +462,8 @@ public class TenbItemView extends LinearLayout {
 					break;
 				case Tenb.TENB_COMMENT_EPG:
 				case Tenb.TENB_FAV_EPG:
-				case Tenb.TENB_SHARE_EPG:
-					initChnEpgData(channel, null);
+					case Tenb.TENB_SHARE_EPG:
+						initChnEpgData(channel, null);
 					break;
 				case Tenb.TENB_COMMENT_CHANNEL:
 					initChnSource(channel);
@@ -448,26 +496,26 @@ public class TenbItemView extends LinearLayout {
 			}
 		}.execute();
 	}
-	
+
 	private void getComment(final long foreignKey,final int type){//获得评分详情
 		tenbService.getComment(foreignKey, type, new OnResultTagListener<CommentVO>() {
 
 			@Override
 			public boolean onIntercept() {
-			 
+
 				return false;
 			}
 
 			@Override
 			public void onSuccess(CommentVO value) {
 				// TODO Auto-generated method stub
-				if(value!=null){
+				if (value != null) {
 					ratingBar.setVisibility(View.VISIBLE);
-					 ratingBar.setRating(value.getScore());
-					 tvTenbComment.setText(value.getMsg());
-					getChannel(value.getChannelID(),type);
-					
-				}else{
+					ratingBar.setRating(value.getScore());
+					tvTenbComment.setText(value.getMsg());
+					getChannel(value.getChannelID(), type);
+
+				} else {
 					ratingBar.setVisibility(View.GONE);
 				}
 			}
@@ -475,7 +523,7 @@ public class TenbItemView extends LinearLayout {
 			@Override
 			public void onFailure(int errorCode, String msg) {
 				// TODO Auto-generated method stub
-				
+
 			}
 		});
 /*		 CommentLoader.getInstance().load(getContext(), Constant.getChannelSource(foreignKey),new OnResultTagListener<CommentVO>() {
@@ -506,6 +554,55 @@ public class TenbItemView extends LinearLayout {
 			}
 		}, CommentVO.class, LoadMode.CACHE_NET);;*/
 	}
+	private void setChannelInfo_for_one(ChannelVO channel) {
+		if (channel != null) {
+			try {
+				channel_layout_2.setVisibility(View.VISIBLE);
+				dtt_layout_2.setVisibility(View.GONE);
+				dth_layout_2.setVisibility(View.GONE);
+				channel_name_2.setVisibility(View.GONE);
+				List<TVPlatformInfo> infos = channel.getOfAreaTVPlatforms().get(0).getPlatformInfos();
+				for(TVPlatformInfo info : infos) {
+					if(info.getOfPackage()!=null)
+						if (TVPlatForm.DTT.equals(info.getTvPlatForm())) {
+							channel_dtt_number_2.setText(info.getChannelNumber());
+							dtt_layout_2.setVisibility(View.VISIBLE);
+							channel_name_2.setVisibility(View.VISIBLE);
+						}else if(TVPlatForm.DTH.equals(info.getTvPlatForm())){
+							channel_dth_number_2.setText(info.getChannelNumber());
+							dth_layout_2.setVisibility(View.VISIBLE);
+							channel_name_2.setVisibility(View.VISIBLE);
+						}
+				}
+			}catch (Exception e){
+			}
+		}
+	}
+	private void setChannelInfo(ChannelVO channel) {
+		if (channel != null) {
+			try {
+				channel_layout_1.setVisibility(View.VISIBLE);
+				dtt_layout_1.setVisibility(View.GONE);
+				dth_layout_1.setVisibility(View.GONE);
+				channel_name_1.setVisibility(View.GONE);
+				List<TVPlatformInfo> infos = channel.getOfAreaTVPlatforms().get(0).getPlatformInfos();
+				for(TVPlatformInfo info : infos) {
+					if(info.getOfPackage()!=null)
+					if (TVPlatForm.DTT.equals(info.getTvPlatForm())) {
+						channel_dtt_number_1.setText(info.getChannelNumber());
+						dtt_layout_1.setVisibility(View.VISIBLE);
+						channel_name_1.setVisibility(View.VISIBLE);
+					}else if(TVPlatForm.DTH.equals(info.getTvPlatForm())){
+						channel_dth_number_1.setText(info.getChannelNumber());
+						dth_layout_1.setVisibility(View.VISIBLE);
+						channel_name_1.setVisibility(View.VISIBLE);
+					}
+				}
+			}catch (Exception e){
+			}
+		}
+	}
+
 	private void getTenbTopic(final long topicId,final int type) {
 //		new LoadingDataTask() {
 //			@Override
