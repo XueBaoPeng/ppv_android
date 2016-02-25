@@ -1042,6 +1042,7 @@
     <string name="smart_card_count_more_than_10">Binding number has exceed the limit. Each account can bind 10 smart cards.</string>
     <string name="place_choose">Maybe you are here</string>
     <string name="all">ALL</string>
-    <string name="request_fail">Fail to loacte</string>
+    <string name="request_fail">Fail to locate</string>
+    <string name="channel_">Channel:</string>
     <string name="not_identify">Sorry, we do not support this kind of smart card temporarily.</string>
 </resources>
