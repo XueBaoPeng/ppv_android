@@ -84,16 +84,15 @@
 	             android:textSize="15sp"
 	             android:text="@string/check_email_"
 	             />
-	         <TextView 
+	         <TextView
 	             android:layout_width="wrap_content"
 	             android:layout_height="wrap_content"
 	             android:textColor="@color/alert_setting_text"
 	             android:layout_marginTop="15dp"
 	             android:layout_marginLeft="15dp"
 	             android:textSize="15sp"
-	             android:text="@string/still_find"
 	             />
-	         
+
 	         <RelativeLayout 
 	             android:layout_width="match_parent"
 	             android:layout_height="wrap_content"

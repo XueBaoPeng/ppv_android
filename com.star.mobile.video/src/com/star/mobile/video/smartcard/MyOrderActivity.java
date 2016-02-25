@@ -14,6 +14,7 @@ import com.star.mobile.video.util.CommonUtil;
 import com.star.mobile.video.util.ToastUtil;
 import com.star.mobile.video.view.ListView.LoadingListener;
 import com.star.ui.HorizontalListView;
+import com.star.util.Logger;
 import com.star.util.loader.OnListResultListener;
 
 import android.content.Intent;
@@ -94,6 +95,7 @@ public class MyOrderActivity extends BaseActivity implements OnClickListener{
 				break;
 		}
 	}
+	private int mCurrentPostiont = -1;
 	/**
 	 * 获得订单列表信息
 	 */
@@ -116,6 +118,7 @@ public class MyOrderActivity extends BaseActivity implements OnClickListener{
 
 						@Override
 						public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+							mCurrentPostiont = position;
 							SMSHistory smsHistory = mMyOrderLists.get(position);
 							Intent it = new Intent();
 							it.putExtra("smsHistoryID", smsHistory.getId());
@@ -148,4 +151,26 @@ public class MyOrderActivity extends BaseActivity implements OnClickListener{
 
 	}
 
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (requestCode == 200) {
+			if (data != null) {
+				Bundle bundle = data.getExtras();
+				if (bundle != null) {
+					int resultStatus = bundle.getInt("resultSatus");
+					int status = bundle.getInt("status");
+					SMSHistory smsHistory = mMyOrderLists.get(mCurrentPostiont);
+					smsHistory.setAcceptStatus(resultStatus);
+					smsHistory.setProgress(status);
+					mMyOrderLists.set(mCurrentPostiont,smsHistory);
+					mMyOrderAdapter.setMyOrderData(mMyOrderLists);
+				} else {
+					Log.i("initData", "bundle is null");
+				}
+			} else {
+				Log.i("initData", "data is null");
+			}
+		}
+		super.onActivityResult(requestCode, resultCode, data);
+	}
 }

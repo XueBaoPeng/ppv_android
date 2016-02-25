@@ -9,6 +9,7 @@ import android.os.Bundle;
 import com.igexin.sdk.PushConsts;
 import com.igexin.sdk.PushManager;
 import com.igexin.sdk.Tag;
+import com.star.cms.model.User;
 import com.star.cms.model.enm.Sex;
 import com.star.cms.model.enm.Type;
 import com.star.mobile.video.R;
@@ -19,6 +20,8 @@ import com.star.mobile.video.shared.SharedPreferencesUtil;
 import com.star.mobile.video.util.CommonUtil;
 import com.star.mobile.video.util.NotificationUtil;
 import com.star.mobile.video.util.ToastUtil;
+import com.star.util.SharedPreferences;
+import com.star.util.app.GA;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -58,6 +61,8 @@ public class PushTenbreReceiver extends BroadcastReceiver {
 					String code = jb.getString("code");
 					int type = jb.getInt("type");
 					Intent i = CommonUtil.extractIntent(context, Type.getType(type), target, code, null);
+					User user = SharedPreferencesUtil.getUserInfo(context);
+					GA.sendEvent("PUSH", user == null?SharedPreferencesUtil.getDiciveId(context):user.getUserName(),type+"#"+target+"#"+code,1);
 					NotificationUtil.showNotification(content,title,title,i,context);
 				}
 			} catch (JSONException e) {
