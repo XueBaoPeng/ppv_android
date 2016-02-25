@@ -107,7 +107,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener,Gu
 		smartCardService=new SmartCardService(this);
 		phoneNumber=0;
 		initView();
-		checkLoginStatus();
 		tenbService = new TenbService(this);
 		userService = new UserService();
 		mChannelService = new ChannelService(this);
@@ -149,6 +148,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener,Gu
 		//四格体验服务不在监听
 //		Intent intent = new Intent(this,FourLayerService.class);
 //		startService(intent);
+		checkLoginStatus();
 	}
 
 	private void checkLoginStatus(){
@@ -185,6 +185,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener,Gu
 		mActionBarMoreIV.setOnClickListener(this);
 		findViewById(R.id.iv_actionbar_search).setOnClickListener(this);
 		mPlayFragment = new PlayFragment();
+		mPlayFragment.setFragmentActivity(this);
 //		getSmartCardInfo();//判断是否绑卡
 		initBottomBar();
 		getDisplayWidthHeight();
