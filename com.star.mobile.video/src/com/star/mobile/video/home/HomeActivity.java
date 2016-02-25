@@ -152,10 +152,12 @@ public class HomeActivity extends FragmentActivity implements OnClickListener,Gu
 	}
 
 	private void checkLoginStatus(){
-		if(SharedPreferencesUtil.getUserName(this)==null&&SharedPreferencesUtil.getDiciveId(this)==null){
+		if(!SyncService.getInstance(this).isDBReady()&&!SyncService.getInstance(this).isLoading()){
 			com.star.util.Logger.d("not login, must go welcome!");
 			ToastUtil.centerShowToast(this, "Sorry, you need login again!");
 			CommonUtil.startActivity(this, WelcomeActivity.class);
+			finish();
+
 		}
 	}
 
