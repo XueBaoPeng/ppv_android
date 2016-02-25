@@ -113,7 +113,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener,Gu
 		mChannelService = new ChannelService(this);
 		mSmartCardSharedPre = new SmartCardSharedPre(HomeActivity.this);
 		fragmentManager = getSupportFragmentManager();
-		setFragmentByTag(AppConfig.TAG_fragment_play);
+		currentIntent(getIntent());
 		syncService = SyncService.getInstance(HomeActivity.this);
 		if(syncService.needInit()){
 			if(!syncService.isLoading()){
@@ -149,8 +149,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener,Gu
 		//四格体验服务不在监听
 //		Intent intent = new Intent(this,FourLayerService.class);
 //		startService(intent);
-		
-		replaceFragmentByTag(getIntent());
 	}
 
 	private void checkLoginStatus(){
@@ -273,6 +271,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener,Gu
 	
 	}
 	private void currentIntent(Intent intent){
+		replaceFragmentByTag(intent);
 		try{
 			channelId = Long.parseLong(intent.getStringExtra("channelId"));
 		}catch (Exception e) {
@@ -409,6 +408,8 @@ public class HomeActivity extends FragmentActivity implements OnClickListener,Gu
 		String tag = intent.getStringExtra("fragmentTag");
 		if(tag!=null){
 			setFragmentByTag(tag);
+		}else{
+			setFragmentByTag(AppConfig.TAG_fragment_play);
 		}
 	}		
 	
