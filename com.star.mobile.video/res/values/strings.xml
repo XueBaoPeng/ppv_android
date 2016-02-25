@@ -1043,4 +1043,5 @@
     <string name="place_choose">Maybe you are here</string>
     <string name="all">ALL</string>
     <string name="request_fail">Fail to loacte</string>
+    <string name="not_identify">Sorry, we do not support this kind of smart card temporarily.</string>
 </resources>
