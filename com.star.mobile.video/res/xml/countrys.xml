@@ -9,25 +9,26 @@
     <!--6 邀请码 -->
     <!--7 手机注册 -->
     <!--8 ppv -->
-    <country name="Nigeria">  
-        <functionIds>8</functionIds>
+    <!--9 DTH -->
+    <country name="Nigeria">
+        <functionIds>8,9</functionIds>
     </country>
     <country name="Tanzania">  
-        <functionIds>1</functionIds>  
+        <functionIds>1,9</functionIds>
     </country>
     <country name="Uganda">  
-        <functionIds>1,8</functionIds>
+        <functionIds>1,8,9</functionIds>
     </country>  
     <country name="Kenya">  
-        <functionIds>1,5,8</functionIds>
+        <functionIds>1,5,8,9</functionIds>
     </country>  
     <country name="South Africa">  
         <functionIds>1,5,8</functionIds>
     </country>  
     <country name="Rwanda">  
-        <functionIds>1,8</functionIds>
+        <functionIds>1,8,9</functionIds>
     </country>  
     <country name="Other Country">
-        <functionIds>0,1,2,3,4,6,7,8</functionIds>
+        <functionIds>0,1,2,3,4,6,7,8,9</functionIds>
     </country>
 </countrys>  

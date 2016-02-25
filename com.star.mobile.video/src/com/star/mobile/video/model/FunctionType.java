@@ -15,7 +15,8 @@ public enum FunctionType {
 	RechargeCard(5),
 	Invitation(6),
 	RegisterWithPhone(7),
-	PPV(8);
+	PPV(8),
+	DTH_SC(9);
 	
 	private int functionType;
 	private FunctionType(int type) {

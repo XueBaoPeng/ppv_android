@@ -411,7 +411,7 @@ public class LoginActivity extends ThirdLoginActivity{
 			public void onPostExecute() {
 				CommonUtil.closeProgressDialog();
 				if(status){
-//					initUserData();
+					initUserData();
 					if(doJump)
 						goHomeActivity();
 				} else {

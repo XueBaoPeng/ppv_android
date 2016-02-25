@@ -33,10 +33,7 @@ public class SyncDialog extends Dialog {
 	}
 	
 	public static SyncDialog getInstance(Context context){
-		if(dialog==null){
-			dialog = new SyncDialog(context);
-		}
-		return dialog;
+		return new SyncDialog(context);
 	}
 	
 	public void setDialogContent(int day, Channel channel, Program program){
