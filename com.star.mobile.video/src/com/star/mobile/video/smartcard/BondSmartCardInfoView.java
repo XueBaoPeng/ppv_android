@@ -15,6 +15,8 @@ import com.star.cms.model.vo.SmartCardInfoVO;
 import com.star.mobile.video.R;
 import com.star.mobile.video.activity.AccountBillActivity;
 import com.star.mobile.video.changebouquet.ChangeBouquetActivity;
+import com.star.mobile.video.model.FunctionType;
+import com.star.mobile.video.service.FunctionService;
 import com.star.mobile.video.shared.SharedPreferencesUtil;
 import com.star.mobile.video.smartcard.recharge.RechargeSmartCardActivity;
 import com.star.mobile.video.util.CommonUtil;
@@ -276,6 +278,7 @@ public class BondSmartCardInfoView extends RelativeLayout implements View.OnClic
             if (sc.getTvPlatForm().getNum()==TVPlatForm.DTT.getNum()){
                 mSmartCardImageView.setImageResource(R.drawable.smartcard_dtt);
             }else {
+//                disimssRechargeAndBouquet();
                 mSmartCardImageView.setImageResource(R.drawable.smartcard_dth);
             }
         }
@@ -304,6 +307,11 @@ public class BondSmartCardInfoView extends RelativeLayout implements View.OnClic
         }
     }
 
+    private void disimssRechargeAndBouquet() {
+        findViewById(R.id.balance_rl).setVisibility(View.GONE);
+        findViewById(R.id.bouquet_rl).setVisibility(View.GONE);
+    }
+
     private String formatSmarCardNo(String cmardNo) {
         StringBuffer sb = new StringBuffer();
         if (cmardNo != null) {
@@ -330,13 +338,17 @@ public class BondSmartCardInfoView extends RelativeLayout implements View.OnClic
             case R.id.balance_rl:
                 // 跳转到Balance页面
                 if (mSmartCardInfoVO != null && mSmartCardInfoVO.getMoney() != null) {
-                    Intent i = new Intent();
-                    i.putExtra("smartcardinfovo", (Serializable) mSmartCardInfoVO);
-                    // i.putExtra("smartinfos", (Serializable) mSmartinfos);
-                    // i.setClass(getActivity(), TopupActivity.class);
-                    i.putExtra("platForm",platForm);
-                    i.setClass(mContext, RechargeSmartCardActivity.class);
-                    CommonUtil.startActivity(mContext, i);
+                    if (platForm.getNum()==TVPlatForm.DTT.getNum()){
+                        Intent i = new Intent();
+                        i.putExtra("smartcardinfovo", (Serializable) mSmartCardInfoVO);
+                        // i.putExtra("smartinfos", (Serializable) mSmartinfos);
+                        // i.setClass(getActivity(), TopupActivity.class);
+                        i.putExtra("platForm",platForm);
+                        i.setClass(mContext, RechargeSmartCardActivity.class);
+                        CommonUtil.startActivity(mContext, i);
+                    }else{
+                        ToastUtil.centerShowToast(mContext, mContext.getString(R.string.not_identify));
+                    }
                 }else {
                     ToastUtil.centerShowToast(mContext, mContext.getString(R.string.loading_prompt));
                 }
@@ -344,11 +356,16 @@ public class BondSmartCardInfoView extends RelativeLayout implements View.OnClic
             case R.id.bouquet_rl:
                 // 跳转到Bouquet页面
                 if (mSmartCardInfoVO != null && mSmartCardInfoVO.getMoney() != null) {
-                    Intent intent = new Intent();
-                    intent.putExtra("smartCardInfoVO", mSmartCardInfoVO);
-                    intent.putExtra("platForm",platForm);
-                    intent.setClass(mContext, ChangeBouquetActivity.class);
-                    CommonUtil.startActivity(mContext, intent);
+                    if (platForm.getNum()==TVPlatForm.DTT.getNum()){
+                        Intent intent = new Intent();
+                        intent.putExtra("smartCardInfoVO", mSmartCardInfoVO);
+                        intent.putExtra("platForm",platForm);
+                        intent.setClass(mContext, ChangeBouquetActivity.class);
+                        CommonUtil.startActivity(mContext, intent);
+                    }else{
+                        ToastUtil.centerShowToast(mContext, mContext.getString(R.string.not_identify));
+                    }
+
                 }else {
                     ToastUtil.centerShowToast(mContext, mContext.getString(R.string.loading_prompt));
                 }

@@ -70,6 +70,81 @@
                 android:textColor="#333333"
                 android:textSize="20sp"
                  />
+
+            <RelativeLayout
+                android:id="@+id/channel_layout_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:visibility="gone"
+                >
+                <RelativeLayout
+                    android:id="@+id/channel_name_relativelayout_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:visibility="gone">
+                    <TextView
+                        android:id="@+id/channel_name_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:textColor="#333333"
+                        android:textSize="20sp"
+                        android:text="@string/channel_"
+                        android:layout_centerVertical="true" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/decoder_relativelayout_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/channel_name_relativelayout_3"
+                    android:visibility="gone" >
+                    <ImageView
+                        android:id="@+id/channel_dtt_image_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/dtt_channel_grey"
+                        android:layout_centerVertical="true"
+                        />
+                    <TextView
+                        android:id="@+id/channel_dtt_number_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#333333"
+                        android:textSize="20sp"
+                        android:layout_toRightOf="@id/channel_dtt_image_3"
+                        android:layout_centerVertical="true"/>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/dish_relativelayout_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/decoder_relativelayout_3"
+                    android:layout_marginLeft="@dimen/dp_8"
+                    android:visibility="gone"
+                    android:layout_centerVertical="true">
+                    <ImageView
+                        android:id="@+id/channel_dth_image_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/dth_channel_grey"
+                        android:layout_centerVertical="true"
+                        />
+                    <TextView
+                        android:id="@+id/channel_dth_number_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:textColor="#333333"
+                        android:textSize="20sp"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/channel_dth_image_3"/>
+                </RelativeLayout>
+            </RelativeLayout>
     		
             <LinearLayout
                 android:layout_width="match_parent"
@@ -110,21 +185,93 @@
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:visibility="gone" >
-
+                    <RelativeLayout
+                        android:id="@+id/channel_layout_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:visibility="gone"
+                        >
+                        <RelativeLayout
+                            android:id="@+id/channel_name_relativelayout_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:visibility="gone">
+                            <TextView
+                                android:id="@+id/channel_name_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:textSize="14sp"
+                                android:textColor="#717171"
+                                android:text="@string/channel_"
+                                android:layout_centerVertical="true" />
+                        </RelativeLayout>
+                        <RelativeLayout
+                            android:id="@+id/decoder_relativelayout_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@id/channel_name_relativelayout_2"
+                            android:visibility="gone" >
+                            <ImageView
+                                android:id="@+id/channel_dtt_image_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/dtt_channel_grey"
+                                android:layout_centerVertical="true"
+                                />
+                            <TextView
+                                android:id="@+id/channel_dtt_number_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#717171"
+                                android:textSize="14sp"
+                                android:layout_toRightOf="@id/channel_dtt_image_2"
+                                android:layout_centerVertical="true"/>
+                        </RelativeLayout>
+                        <RelativeLayout
+                            android:id="@+id/dish_relativelayout_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@id/decoder_relativelayout_2"
+                            android:layout_marginLeft="@dimen/dp_8"
+                            android:visibility="gone"
+                            android:layout_centerVertical="true">
+                            <ImageView
+                                android:id="@+id/channel_dth_image_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/dth_channel_grey"
+                                android:layout_centerVertical="true"
+                                />
+                            <TextView
+                                android:id="@+id/channel_dth_number_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:singleLine="true"
+                                android:textColor="#717171"
+                                android:textSize="14sp"
+                                android:layout_centerVertical="true"
+                                android:layout_toRightOf="@id/channel_dth_image_2"/>
+                        </RelativeLayout>
+                    </RelativeLayout>
                     <TextView
                         android:id="@+id/tv_channel_detail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:maxLines="3"
                         android:textColor="#717171"
-                        android:textSize="14sp" />
-               
+                        android:textSize="14sp"
+                        />
+
 		  			<RatingBar
 					    android:id="@+id/rating_channel"
 					    style="@style/roomRatingBar_24"
 					    android:layout_width="wrap_content"
 					    android:layout_height="wrap_content"
-					    android:layout_below="@id/tv_channel_detail"
+					    android:layout_below="@id/channel_layout_2"
 					    android:isIndicator="true"
 					    android:numStars="5"
 					    android:rating="3.3"
@@ -143,8 +290,8 @@
                     android:layout_marginRight="8dp"
                     android:layout_weight="1"
                     android:orientation="vertical"
-                    android:visibility="gone" >
-				
+                    android:visibility="visible">
+
                     <TextView
                         android:id="@+id/tv_program_date"
                         android:layout_width="wrap_content"
@@ -153,16 +300,80 @@
                         android:gravity="center"
                         android:textColor="#717171"
                         android:textSize="14sp" />
-
-                    <TextView
-                        android:id="@+id/tv_channel_number"
+                    <RelativeLayout
+                        android:id="@+id/channel_layout"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:textColor="#717171"
-                        android:textSize="14sp" />
-               
+                        android:visibility="gone"
+                         >
+                        <RelativeLayout
+                            android:id="@+id/channel_name_relativelayout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:visibility="gone">
+                            <TextView
+                                android:id="@+id/channel_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:textSize="14sp"
+                                android:textColor="#717171"
+                                android:text="@string/channel_"
+                                android:layout_centerVertical="true" />
+                        </RelativeLayout>
+                        <RelativeLayout
+                            android:id="@+id/decoder_relativelayout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@id/channel_name_relativelayout"
+                            android:visibility="gone" >
+                            <ImageView
+                                android:id="@+id/channel_dtt_image"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/dtt_channel_grey"
+                                android:layout_centerVertical="true"
+                                />
+                            <TextView
+                                android:id="@+id/channel_dtt_number"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#717171"
+                                android:textSize="14sp"
+                                android:layout_toRightOf="@id/channel_dtt_image"
+                                android:layout_centerVertical="true"/>
+                        </RelativeLayout>
+                        <RelativeLayout
+                            android:id="@+id/dish_relativelayout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@id/decoder_relativelayout"
+                            android:layout_marginLeft="@dimen/dp_8"
+                            android:visibility="gone"
+                            android:layout_centerVertical="true">
+                            <ImageView
+                                android:id="@+id/channel_dth_image"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/dth_channel_grey"
+                                android:layout_centerVertical="true"
+                                />
+                            <TextView
+                                android:id="@+id/channel_dth_number"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:singleLine="true"
+                                android:textColor="#717171"
+                                android:textSize="14sp"
+                                android:layout_centerVertical="true"
+                                android:layout_toRightOf="@id/channel_dth_image"/>
+                        </RelativeLayout>
+                    </RelativeLayout>
+
                 </LinearLayout>
 
                 <!-- 行内容 -->
@@ -243,15 +454,79 @@
                         android:textColor="#717171"
                         android:text="@string/share_epg"
                         android:textSize="14sp" />
-
-                    <TextView
-                        android:id="@+id/tv_channel_num"
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:textColor="#717171"
-                        android:textSize="14sp" />
+                     <RelativeLayout
+                         android:id="@+id/channel_layout_1"
+                         android:layout_width="wrap_content"
+                         android:layout_height="0dp"
+                         android:layout_weight="1"
+                         android:gravity="center"
+                         android:visibility="gone"
+                         >
+                         <RelativeLayout
+                             android:id="@+id/channel_name_relativelayout_1"
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:layout_centerVertical="true"
+                             android:visibility="gone">
+                             <TextView
+                                 android:id="@+id/channel_name_1"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:layout_centerInParent="true"
+                                 android:textSize="14sp"
+                                 android:text="@string/channel_"
+                                 android:textColor="#717171"
+                                 android:layout_centerVertical="true" />
+                         </RelativeLayout>
+                         <RelativeLayout
+                             android:id="@+id/decoder_relativelayout_1"
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:layout_centerVertical="true"
+                             android:layout_toRightOf="@id/channel_name_relativelayout_1"
+                             android:visibility="gone" >
+                             <ImageView
+                                 android:id="@+id/channel_dtt_image_1"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:src="@drawable/dtt_channel_grey"
+                                 android:layout_centerVertical="true"
+                                 />
+                             <TextView
+                                 android:id="@+id/channel_dtt_number_1"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:textColor="#717171"
+                                 android:textSize="14sp"
+                                 android:layout_toRightOf="@id/channel_dtt_image_1"
+                                 android:layout_centerVertical="true"/>
+                         </RelativeLayout>
+                         <RelativeLayout
+                             android:id="@+id/dish_relativelayout_1"
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:layout_toRightOf="@id/decoder_relativelayout_1"
+                             android:layout_marginLeft="@dimen/dp_8"
+                             android:visibility="gone"
+                             android:layout_centerVertical="true">
+                             <ImageView
+                                 android:id="@+id/channel_dth_image_1"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:src="@drawable/dth_channel_grey"
+                                 android:layout_centerVertical="true"
+                                 />
+                             <TextView
+                                 android:id="@+id/channel_dth_number_1"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:singleLine="true"
+                                 android:textColor="#717171"
+                                 android:textSize="14sp"
+                                 android:layout_centerVertical="true"
+                                 android:layout_toRightOf="@id/channel_dth_image_1"/>
+                         </RelativeLayout>
+                     </RelativeLayout>
               		 <TextView
                         android:id="@+id/tv_program_time"
                         android:layout_width="wrap_content"

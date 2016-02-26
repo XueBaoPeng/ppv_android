@@ -1,10 +1,5 @@
 package com.star.mobile.video.home;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -26,18 +21,15 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import cn.sharesdk.onekeyshare.OnekeyShare;
 
-import com.igexin.sdk.PushManager;
-import com.igexin.sdk.Tag;
 import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.AnimatorListenerAdapter;
 import com.nineoldandroids.animation.AnimatorSet;
 import com.nineoldandroids.animation.ObjectAnimator;
-import com.star.cms.model.enm.Sex;
 import com.star.cms.model.vo.ChannelVO;
 import com.star.mobile.video.R;
 import com.star.mobile.video.StarApplication;
+import com.star.mobile.video.activity.WelcomeActivity;
 import com.star.mobile.video.base.FragmentActivity;
 import com.star.mobile.video.discovery.DiscoveryFragment;
 import com.star.mobile.video.guide.GuideCustomizeCallback;
@@ -70,6 +62,13 @@ import com.star.mobile.video.util.config.AppConfig;
 import com.star.mobile.video.view.MenuPage;
 import com.star.util.app.GA;
 import com.star.util.loader.OnResultListener;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import cn.sharesdk.onekeyshare.OnekeyShare;
 
 public class HomeActivity extends FragmentActivity implements OnClickListener,GuideCustomizeCallback{
 
@@ -113,7 +112,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener,Gu
 		mChannelService = new ChannelService(this);
 		mSmartCardSharedPre = new SmartCardSharedPre(HomeActivity.this);
 		fragmentManager = getSupportFragmentManager();
-		setFragmentByTag(AppConfig.TAG_fragment_play);
+		currentIntent(getIntent());
 		syncService = SyncService.getInstance(HomeActivity.this);
 		if(syncService.needInit()){
 			if(!syncService.isLoading()){
@@ -149,8 +148,17 @@ public class HomeActivity extends FragmentActivity implements OnClickListener,Gu
 		//四格体验服务不在监听
 //		Intent intent = new Intent(this,FourLayerService.class);
 //		startService(intent);
-		
-		replaceFragmentByTag(getIntent());
+//		checkLoginStatus();
+	}
+
+	private void checkLoginStatus(){
+		if(!SyncService.getInstance(this).isDBReady()&&!SyncService.getInstance(this).isLoading()){
+			com.star.util.Logger.d("not login, must go welcome!");
+			ToastUtil.centerShowToast(this, "Sorry, you need login again!");
+			CommonUtil.startActivity(this, WelcomeActivity.class);
+			finish();
+
+		}
 	}
 
 	private void initView() {
@@ -265,6 +273,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener,Gu
 	
 	}
 	private void currentIntent(Intent intent){
+		replaceFragmentByTag(intent);
 		try{
 			channelId = Long.parseLong(intent.getStringExtra("channelId"));
 		}catch (Exception e) {
@@ -401,6 +410,8 @@ public class HomeActivity extends FragmentActivity implements OnClickListener,Gu
 		String tag = intent.getStringExtra("fragmentTag");
 		if(tag!=null){
 			setFragmentByTag(tag);
+		}else{
+			setFragmentByTag(AppConfig.TAG_fragment_play);
 		}
 	}		
 	
@@ -428,6 +439,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener,Gu
 			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
 				if(channelVOs != null && channelVOs.size()>0){
 					if (!isActionBarMoreClick) {
+						mPlayFragment.clearAndRefreshData();
 						isActionBarMoreClick = true;
 						Animation anticlockAnimation = AnimationUtils.loadAnimation(this, R.anim.anim_reverse_rotate_anticlock);
 						mActionBarMoreIV.startAnimation(anticlockAnimation);
@@ -545,7 +557,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener,Gu
 	}
 	
 	private void initChannels(List<ChannelVO> chns) {
-		mPlayFragment.initChannels(chns);	
+		mPlayFragment.initChannels(chns);
 	}
 	
 	/**

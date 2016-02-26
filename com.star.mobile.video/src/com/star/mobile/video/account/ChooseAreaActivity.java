@@ -2,8 +2,6 @@ package com.star.mobile.video.account;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +27,10 @@ import com.star.mobile.video.util.CommonUtil;
 import com.star.mobile.video.view.ListView;
 import com.star.mobile.video.view.ListView.LoadingListener;
 import com.star.ui.ImageView;
+import com.star.util.loader.OnResultListener;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,36 +44,10 @@ public class ChooseAreaActivity extends BaseActivity {
 	private ImageView image_area_map;
 	private ListView lvAreas;
 	private LinearLayout item_layout;
-	private Area purrentArea;//当前的地区
+	private Area purrentArea ;//当前的地区
 	private String localAreaCode;
 	private android.widget.ImageView place_image;
-	private Handler mHandler=new Handler(){
-		@Override
-		public void handleMessage(Message msg) {
-			super.handleMessage(msg);
-			if (msg.what==1){
-				Area area=null;
-				localAreaCode=msg.getData().getString("area");
-				purrentArea=areas.get(areas.size()-1);
-		/*
-		 * 通过定位回来的地区，跟新当前位置
-*/
-				if(localAreaCode!=null){
-					for (int i=0;i<areas.size();i++){
-						area=areas.get(i);
-						if(area.getCode().equals(localAreaCode)){
-							setMaybeOpention(area);
-							purrentArea=area;
-						}else {
-							setMaybeOpention(purrentArea);
-						}
-					}
-				}else{
-					setMaybeOpention(purrentArea);
-				}
-			}
-		}
-	};
+	private TextView tv_isLoading;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -85,6 +61,7 @@ public class ChooseAreaActivity extends BaseActivity {
 		image_area_map= (ImageView) findViewById(R.id.iv_area_map);
 		item_layout= (LinearLayout) findViewById(R.id.mabe_item_layout);
 		place_image= (android.widget.ImageView) findViewById(R.id.place_image);
+		tv_isLoading= (TextView) findViewById(R.id.tv_isLoading);
 		lvAreas.setOnItemClickListener(itemClickListener);
 		areaService = new AreaService(this);
 		mAdapter = new AreasAdapter();
@@ -106,11 +83,16 @@ public class ChooseAreaActivity extends BaseActivity {
 	}
 	private void setOnclick(){
 		String areaCode = SharedPreferencesUtil.getAreaCode(ChooseAreaActivity.this);
-		if(areaCode==null || !areaCode.equals(purrentArea.getCode())) {
-			SyncService.getInstance(ChooseAreaActivity.this).doResetStatus(null, purrentArea.getId());
-			SharedPreferencesUtil.saveArea(ChooseAreaActivity.this, purrentArea);
+		if(purrentArea!=null){
+			if(areaCode==null || !areaCode.equals(purrentArea.getCode())) {
+				SyncService.getInstance(ChooseAreaActivity.this).doResetStatus(null, purrentArea.getId());
+				SharedPreferencesUtil.saveArea(ChooseAreaActivity.this, purrentArea);
+			}
+			CommonUtil.startActivity(ChooseAreaActivity.this, LoginActivity.class);
+		}else{
+			return;
 		}
-		CommonUtil.startActivity(ChooseAreaActivity.this, LoginActivity.class);
+
 	}
 	/**
 	 *动态设置listview的高度
@@ -129,19 +111,41 @@ public class ChooseAreaActivity extends BaseActivity {
 		lvAreas.setLayoutParams(params);
 	}
 	private void loadPlaceByIpcode(){
-		setAnimatinon();
-		new Thread(new Runnable() {
+
+		areaService.getAreaCode(new OnResultListener<String>() {
 			@Override
-			public void run() {
-				String localArea=areaService.getAreaCode();
-				Message message=Message.obtain();
-				message.what=1;
-				Bundle bundle=new Bundle();
-				bundle.putString("area",localArea);
-				message.setData(bundle);
-				mHandler.sendMessage(message);
+			public boolean onIntercept() {
+				setAnimatinon();
+				return false;
 			}
-		}).start();
+
+			@Override
+			public void onSuccess(String value) {
+				/*
+		 * 通过定位回来的地区，跟新当前位置*/
+				Area area=null;
+				if(value!=null){
+					try {
+						localAreaCode=new JSONObject(value).getString("code");
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+					for (int i=0;i<areas.size();i++){
+						area=areas.get(i);
+						if(area.getCode().equals(localAreaCode)){
+							setMaybeOpention(area);
+							purrentArea=area;
+						}
+					}
+				}else{
+					setMaybeOpention(purrentArea);
+				}
+			}
+			@Override
+			public void onFailure(int errorCode, String msg) {
+				setMaybeOpention(purrentArea);
+			}
+		});
 
 	}
 
@@ -150,11 +154,21 @@ public class ChooseAreaActivity extends BaseActivity {
 	 * @param area
 	 */
 	private void setMaybeOpention(Area area){
+		if(place_image==null||place_image.getAnimation()==null)
+			return;
+		if (area==null){
+			tv_isLoading.setText(R.string.request_fail);
+//			if (place_image!=null&&place_image.getAnimation()!=null){
+				place_image.getAnimation().cancel();
+//			}
+
+			return;
+		}
 		place_image.getAnimation().cancel();
+		item_layout.setVisibility(View.VISIBLE);
 		tv_area_name.setText(area.getName());
 		image_area_map.setImageDrawable(null);
 		image_area_flag.setImageDrawable(null);
-
 		try{
 			if(!TextUtils.isEmpty(area.getCountryMap())){
 				image_area_map.setUrl(area.getCountryMap());
