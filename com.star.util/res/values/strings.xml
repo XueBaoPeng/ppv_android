@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     
-    <!-- https线上环境 --><!-- tenb调用的发帖地址  正式环境-->
+    <!-- https线上环境 --><!-- tenb调用的发帖地址  正式环境  from yaohw -->
 	<!--<string name="server_url">https://tenbre.me/cms</string>
 	<string name="bbs_url">http://startimes.me/bbs/forumsCategory/list1.page</string>
 	<string name="bbs_faq_url">http://startimes.me/bbs/forumsCategory/show/36.page</string>
