@@ -135,8 +135,7 @@ public class MyOrderActivity extends BaseActivity implements OnClickListener{
 			@Override
 			public List<SMSHistory> loadingL(int offset, int requestCount) {
 				mSmartCardLoading.setVisibility(View.GONE);
-//				return mSmartCardService.getOrderListFromLocal(MyOrderActivity.this, offset, requestCount);
-				return null;
+				return mSmartCardService.getOrderListFromLocal(MyOrderActivity.this, offset, requestCount);
 			}
 
 			@Override
