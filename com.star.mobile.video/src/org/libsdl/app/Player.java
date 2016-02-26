@@ -207,10 +207,10 @@ public class Player extends BaseActivity implements OnClickListener{
 					mSeekBar.setSecondaryProgress(currentPos+videoBuffer);
 					if (!isLive && currentPos > totalTime)
 						currentPos = totalTime;
-					if (PlayerUtil.isPlayStart() == 1 && playerPB.getVisibility() == View.VISIBLE
+					if (PlayerUtil.isPlayStart() == 1 //&& playerPB.getVisibility() == View.VISIBLE
 							&& isStarted == false && PlayerUtil.isPlayFinish() == 0) {
-						playerPB.setVisibility(View.GONE);
-						progressMsg.setVisibility(View.GONE);
+						//playerPB.setVisibility(View.GONE);
+						//progressMsg.setVisibility(View.GONE);
 						if(isLive) hideBottomBar();
 						else showBottomBar();
 						imgPlay.setBackgroundResource(R.drawable.vp_pause);
@@ -256,6 +256,14 @@ public class Player extends BaseActivity implements OnClickListener{
 
 					//					Object[] objs = {SharedPreferencesUtil.getToken(getApplicationContext()), contentId};
 					//					new LogTask().execute(objs);
+					break;
+				case MSG_LOAD_UNFINISHED:
+					playerPB.setVisibility(View.VISIBLE);
+					progressMsg.setVisibility(View.VISIBLE);
+					break;
+				case MSG_LOAD_FINISHED:
+					playerPB.setVisibility(View.GONE);
+					progressMsg.setVisibility(View.GONE);
 					break;
 				case MSG_UPDATE_ANALYTICS:
 					String line = "";
@@ -360,8 +368,8 @@ public class Player extends BaseActivity implements OnClickListener{
 		}
 		
 		setPortrait();
-		playerPB.setVisibility(View.INVISIBLE);
-		progressMsg.setVisibility(View.GONE);
+		//playerPB.setVisibility(View.INVISIBLE);
+		//progressMsg.setVisibility(View.GONE);
 
 		if (filename == null || filename.isEmpty()) {
 			exitActivity();
@@ -1009,8 +1017,8 @@ public class Player extends BaseActivity implements OnClickListener{
 		else showBottomBar();
 		
 		if(mPlayerEndView.mVideoEndView != null) videoPlayerRL.removeView(mPlayerEndView.mVideoEndView);;
-		playerPB.setVisibility(View.VISIBLE);
-		progressMsg.setVisibility(View.VISIBLE);
+		//playerPB.setVisibility(View.VISIBLE);
+		//progressMsg.setVisibility(View.VISIBLE);
 		// mSdlActivity.onDestroy();
 		frameContainer.removeAllViews();
 		isStarted = false;
