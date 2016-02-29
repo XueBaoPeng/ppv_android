@@ -38,7 +38,7 @@
 	<string name="robot_icon_url">http://portal.tenbre.me/portal/img/image/official_avatar.png</string>-->
 
 	<!-- 当前app版本，1为开发版，0为正式版 -->
-	<string name="app_current_version">1</string>
+	<string name="app_current_version">0</string>
 	<!-- 线上apk更新地址 GA地址-->
 	<!--<string name="ga_trackingId">UA-55969660-1</string>-->
 	<!--<string name="apk_url">http://tenbre.me/release/startimes.apk</string>-->
