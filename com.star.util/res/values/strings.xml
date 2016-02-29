@@ -40,9 +40,9 @@
 	<!-- 当前app版本，1为开发版，0为正式版 -->
 	<string name="app_current_version">1</string>
 	<!-- 线上apk更新地址 GA地址-->
-	<string name="ga_trackingId">UA-55969660-1</string>
+	<!--<string name="ga_trackingId">UA-55969660-1</string>-->
 	<!--<string name="apk_url">http://tenbre.me/release/startimes.apk</string>-->
-	 <string name="apk_url">http://tenbre.me/startimes.apk</string>
+	 <!--<string name="apk_url">http://tenbre.me/startimes.apk</string>-->
 	<!--推送正式地址-->
 	<string name="getui_appId">Aee7pGAme78dzyoDS5Nxq7</string>
 	<string name="getui_appKey">aBkdhG2HHp5MWPxqayJ6U5</string>
@@ -88,8 +88,8 @@
 	<!-- 本地测试apk更新地址  GA地址-->
 
 
-    <!--<string name="ga_trackingId">UA-55965871-1</string>
-    <string name="apk_url">http://218.205.169.218:8581/portal/apk/shonngo.apk</string>-->
+    <string name="ga_trackingId">UA-55965871-1</string>
+    <string name="apk_url">http://218.205.169.218:8581/portal/apk/shonngo.apk</string>
 	<!--推送测试地址-->
 	<!--<string name="getui_appId">Aee7pGAme78dzyoDS5Nxq7</string>
 	<string name="getui_appKey">aBkdhG2HHp5MWPxqayJ6U5</string>
