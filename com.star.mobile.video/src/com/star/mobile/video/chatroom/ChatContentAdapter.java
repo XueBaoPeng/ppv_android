@@ -182,7 +182,6 @@ public class ChatContentAdapter extends BaseAdapter {
 			}
 			addLeaderMark(holder.leaderIcon_t, chat, holder.masterIcon_t);
 			addMasterMark(holder.masterIcon_t, chat,holder.leaderIcon_t,holder.chatContent_t,R.drawable.chat_kanu_bg_t);
-			holder.chatContent_t.setTextColor(R.color.red);
 			formatContent(position, holder.chatContent_t, holder.chatImage_t, holder.linkGroup_t, chat);
 			setChatStatus(chat, holder.chatStatus_t);
 		} else {
@@ -416,7 +415,7 @@ public class ChatContentAdapter extends BaseAdapter {
 				view.setVisibility(View.VISIBLE);
 				leaderImage.setVisibility(View.GONE);
 				masterContentBg.setBackgroundResource(materContentBgRes);
-				masterContentBg.setTextColor(R.color.white);
+				masterContentBg.setTextColor(context.getResources().getColor(R.color.white));
 				break;
 			}
 		}
