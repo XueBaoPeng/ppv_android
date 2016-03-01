@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    
+
     <!-- https线上环境 --><!-- tenb调用的发帖地址  正式环境-->
 	<!--<string name="server_url">https://tenbre.me/cms</string>
 	<string name="bbs_url">http://startimes.me/bbs/forumsCategory/list1.page</string>
@@ -18,7 +18,7 @@
 	<string name="is_show_crash_dialog">0</string>
 	<string name="robot_icon_url">http://portal.tenbre.me/portal/img/image/official_avatar.png</string>-->
 
-    
+
 	<!-- https准上线测试环境 --><!-- tenb调用的发帖地址  准上线环境-->
 	<string name="server_url">https://52.18.227.87/cms</string>
 	<string name="bbs_url">http://52.18.227.87/bbs/forumsCategory/list1.page</string>
@@ -47,7 +47,7 @@
 	<string name="getui_appKey">aBkdhG2HHp5MWPxqayJ6U5</string>
 	<string name="getui_appSecret">rK07UCmhnp8RMc3Lm8lrU7</string>
 	<string name="getui_masterSecret">jSK3qyaDtbAzjmUVCT7b47</string>-->
-	
+
 	<!-- 本地测试环境 --><!-- tenb调用的发帖地址  本地环境-->
 	<!-- <string name="server_url">http://10.0.63.242:8281/cms</string>
 	<string name="html_prefix_url">http://10.0.63.242:8281</string>
@@ -81,7 +81,7 @@
 	<string name="resource_prefix_url">http://10.0.63.242:8281</string>
 	<string name="robot_icon_url">http://portal.tenbre.me/portal/img/bg/official_avatar.png</string>
 	<string name="is_show_crash_dialog">1</string>-->
-	  
+
 	<!-- 当前app版本，1为开发版，0为正式版 -->
 	 <!--<string name="app_current_version">1</string>-->
 	<!-- 本地测试apk更新地址  GA地址-->
@@ -94,16 +94,16 @@
 	<string name="getui_appKey">aBkdhG2HHp5MWPxqayJ6U5</string>
 	<string name="getui_appSecret">rK07UCmhnp8RMc3Lm8lrU7</string>
 	<string name="getui_masterSecret">jSK3qyaDtbAzjmUVCT7b47</string>
-	
+
 
     <bool name="ga_autoActivityTracking">true</bool>
     <bool name="ga_anonymizeIp">true</bool>
     <bool name="ga_reportUncaughtExceptions">true</bool>
-    
+
     <string name="app_name">com.star.terminal.util</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    
+
     <string name="month_1">Jan</string>
     <string name="month_2">Feb</string>
     <string name="month_3">Mar</string>
@@ -116,8 +116,8 @@
     <string name="month_10">Oct</string>
     <string name="month_11">Nov</string>
     <string name="month_12">Dec</string>
-    
-    
+
+
     <string name="week_1">MON</string>
     <string name="week_2">TUE</string>
     <string name="week_3">WED</string>
