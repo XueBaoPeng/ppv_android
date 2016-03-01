@@ -266,7 +266,7 @@ public class SyncService extends AbstractService{
 		IOUtil.delCachedJSON(Constant.shareUserEggUrl());
 		IOUtil.delCachedJSON(Constant.getVideoChannelUrl()+"?index="+0+"&count="+10);
 		IOUtil.delCachedJSON(Constant.getReportQuestionUrl(String.valueOf(ApplicationUtil.getAppVerison(context))));
-		IOUtil.delCachedJSON(Constant.getOrderListUrl() + "?index=" + 0 + "&count=" + 10);
+		IOUtil.delCachedJSON(Constant.getOrderListUrl()+"?index=0&count=6");
 	}
 	
 	public void sync_(){
@@ -307,7 +307,6 @@ public class SyncService extends AbstractService{
 					if(coupons!=null&&coupons>0){
 						TaskSharedUtil.setCouponsStatus(context, true);
 					}
-
 					//新版本
 					APPInfo newApp = result.getNewAppInfo();
 					if(newApp!=null && newApp.getVersion()>ApplicationUtil.getAppVerison(context)){

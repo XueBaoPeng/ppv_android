@@ -19,7 +19,13 @@
             android:layout_marginLeft="8dp"
             android:layout_marginTop="12dp"
             android:src="@drawable/example_head_portrait" />
-
+        <ImageView
+            android:id="@+id/iv_leader_f_kanu"
+            android:layout_width="48dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="4dp"
+            android:src="@drawable/chat_kanu_avatar" />
         <ImageView
             android:id="@+id/iv_leader_f"
             android:layout_width="54dp"
@@ -91,7 +97,7 @@
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:singleLine="true"
-                    android:textColor="#747474"
+                    android:textColor="@color/no_do_task_desciption"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -113,7 +119,7 @@
                     android:layout_toRightOf="@id/iv_link_icon_f"
                     android:ellipsize="end"
                     android:maxLines="3"
-                    android:textColor="#747474"
+                    android:textColor="@color/no_do_task_desciption"
                     android:textSize="16sp" />
             </RelativeLayout>
         </RelativeLayout>
@@ -135,6 +141,14 @@
             android:layout_marginTop="12dp"
             android:src="@drawable/example_head_portrait" />
 
+        <ImageView
+            android:id="@+id/iv_leader_t_kanu"
+            android:layout_width="48dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="4dp"
+            android:src="@drawable/chat_kanu_avatar" />
         <ImageView
             android:id="@+id/iv_leader_t"
             android:layout_width="54dp"
@@ -212,7 +226,7 @@
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
                     android:paddingTop="8dp"
-                    android:textColor="@color/black_color"
+                    android:textColor="@color/orange_color"
                     android:textSize="14sp" />
 
                 <!-- android:autoLink="web" -->
@@ -239,8 +253,8 @@
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
                         android:singleLine="true"
-                        android:textColor="#747474"
                         android:textSize="18sp"
+                        android:textColor="@color/no_do_task_desciption"
                         android:textStyle="bold" />
 
                     <com.star.ui.ImageView
@@ -260,7 +274,7 @@
                         android:layout_toRightOf="@id/iv_link_icon_t"
                         android:ellipsize="end"
                         android:maxLines="3"
-                        android:textColor="#747474"
+                        android:textColor="@color/no_do_task_desciption"
                         android:textSize="16sp" />
                 </RelativeLayout>
             </RelativeLayout>

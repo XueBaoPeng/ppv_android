@@ -1,5 +1,6 @@
 package com.star.mobile.video.account;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -80,36 +81,37 @@ public class MobileRegisterCheckFragment extends AbsRegisterFragment implements 
 		String copyright = getString(R.string.mob_tip_msg_three);
 		SpannableString ss = new SpannableString(copyright);
 		ss.setSpan(new ForegroundColorSpan(Color.parseColor("#005FCD")), copyright.length()-16, copyright.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-		ss.setSpan(new UnderlineSpan(), copyright.length()-16, copyright.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+		ss.setSpan(new UnderlineSpan(), copyright.length() - 16, copyright.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 		tvThree.setText(ss);
 		phoneInputView.setErrorTextColor(getResources().getColor(R.color.choose_text));
 		phoneInputView.setPhoneNumberChangedListener(new MobTextWatcher());
 		checkCodeView.setCheckCodeButtonOnClick(new CheckCodeButtonOnClick() {
-			
+
 			@Override
 			public void onClick() {
 				sendCode();
 			}
 		});
 		checkCodeView.setCodeCallBack(new CodeCallBack() {
-			
+
 			@Override
 			public void Listener(String codeText) {
-				if(codeText.length() == 4) {
-					if(isCodeMsgRed) {
+				if (codeText.length() == 4) {
+					if (isCodeMsgRed) {
 						isCodeMsgRed = false;
 					}
 					checkCode();
 					checkCodeView.setCodeErrorMsg("");
 				} else {
 					setNextOnClickNull();
+
 				}
-				
+
 			}
 		});
 		
 		checkCodeView.setCodeOnFocusChangeListener(new View.OnFocusChangeListener() {
-			
+
 			@Override
 			public void onFocusChange(View v, boolean hasFocus) {
 				checkCodeView.setCodeErrorMsg(getResources().getString(R.string.code_msg));
@@ -126,6 +128,10 @@ public class MobileRegisterCheckFragment extends AbsRegisterFragment implements 
 			}
 		});
 		mAccountService = new AccountService(getActivity());
+		Context contxt = getActivity();
+		if (contxt instanceof RegisterActivity){
+
+		}
 	}
 
 	@Override
@@ -142,7 +148,19 @@ public class MobileRegisterCheckFragment extends AbsRegisterFragment implements 
 		btNext.setOnClickListener(null);
 		btNext.setBackgroundResource(R.drawable.btn_grey);
 	}
-	
+
+	/**
+	 * 电话号码不让修改
+	 */
+	private void setEtPhoneEnable(){
+		phoneInputView.setEtPhoneEnable();
+	}/**
+	 * 电话号码让修改
+	 */
+	private void setEtPhoneEdit(){
+		phoneInputView.setEtPhoneEdit();
+	}
+
 	private void sendCode() {
 		final String phoneNumber = getPhoneNumber();
 		 
@@ -154,26 +172,26 @@ public class MobileRegisterCheckFragment extends AbsRegisterFragment implements 
 			return;
 		}
 		checkCodeView.time();
-		mAccountService.getVerifCode(phoneInputView.getSelAreaNumber()+phoneNumber, new OnResultListener<Integer>() {
-			
+		mAccountService.getVerifCode(phoneInputView.getSelAreaNumber() + phoneNumber, new OnResultListener<Integer>() {
+
 			@Override
 			public void onSuccess(Integer result) {
-				if(isShowFragment) {
+				if (isShowFragment) {
 					String r = "FAILURE";
-					if(result != null) {
-						if(result == PhoneRegisterResult.SUCCESS) {
+					if (result != null) {
+						if (result == PhoneRegisterResult.SUCCESS) {
 							ToastUtil.centerShowToast(registerActivity, getString(R.string.please_check));
 							checkCodeView.inputCodeSel();
 							r = "SUCCESS";
-						} else if(result == PhoneRegisterResult.TIME_INTERVAL_NOT_ENOUGH) {
+						} else if (result == PhoneRegisterResult.TIME_INTERVAL_NOT_ENOUGH) {
 							r = "SEND_FREQUEN";
-						} else if(result == PhoneRegisterResult.PHONE_NUM_INVALID) {
+						} else if (result == PhoneRegisterResult.PHONE_NUM_INVALID) {
 							phoneInputView.setErrorText(getString(R.string.error_phone_msg));
 							phoneInputView.setErrorTextColor(getResources().getColor(R.color.check_mob_tex));
 							isMobMsgRed = true;
 							checkCodeView.stopTime();
 							r = "PHONE_NUM_INVALID";
-						} else if(result == PhoneRegisterResult.PHONE_IS_EXIST) { //注册手机号已经存在
+						} else if (result == PhoneRegisterResult.PHONE_IS_EXIST) { //注册手机号已经存在
 							CommonUtil.getInstance().showPromptDialog(registerActivity, getString(R.string.tips),
 									getString(R.string.su_login), getString(R.string.ok),
 									null, null);
@@ -185,15 +203,15 @@ public class MobileRegisterCheckFragment extends AbsRegisterFragment implements 
 						r = "NETWORK_ERROR";
 					}
 					StarApplication.mTracker.send(new HitBuilders.EventBuilder().setCategory(Constant.GA_EVENT_BUSINESS)
-							.setAction(Constant.GA_EVENT_CODE_REGISTER).setLabel("PHONE:"+phoneInputView.getSelAreaNumber()+phoneNumber+"; STATUS:"+r).setValue(1).build());
+							.setAction(Constant.GA_EVENT_CODE_REGISTER).setLabel("PHONE:" + phoneInputView.getSelAreaNumber() + phoneNumber + "; STATUS:" + r).setValue(1).build());
 				}
 			}
-			
+
 			@Override
 			public boolean onIntercept() {
 				return false;
 			}
-			
+
 			@Override
 			public void onFailure(int errorCode, String msg) {
 				
@@ -254,7 +272,9 @@ public class MobileRegisterCheckFragment extends AbsRegisterFragment implements 
 						registerActivity.verifCode = verCode;
 						registerActivity.mobileNumber = phoneNum;
 						registerActivity.selAreaNumber = areaNumber;
+						setEtPhoneEnable();
 					} else {
+						setEtPhoneEdit();
 						isCodeMsgRed = true;
 						checkCodeView.setCodeErrorMsg(getResources().getString(R.string.code_error));
 						CommonUtil.getInstance().showPromptDialog(registerActivity, getString(R.string.tips),
