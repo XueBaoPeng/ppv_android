@@ -24,6 +24,7 @@
             android:layout_width="48dp"
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
+            android:visibility="gone"
             android:layout_marginLeft="4dp"
             android:src="@drawable/chat_kanu_avatar" />
         <ImageView
@@ -147,6 +148,7 @@
             android:layout_height="50dp"
             android:layout_alignParentRight="true"
             android:layout_marginTop="10dp"
+            android:visibility="gone"
             android:layout_marginRight="4dp"
             android:src="@drawable/chat_kanu_avatar" />
         <ImageView
@@ -226,7 +228,7 @@
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
                     android:paddingTop="8dp"
-                    android:textColor="@color/orange_color"
+                    android:textColor="@color/black_color"
                     android:textSize="14sp" />
 
                 <!-- android:autoLink="web" -->
