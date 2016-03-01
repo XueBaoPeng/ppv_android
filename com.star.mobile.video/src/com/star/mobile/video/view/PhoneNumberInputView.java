@@ -74,10 +74,10 @@ public class PhoneNumberInputView extends LinearLayout {
 		});
 		mWindow.showAsDropDown(ll_phone_number, 0, 0);
 		mWindow.setOnDismissListener(new OnDismissListener() {
-			
+
 			@Override
 			public void onDismiss() {
-				
+
 			}
 		});
 	}
@@ -126,7 +126,19 @@ public class PhoneNumberInputView extends LinearLayout {
 	public void clearPhoneNumber() {
 		etPhoneNumber.getEditableText().clear();
 	}
-	
+
+	/**
+	 * 电话号码输入框不让修改
+	 */
+	public void setEtPhoneEnable(){
+		etPhoneNumber.setEnabled(false);
+	}
+	/**
+	 * 电话号码输入框让修改
+	 */
+	public void setEtPhoneEdit(){
+		etPhoneNumber.setEnabled(true);
+	}
 	public void setErrorText(String text) {
 		tvErrorText.setText(text);
 		if(text == null ||"".equals(text)) {
