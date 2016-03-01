@@ -96,6 +96,7 @@ public class ChannelRateActivity extends BaseActivity implements OnClickListener
 						listView.setVisibility(View.GONE);
 					}
 				}else{
+					tv_tips.setOnClickListener(ChannelRateActivity.this);
 					tv_tips.setVisibility(View.VISIBLE);
 					tv_tips.setText(getString(R.string.tips_score_comment));
 					rl_user_message.setVisibility(View.GONE);
@@ -139,6 +140,7 @@ public class ChannelRateActivity extends BaseActivity implements OnClickListener
 		tv_user_comment_content = (TextView)findViewById(R.id.tv_comment_content);
 		tv_comment_time = (TextView)findViewById(R.id.tv_data_time);
 		tv_tips = (TextView)findViewById(R.id.no_rating_tips);
+		tv_tips.setOnClickListener(null);
 		tv_channel_rate = (TextView)findViewById(R.id.channel_rating);
 		load_user = (View) findViewById(R.id.loadingView_user);
 		load_comment = (View) findViewById(R.id.loadingView_comment);
@@ -174,47 +176,45 @@ public class ChannelRateActivity extends BaseActivity implements OnClickListener
 			load_comment.setVisibility(View.VISIBLE);
 			loadData(mChannelVO.getId());
 //		}
-		 rating_user.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener()   
-	     {  
-	        @Override  
-	        public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser)   
-	        {  
-	        	if(SharedPreferencesUtil.getUserName(ChannelRateActivity.this) != null){
-		        	if(rating >0 && userRating != rating){
-		        		rating_user.setIsIndicator(true);
-		        		if(isFisrt){
-			        		commentDialog.showCommentDialog(true, rating, tv_user_comment_content.getText().toString(), mChannelVO.getId(), user_commentId);
-			        	}else{
-			        		commentDialog.showCommentDialog(false, rating, null, mChannelVO.getId(), -1);
-			        	}
-		        	}
-	        	}else{
-	        		rating_user.setRating(0f);
-	        		if(userRating != rating){
-	        			CommonUtil.pleaseLogin(ChannelRateActivity.this);
-	        		}
-	        	}
-	        }  
-	    });  
+		 rating_user.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+			 @Override
+			 public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+				 if (SharedPreferencesUtil.getUserName(ChannelRateActivity.this) != null) {
+					 if (rating > 0 && userRating != rating) {
+						 rating_user.setIsIndicator(true);
+						 if (isFisrt) {
+							 commentDialog.showCommentDialog(true, rating, tv_user_comment_content.getText().toString(), mChannelVO.getId(), user_commentId);
+						 } else {
+							 commentDialog.showCommentDialog(false, rating, null, mChannelVO.getId(), -1);
+						 }
+					 }
+				 } else {
+					 rating_user.setRating(0f);
+					 if (userRating != rating) {
+						 CommonUtil.pleaseLogin(ChannelRateActivity.this);
+					 }
+				 }
+			 }
+		 });
 		rl_user_message.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				rating_user.setIsIndicator(true);
-				if(isFisrt){
-	        		commentDialog.showCommentDialog(true, userRating, tv_user_comment_content.getText().toString(), mChannelVO.getId(), user_commentId);
-	        	}else{
-	        		commentDialog.showCommentDialog(false, userRating, null, mChannelVO.getId(), -1);
-	        	}
+				if (isFisrt) {
+					commentDialog.showCommentDialog(true, userRating, tv_user_comment_content.getText().toString(), mChannelVO.getId(), user_commentId);
+				} else {
+					commentDialog.showCommentDialog(false, userRating, null, mChannelVO.getId(), -1);
+				}
 			}
 		});
 		 commentDialog.setOnCancelListener(new OnCancelListener() {
-			
-			@Override
-			public void onCancel(DialogInterface dialog) {
-				rating_user.setIsIndicator(false);
-				rating_user.setRating(userRating);
-			}
+
+			 @Override
+			 public void onCancel(DialogInterface dialog) {
+				 rating_user.setIsIndicator(false);
+				 rating_user.setRating(userRating);
+			 }
 		});
 	}
 	private void getChannelVO() {
@@ -341,6 +341,14 @@ public class ChannelRateActivity extends BaseActivity implements OnClickListener
 		case R.id.iv_actionbar_back:
 			onBackPressed();
 			break;
+		case R.id.no_rating_tips:
+			rating_user.setIsIndicator(true);
+			if (isFisrt) {
+				commentDialog.showCommentDialog(true, userRating, tv_user_comment_content.getText().toString(), mChannelVO.getId(), user_commentId);
+			} else {
+				commentDialog.showCommentDialog(false, userRating, null, mChannelVO.getId(), -1);
+			}
+			break;
 		default:
 			break;
 		}
@@ -407,6 +415,7 @@ public class ChannelRateActivity extends BaseActivity implements OnClickListener
 					}else{
 						tv_tips.setVisibility(View.VISIBLE);
 						tv_tips.setText(getString(R.string.tips_score_comment));
+						tv_tips.setOnClickListener(ChannelRateActivity.this);
 						rl_user_message.setVisibility(View.GONE);
 						if(mComments.size() == 0){
 							ll_no_data.setVisibility(View.VISIBLE);
@@ -464,6 +473,7 @@ public class ChannelRateActivity extends BaseActivity implements OnClickListener
 						}
 					}else{
 						tv_tips.setVisibility(View.VISIBLE);
+						tv_tips.setOnClickListener(ChannelRateActivity.this);
 						tv_tips.setText(getString(R.string.tips_score_comment));
 						rl_user_message.setVisibility(View.GONE);
 						if(mComments.size() == 0){

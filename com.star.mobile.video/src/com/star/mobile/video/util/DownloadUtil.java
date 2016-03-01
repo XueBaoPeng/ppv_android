@@ -19,7 +19,7 @@ import android.widget.RemoteViews;
 
 import com.star.mobile.video.R;
 import com.star.mobile.video.StarApplication;
-import com.star.mobile.video.activity.NewVersionAppDetailActivity;
+import com.star.mobile.video.appversion.NewVersionAppDetailActivity;
 import com.star.mobile.video.shared.SharedPreferencesUtil;
 import com.star.util.NetworkUtil;
 import com.thin.downloadmanager.DefaultRetryPolicy;

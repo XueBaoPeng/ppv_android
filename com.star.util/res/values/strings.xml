@@ -2,7 +2,8 @@
 <resources>
     
     <!-- https线上环境 --><!-- tenb调用的发帖地址  正式环境-->
-	<string name="server_url">https://tenbre.me/cms</string>
+    <!-- https线上环境 --><!-- tenb调用的发帖地址  正式环境-->
+	<!--<string name="server_url">https://tenbre.me/cms</string>
 	<string name="bbs_url">http://startimes.me/bbs/forumsCategory/list1.page</string>
 	<string name="bbs_faq_url">http://startimes.me/bbs/forumsCategory/show/36.page</string>
 	<string name="bbs_faq_recharge">http://startimes.me/bbs/tenbrePosts/list/204.page</string>
@@ -16,7 +17,7 @@
 	<string name="serie_a_url">http://tenbre.me/bund/serie_a.php?areaId=</string>
 	<string name="resource_prefix_url">http://portal.tenbre.me</string>
 	<string name="is_show_crash_dialog">0</string>
-	<string name="robot_icon_url">http://portal.tenbre.me/portal/img/image/official_avatar.png</string>
+	<string name="robot_icon_url">http://portal.tenbre.me/portal/img/image/official_avatar.png</string>-->
 
     
 	<!-- https准上线测试环境 --><!-- tenb调用的发帖地址  准上线环境-->
@@ -37,11 +38,11 @@
 	<string name="robot_icon_url">http://portal.tenbre.me/portal/img/image/official_avatar.png</string>-->
 
 	<!-- 当前app版本，1为开发版，0为正式版 -->
-	<string name="app_current_version">1</string>
+	<string name="app_current_version">0</string>
 	<!-- 线上apk更新地址 GA地址-->
-	<string name="ga_trackingId">UA-55969660-1</string>
+	<!--<string name="ga_trackingId">UA-55969660-1</string>-->
 	<!--<string name="apk_url">http://tenbre.me/release/startimes.apk</string>-->
-	 <string name="apk_url">http://tenbre.me/startimes.apk</string>
+	 <!--<string name="apk_url">http://tenbre.me/startimes.apk</string>-->
 	<!--推送正式地址-->
 	<string name="getui_appId">Aee7pGAme78dzyoDS5Nxq7</string>
 	<string name="getui_appKey">aBkdhG2HHp5MWPxqayJ6U5</string>
@@ -66,7 +67,7 @@
 	<string name="robot_icon_url">http://portal.tenbre.me/portal/img/bg/official_avatar.png</string> -->
 
 	<!-- https本地测试环境 --><!-- tenb调用的发帖地址  本地环境-->
-	<!--<string name="server_url">http://10.0.63.242:8281/cms</string>
+	<string name="server_url">http://10.0.63.242:8281/cms</string>
 	<string name="html_prefix_url">http://10.0.63.242:8281</string>
 	<string name="bbs_url">http://10.0.63.242:8281/bbs/forumsCategory/list1.page</string>
 	<string name="bbs_faq_url">http://10.0.63.242:8281/bbs/forumsCategory/show/36.page</string>
@@ -80,15 +81,16 @@
 	<string name="serie_a_url">http://10.0.63.242:8281/bundesliga/serie_a.php?areaId=</string>
 	<string name="resource_prefix_url">http://10.0.63.242:8281</string>
 	<string name="robot_icon_url">http://portal.tenbre.me/portal/img/bg/official_avatar.png</string>
-	<string name="is_show_crash_dialog">1</string>-->
-	  
+	<string name="is_show_crash_dialog">1</string>
+
+
 	<!-- 当前app版本，1为开发版，0为正式版 -->
 	 <!--<string name="app_current_version">1</string>-->
 	<!-- 本地测试apk更新地址  GA地址-->
 
 
-    <!--<string name="ga_trackingId">UA-55965871-1</string>
-    <string name="apk_url">http://218.205.169.218:8581/portal/apk/shonngo.apk</string>-->
+    <string name="ga_trackingId">UA-55965871-1</string>
+    <string name="apk_url">http://218.205.169.218:8581/portal/apk/shonngo.apk</string>
 	<!--推送测试地址-->
 	<!--<string name="getui_appId">Aee7pGAme78dzyoDS5Nxq7</string>
 	<string name="getui_appKey">aBkdhG2HHp5MWPxqayJ6U5</string>

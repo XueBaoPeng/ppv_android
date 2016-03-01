@@ -24,6 +24,7 @@ import com.star.mobile.video.R;
 import com.star.mobile.video.account.AccountService;
 import com.star.mobile.video.account.ChooseAreaActivity;
 import com.star.mobile.video.account.LoginActivity;
+import com.star.mobile.video.appversion.AppInfoCacheService;
 import com.star.mobile.video.base.BaseActivity;
 import com.star.mobile.video.guide.firstenter.WelcomeGuideView;
 import com.star.mobile.video.home.HomeActivity;
@@ -39,6 +40,7 @@ import com.star.mobile.video.util.IOUtil;
 import com.star.mobile.video.util.LanguageUtil;
 import com.star.mobile.video.util.ToastUtil;
 import com.star.mobile.video.view.PosterContainer;
+import com.star.ui.ImageView;
 import com.star.util.Logger;
 import com.star.util.app.GA;
 import com.star.util.loader.OnResultListener;
@@ -105,6 +107,7 @@ public class WelcomeActivity extends BaseActivity {
 	private void initView() {
 		TextView tv_version = (TextView) findViewById(R.id.tv_app_version);
 		tv_version.setText("Version "+ApplicationUtil.getAppVerisonName(this));
+		setAppPoster();
 		mPosterContainer = ((RelativeLayout)findViewById(R.id.vg_poster_container));
 		if(!SharedPreferencesUtil.isAppGuideDone(this)){
 //			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
@@ -116,7 +119,18 @@ public class WelcomeActivity extends BaseActivity {
 //			}
 		}
 	}
-	
+
+	private void setAppPoster() {
+		ImageView ivPoster = (ImageView) findViewById(R.id.iv_app_poster);
+		AppInfoCacheService cacheService = new AppInfoCacheService(this);
+		String posterUrl = cacheService.getAppPoster(ApplicationUtil.getAppVerison(this));
+		if(posterUrl!=null&&!posterUrl.equals("")){
+			ivPoster.setUrl(posterUrl);
+		}else{
+			ivPoster.setImageResource(R.drawable.welcome_bg);
+		}
+	}
+
 	private void hideWelcomeView()  {
 		long nowTime = System.currentTimeMillis();
 		long diff = nowTime - startTime; 

@@ -597,6 +597,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 			mChannelId = Constants.BUNDESLIGA_CHANNEL_ID;
 			setCurrentChannel();
 		}
+		mCurrentChannel = mTotalChannels.get(recordPosition);
 		setInitData(recordPosition);
 	}
 

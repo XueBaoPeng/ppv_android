@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.star.mobile.video"
-    android:versionCode="82"
-    android:versionName="2.6.3" >
+    android:versionCode="83"
+    android:versionName="3.0" >
 
     <uses-sdk
         android:minSdkVersion="8"
@@ -243,7 +243,7 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.star.mobile.video.activity.CurrentVersionAppDetailActivity"
+            android:name=".appversion.CurrentVersionAppDetailActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" >
         </activity>
@@ -285,7 +285,7 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.star.mobile.video.activity.NewVersionAppDetailActivity"
+            android:name=".appversion.NewVersionAppDetailActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" >
         </activity>
