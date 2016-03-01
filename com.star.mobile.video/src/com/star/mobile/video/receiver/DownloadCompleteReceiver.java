@@ -13,7 +13,7 @@ import android.util.Log;
 
 import com.star.mobile.video.StarApplication;
 import com.star.mobile.video.activity.AlertInstallActivity;
-import com.star.mobile.video.activity.NewVersionAppDetailActivity;
+import com.star.mobile.video.appversion.NewVersionAppDetailActivity;
 import com.star.mobile.video.shared.SharedPreferencesUtil;
 import com.star.mobile.video.util.NotificationUtil;
 import com.star.mobile.video.util.ToastUtil;

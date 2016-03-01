@@ -52,20 +52,20 @@ public class CircularProgress extends View {
 
     public CircularProgress(Context context, AttributeSet attrs) {
     	super(context, attrs);
-    	if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+//    	if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
     		init(context,attrs,0);
-		}else {
-			Log.i("initData", "系统版本过低！");
-		}
+//		}else {
+//			Log.i("initData", "系统版本过低！");
+//		}
     }
 
     public CircularProgress(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
     		init(context,attrs,defStyleAttr);
-		}else {
-			Log.i("initData", "系统版本过低！");
-		}
+//		}else {
+//			Log.i("initData", "系统版本过低！");
+//		}
     }
 
     private void init(Context context, AttributeSet attrs, int defStyleAttr){

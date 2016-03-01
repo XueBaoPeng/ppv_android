@@ -39,6 +39,7 @@ public abstract class BaseActivity extends Activity {
 			DisplayMetrics dm = new DisplayMetrics();
 			getWindowManager().getDefaultDisplay().getMetrics(dm);
 			Constant.WINDOW_WIDTH = dm.widthPixels;
+			Constant.WINDOW_HEIGHT = dm.heightPixels;
 		}
 	}
 	
