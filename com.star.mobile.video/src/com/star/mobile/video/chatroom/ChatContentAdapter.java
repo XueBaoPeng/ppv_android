@@ -29,6 +29,7 @@ import android.widget.PopupWindow.OnDismissListener;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.plus.model.people.Person;
 import com.star.cms.model.Chart;
 import com.star.cms.model.ChatRoom;
 import com.star.cms.model.User;
@@ -66,6 +67,7 @@ public class ChatContentAdapter extends BaseAdapter {
 	private View onLClickView;
 
 	private List<Long> leaderIds;
+	private List<Long> masterIds;
 
 	private int lv_top;
 
@@ -86,6 +88,16 @@ public class ChatContentAdapter extends BaseAdapter {
 			for (String id : ids) {
 				try {
 					leaderIds.add(Long.parseLong(id));
+				} catch (Exception e) {
+				}
+			}
+		}
+		masterIds = new ArrayList<Long>();
+		if (chatroom != null && chatroom.getMasterIds() != null){
+			String[] ids = chatroom.getUserIds().split(",");
+			for (String id : ids) {
+				try {
+					masterIds.add(Long.parseLong(id));
 				} catch (Exception e) {
 				}
 			}
@@ -168,8 +180,9 @@ public class ChatContentAdapter extends BaseAdapter {
 				}
 			} catch (Exception e) {
 			}
-			addLeaderMark(holder.leaderIcon_t, chat);
-			formatContent(position, holder.chatContent_t, holder.chatImage_t,holder.linkGroup_t, chat);
+			addLeaderMark(holder.leaderIcon_t, chat, holder.masterIcon_t);
+			addMasterMark(holder.masterIcon_t, chat,holder.leaderIcon_t,holder.chatContent_t,R.drawable.chat_kanu_bg_t);
+			formatContent(position, holder.chatContent_t, holder.chatImage_t, holder.linkGroup_t, chat);
 			setChatStatus(chat, holder.chatStatus_t);
 		} else {
 			holder.chatContainer_t.setVisibility(View.GONE);
@@ -180,8 +193,9 @@ public class ChatContentAdapter extends BaseAdapter {
 			} catch (Exception e) {
 				Log.e(TAG, "get chatimge-f error", e);
 			}
-			addLeaderMark(holder.leaderIcon_f, chat);
-			formatContent(position, holder.chatContent_f, holder.chatImage_f,holder.linkGroup_f, chat);
+			addLeaderMark(holder.leaderIcon_f, chat,holder.masterIcon_t);
+			addMasterMark(holder.masterIcon_f, chat,holder.leaderIcon_f,holder.chatContent_f,R.drawable.chat_kanu_bg_f);
+			formatContent(position, holder.chatContent_f, holder.chatImage_f, holder.linkGroup_f, chat);
 		}
 		Linkify.addLinks(holder.chatContent_f, Patterns.WEB_URL,Constant.SCHEAM + "?" + Constant.UID + "=");
 		Linkify.addLinks(holder.chatContent_t, Patterns.WEB_URL,Constant.SCHEAM + "?" + Constant.UID + "=");
@@ -292,7 +306,8 @@ public class ChatContentAdapter extends BaseAdapter {
 		holder.chatTime_t = (TextView) view.findViewById(R.id.tv_chat_time_t);
 		holder.leaderIcon_f = (ImageView) view.findViewById(R.id.iv_leader_f);
 		holder.leaderIcon_t = (ImageView) view.findViewById(R.id.iv_leader_t);
-
+		holder.masterIcon_f = (ImageView) view.findViewById(R.id.iv_leader_f_kanu);
+		holder.masterIcon_t = (ImageView) view.findViewById(R.id.iv_leader_t_kanu);
 		holder.linkGroup_f = (RelativeLayout) view.findViewById(R.id.rl_chat_link_f);
 		holder.linkGroup_t = (RelativeLayout) view.findViewById(R.id.rl_chat_link_t);
 
@@ -383,10 +398,24 @@ public class ChatContentAdapter extends BaseAdapter {
 		contentView.setVisibility(View.VISIBLE);
 	}
 
-	private void addLeaderMark(final ImageView view, Chart chat) {
+	private void addLeaderMark(final ImageView view, Chart chat,ImageView masterImage) {
 		for (Long id : leaderIds) {
 			if (chat.getUserId()!=null && chat.getUserId().equals(id)) {
 				view.setVisibility(View.VISIBLE);
+				masterImage.setVisibility(View.GONE);
+				break;
+			}
+		}
+
+	}
+
+	private void addMasterMark(final ImageView view, Chart chat,ImageView leaderImage,TextView masterContentBg,int materContentBgRes){
+		for(Long id : masterIds) {
+			if (chat.getUserId()!=null && chat.getUserId().equals(id)) {
+				view.setVisibility(View.VISIBLE);
+				leaderImage.setVisibility(View.GONE);
+				masterContentBg.setBackgroundResource(materContentBgRes);
+				masterContentBg.setTextColor(context.getResources().getColor(R.color.white));
 				break;
 			}
 		}
@@ -480,7 +509,8 @@ public class ChatContentAdapter extends BaseAdapter {
 
 		public ImageView leaderIcon_f;
 		public ImageView leaderIcon_t;
-
+		public ImageView masterIcon_f;
+		public ImageView masterIcon_t;
 		public RelativeLayout linkGroup_f;
 		public RelativeLayout linkGroup_t;
 
