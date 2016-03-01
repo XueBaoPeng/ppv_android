@@ -149,8 +149,13 @@ public class HomeActivity extends FragmentActivity implements OnClickListener,Gu
 //		Intent intent = new Intent(this,FourLayerService.class);
 //		startService(intent);
 //		checkLoginStatus();
+		setDimension();
 	}
-
+	private void setDimension() {
+		if (StarApplication.mUser != null) {
+			GA.sendCustomDimension(5, String.valueOf(StarApplication.mUser.getId()));
+		}
+	}
 	private void checkLoginStatus(){
 		if(!SyncService.getInstance(this).isDBReady()&&!SyncService.getInstance(this).isLoading()){
 			com.star.util.Logger.d("not login, must go welcome!");
