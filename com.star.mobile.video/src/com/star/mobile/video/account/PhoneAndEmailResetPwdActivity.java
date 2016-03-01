@@ -285,6 +285,18 @@ public class PhoneAndEmailResetPwdActivity extends BaseActivity implements OnCli
 			}
 		});
 	}
+
+	/**
+	 * 电话号码不让修改
+	 */
+	private void setEtPhoneEnable(){
+		phoneInputView.setEtPhoneEnable();
+	}/**
+	 * 电话号码让修改
+	 */
+	private void setEtPhoneEdit(){
+		phoneInputView.setEtPhoneEdit();
+	}
 	
 	private void checkVerCode() {
 		final String phoneNumber = phoneInputView.getPhoneNumber();
@@ -304,9 +316,11 @@ public class PhoneAndEmailResetPwdActivity extends BaseActivity implements OnCli
 			public void onSuccess(Boolean result) {
 				CommonUtil.closeProgressDialog();
 				if(result != null && result) {
+					setEtPhoneEnable();
 					btPhoneNext.setBackgroundResource(R.drawable.orange_button_bg);
 					btPhoneNext.setOnClickListener(PhoneAndEmailResetPwdActivity.this);
 				} else {
+					setEtPhoneEdit();
 					checkCodeView.setCodeErrorMsg(getResources().getString(R.string.code_error));
 					checkCodeView.setCodeErrorTextColor(getResources().getColor(R.color.check_mob_tex));
 					CommonUtil.getInstance().showPromptDialog(PhoneAndEmailResetPwdActivity.this, getString(R.string.tips),
