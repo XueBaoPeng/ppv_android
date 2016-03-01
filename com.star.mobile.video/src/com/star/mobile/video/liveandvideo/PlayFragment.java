@@ -314,7 +314,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 		});
 		ll_rate = (LinearLayout)mView.findViewById(R.id.ll_rate);
 		ll_rate.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(getActivity(),ChannelRateActivity.class);
@@ -453,7 +453,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 
 	/**
 	 * 点击gridview里的某一个item时，会跳转指定的频道
-	 * 
+	 *
 	 * @param position
 	 */
 	private void skipToAssignChannel(int position) {
@@ -579,7 +579,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 
 	/**
 	 * 初始化频道
-	 * 
+	 *
 	 * @param chns
 	 *            后台获得的数据集
 	 */
@@ -668,7 +668,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 
 	/**
 	 * 设置category信息
-	 * 
+	 *
 	 * @param
 	 */
 	private void setCategroyInfo(ChannelVO channel) {
@@ -757,7 +757,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 
 	/**
 	 * 获得收藏类别的状态
-	 * 
+	 *
 	 * @return
 	 */
 	public int getFavoriteCollectStatu() {
@@ -788,7 +788,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 	public void onPageSelected(int position) {
 		this.mFancyCoverFlow.setSelection(position);
 	}
-	
+
 
 
 	/**
@@ -806,7 +806,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 
 	/**
 	 * 设置channeldetail数据
-	 * 
+	 *
 	 * @param position
 	 */
 	private void setChannelData(int position) {
@@ -859,7 +859,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 
 	/**
 	 * 设置当前的channel
-	 * 
+	 *
 	 */
 	private void setCurrentChannel() {
 		if (mTotalChannels != null && mTotalChannels.size() > 0) {
@@ -1162,7 +1162,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 
 	/**
 	 * 设置flowlayout里textview没有选中的颜色和背景色
-	 * 
+	 *
 	 * @param tv
 	 */
 	private void setFlowLayoutTextView(final TextView tv) {
@@ -1175,7 +1175,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 
 	/**
 	 * 设置flowLayout里textview选中的字体颜色和背景色
-	 * 
+	 *
 	 * @param tv
 	 */
 	private void setFlowLayoutChooseTextView(final TextView tv) {
@@ -1350,7 +1350,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 				CommonUtil.pleaseLogin(getActivity());
 			}
 		}
-		
+
 		return false;
 	}
 	/**

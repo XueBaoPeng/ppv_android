@@ -107,7 +107,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener,Gu
 		smartCardService=new SmartCardService(this);
 		phoneNumber=0;
 		initView();
-		checkLoginStatus();
 		tenbService = new TenbService(this);
 		userService = new UserService();
 		mChannelService = new ChannelService(this);
@@ -149,13 +148,21 @@ public class HomeActivity extends FragmentActivity implements OnClickListener,Gu
 		//四格体验服务不在监听
 //		Intent intent = new Intent(this,FourLayerService.class);
 //		startService(intent);
+//		checkLoginStatus();
+		setDimension();
 	}
-
+	private void setDimension() {
+		if (StarApplication.mUser != null) {
+			GA.sendCustomDimension(5, String.valueOf(StarApplication.mUser.getId()));
+		}
+	}
 	private void checkLoginStatus(){
-		if(SharedPreferencesUtil.getUserName(this)==null&&SharedPreferencesUtil.getDiciveId(this)==null){
+		if(!SyncService.getInstance(this).isDBReady()&&!SyncService.getInstance(this).isLoading()){
 			com.star.util.Logger.d("not login, must go welcome!");
 			ToastUtil.centerShowToast(this, "Sorry, you need login again!");
 			CommonUtil.startActivity(this, WelcomeActivity.class);
+			finish();
+
 		}
 	}
 
@@ -555,7 +562,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener,Gu
 	}
 	
 	private void initChannels(List<ChannelVO> chns) {
-		mPlayFragment.initChannels(chns);	
+		mPlayFragment.initChannels(chns);
 	}
 	
 	/**

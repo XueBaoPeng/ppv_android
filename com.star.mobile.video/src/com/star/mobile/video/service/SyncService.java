@@ -260,7 +260,7 @@ public class SyncService extends AbstractService{
 		IOUtil.delCachedJSON(Constant.shareUserEggUrl());
 		IOUtil.delCachedJSON(Constant.getVideoChannelUrl()+"?index="+0+"&count="+10);
 		IOUtil.delCachedJSON(Constant.getReportQuestionUrl(String.valueOf(ApplicationUtil.getAppVerison(context))));
-		IOUtil.delCachedJSON(Constant.getOrderListUrl()+"?index="+0+"&count="+10);
+		IOUtil.delCachedJSON(Constant.getOrderListUrl()+"?index=0&count=6");
 	}
 	
 	public void sync_(){

@@ -338,7 +338,7 @@ public class BondSmartCardInfoView extends RelativeLayout implements View.OnClic
             case R.id.balance_rl:
                 // 跳转到Balance页面
                 if (mSmartCardInfoVO != null && mSmartCardInfoVO.getMoney() != null) {
-                    if (mSmartCardInfoVO.getTvPlatForm().getNum()==TVPlatForm.DTT.getNum()){
+                    if (platForm.getNum()==TVPlatForm.DTT.getNum()){
                         Intent i = new Intent();
                         i.putExtra("smartcardinfovo", (Serializable) mSmartCardInfoVO);
                         // i.putExtra("smartinfos", (Serializable) mSmartinfos);
@@ -356,7 +356,7 @@ public class BondSmartCardInfoView extends RelativeLayout implements View.OnClic
             case R.id.bouquet_rl:
                 // 跳转到Bouquet页面
                 if (mSmartCardInfoVO != null && mSmartCardInfoVO.getMoney() != null) {
-                    if (mSmartCardInfoVO.getTvPlatForm().getNum()==TVPlatForm.DTT.getNum()){
+                    if (platForm.getNum()==TVPlatForm.DTT.getNum()){
                         Intent intent = new Intent();
                         intent.putExtra("smartCardInfoVO", mSmartCardInfoVO);
                         intent.putExtra("platForm",platForm);

@@ -67,11 +67,11 @@ public class MyOrderActivity extends BaseActivity implements OnClickListener{
 	 */
 	private void initData(){
 		mSmartCardService = new SmartCardService(this);
-		mMyOrderAdapter = new MyOrderAdapter(MyOrderActivity.this, mMyOrderLists);
-		mMyOrderListView.setAdapter(mMyOrderAdapter);
 		if (mMyOrderLists != null && mMyOrderLists.size()>0) {
 			mMyOrderLists.clear();
 		}
+		mMyOrderAdapter = new MyOrderAdapter(MyOrderActivity.this, mMyOrderLists);
+		mMyOrderListView.setAdapter(mMyOrderAdapter);
 		getOrderList();
 	}
 
