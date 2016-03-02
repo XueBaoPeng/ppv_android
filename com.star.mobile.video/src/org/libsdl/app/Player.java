@@ -909,7 +909,7 @@ public class Player extends BaseActivity implements OnClickListener{
 		
 		mVideoQualityGuideRL = (RelativeLayout) findViewById(R.id.video_quality_guide);
 		mVideoQualityGuideRL.setOnTouchListener(new OnTouchListener() {
-			
+
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
 				return true;
