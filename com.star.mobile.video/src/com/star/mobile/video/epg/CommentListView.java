@@ -74,71 +74,16 @@ public class CommentListView extends LinearLayout implements OnClickListener {
 	}
 	public void setCurrentProgram(Program program) {
 		this.program = program;
-		/*if(program==null)
-			return;*/
-		executeGetTask();
+		if(this.program != null) {
+			executeGetTask();
+		}
 	}
 
 	private void executeGetTask() {
-	/*	new LoadingDataTask() {
-			List<Comment> cs;
-			@Override
-			public void onPreExecute() {
-			}
-
-			@Override
-			public void onPostExecute() {
-				CommonUtil.closeProgressDialog();
-				if(cs==null || cs.size()==0)
-					return;
-				if(fromLocal && fromNetAlready)
-					return;
-				comments.clear();
-				comments.addAll(cs);
-				commentListAdapter.updateDateRefreshUi(comments);
-				if(!fromLocal){
-					fromNetAlready = true;
-				}
-			}
-
-			@Override
-			public void doInBackground() {
-				cs = commentService.getCommentsOfEpg(program.getId(), fromLocal);
-			}
-		}.execute();*/
-		
-		/*new HTTPInvoker<List<Comment>>() {
-			@Override
-			public void onFail(int statusLine) {
-				CommonUtil.closeProgressDialog();
-			}
-
-			@Override
-			public void onSuccess(List<Comment> cs) {
-				CommonUtil.closeProgressDialog();
-				if(cs==null || cs.size()==0)
-					return;
-				if(fromLocal && fromNetAlready)
-					return;
-				comments.clear();
-				comments.addAll(cs);
-				commentListAdapter.updateDateRefreshUi(comments);
-				if(!fromLocal){
-					fromNetAlready = true;
-				}
-			}
-
-			@Override
-			public RequestHandle http() {
-				return commentService.getCommentsOfEpg(this,program.getId(), fromLocal);
-			}
-
-		}.go();*/
 		commentService.getCommentsByEpgId(program.getId(), new OnListResultListener<Comment>() {
 
 			@Override
 			public boolean onIntercept() {
-				// TODO Auto-generated method stub
 				return false;
 			}
 
@@ -197,58 +142,6 @@ public class CommentListView extends LinearLayout implements OnClickListener {
 			ToastUtil.centerShowToast(c, "The comment should be no less than 6 letters and no more than 500 letters.");
 			return;
 		}
-//		new LoadingDataTask() {
-//			private Comment comment;
-//			
-//			@Override
-//			public void onPreExecute() {
-//				CommonUtil.showProgressDialog(c, null, "submitting comments...");
-//			}
-//
-//			@Override
-//			public void onPostExecute() {
-//				CommonUtil.closeProgressDialog();
-//				if(comment != null) {
-//					etComment.clearComposingText();
-//					fragment.updateCommentCount();
-//					executeGetTask(false);
-//					etComment.getEditableText().clear();
-//					homeActivity.closeKeyboard();
-//					sendComment.setVisibility(View.GONE);
-//					EggAppearService.appearEgg(c, EggAppearService.Comments_commit);
-//				} else {
-//					ToastUtil.centerShowToast(c, "submitting comment failure!");
-//				}
-//				
-//			}
-//
-//			@Override
-//			public void doInBackground() {
-//				comment = commentService.submitComment(program.getId(), submitMsg);
-//			}
-//		}.execute();
-//		new HTTPInvoker<Comment>() {
-//			@Override
-//			public void onFail(int statusLine) {
-//				CommonUtil.closeProgressDialog();
-//				ToastUtil.centerShowToast(c, "submitting comment failure!");
-//			}
-//
-//			@Override
-//			public void onSuccess(Comment comment) {
-//				CommonUtil.closeProgressDialog();
-//				chatView.getmEtChat().clearComposingText();
-//				executeGetTask();
-//				chatView.getmEtChat().getEditableText().clear();
-//				EggAppearService.appearEgg(c, EggAppearService.Comments_commit);
-//			}
-//
-//			@Override
-//			public RequestHandle http() {
-//				return commentService.submitComment(this,program.getId(), submitMsg);
-//			}
-//
-//		}.go();
 		commentService.submitComment(program.getId(), submitMsg, new OnResultListener<Comment>() {
 
 			@Override

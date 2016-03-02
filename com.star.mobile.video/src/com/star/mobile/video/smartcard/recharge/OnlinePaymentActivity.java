@@ -98,6 +98,9 @@ public class OnlinePaymentActivity  extends BaseActivity implements OnClickListe
 	 * 校验
 	 */
 	private void verfiy(){
+		if(StarApplication.mUser == null) {
+			return;
+		}
 		mSmartCardService.bankToken(StarApplication.mUser, new OnResultListener<String>() {
 			
 			@Override

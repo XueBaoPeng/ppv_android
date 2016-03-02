@@ -294,6 +294,9 @@ public class MyOrderDetailActivity extends BaseActivity implements OnClickListen
 							// Boss异常
 							failedReason = getString(R.string.service_abnormal);
 							break;
+						case BindCardCommand.NOT_IDENTIFY:
+							failedReason = getString(R.string.not_identify);
+							break;
 						default:
 							failedReason = getString(R.string.service_abnormal) + "(" + acceptStatus + ")";
 							break;
