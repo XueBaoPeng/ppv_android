@@ -185,21 +185,13 @@ public class ModifyMeActivity extends BaseActivity implements OnClickListener, S
 
 	protected void setEmail() {
 		if (mUser != null) {
-			if (mUser.getType().equals(AccountType.PhoneNumber)) {
-				// StringBuilder builder=new StringBuilder();
-				// for(int i=0;i<lastName.length();i++){
-				// if(i<5){
-				// builder.append('×');
-				// continue;
-				// }
-				// builder.append(lastName.charAt(i));
-				// }
+			if (AccountType.PhoneNumber.equals(mUser.getType())) {
 				emailImage.setImageResource(R.drawable.ic_smartphone);
 				user_email.setText(lastName);
-			} else if (mUser.getType().equals(AccountType.Facebook)) {
+			} else if (AccountType.Facebook.equals(mUser.getType())) {
 				user_email.setText("Linked from Facebook account");
 				emailImage.setImageResource(R.drawable.ic_facebook);
-			} else if (mUser.getType().equals(AccountType.Twitter)) {
+			} else if (AccountType.Twitter.equals(mUser.getType())) {
 				user_email.setText("Linked from Twitter");
 				emailImage.setImageResource(R.drawable.ic_twitter);
 			} else {
@@ -230,7 +222,6 @@ public class ModifyMeActivity extends BaseActivity implements OnClickListener, S
 
 			@Override
 			public boolean onIntercept() {
-				// TODO Auto-generated method stub
 				return false;
 			}
 
@@ -291,20 +282,23 @@ public class ModifyMeActivity extends BaseActivity implements OnClickListener, S
 	}
 
 	private void sendNickNameupdate() {
-		mAccountService.updateNickNanme(Long.toString(userid), nickName, new OnResultListener<Integer>() {
+		mAccountService.updateNickNanme(userid, nickName, new OnResultListener<Integer>() {
 
 			@Override
 			public void onSuccess(Integer result) {
 				CommonUtil.closeProgressDialog();
-				if (result == User.UPDATE_NICKNAME_SUCCESS) {
+				if (mUser != null && result == User.UPDATE_NICKNAME_SUCCESS) {
 					mUser.setNickName(nickName);
-					StarApplication.mUser.setNickName(nickName);
+					if (StarApplication.mUser != null) {
+						StarApplication.mUser.setNickName(nickName);
+					}
 					showToast(getString(R.string.updata_sex_success));
-					// onBackPressed();
 				} else if (result == User.DOES_NOT_MATCH) {
 					showToast(getString(R.string.does_not_match));
 				} else if (result == User.NICKNAME_LENGTH_MISMATCH) {
 					showToast(getString(R.string.update_nickname_hint));
+				} else {
+					showToast(getString(R.string.error_network));
 				}
 
 			}
@@ -375,7 +369,6 @@ public class ModifyMeActivity extends BaseActivity implements OnClickListener, S
 	 * 选择性别弹框
 	 */
 	private void selectDialog() {
-		// TODO Auto-generated method stub
 		String sex = user_sex.getText().toString();
 		dialog = new SelectSexDialog(ModifyMeActivity.this, this, sex);
 		dialog.show();
@@ -383,7 +376,6 @@ public class ModifyMeActivity extends BaseActivity implements OnClickListener, S
 
 	@Override
 	public void SelectResult(String sex) {
-		// new_sex=sex;
 		user_sex.setText(sex);
 	}
 

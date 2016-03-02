@@ -235,7 +235,7 @@ public class AccountService extends AbstractService {
 	 * @param nickName
 	 * @param listener
 	 */
-	public void updateNickNanme(String userID, String nickName,OnResultListener<Integer> listener) {
+	public void updateNickNanme(long userID, String nickName,OnResultListener<Integer> listener) {
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("userID", userID);
 		params.put("nickName", nickName);

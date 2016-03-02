@@ -97,7 +97,9 @@ public class ChatView extends TabView<ListView> implements ListAnimCallback{
 //		setChannelID(mChannel.getId());
 //	}
 	public void updateUi(){
-		mChannelViewControlChat.updateChatRoom(mChannel.getId());
+		if (mChannel != null){
+			mChannelViewControlChat.updateChatRoom(mChannel.getId());
+		}
 	}
 	private void setChannelID(long channelID) {
 		mHasLoadedOnce = true;
