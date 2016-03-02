@@ -149,7 +149,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener,Gu
 		//四格体验服务不在监听
 //		Intent intent = new Intent(this,FourLayerService.class);
 //		startService(intent);
-//		checkLoginStatus();
+		checkLoginStatus();
 		setDimension();
 	}
 	private void setDimension() {
@@ -163,7 +163,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener,Gu
 			ToastUtil.centerShowToast(this, "Sorry, you need login again!");
 			CommonUtil.startActivity(this, WelcomeActivity.class);
 			finish();
-
 		}
 	}
 

@@ -87,7 +87,7 @@ public class SyncService extends AbstractService{
 	}
 	
 	public void setDBReady(Boolean status){
-		Logger.d(!status?"NEED INIT DATA":"");
+		Logger.d(!status?"NEED INIT DATA":"NOT NEED INIT!");
 		dbReady = status;
 		dbHelper.setDbReady(dbReady);
 		mSharePre.edit().putBoolean("isInit", status).commit();
@@ -99,6 +99,7 @@ public class SyncService extends AbstractService{
 	
 	public void setLoading(boolean status){
 		this.loading = status;
+        Logger.d("LOADING STATUS: "+status);
 	}
 	
 	public void doResetStatus(String username, Long areaid){
