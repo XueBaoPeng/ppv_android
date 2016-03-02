@@ -5,7 +5,7 @@
     <!-- https线上环境 --><!-- tenb调用的发帖地址  正式环境-->
 	<!--<string name="server_url">https://tenbre.me/cms</string>
 	<string name="bbs_url">http://startimes.me/bbs/forumsCategory/list1.page</string>
-	<string name="bbs_faq_url">http://startimes.me/bbs/forumsCategory/show/36.page</string>
+	<string name="bbs_faq_url">http://startimes.me/bbs/forumsCategory/faq/36.page</string>
 	<string name="bbs_faq_recharge">http://startimes.me/bbs/tenbrePosts/list/204.page</string>
 	<string name="bbs_faq_changebouquet">http://startimes.me/bbs/tenbrePosts/list/359.page</string>
 	<string name="bbs_faq_bindCard">http://startimes.me/bbs/tenbrePosts/list/203.page</string>
@@ -23,7 +23,7 @@
 	<!-- https准上线测试环境 --><!-- tenb调用的发帖地址  准上线环境-->
 	<!--<string name="server_url">https://52.18.227.87/cms</string>
 	<string name="bbs_url">http://52.18.227.87/bbs/forumsCategory/list1.page</string>
-	<string name="bbs_faq_url">http://52.18.227.87/bbs/forumsCategory/show/36.page</string>
+	<string name="bbs_faq_url">http://52.18.227.87/bbs/forumsCategory/faq/36.page</string>
 	<string name="bbs_faq_recharge">http://52.18.227.87/bbs/tenbrePosts/list/204.page</string>
 	<string name="bbs_faq_changebouquet">http://52.18.227.87/bbs/tenbrePosts/list/359.page</string>
 	<string name="bbs_faq_bindCard">http://52.18.227.87/bbs/tenbrePosts/list/203.page</string>
@@ -53,7 +53,7 @@
 	<!-- <string name="server_url">http://10.0.63.242:8281/cms</string>
 	<string name="html_prefix_url">http://10.0.63.242:8281</string>
 	<string name="bbs_url">http://10.0.63.242:8281/bbs/forumsCategory/list1.page</string>
-	<string name="bbs_faq_url">http://10.0.63.242:8281/bbs/forumsCategory/show/36.page</string>
+	<string name="bbs_faq_url">http://10.0.63.242:8281/bbs/forumsCategory/faq/36.page</string>
 	<string name="bbs_faq_recharge">http://10.0.63.242:8281/bbs/tenbrePosts/list/311.page</string>
 	<string name="bbs_faq_changebouquet">http://10.0.63.242:8281/bbs/tenbrePosts/list/308.page</string>
 	<string name="bbs_faq_bindCard">http://10.0.63.242:8281/bbs/tenbrePosts/list/307.page</string>
@@ -70,7 +70,7 @@
 	<string name="server_url">http://10.0.63.242:8281/cms</string>
 	<string name="html_prefix_url">http://10.0.63.242:8281</string>
 	<string name="bbs_url">http://10.0.63.242:8281/bbs/forumsCategory/list1.page</string>
-	<string name="bbs_faq_url">http://10.0.63.242:8281/bbs/forumsCategory/show/36.page</string>
+	<string name="bbs_faq_url">http://10.0.63.242:8281/bbs/forumsCategory/faq/36.page</string>
 	<string name="bbs_faq_recharge">http://10.0.63.242:8281/bbs/tenbrePosts/list/311.page</string>
 	<string name="bbs_faq_changebouquet">http://10.0.63.242:8281/bbs/tenbrePosts/list/308.page</string>
 	<string name="bbs_faq_bindCard">http://10.0.63.242:8281/bbs/tenbrePosts/list/307.page</string>
