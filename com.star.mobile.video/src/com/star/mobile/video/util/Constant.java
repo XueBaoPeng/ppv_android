@@ -684,6 +684,7 @@ public class Constant {
 	
 	public static SimpleDateFormat format = new SimpleDateFormat("HH:mm");
 	public static int WINDOW_WIDTH;
+	public static int WINDOW_HEIGHT;
 	public static int POSTER_HEIGHT;
 	public static int MENU_ITEM_WIDTH;
 	public static final int UPDATE_INTERVAL = 0;

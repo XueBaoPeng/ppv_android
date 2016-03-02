@@ -22,7 +22,7 @@ import android.widget.TextView;
 import com.star.cms.model.Question;
 import com.star.cms.model.dto.DoReportResult;
 import com.star.mobile.video.R;
-import com.star.mobile.video.activity.CurrentVersionAppDetailActivity;
+import com.star.mobile.video.appversion.CurrentVersionAppDetailActivity;
 import com.star.mobile.video.activity.IsLoginAlertDialogActivity;
 import com.star.mobile.video.base.BaseActivity;
 import com.star.mobile.video.model.Answer;

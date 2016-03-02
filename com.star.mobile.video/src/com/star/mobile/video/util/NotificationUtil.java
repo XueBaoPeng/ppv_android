@@ -11,10 +11,9 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.widget.RemoteViews;
 
 import com.star.mobile.video.R;
-import com.star.mobile.video.activity.NewVersionAppDetailActivity;
+import com.star.mobile.video.appversion.NewVersionAppDetailActivity;
 import com.star.mobile.video.shared.SharedPreferencesUtil;
 
 public class NotificationUtil {

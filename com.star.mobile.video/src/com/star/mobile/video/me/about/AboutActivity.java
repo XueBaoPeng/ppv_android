@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.star.mobile.video.R;
 import com.star.mobile.video.activity.BrowserActivity;
-import com.star.mobile.video.activity.CurrentVersionAppDetailActivity;
+import com.star.mobile.video.appversion.CurrentVersionAppDetailActivity;
 import com.star.mobile.video.base.BaseActivity;
 import com.star.mobile.video.me.feedback.FeedbackActivity;
 import com.star.mobile.video.model.AboutItemData;

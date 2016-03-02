@@ -243,7 +243,7 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.star.mobile.video.activity.CurrentVersionAppDetailActivity"
+            android:name=".appversion.CurrentVersionAppDetailActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" >
         </activity>
@@ -285,7 +285,7 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.star.mobile.video.activity.NewVersionAppDetailActivity"
+            android:name=".appversion.NewVersionAppDetailActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" >
         </activity>

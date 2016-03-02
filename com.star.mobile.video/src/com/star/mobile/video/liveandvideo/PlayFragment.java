@@ -597,6 +597,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 			mChannelId = Constants.BUNDESLIGA_CHANNEL_ID;
 			setCurrentChannel();
 		}
+		mCurrentChannel = mTotalChannels.get(recordPosition);
 		setInitData(recordPosition);
 	}
 
@@ -1265,7 +1266,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 				ObjectAnimator anim1 = ObjectAnimator.ofFloat(view, "scaleX", 1.2f, 1.0f);
 				ObjectAnimator anim2 = ObjectAnimator.ofFloat(view, "scaleY", 1.2f, 1.0f);
 				AnimatorSet animSet = new AnimatorSet();
-				animSet.playTogether(anim1,anim2);
+				animSet.playTogether(anim1, anim2);
 				animSet.setDuration(100);
 				animSet.setInterpolator(new BounceInterpolator());
 				animSet.start();
@@ -1401,8 +1402,10 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 			}
 
 			private void rechangeFavStatus() {
-				boolean isFav = mCurrentChannel.isFav();
-				mCurrentChannel.setFav(!isFav);
+				if (mCurrentChannel != null){
+					boolean isFav = mCurrentChannel.isFav();
+					mCurrentChannel.setFav(!isFav);
+				}
 			}
 
 			@Override
@@ -1415,21 +1418,18 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 
 	private void updateFavIconStatus() {
 		GA.sendEvent(STATISTICS_CATEGORY, FAVORITE_ICON, mCurrentChannel.getName() == null? "":mCurrentChannel.getName(), 1);
-		boolean isFav = mCurrentChannel.isFav();
-		if (isFav) {
-			mFavoriteSmallImageView.setVisibility(View.VISIBLE);
-			mFavoriteSmallRL.setClickable(false);
-			// 显示小图动画
-			showFavoriteSmallIVAnim(mFavoriteSmallImageView);
-		} else {
-			// 小图片消失
-			mFavoriteSmallImageView.setVisibility(View.GONE);
+		if (mCurrentChannel != null){
+			boolean isFav = mCurrentChannel.isFav();
+			if (isFav) {
+				mFavoriteSmallImageView.setVisibility(View.VISIBLE);
+				mFavoriteSmallRL.setClickable(false);
+				// 显示小图动画
+				showFavoriteSmallIVAnim(mFavoriteSmallImageView);
+			} else {
+				// 小图片消失
+				mFavoriteSmallImageView.setVisibility(View.GONE);
+			}
 		}
-
-
-
-
-
 	}
 
 }

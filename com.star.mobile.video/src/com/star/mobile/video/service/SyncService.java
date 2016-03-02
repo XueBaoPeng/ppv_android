@@ -11,6 +11,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Handler;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.google.gson.reflect.TypeToken;
 import com.star.cms.model.APPInfo;
@@ -26,6 +28,7 @@ import com.star.mobile.video.R;
 import com.star.mobile.video.StarApplication;
 import com.star.mobile.video.activity.AlertInstallActivity;
 import com.star.mobile.video.activity.GooglePlayActivity;
+import com.star.mobile.video.appversion.AppInfoCacheService;
 import com.star.mobile.video.base.AbstractService;
 import com.star.mobile.video.chatroom.faq.FAQService;
 import com.star.mobile.video.dao.db.DBHelper;
@@ -38,6 +41,7 @@ import com.star.mobile.video.util.Constant;
 import com.star.mobile.video.util.DateFormat;
 import com.star.mobile.video.util.DownloadUtil;
 import com.star.mobile.video.util.IOUtil;
+import com.star.ui.ImageView;
 import com.star.util.Logger;
 import com.star.util.json.JSONUtil;
 import com.star.util.loader.LoadMode;
@@ -56,6 +60,7 @@ public class SyncService extends AbstractService{
 	private boolean dbReady = false;
 	private boolean loading = false;
 	private FAQService faqService;
+	private AppInfoCacheService appInfoCacheService;
 
 	private SyncService(Context context){
 		super(context);
@@ -68,6 +73,7 @@ public class SyncService extends AbstractService{
 		userService = new UserService();
 		dbHelper = DBHelper.getInstence(context);
 		dbReady = mSharePre.getBoolean("isInit", false);
+		appInfoCacheService = new AppInfoCacheService(context);
 	}
 	
 	public static SyncService getInstance(Context context){
@@ -287,6 +293,7 @@ public class SyncService extends AbstractService{
 						if(appInfo.isQuestionActive()) {
 							SharedPreferencesUtil.setAppQuestionActive(context);
 						}
+						cacheImage(appInfo);
 					}
 					//是否有coins可领
 					Integer coins = result.getCoins();
@@ -303,6 +310,7 @@ public class SyncService extends AbstractService{
 					//新版本
 					APPInfo newApp = result.getNewAppInfo();
 					if(newApp!=null && newApp.getVersion()>ApplicationUtil.getAppVerison(context)){
+						cacheImage(newApp);
 						SharedPreferencesUtil.setNewVersion(context,newApp.getVersion());
 						SharedPreferencesUtil.setNewVersionSize(context,newApp.getApkSize());
 						AppInfoSharedUtil.setNewVersionApkUrl(context, newApp.getApkUrl());
@@ -345,6 +353,22 @@ public class SyncService extends AbstractService{
 				}
 			}
 
+			/**
+			 * 提前将poster缓存下
+			 * @param appInfo
+			 */
+			private void cacheImage(APPInfo appInfo) {
+				String cachePosterUrl = appInfoCacheService.getAppPoster(appInfo.getVersion());
+				if((cachePosterUrl==null&&appInfo.getPosterUrl()!=null)||(cachePosterUrl!=null&&!cachePosterUrl.equals(appInfo.getPosterUrl()))) {
+					appInfoCacheService.setAppPoster(appInfo.getVersion(), appInfo.getPosterUrl());
+					if(appInfo.getPosterUrl()!=null&&!appInfo.getPosterUrl().equals("")) {
+						ImageView imageview = new ImageView(context);
+						imageview.setLayoutParams(new LinearLayout.LayoutParams(Constant.WINDOW_WIDTH, Constant.WINDOW_HEIGHT));
+						imageview.setUrl(appInfo.getPosterUrl());
+					}
+				}
+			}
+
 			@Override
 			public void onFailure(int errorCode, String msg) {
 				// TODO Auto-generated method stub
@@ -352,7 +376,6 @@ public class SyncService extends AbstractService{
 			}
 		});
 	}
-	
 	public void syncStatus(OnResultListener<SyncAppStatus> onResultListener){
 		doGet(Constant.getSyncAppStatusUrl(), SyncAppStatus.class, LoadMode.NET, onResultListener);
 	}

@@ -112,6 +112,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener,Gu
 		mChannelService = new ChannelService(this);
 		mSmartCardSharedPre = new SmartCardSharedPre(HomeActivity.this);
 		fragmentManager = getSupportFragmentManager();
+		setFragmentByTag(AppConfig.TAG_fragment_play);
 		currentIntent(getIntent());
 		syncService = SyncService.getInstance(HomeActivity.this);
 		if(syncService.needInit()){
@@ -415,8 +416,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener,Gu
 		String tag = intent.getStringExtra("fragmentTag");
 		if(tag!=null){
 			setFragmentByTag(tag);
-		}else{
-			setFragmentByTag(AppConfig.TAG_fragment_play);
 		}
 	}		
 	

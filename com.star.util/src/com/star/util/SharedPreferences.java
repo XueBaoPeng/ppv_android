@@ -16,11 +16,6 @@ public abstract class SharedPreferences {
 	 * 构造方法。
 	 * 
 	 * @param context
-	 * @param kvName
-	 *            键值表名称。
-	 * @param mode
-	 *            打开的模式。值为Context.MODE_APPEND, Context.MODE_PRIVATE,
-	 *            Context.WORLD_READABLE, Context.WORLD_WRITEABLE.
 	 */
 	public SharedPreferences(Context context) {
 		String kvName = getSharedName()==null?"startimes":getSharedName();
@@ -28,8 +23,18 @@ public abstract class SharedPreferences {
 		mKV = context.getSharedPreferences(kvName, mode);
 		mEditor = mKV.edit();
 	}
-	
+
+	/**
+	 *
+	 * @return 键值表名称。
+	 */
 	public abstract String getSharedName();
+
+	/**
+	 *  打开的模式。值为Context.MODE_APPEND, Context.MODE_PRIVATE,
+	 *            Context.WORLD_READABLE, Context.WORLD_WRITEABLE.
+	 * @return
+	 */
 	public abstract int getSharedMode();
 
 	/**
@@ -130,7 +135,9 @@ public abstract class SharedPreferences {
 	 * @return 引用的KV对象。
 	 */
 	public SharedPreferences put(String key, Object value) {
-		if (value instanceof Boolean) {
+		if (value == null){
+			mEditor.putString(key, null);
+		}else if (value instanceof Boolean) {
 			mEditor.putBoolean(key, (Boolean) value);
 		} else if (value instanceof Integer || value instanceof Byte) {
 			mEditor.putInt(key, (Integer) value);
