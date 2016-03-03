@@ -56,7 +56,7 @@ public class PlayerAnalytic {
 	HashMap<String, Object> zyMap = new HashMap<String, Object>();
 	HashMap<String, Object> zyCommonMap = new HashMap<String, Object>();
 	//HashMap<String, Object> zyLogMap;
-	HashMap<String, Object> zyTempMap;
+	HashMap<String, Object> zyTempMap = new HashMap<String, Object>();
 	String commonJson;
 	List<HashMap<String, Object>> zyLogMap = new ArrayList<HashMap<String, Object>>();
 	long zyTime = 0;
@@ -170,19 +170,19 @@ public class PlayerAnalytic {
 							map.put("version", appVersion);
 							//Log.i(TAG, "zy Post to basicMsg:" + JSONUtil.getJSON(map));
 							//Log.i(TAG, "zy Post to postBasicLogUrl:" + postBasicLogUrl);
-							Result re = null;
-							try {
-								String resp = IOUtil.httpPostToJSON(postBasicLogUrl,map);
-								Log.d(TAG, "Post to basicMsg:" + resp);
-								re = JSONUtil.getFromJSON(resp, Result.class);
-							} catch (Exception e) {
-								isPostBasicInfo = false;
-								Log.d(TAG, "Post to basicMsg:",e);
-								return;
-							}
-							if(re!=null&&"1000".equals(re.code)){
-								isPostBasicInfo = true;
-							}
+//							Result re = null;
+//							try {
+//								String resp = IOUtil.httpPostToJSON(postBasicLogUrl,map);
+//								Log.d(TAG, "Post to basicMsg:" + resp);
+//								re = JSONUtil.getFromJSON(resp, Result.class);
+//							} catch (Exception e) {
+//								isPostBasicInfo = false;
+//								Log.d(TAG, "Post to basicMsg:",e);
+//								return;
+//							}
+//							if(re!=null&&"1000".equals(re.code)){
+//								isPostBasicInfo = true;
+//							}
 
 							
 						}
@@ -336,12 +336,12 @@ public class PlayerAnalytic {
 			}
 			@Override
 			public void doInBackground() {
-				try {
-					resp = IOUtil.httpPost(postUrl, jsonStr);
-					Log.d(TAG, "res: " + EntityUtils.toString(resp.getEntity(),"UTF-8") );
-				} catch (Exception e) {
-					Log.e(TAG, "Post log for ts: ",e);
-				}
+//				try {
+//					resp = IOUtil.httpPost(postUrl, jsonStr);
+//					Log.d(TAG, "res: " + EntityUtils.toString(resp.getEntity(),"UTF-8") );
+//				} catch (Exception e) {
+//					Log.e(TAG, "Post log for ts: ",e);
+//				}
 			}
 		}.execute();
 
@@ -390,7 +390,6 @@ public class PlayerAnalytic {
 		
 		zyTime = System.currentTimeMillis();
 		zyCTime = timestamp;
-		zyTempMap = new HashMap<String, Object>();
 		
 		zymessageType = messageType;
 		zytimestamp = timestamp;
