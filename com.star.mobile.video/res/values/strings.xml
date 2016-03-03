@@ -5,6 +5,7 @@
 	<string name="serie_a_name">Serie A</string>
 	
 	<string name="player_analytic_url">http://analyze.starcloud.link:9537/player</string>
+	<string name="zy_player_analytic_url">http://data.startimestv.com</string>
 	<!-- <string name="chatTop_url">http://10.0.63.24:8089/portal_parent</string> -->
     <!-- <string name="chatTop_url">http://218.205.169.218:8081/forum</string> -->
     
@@ -1044,5 +1045,6 @@
     <string name="all">ALL</string>
     <string name="request_fail">Fail to locate</string>
     <string name="channel_">Channel:</string>
+
     <string name="not_identify">Sorry, we do not support this kind of smart card temporarily.</string>
 </resources>

@@ -424,6 +424,22 @@ public class PlayerUtil
     	}
     }  
     
+    public static void sendPlayerStatus(int messageType, long timestamp, long message1, long message2) {
+//		Log.d(TAG, "====================================sendPlayerStatus = "
+//				+ messageType + "+" + timestamp + "+" + message1 + "+" + message2);
+		
+		Message msg = new Message();  
+        msg.arg1 = messageType;
+        Bundle bundle = new Bundle(); 
+        bundle.putLong("timestamp", timestamp);
+        bundle.putLong("message1", message1);
+        bundle.putLong("message2", message2);
+        msg.setData(bundle);
+        msg.what = Player.MSG_PLAYER_STATUS;
+        mHandler.sendMessage(msg);
+		//PlayerUtil.VirtualBack();
+	}
+    
     // Audio
 
     /**

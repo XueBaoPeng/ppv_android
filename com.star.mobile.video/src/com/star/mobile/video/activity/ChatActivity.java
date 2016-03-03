@@ -105,8 +105,8 @@ public class ChatActivity extends BaseActivity implements OnClickListener, OnTou
 	private FAQService mFaqService;
 	private String regExpres = "[0-9]*";
 	//机器人聊天室的code号
-	private String ROBOT_CHAT_CODE = "105";
 	private User mUser;
+	public static String ROBOT_CHAT_CODE = "105";
 	
 	private Handler mDefaultHandler = new Handler(){
 		public void handleMessage(android.os.Message msg) {

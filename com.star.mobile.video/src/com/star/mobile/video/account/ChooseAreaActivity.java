@@ -136,13 +136,20 @@ public class ChooseAreaActivity extends BaseActivity {
 							purrentArea=area;
 						}
 					}
+					if(purrentArea.getCode().equals("8")){
+						setMaybeOpention(purrentArea);
+					}else{
+						return;
+					}
+
 				}else{
-					setMaybeOpention(purrentArea);
+					setMaybeOpention(null);
 				}
 			}
 			@Override
 			public void onFailure(int errorCode, String msg) {
-				setMaybeOpention(purrentArea);
+				//定位失败
+				setMaybeOpention(null);
 			}
 		});
 
@@ -157,10 +164,7 @@ public class ChooseAreaActivity extends BaseActivity {
 			return;
 		if (area==null){
 			tv_isLoading.setText(R.string.request_fail);
-//			if (place_image!=null&&place_image.getAnimation()!=null){
 				place_image.getAnimation().cancel();
-//			}
-
 			return;
 		}
 		place_image.getAnimation().cancel();
@@ -200,8 +204,10 @@ public class ChooseAreaActivity extends BaseActivity {
 					areas.clear();
 					areas.addAll(responseDatas);
 					mAdapter.notifyDataSetChanged();
+					setCurrentArea();
 					loadPlaceByIpcode();
 					setListViewHeight();
+
 				}
 			}
 
@@ -217,6 +223,17 @@ public class ChooseAreaActivity extends BaseActivity {
 			}
 		});
 
+	}
+
+	/**
+	 * 设置默认的国家
+	 */
+	private void setCurrentArea(){
+		for (Area area:areas){
+			if (area.getCode().equals("8")){
+				purrentArea=area;
+			}
+		}
 	}
 	
 	private void goHomeActivity() {
