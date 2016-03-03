@@ -98,6 +98,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener,Gu
 	private PlayFragment mPlayFragment;
 	private boolean isActionBarMoreClick = false;
 	private long channelId = 0;
+	private String channelType=null;
 	private ImageView coin;
 	public static int phoneNumber;
 	@Override
@@ -284,6 +285,13 @@ public class HomeActivity extends FragmentActivity implements OnClickListener,Gu
 			channelId = Long.parseLong(intent.getStringExtra("channelId"));
 		}catch (Exception e) {
 			channelId = intent.getLongExtra("channelId", 0);
+		}
+		try{
+			channelType = intent.getStringExtra("channelType");
+		}catch (Exception e) {
+		}
+		if(channelType!=null){
+			mPlayFragment.setChannelType(channelType);
 		}
 		if(channelId != 0){
 			setFragmentByTag(AppConfig.TAG_fragment_play);

@@ -173,6 +173,12 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 	private TextView dtt_dish;
 	private FragmentActivity mFragmentActivity;
 
+	public String getChannelType() {
+		return channelType;
+	}
+
+	private String channelType;
+
 	Handler handler = new Handler() {
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
@@ -601,6 +607,16 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 		}
 		mCurrentChannel = mTotalChannels.get(recordPosition);
 		setInitData(recordPosition);
+		if(getChannelType()!=null){
+			if(channelType.equals("EPG")){
+				setEPG();
+			}else if(channelType.equals("CHAT")){
+				setChat();
+			}else if(channelType.equals("VIDEO")){
+				setVIDEO();
+			}
+			setChannelType(null);
+		}
 	}
 
 	private FragmentActivity getFragmentActivity(){
@@ -891,7 +907,9 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 			}
 		}
 	}
-
+	public void setChannelType(String channelType) {
+		this.channelType = channelType;
+	}
 	public void setChannelId(Long channelId) {
 		this.mChannelId = channelId;
 	}
@@ -975,7 +993,18 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 		}
 
 	}
-
+	public void setVIDEO(){
+		channelControlView.selectVideo();
+		channelControlView.setVideoView();
+	}
+	public void setEPG(){
+		channelControlView.selectEpg();
+		channelControlView.setEpgView();
+	}
+	public void setChat(){
+		channelControlView.selectChat();
+		channelControlView.setChatView();
+	}
 	/**
 	 * 获得流失布局里的packages或categorys
 	 */

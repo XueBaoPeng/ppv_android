@@ -53,6 +53,7 @@ public class DoTaskClickListener implements OnClickListener {
 //			CommonUtil.startFragmentActivity(context, context.getString(R.string.fragment_tag_channelGuide), 92L);
 			Intent intent = new Intent(context, HomeActivity.class);
 			intent.putExtra("fragmentTag", AppConfig.TAG_fragment_play);
+			intent.putExtra("channelType", "EPG");
 			CommonUtil.startActivity(context, intent);
 		} else if(tv.getCode().equals(TaskCode.Go_four_report)) {
 			if(checkLongin()) {
