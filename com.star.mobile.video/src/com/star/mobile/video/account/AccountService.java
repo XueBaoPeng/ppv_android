@@ -141,7 +141,8 @@ public class AccountService extends AbstractService {
 	public void getAppComments(OnListResultListener<Comment> listener) {
 		doGet(Constant.getFeedbackUrl(), Comment.class, LoadMode.NET, listener);
 	}
-	
+
+
 	
 	/**
 	 * 用户忘记密码
