@@ -152,7 +152,8 @@ public class PlayerUtil
         if (!PlayerUtil.mIsPaused && PlayerUtil.mIsSurfaceReady) {
             PlayerUtil.mIsPaused = true;
             PlayerUtil.nativePause();
-            mSurface.enableSensor(Sensor.TYPE_ACCELEROMETER, false);
+            if(mSurface!=null)
+                mSurface.enableSensor(Sensor.TYPE_ACCELEROMETER, false);
         }
     }
 
@@ -422,6 +423,22 @@ public class PlayerUtil
     		mHandler.sendEmptyMessage(Player.MSG_URL_ERROR);
     	}
     }  
+    
+    public static void sendPlayerStatus(int messageType, long timestamp, long message1, long message2) {
+//		Log.d(TAG, "====================================sendPlayerStatus = "
+//				+ messageType + "+" + timestamp + "+" + message1 + "+" + message2);
+		
+		Message msg = new Message();  
+        msg.arg1 = messageType;
+        Bundle bundle = new Bundle(); 
+        bundle.putLong("timestamp", timestamp);
+        bundle.putLong("message1", message1);
+        bundle.putLong("message2", message2);
+        msg.setData(bundle);
+        msg.what = Player.MSG_PLAYER_STATUS;
+        mHandler.sendMessage(msg);
+		//PlayerUtil.VirtualBack();
+	}
     
     // Audio
 

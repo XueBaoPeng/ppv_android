@@ -1,9 +1,5 @@
 package com.star.mobile.video.account;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.TimeZone;
-
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -21,10 +17,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import cn.sharesdk.demo.tpl.ThirdLoginActivity;
-import cn.sharesdk.facebook.Facebook;
-import cn.sharesdk.framework.Platform;
-import cn.sharesdk.twitter.Twitter;
 
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
@@ -47,10 +39,7 @@ import com.star.mobile.video.activity.SendActivationLinkActicity;
 import com.star.mobile.video.home.HomeActivity;
 import com.star.mobile.video.me.mycoins.TaskService;
 import com.star.mobile.video.model.NETException;
-import com.star.mobile.video.service.AreaService;
-import com.star.mobile.video.service.EggAlertService;
 import com.star.mobile.video.service.SyncService;
-import com.star.mobile.video.service.UserService;
 import com.star.mobile.video.shared.SharedPreferencesUtil;
 import com.star.mobile.video.util.ApplicationUtil;
 import com.star.mobile.video.util.CommonUtil;
@@ -59,6 +48,15 @@ import com.star.mobile.video.util.Constant;
 import com.star.mobile.video.util.LoadingDataTask;
 import com.star.mobile.video.util.ToastUtil;
 import com.star.util.loader.OnResultListener;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.TimeZone;
+
+import cn.sharesdk.demo.tpl.ThirdLoginActivity;
+import cn.sharesdk.facebook.Facebook;
+import cn.sharesdk.framework.Platform;
+import cn.sharesdk.twitter.Twitter;
 
 public class LoginActivity extends ThirdLoginActivity{
 	private final String TAG = "LoginActivity";
@@ -306,7 +304,7 @@ public class LoginActivity extends ThirdLoginActivity{
 
 			@Override
 			public void onSuccess(LogonResult logonResult) {
-//				CommonUtil.closeProgressDialog();
+				CommonUtil.closeProgressDialog();
 				String result = "FAILURE";
 				if (logonResult != null) {
 					if (logonResult.getStatus() == LogonStatus.success) {

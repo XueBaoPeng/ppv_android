@@ -105,6 +105,7 @@ public class Player extends BaseActivity implements OnClickListener{
 	public final int MSG_UPDATE_ANALYTICS = 37;
 	public final int MSG_POST_ANALYTICS = 38;
 	public final int MSG_DELAY_ANALYTICS = 39;
+	public static final int MSG_PLAYER_STATUS = 40;
 	public static final int MSG_URL_ERROR = 8;
 
 
@@ -179,7 +180,9 @@ public class Player extends BaseActivity implements OnClickListener{
 					hideUpView();
 					break;
 				case MSG_LOADING_VIDEO_DELAY:
-					int videoTotalTime = mSdlActivity.getDuration();
+					int videoTotalTime = 0;
+					if(mSdlActivity!=null)
+						videoTotalTime = mSdlActivity.getDuration();
 					if (videoTotalTime == 0) {
 						Toast.makeText(getApplicationContext(), getResources().getString(R.string.network_propomt), Toast.LENGTH_LONG).show();
 					}
@@ -199,6 +202,8 @@ public class Player extends BaseActivity implements OnClickListener{
 					break;
 					
 				case MSG_UPDATE_CURRENT_TIME:
+					if(mSdlActivity == null)
+						break;
 					int currentPos = mSdlActivity.getCurrentPosition();
 					int totalTime = mSdlActivity.getDuration();
 					int videoBuffer = mSdlActivity.getBuffer();
@@ -207,10 +212,10 @@ public class Player extends BaseActivity implements OnClickListener{
 					mSeekBar.setSecondaryProgress(currentPos+videoBuffer);
 					if (!isLive && currentPos > totalTime)
 						currentPos = totalTime;
-					if (PlayerUtil.isPlayStart() == 1 && playerPB.getVisibility() == View.VISIBLE
+					if (PlayerUtil.isPlayStart() == 1 //&& playerPB.getVisibility() == View.VISIBLE
 							&& isStarted == false && PlayerUtil.isPlayFinish() == 0) {
-						playerPB.setVisibility(View.GONE);
-						progressMsg.setVisibility(View.GONE);
+						//playerPB.setVisibility(View.GONE);
+						//progressMsg.setVisibility(View.GONE);
 						if(isLive) hideBottomBar();
 						else showBottomBar();
 						imgPlay.setBackgroundResource(R.drawable.vp_pause);
@@ -256,6 +261,28 @@ public class Player extends BaseActivity implements OnClickListener{
 
 					//					Object[] objs = {SharedPreferencesUtil.getToken(getApplicationContext()), contentId};
 					//					new LogTask().execute(objs);
+					break;
+				case MSG_LOAD_UNFINISHED:
+					playerPB.setVisibility(View.VISIBLE);
+					progressMsg.setVisibility(View.VISIBLE);
+					break;
+				case MSG_LOAD_FINISHED:
+					playerPB.setVisibility(View.GONE);
+					progressMsg.setVisibility(View.GONE);
+					break;
+				case MSG_PLAYER_STATUS:
+					int messageType = msg.arg1;
+					Bundle bundle = msg.getData();
+					long timestamp,message1,message2;
+                    if(bundle != null){
+                    	timestamp = bundle.getLong("timestamp");
+                    	message1 = bundle.getLong("message1");
+                    	message2 = bundle.getLong("message2");
+//                    	Log.d(TAG, "=====player.java get = "
+//                				+ messageType + "+" + timestamp + "+" + message1 + "+" + message2);
+                    	PA.processPlayerMessage(messageType, timestamp, message1, message2);
+                    }
+                    
 					break;
 				case MSG_UPDATE_ANALYTICS:
 					String line = "";
@@ -360,8 +387,8 @@ public class Player extends BaseActivity implements OnClickListener{
 		}
 		
 		setPortrait();
-		playerPB.setVisibility(View.INVISIBLE);
-		progressMsg.setVisibility(View.GONE);
+		//playerPB.setVisibility(View.INVISIBLE);
+		//progressMsg.setVisibility(View.GONE);
 
 		if (filename == null || filename.isEmpty()) {
 			exitActivity();
@@ -909,7 +936,7 @@ public class Player extends BaseActivity implements OnClickListener{
 		
 		mVideoQualityGuideRL = (RelativeLayout) findViewById(R.id.video_quality_guide);
 		mVideoQualityGuideRL.setOnTouchListener(new OnTouchListener() {
-			
+
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
 				return true;
@@ -1009,8 +1036,8 @@ public class Player extends BaseActivity implements OnClickListener{
 		else showBottomBar();
 		
 		if(mPlayerEndView.mVideoEndView != null) videoPlayerRL.removeView(mPlayerEndView.mVideoEndView);;
-		playerPB.setVisibility(View.VISIBLE);
-		progressMsg.setVisibility(View.VISIBLE);
+		//playerPB.setVisibility(View.VISIBLE);
+		//progressMsg.setVisibility(View.VISIBLE);
 		// mSdlActivity.onDestroy();
 		frameContainer.removeAllViews();
 		isStarted = false;
