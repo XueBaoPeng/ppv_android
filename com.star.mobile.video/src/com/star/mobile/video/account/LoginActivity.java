@@ -99,10 +99,6 @@ public class LoginActivity extends ThirdLoginActivity{
 		areaId = SharedPreferencesUtil.getAreaId(this);
 		submitAreaId(false);
 		initView();
-		SyncService syncService = SyncService.getInstance(this);
-		if(syncService.needInit()/*&&!FunctionService.doHideFuncation(FunctionType.SimpleVersion)*/){
-			syncService.doInit();
-		}
 	}
 
 	@Override
@@ -310,11 +306,12 @@ public class LoginActivity extends ThirdLoginActivity{
 
 			@Override
 			public void onSuccess(LogonResult logonResult) {
-				CommonUtil.closeProgressDialog();
+//				CommonUtil.closeProgressDialog();
 				String result = "FAILURE";
 				if (logonResult != null) {
 					if (logonResult.getStatus() == LogonStatus.success) {
 						CommonUtil.saveUserInfo(LoginActivity.this, username, pwd, logonResult.getToken());
+						initUserData();
 						setPhoneAreaNumber();
 						calerAllEditText();
 //						goHomeActivity();
@@ -411,7 +408,9 @@ public class LoginActivity extends ThirdLoginActivity{
 			public void onPostExecute() {
 				CommonUtil.closeProgressDialog();
 				if(status){
-					initUserData();
+					if(SyncService.getInstance(LoginActivity.this).needInit()/*&&!FunctionService.doHideFuncation(FunctionType.SimpleVersion)*/){
+						SyncService.getInstance(LoginActivity.this).doInit();
+					}
 					if(doJump)
 						goHomeActivity();
 				} else {

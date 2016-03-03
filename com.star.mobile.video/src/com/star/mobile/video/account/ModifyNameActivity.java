@@ -34,7 +34,7 @@ public class ModifyNameActivity extends BaseActivity implements OnClickListener{
 	private Button cancel;
 	private UserService userService;
 	private String nickName;
-	private Long userid;
+	private long userid;
 	private AccountService mAccountService;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -114,7 +114,7 @@ public class ModifyNameActivity extends BaseActivity implements OnClickListener{
 	}
 	
 	private void sendupdate() {
-		mAccountService.updateNickNanme(Long.toString(userid), nickName, new OnResultListener<Integer>() {
+		mAccountService.updateNickNanme(userid, nickName, new OnResultListener<Integer>() {
 			
 			@Override
 			public void onSuccess(Integer result) {
