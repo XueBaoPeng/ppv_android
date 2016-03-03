@@ -207,17 +207,19 @@ public class ChatContentAdapter extends BaseAdapter {
 	}
 
 	private void setHeadIconOnClick(ViewHolder holder,final String headIcon,final String nickName,final Long userId) {
-		holder.userIcon_f.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(context,TenbActivity.class);
-				intent.putExtra("nickname", nickName);
-				intent.putExtra("headurl", headIcon);
-				intent.putExtra("userId", userId);
-				CommonUtil.startActivity((ChatActivity)context, intent);
-			}
-		});
+		if (!ChatActivity.ROBOT_CHAT_CODE.equals(chatroom.getCode())) {
+			holder.userIcon_f.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					Intent intent = new Intent(context,TenbActivity.class);
+					intent.putExtra("nickname", nickName);
+					intent.putExtra("headurl", headIcon);
+					intent.putExtra("userId", userId);
+					CommonUtil.startActivity((ChatActivity)context, intent);
+				}
+			});
+		}
 		holder.userIcon_t.setOnClickListener(new OnClickListener() {
 			
 			@Override
