@@ -308,6 +308,8 @@ public class BaseFragmentActivity extends FragmentActivity implements OnClickLis
 	public void showAllchannelFragment(){
 		if(!(getCurrentFragmentTag().equals(getString(R.string.fragment_tag_channelGuide)) || getCurrentFragmentTag().equals(getString(R.string.tag_video_list))))
 			return;
+		if(mAllChannelFragment.isAdded())
+			return;
 		new Handler().postDelayed(new Runnable() {
 			@Override
 			public void run() {
