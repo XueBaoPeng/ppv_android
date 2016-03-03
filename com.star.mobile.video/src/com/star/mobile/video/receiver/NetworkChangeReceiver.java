@@ -22,17 +22,17 @@ public class NetworkChangeReceiver extends BroadcastReceiver {
 		ConnectivityManager connectivityManager=(ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo  mobNetInfo=connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
         NetworkInfo  wifiNetInfo=connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
-        if (!mobNetInfo.isConnected() && !wifiNetInfo.isConnected()) {
-        	networkConnected = false;
-        }else {
-        	networkConnected = true;
-        	networkConnect(context);
-        }
+        if ((mobNetInfo!=null&&mobNetInfo.isConnected())||(wifiNetInfo!=null&&wifiNetInfo.isConnected())) {
+			networkConnected = true;
+			networkConnect(context);
+		}else {
+			networkConnected = false;
+		}
 	}
 
 	private void networkConnect(final Context context) {
 		final Map<String, Integer> map = (Map<String, Integer>) SharedPreferencesUtil.getTenbSharePre(context).getAll();
-		if(map.size()>0){
+		if(map!=null&&map.size()>0){
 			new Thread(){
 				public void run() {
 					TenbService tenbService = new TenbService(context);

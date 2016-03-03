@@ -179,7 +179,9 @@ public class Player extends BaseActivity implements OnClickListener{
 					hideUpView();
 					break;
 				case MSG_LOADING_VIDEO_DELAY:
-					int videoTotalTime = mSdlActivity.getDuration();
+					int videoTotalTime = 0;
+					if(mSdlActivity!=null)
+						videoTotalTime = mSdlActivity.getDuration();
 					if (videoTotalTime == 0) {
 						Toast.makeText(getApplicationContext(), getResources().getString(R.string.network_propomt), Toast.LENGTH_LONG).show();
 					}
@@ -199,6 +201,8 @@ public class Player extends BaseActivity implements OnClickListener{
 					break;
 					
 				case MSG_UPDATE_CURRENT_TIME:
+					if(mSdlActivity == null)
+						break;
 					int currentPos = mSdlActivity.getCurrentPosition();
 					int totalTime = mSdlActivity.getDuration();
 					int videoBuffer = mSdlActivity.getBuffer();
