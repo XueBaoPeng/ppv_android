@@ -28,6 +28,7 @@ import com.star.mobile.video.smartcard.SmartCardControlActivity;
 import com.star.mobile.video.smartcard.SmartCardService;
 import com.star.mobile.video.util.CommonUtil;
 import com.star.mobile.video.util.CommonUtil.PromptDialogClickListener;
+import com.star.util.app.GA;
 import com.star.util.loader.OnListResultListener;
 import com.star.mobile.video.util.DefaultLoadingTask;
 
@@ -201,9 +202,12 @@ public class VideoEndView extends RelativeLayout implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		String userName = SharedPreferencesUtil.getUserName(mContext);
+		String channelName = mChannel != null?mChannel.getName():"";
 		switch (v.getId()) {
 		case R.id.prompt_later:
+			GA.sendEvent("Self_service", "Recharge_video_end", channelName, 1);
 		case R.id.prompt_ok:
+			GA.sendEvent("Self_service", "Bouquet_video_end", channelName, 1);
 			if (userName == null || "".equals(userName)) {
 //				CommonUtil.pleaseLogin(true, getContext());
 				CommonUtil.getInstance().showPromptDialog(mContext, null, mContext.getString(R.string.alert_login),
