@@ -19,14 +19,13 @@ import com.star.mobile.video.R;
 import com.star.mobile.video.StarApplication;
 import com.star.mobile.video.base.BaseActivity;
 import com.star.mobile.video.home.HomeActivity;
-import com.star.mobile.video.service.AreaService;
 import com.star.mobile.video.service.SyncService;
 import com.star.mobile.video.shared.SharedPreferencesUtil;
 import com.star.mobile.video.util.ApplicationUtil;
 import com.star.mobile.video.util.CommonUtil;
 import com.star.mobile.video.view.ListView;
-import com.star.mobile.video.view.ListView.LoadingListener;
 import com.star.ui.ImageView;
+import com.star.util.loader.OnListResultListener;
 import com.star.util.loader.OnResultListener;
 
 import org.json.JSONException;
@@ -192,18 +191,13 @@ public class ChooseAreaActivity extends BaseActivity {
 
 	}
 	private void getAreas(ListView listview) {
-		listview.setRequestCount(23);
-		listview.setLoadingListener(new LoadingListener<Area>() {
-
+		CommonUtil.showProgressDialog(ChooseAreaActivity.this, null, getResources().getString(R.string.loading_region_information));
+		areaService.getAreas(ApplicationUtil.getAppVerison(ChooseAreaActivity.this), new OnListResultListener<Area>() {
 			@Override
-			public List<Area> loadingS(int offset, int requestCount) {
-				return areaService.getAreas(ApplicationUtil.getAppVerison(ChooseAreaActivity.this));
-			}
-
-			@Override
-			public void loadPost(List<Area> responseDatas) {
+			public void onSuccess(List<Area> responseDatas) {
 				CommonUtil.closeProgressDialog();
-				if(responseDatas != null && responseDatas.size() > 0) {
+				if (responseDatas != null && responseDatas.size() > 0) {
+					areas.clear();
 					areas.addAll(responseDatas);
 					mAdapter.notifyDataSetChanged();
 					loadPlaceByIpcode();
@@ -212,22 +206,17 @@ public class ChooseAreaActivity extends BaseActivity {
 			}
 
 			@Override
-			public List<Area> loadingL(int offset, int requestCount) {
-				return areaService.getAreasFromLocal(ChooseAreaActivity.this,ApplicationUtil.getAppVerison(ChooseAreaActivity.this));
+			public boolean onIntercept() {
+
+				return false;
 			}
 
 			@Override
-			public List<Area> getFillList() {
-				return areas;
-			}
-
-			@Override
-			public void onNoMoreData() {
+			public void onFailure(int errorCode, String msg) {
 
 			}
 		});
-		CommonUtil.showProgressDialog(ChooseAreaActivity.this, null, getResources().getString(R.string.loading_region_information));
-		listview.loadingData(true);
+
 	}
 	
 	private void goHomeActivity() {

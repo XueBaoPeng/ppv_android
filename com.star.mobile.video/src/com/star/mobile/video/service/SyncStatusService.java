@@ -84,10 +84,8 @@ public class SyncStatusService extends BaseService {
 	@Override
 	public void onStart(Intent intent, int startId) {
 		super.onStart(intent, startId);
-		try {
-			rmNotification(intent.getLongExtra("roomId", 0));
-		} catch (Exception e) {
-//			Log.e(TAG, "", e);
+		if(intent!=null) {
+			rmNotification(intent.getLongExtra("roomId", -1));
 		}
 	}
 	@Override
@@ -96,7 +94,7 @@ public class SyncStatusService extends BaseService {
 	}
 	@Override
 	public void onDestroy() {
-		rmNotification(null);
+		rmNotification(-1);
 		if (syncTimer != null) {
 			syncTimer.cancel();
 		}
@@ -167,15 +165,11 @@ public class SyncStatusService extends BaseService {
 		});
     }
 	
-	public void rmNotification(Long roomId){
-		if(roomId!=null){
-			if (msgCountSet != null) {
-				msgCountSet.remove(roomId);
-			}
+	public void rmNotification(long roomId){
+		if(roomId!=-1){
+			msgCountSet.remove(roomId);
 		}else{
-			if (msgCountSet != null) {
-				msgCountSet.clear();
-			}
+			msgCountSet.clear();
 		}
 		try{
 			notifManager.cancel(120);
