@@ -37,6 +37,7 @@ import com.star.mobile.video.shared.SharedPreferencesUtil;
 import com.star.mobile.video.shared.TaskSharedUtil;
 import com.star.mobile.video.smartcard.SmartCardSharedPre;
 import com.star.mobile.video.util.ApplicationUtil;
+import com.star.mobile.video.util.CommonUtil;
 import com.star.mobile.video.util.Constant;
 import com.star.mobile.video.util.DateFormat;
 import com.star.mobile.video.util.DownloadUtil;
@@ -267,7 +268,7 @@ public class SyncService extends AbstractService{
 		IOUtil.delCachedJSON(Constant.shareUserEggUrl());
 		IOUtil.delCachedJSON(Constant.getVideoChannelUrl()+"?index="+0+"&count="+10);
 		IOUtil.delCachedJSON(Constant.getReportQuestionUrl(String.valueOf(ApplicationUtil.getAppVerison(context))));
-		IOUtil.delCachedJSON(Constant.getOrderListUrl()+"?index=0&count=6");
+		IOUtil.delCachedJSON(Constant.getOrderListUrl() + "?index=0&count=6");
 	}
 	
 	public void sync_(){
@@ -343,7 +344,7 @@ public class SyncService extends AbstractService{
 							@Override
 							public void run() {
 								if(!ApplicationUtil.isApplicationInBackground(context)){
-									context.startActivity(new Intent(context, GooglePlayActivity.class));
+									CommonUtil.startActivity(context, new Intent(context, GooglePlayActivity.class));
 								}
 							}
 						}, 1000*60*10);
@@ -387,7 +388,7 @@ public class SyncService extends AbstractService{
 			i.putExtra("what", "update");
 			i.putExtra("updateInfo", appinfo.getUpdateInfo());
 			i.putExtra("forceUp", appinfo.isForceUpdate());
-			context.startActivity(i);
+			CommonUtil.startActivity(context, i);
 		}
 	}
 	
@@ -395,6 +396,6 @@ public class SyncService extends AbstractService{
 		Intent i = new Intent(context, AlertInstallActivity.class);
 		i.putExtra("what", "install");
 		i.putExtra("forceUp", appinfo.isForceUpdate());
-		context.startActivity(i);
+        CommonUtil.startActivity(context, i);
 	}
 }
