@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.LayoutInflater;
@@ -170,6 +171,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 	private View dtt_layout;
 	private View dth_layout;
 	private TextView dtt_dish;
+	private FragmentActivity mFragmentActivity;
 
 	Handler handler = new Handler() {
 		public void handleMessage(Message msg) {
@@ -224,7 +226,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 		ResizeLayout resizeLayout = (ResizeLayout) mView.findViewById(R.id.resizeLayout);
 		mFancyCoverFlow = (FancyCoverFlow) mView.findViewById(R.id.fancy_cover_flow);
 		mChannelShowDrag = (DragTopLayout) mView.findViewById(R.id.channel_show_view);
-		mChannelShowDrag.setCollapseOffset(DensityUtil.dip2px(getActivity(), 95));
+		mChannelShowDrag.setCollapseOffset(DensityUtil.dip2px(getFragmentActivity(), 95));
 		mChannelShowDrag.openTopView(false);
 		mChannelShowDrag.listener(new PanelListener() {
 
@@ -249,7 +251,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 				if (panelState == PanelState.COLLAPSED) {
 					closeFlowLayout();
 					setFlowLayoutChooseInfo();
-					Animation an = AnimationUtils.loadAnimation(getActivity(), R.anim.anim_reverse_rotate_anticlock);
+					Animation an = AnimationUtils.loadAnimation(getFragmentActivity(), R.anim.anim_reverse_rotate_anticlock);
 					an.setFillAfter(true);
 					mChannelExpandIV.startAnimation(an);
 					// 没有选中的时候选中All这个选项
@@ -262,7 +264,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 					}
 				} else if (panelState == PanelState.EXPANDED) {
 					openFlowLayout();
-					Animation an = AnimationUtils.loadAnimation(getActivity(), R.anim.anim_reverse_rotate_clock);
+					Animation an = AnimationUtils.loadAnimation(getFragmentActivity(), R.anim.anim_reverse_rotate_clock);
 					an.setFillAfter(true);
 					mChannelExpandIV.startAnimation(an);
 				}
@@ -317,9 +319,9 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(getActivity(),ChannelRateActivity.class);
+				Intent intent = new Intent(getFragmentActivity(),ChannelRateActivity.class);
 				intent.putExtra("channel", mCurrentChannel);
-				CommonUtil.startActivity(getActivity(), intent);
+				CommonUtil.startActivity(getFragmentActivity(), intent);
 			}
 		});
 		ratingChannel = (RatingBar)mView.findViewById(R.id.rating_channel);
@@ -352,17 +354,17 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 		decoder_image.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(getActivity(), ChoosePlatformActivity.class);
+				Intent intent = new Intent(getFragmentActivity(), ChoosePlatformActivity.class);
 				intent.putExtra("platform_type", 0);
-				CommonUtil.startActivity(getActivity(), intent);
+				CommonUtil.startActivity(getFragmentActivity(), intent);
 			}
 		});
 		dish_image.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(getActivity(), ChoosePlatformActivity.class);
+				Intent intent = new Intent(getFragmentActivity(), ChoosePlatformActivity.class);
 				intent.putExtra("platform_type", 1);
-				CommonUtil.startActivity(getActivity(), intent);
+				CommonUtil.startActivity(getFragmentActivity(), intent);
 			}
 		});
 	}
@@ -410,15 +412,15 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 	 * 初始化数据
 	 */
 	private void initData() {
-		mChannelService = new ChannelService(getActivity());
-		mFancyCoverFlowAdapter = new TitleCoverFlowAdapter(getActivity(), mTotalChannels);
+		mChannelService = new ChannelService(getFragmentActivity());
+		mFancyCoverFlowAdapter = new TitleCoverFlowAdapter(getFragmentActivity(), mTotalChannels);
 		mFancyCoverFlow.setAdapter(mFancyCoverFlowAdapter);
 
 		setFancyCoverFlow();
 		mFancyCoverFlow.setOnItemLongClickListener(this);
 		mFancyCoverFlow.setOnItemClickListener(this);
 		mFavoriteSmallRL.setOnClickListener(this);
-		mFacoriteCollectAdapter = new FavoriteCollectAdapter(getActivity(), mChannels, R.layout.favorite_collect_item);
+		mFacoriteCollectAdapter = new FavoriteCollectAdapter(getFragmentActivity(), mChannels, R.layout.favorite_collect_item);
 		mFavoriteCollectGridView.setAdapter(mFacoriteCollectAdapter);
 		mFavoriteCollectGridView.setOnItemClickListener(new OnItemClickListener() {
 
@@ -431,8 +433,8 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 
 		});
 		mChannelExpandIV.setOnClickListener(this);
-		mPackageService = new PackageService(getActivity());
-		mCategoryService = new CategoryService(getActivity());
+		mPackageService = new PackageService(getFragmentActivity());
+		mCategoryService = new CategoryService(getFragmentActivity());
 	}
 
 	/**
@@ -547,7 +549,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 	private void addFragmentView() {
 		if (mTotalChannels.size() > 0) {
 			for (int i = 0; i < VIEW_COUNT; i++) {
-				ChannelDetailView view = new ChannelDetailView(getActivity());
+				ChannelDetailView view = new ChannelDetailView(getFragmentActivity());
 				view.setBottomDrawer(getHomeBottomTab());
 				view.setChannelControlView(channelControlView);
 				view.setChannelDetailDrawer(dragLayout);
@@ -566,7 +568,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 	 */
 	@SuppressWarnings("deprecation")
 	private void setFancyCoverFlow() {
-		int imageViewSpaceParams = DensityUtil.dip2px(getActivity(), 10);// 把10dp转成像素值
+		int imageViewSpaceParams = DensityUtil.dip2px(getFragmentActivity(), 10);// 把10dp转成像素值
 		this.mFancyCoverFlow.setUnselectedAlpha(0.5f);
 		this.mFancyCoverFlow.setUnselectedSaturation(1.0f);
 		this.mFancyCoverFlow.setUnselectedScale(0.7f);
@@ -589,7 +591,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 		mTotalChannels.addAll(chns);
 		setDatasForAdapter();
 		addFragmentView();
-		mChannelId = SharedPreferencesUtil.getCurrentChannel(getActivity());
+		mChannelId = SharedPreferencesUtil.getCurrentChannel(getFragmentActivity());
 		if (mChannelId != null && mChannelId != 0) {
 			setCurrentChannel();
 		}else{
@@ -599,6 +601,18 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 		}
 		mCurrentChannel = mTotalChannels.get(recordPosition);
 		setInitData(recordPosition);
+	}
+
+	private FragmentActivity getFragmentActivity(){
+		if(getActivity()==null){
+			return mFragmentActivity;
+		}else{
+			return getActivity();
+		}
+	}
+
+	public void setFragmentActivity(FragmentActivity fragmentActivity){
+		this.mFragmentActivity = fragmentActivity;
 	}
 
 	/**
@@ -695,10 +709,10 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 	 */
 	public void showTitleCoverFlowGridView() {
 		mChannelShowDrag.setVisibility(View.VISIBLE);
-		Animation upToDownAnimation = AnimationUtils.loadAnimation(getActivity(), R.anim.anim_up_down);
+		Animation upToDownAnimation = AnimationUtils.loadAnimation(getFragmentActivity(), R.anim.anim_up_down);
 		upToDownAnimation.setFillAfter(true);
 		mFavoriteCollectGridView.startAnimation(upToDownAnimation);
-		Animation alphaAnimation = AnimationUtils.loadAnimation(getActivity(), R.anim.anim_alpha);
+		Animation alphaAnimation = AnimationUtils.loadAnimation(getFragmentActivity(), R.anim.anim_alpha);
 		alphaAnimation.setFillAfter(true);
 		mChannelShowDrag.startAnimation(alphaAnimation);
 		if (getHomeBottomTab().isOpen()) {
@@ -712,11 +726,11 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 	 * 隐藏GridView，并伴随动画
 	 */
 	public void hideTitleCoverFlowGridView() {
-		Animation upToDownAnimation = AnimationUtils.loadAnimation(getActivity(), R.anim.anim_down_up);
+		Animation upToDownAnimation = AnimationUtils.loadAnimation(getFragmentActivity(), R.anim.anim_down_up);
 		upToDownAnimation.setFillAfter(true);
 		upToDownAnimation.setAnimationListener(this);
 		mFavoriteCollectGridView.startAnimation(upToDownAnimation);
-		Animation alphaAnimation = AnimationUtils.loadAnimation(getActivity(), R.anim.anim_no_alpha);
+		Animation alphaAnimation = AnimationUtils.loadAnimation(getFragmentActivity(), R.anim.anim_no_alpha);
 		alphaAnimation.setFillAfter(true);
 		alphaAnimation.setAnimationListener(this);
 		mChannelShowDrag.startAnimation(alphaAnimation);
@@ -868,7 +882,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 				ChannelVO channelVO = mTotalChannels.get(i);
 				if (channelVO != null) {
 					if (channelVO.getId().equals(mChannelId)) {
-						SharedPreferencesUtil.setCurrentChannel(mChannelId, getActivity());
+						SharedPreferencesUtil.setCurrentChannel(mChannelId, getFragmentActivity());
 						this.mFancyCoverFlow.setSelection(i, true);
 						recordPosition = i;
 						break;
@@ -904,7 +918,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 	}
 
 	private void controlHomeActionBar() {
-		Activity activity = getActivity();
+		Activity activity = getFragmentActivity();
 		if (activity instanceof HomeActivity) {
 			((HomeActivity) activity).setActionBarMoreClick(false);
 			((HomeActivity) activity).actionBarClockAnimation();
@@ -945,7 +959,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 		if (mCurrentChannel !=null){
 			Long currentChannelId = mCurrentChannel.getId();
 			if (currentChannelId != null){
-				SharedPreferencesUtil.setCurrentChannel(currentChannelId, getActivity());
+				SharedPreferencesUtil.setCurrentChannel(currentChannelId, getFragmentActivity());
 			}
 		}
 	}
@@ -1045,7 +1059,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 	 * 设置packges的数据
 	 */
 	private void setPackagesData() {
-		LayoutInflater mInflater = LayoutInflater.from(getActivity());
+		LayoutInflater mInflater = LayoutInflater.from(getFragmentActivity());
 		mPackages.add(0, null);
 		mPackages.add(1, null);
 		mPlayFlowLayoutPackages.removeAllViews();
@@ -1122,7 +1136,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 	 * 设置category的数据
 	 */
 	private void setCategorysData() {
-		LayoutInflater mInflater = LayoutInflater.from(getActivity());
+		LayoutInflater mInflater = LayoutInflater.from(getFragmentActivity());
 		mPlayFlowLayoutCategorys.removeAllViews();
 		for (int i = 0; i < mCategorys.size(); i++) {
 			final TextView tv = (TextView) mInflater.inflate(R.layout.play_flowlayout_textview,
@@ -1206,10 +1220,10 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 			mChannelShowDrag.toggleTopView(false);
 			break;
 		case R.id.favorit_small_rl:
-			if(SharedPreferencesUtil.getUserName(getActivity()) != null){
+			if(SharedPreferencesUtil.getUserName(getFragmentActivity()) != null){
 				onClickFavArea();
 			}else {
-				CommonUtil.pleaseLogin(getActivity());
+				CommonUtil.pleaseLogin(getFragmentActivity());
 			}
 			break;
 
@@ -1226,7 +1240,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 		mChooseInfos.addAll(mPackageChooseInfos);
 		mChooseInfos.addAll(mCategroyChooseInfos);
 		mPlayFlowLayoutChooseInfo.removeAllViews();
-		LayoutInflater mInflater = LayoutInflater.from(getActivity());
+		LayoutInflater mInflater = LayoutInflater.from(getFragmentActivity());
 		if (mChooseInfos != null && mChooseInfos.size() > 0) {
 			for (int i = 0; i < mChooseInfos.size(); i++) {
 				final TextView tv = (TextView) mInflater.inflate(R.layout.play_flowlayout_textview,
@@ -1340,7 +1354,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 		GA.sendEvent(STATISTICS_CATEGORY, FAVORITE_LONG, mCurrentChannel.getName() == null? "":mCurrentChannel.getName(), 1);
 		long itemId = ((FancyCoverFlow) parent).getAdapter().getItemId(position);
 		if (mSelectItemId == itemId) {
-			if(SharedPreferencesUtil.getUserName(getActivity()) != null){
+			if(SharedPreferencesUtil.getUserName(getFragmentActivity()) != null){
 				mFavoriteBigImageView.setVisibility(View.VISIBLE);
 				if (mFavoriteSmallImageView.getVisibility() != View.VISIBLE) {
 					// 显示大图的动画
@@ -1348,7 +1362,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 				}
 				onClickFavArea();
 			}else {
-				CommonUtil.pleaseLogin(getActivity());
+				CommonUtil.pleaseLogin(getFragmentActivity());
 			}
 		}
 
@@ -1362,7 +1376,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 		long itemId = ((FancyCoverFlow) parent).getAdapter().getItemId(position);
 		if (mSelectItemId == itemId) {
 			if (itemId == lastClickId && (Math.abs(lastClickTime - System.currentTimeMillis()) < 1000)) {
-				if(SharedPreferencesUtil.getUserName(getActivity()) != null){
+				if(SharedPreferencesUtil.getUserName(getFragmentActivity()) != null){
 					GA.sendEvent(STATISTICS_CATEGORY, FAVORITE_DOUBLE, mCurrentChannel.getName() == null? "":mCurrentChannel.getName(), 1);
 					lastClickId = 0;
 					lastClickTime = 0;
@@ -1373,7 +1387,7 @@ public class PlayFragment<T> extends TabFragment implements OnPageChangeListener
 					}
 					onClickFavArea();
 				}else {
-					CommonUtil.pleaseLogin(getActivity());
+					CommonUtil.pleaseLogin(getFragmentActivity());
 				}
 			} else {
 				lastClickId = itemId;

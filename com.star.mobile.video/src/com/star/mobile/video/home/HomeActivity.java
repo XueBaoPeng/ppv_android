@@ -132,6 +132,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener,Gu
 					doOncreate();
 					doOnstart();
 					unregisterReceiver(this);
+					checkLoginStatus(syncService);
 				}
 			};
 			registerReceiver(initReceiver, new IntentFilter(InitService.initAction_success));
@@ -149,7 +150,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener,Gu
 		//四格体验服务不在监听
 //		Intent intent = new Intent(this,FourLayerService.class);
 //		startService(intent);
-		checkLoginStatus();
 		setDimension();
 	}
 	private void setDimension() {
@@ -157,8 +157,8 @@ public class HomeActivity extends FragmentActivity implements OnClickListener,Gu
 			GA.sendCustomDimension(5, String.valueOf(StarApplication.mUser.getId()));
 		}
 	}
-	private void checkLoginStatus(){
-		if(!SyncService.getInstance(this).isDBReady()&&!SyncService.getInstance(this).isLoading()){
+	private void checkLoginStatus(SyncService syncService){
+		if(!syncService.isDBReady()&&!syncService.isLoading()){
 			com.star.util.Logger.d("not login, must go welcome!");
 			ToastUtil.centerShowToast(this, "Sorry, you need login again!");
 			CommonUtil.startActivity(this, WelcomeActivity.class);
@@ -190,6 +190,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener,Gu
 		mActionBarMoreIV.setOnClickListener(this);
 		findViewById(R.id.iv_actionbar_search).setOnClickListener(this);
 		mPlayFragment = new PlayFragment();
+		mPlayFragment.setFragmentActivity(this);
 //		getSmartCardInfo();//判断是否绑卡
 		initBottomBar();
 		getDisplayWidthHeight();

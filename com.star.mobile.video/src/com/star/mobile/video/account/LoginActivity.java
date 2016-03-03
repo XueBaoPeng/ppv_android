@@ -304,7 +304,7 @@ public class LoginActivity extends ThirdLoginActivity{
 
 			@Override
 			public void onSuccess(LogonResult logonResult) {
-				CommonUtil.closeProgressDialog();
+//				CommonUtil.closeProgressDialog();
 				String result = "FAILURE";
 				if (logonResult != null) {
 					if (logonResult.getStatus() == LogonStatus.success) {
@@ -333,6 +333,7 @@ public class LoginActivity extends ThirdLoginActivity{
 							submitAreaId(true);
 						}
 					} else{
+						CommonUtil.closeProgressDialog();
 						if (logonResult.getStatus() == LogonStatus.PwdError) {
 							ToastUtil.centerShowToast(LoginActivity.this, getString(R.string.password_is_incorrect));
 						} else if (logonResult.getStatus() == LogonStatus.userNotExist) {
