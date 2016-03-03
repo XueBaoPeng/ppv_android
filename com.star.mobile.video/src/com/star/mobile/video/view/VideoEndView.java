@@ -127,7 +127,9 @@ public class VideoEndView extends RelativeLayout implements OnClickListener {
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 			if (mRecommentsVideo != null && mRecommentsVideo.size() > 0) {
-				transferHorizontalListView(position);
+				if(!mRecommentsVideo.get(position).getVideo().getResources().get(0).getUrl().isEmpty()){
+					transferHorizontalListView(position);
+				}
 			}
 		}
 
