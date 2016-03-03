@@ -32,6 +32,7 @@ import com.star.mobile.video.util.ToastUtil;
 import com.star.mobile.video.view.BulletinView;
 import com.star.mobile.video.view.FaceContainer;
 import com.star.mobile.video.view.LoadingProgressBar;
+import com.star.util.Logger;
 import com.star.util.loader.OnListResultListener;
 import com.star.util.loader.OnResultListener;
 
@@ -40,6 +41,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.nfc.Tag;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -104,6 +106,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, OnTou
 	private String regExpres = "[0-9]*";
 	//机器人聊天室的code号
 	private String ROBOT_CHAT_CODE = "105";
+	private User mUser;
 	
 	private Handler mDefaultHandler = new Handler(){
 		public void handleMessage(android.os.Message msg) {
@@ -248,10 +251,10 @@ public class ChatActivity extends BaseActivity implements OnClickListener, OnTou
 		if(StarApplication.mUser == null){
 			getUserInfo();
 		}else{
-			User user = StarApplication.mUser;
-			if(user.getNickName()==null||"".equals(user.getNickName())){
+			mUser = StarApplication.mUser;
+			if(mUser.getNickName()==null||"".equals(mUser.getNickName())){
 				String deviceName = new Build().MODEL;
-				user.setNickName(deviceName);
+				mUser.setNickName(deviceName);
 			}
 			getHistoryChatList();
 		}
@@ -467,7 +470,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, OnTou
 						Iterator<Chart> it = cs.iterator();
 						while (it.hasNext()) {
 							Chart value = it.next();
-							if (value.getUserId().equals(StarApplication.mUser.getId())) {
+							if (value.getUserId().equals(mUser.getId())) {
 								it.remove();
 								break;
 							}
@@ -593,11 +596,16 @@ public class ChatActivity extends BaseActivity implements OnClickListener, OnTou
 		mService.setCallbackListener(new CallbackListener() {
 			@Override
 			public void callback(User user) {
-				if(user.getNickName()==null||"".equals(user.getNickName())){
-					String deviceName = new Build().MODEL;
-					user.setNickName(deviceName);
+				if(user == null){
+					finish();
+					return;
 				}
-				StarApplication.mUser = user;
+				mUser = user;
+				if(mUser.getNickName()==null||"".equals(mUser.getNickName())){
+					String deviceName = new Build().MODEL;
+					mUser.setNickName(deviceName);
+				}
+				StarApplication.mUser = mUser;
 				getHistoryChatList();
 			}
 		});
@@ -633,7 +641,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, OnTou
 						chartRobot.setType(Chart.TYPE_LINK);
 						mIndexCon = null;
 					}
-					chats.add(robotSay(msg, StarApplication.mUser.getId(), StarApplication.mUser.getNickName()));
+					chats.add(robotSay(msg, mUser.getId(), mUser.getNickName()));
 					chats.add(chartRobot);
 					mAdapter.updateDateRefreshUi(chats);
 				}else{
@@ -721,7 +729,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, OnTou
 	}
 	
 	private ChatVO newChatToSend(String msg, String imageUrl, int type) {
-		Chart chart = new Chart(msg, StarApplication.mUser.getNickName(), StarApplication.mUser.getId(), new Date(), StarApplication.mUser.getHead());
+		Chart chart = new Chart(msg, mUser.getNickName(), mUser.getId(), new Date(), mUser.getHead());
 		chart.setType(type);
 		chart.setImageURL(imageUrl);
 		ChatVO chatVO = new ChatVO(chart, ChatVO.STATUS_SENDING);
@@ -878,6 +886,10 @@ public class ChatActivity extends BaseActivity implements OnClickListener, OnTou
 			scrollToBottom();
 			break;
 		case R.id.iv_chat_send:
+			if(chatroom==null||mAdapter==null||mUser==null){
+				Logger.d("data not available, return!");
+				return;
+			}
 			sendChatContent();
 			break;
 		case R.id.iv_image_send:

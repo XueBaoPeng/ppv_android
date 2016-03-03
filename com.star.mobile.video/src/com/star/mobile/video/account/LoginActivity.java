@@ -306,7 +306,7 @@ public class LoginActivity extends ThirdLoginActivity{
 
 			@Override
 			public void onSuccess(LogonResult logonResult) {
-//				CommonUtil.closeProgressDialog();
+				CommonUtil.closeProgressDialog();
 				String result = "FAILURE";
 				if (logonResult != null) {
 					if (logonResult.getStatus() == LogonStatus.success) {

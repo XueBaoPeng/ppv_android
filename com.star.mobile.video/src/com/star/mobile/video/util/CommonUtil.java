@@ -97,6 +97,7 @@ public class CommonUtil {
 			activity.startActivity(intent);
 			activity.overridePendingTransition(R.anim.tran_next_in, R.anim.tran_next_out);
 		} else {
+			intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			context.startActivity(intent);
 		}
 	}

@@ -2,6 +2,8 @@ package com.star.mobile.video.view;
 
 import android.content.Context;
 import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.ImageView;
@@ -39,7 +41,7 @@ public class AnimView extends LinearLayout {
 	
 	public void setAnimResource(int resId) {
 		AnimationDrawable ad = (AnimationDrawable) context.getResources().getDrawable(resId);
-		ivAnim.setBackground(ad);
+		setBackground(ivAnim, ad);
 		ad.start();
 	}
 	
@@ -58,11 +60,19 @@ public class AnimView extends LinearLayout {
 				}
 			}
 		};
-		ivAnim.setBackground(cd);
+		setBackground(ivAnim, cd);
 		cd.start();
 	} 
 
 	public interface AnimationFinish {
 		void finish();
+	}
+
+	public void setBackground(ImageView imageView, Drawable drawable){
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+			imageView.setBackground(drawable);
+		} else {
+			imageView.setBackgroundDrawable(drawable);
+		}
 	}
 }
