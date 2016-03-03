@@ -136,8 +136,14 @@ public class ChooseAreaActivity extends BaseActivity {
 							purrentArea=area;
 						}
 					}
+					if(purrentArea.getCode().equals("8")){
+						setMaybeOpention(purrentArea);
+					}else{
+						return;
+					}
+
 				}else{
-					setMaybeOpention(purrentArea);
+					setMaybeOpention(null);
 				}
 			}
 			@Override
