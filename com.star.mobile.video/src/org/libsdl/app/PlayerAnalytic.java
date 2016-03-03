@@ -230,7 +230,7 @@ public class PlayerAnalytic {
 		idSetDelay.clear();
 		if(LagTimes!=0) {
 			GA.sendEvent("PlayerAnalytic", "Lag", "Count", LagTimes);	
-			GA.sendScreen("can get times");
+//			GA.sendScreen("can get times");
 			Log.d(TAG, "zy receive lag times" +LagTimes);
 			LagTimes=0;
 		}
@@ -326,8 +326,8 @@ public class PlayerAnalytic {
 
 protected void sendfinishPlayerDelay() {
 	if(LagTimes!=0) {
-		GA.sendEvent("PlayerAnalytic", "Lag", "Count", LagTimes);	
-		GA.sendScreen("can get times");
+		GA.sendEvent("PlayerAnalytic", "Lag", "Count", LagTimes);
+//		GA.sendScreen("can get times");
 		Log.d(TAG, "zy receive lag times finish" +LagTimes);
 		LagTimes=0;
 	}
@@ -338,7 +338,7 @@ protected void finishPlayerDelay(String rawStr) {
 		idSetDelay.add(logID);
 		if(LagTimes!=0) {
 			GA.sendEvent("PlayerAnalytic", "Lag", "Count", LagTimes);	
-			GA.sendScreen("can get times");
+//			GA.sendScreen("can get times");
 			Log.d(TAG, "zy receive lag times" +LagTimes);
 			LagTimes=0;
 		}

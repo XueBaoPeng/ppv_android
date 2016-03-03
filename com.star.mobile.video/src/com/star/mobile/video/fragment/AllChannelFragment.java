@@ -289,7 +289,7 @@ public class AllChannelFragment extends Fragment implements OnClickListener, OnI
 			parentFragment.setCurrentChannel(chn);
 			
 			ToastUtil.showToast(channelGuideActivity, chn.getName());
-			GA.sendEvent("EGP", "Discovery_EPG", chn.getName(), 1);
+			GA.sendEvent("EPG", "Discovery_EPG", chn.getName(), 1);
 			channelGuideActivity.hideAllchannelFragment();
 			break;
 		default:
