@@ -202,13 +202,17 @@ public class VideoView extends TabView<ListView>  {
 					VOD vod = mRecommentsVideo.get(0);
 					Content video=vod.getVideo();
 					List<Resource> resvideo=video.getResources();
-					Intent intent = new Intent(context,Player.class);
-					intent.putExtra("videocontent", (Serializable)mRecommentsVideo);
-					intent.putExtra("position", 0);
-					intent.putExtra("channel", mChannel);
-					intent.putExtra("filename",resvideo.get(0).getUrl() );
-					intent.putExtra("epgname", vod.getName());
-					context.startActivity(intent);
+					if(resvideo.size()>0) {
+						if (resvideo.get(0).getUrl() != null || !resvideo.get(0).getUrl().isEmpty()) {
+							Intent intent = new Intent(context, Player.class);
+							intent.putExtra("videocontent", (Serializable) mRecommentsVideo);
+							intent.putExtra("position", 0);
+							intent.putExtra("channel", mChannel);
+							intent.putExtra("filename", resvideo.get(0).getUrl());
+							intent.putExtra("epgname", vod.getName());
+							context.startActivity(intent);
+						}
+					}
 				}
 			}
 		});

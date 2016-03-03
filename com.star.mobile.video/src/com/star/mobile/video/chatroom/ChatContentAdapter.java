@@ -50,6 +50,7 @@ import com.star.mobile.video.util.ExpressionUtil;
 import com.star.mobile.video.util.LinkUtil;
 import com.star.mobile.video.view.ChatPopWindow;
 import com.star.ui.ImageView.Finisher;
+import com.star.util.Logger;
 import com.star.util.loader.ImageLoader;
 
 public class ChatContentAdapter extends BaseAdapter {
@@ -94,7 +95,7 @@ public class ChatContentAdapter extends BaseAdapter {
 		}
 		masterIds = new ArrayList<Long>();
 		if (chatroom != null && chatroom.getMasterIds() != null){
-			String[] ids = chatroom.getUserIds().split(",");
+			String[] ids = chatroom.getMasterIds().split(",");
 			for (String id : ids) {
 				try {
 					masterIds.add(Long.parseLong(id));
@@ -181,7 +182,7 @@ public class ChatContentAdapter extends BaseAdapter {
 			} catch (Exception e) {
 			}
 			addLeaderMark(holder.leaderIcon_t, chat, holder.masterIcon_t);
-			addMasterMark(holder.masterIcon_t, chat,holder.leaderIcon_t,holder.chatContent_t,R.drawable.chat_kanu_bg_t);
+			addMasterMark(holder.masterIcon_t, chat, holder.leaderIcon_t, holder.chatContent_t, R.drawable.chat_kanu_bg_t,R.drawable.chat_user_bg);
 			formatContent(position, holder.chatContent_t, holder.chatImage_t, holder.linkGroup_t, chat);
 			setChatStatus(chat, holder.chatStatus_t);
 		} else {
@@ -194,7 +195,8 @@ public class ChatContentAdapter extends BaseAdapter {
 				Log.e(TAG, "get chatimge-f error", e);
 			}
 			addLeaderMark(holder.leaderIcon_f, chat,holder.masterIcon_t);
-			addMasterMark(holder.masterIcon_f, chat,holder.leaderIcon_f,holder.chatContent_f,R.drawable.chat_kanu_bg_f);
+			Logger.e("position=" + position);
+			addMasterMark(holder.masterIcon_f, chat, holder.leaderIcon_f, holder.chatContent_f, R.drawable.chat_kanu_bg_f,R.drawable.chat_others_bg);
 			formatContent(position, holder.chatContent_f, holder.chatImage_f, holder.linkGroup_f, chat);
 		}
 		Linkify.addLinks(holder.chatContent_f, Patterns.WEB_URL,Constant.SCHEAM + "?" + Constant.UID + "=");
@@ -409,7 +411,7 @@ public class ChatContentAdapter extends BaseAdapter {
 
 	}
 
-	private void addMasterMark(final ImageView view, Chart chat,ImageView leaderImage,TextView masterContentBg,int materContentBgRes){
+	private void addMasterMark(final ImageView view, Chart chat,ImageView leaderImage,TextView masterContentBg,int materContentBgRes,int leadContentBgRes){
 		for(Long id : masterIds) {
 			if (chat.getUserId()!=null && chat.getUserId().equals(id)) {
 				view.setVisibility(View.VISIBLE);
@@ -417,6 +419,10 @@ public class ChatContentAdapter extends BaseAdapter {
 				masterContentBg.setBackgroundResource(materContentBgRes);
 				masterContentBg.setTextColor(context.getResources().getColor(R.color.white));
 				break;
+			}else{
+				view.setVisibility(View.GONE);
+				masterContentBg.setBackgroundResource(leadContentBgRes);
+				masterContentBg.setTextColor(context.getResources().getColor(R.color.black_color));
 			}
 		}
 	}
