@@ -152,7 +152,8 @@ public class PlayerUtil
         if (!PlayerUtil.mIsPaused && PlayerUtil.mIsSurfaceReady) {
             PlayerUtil.mIsPaused = true;
             PlayerUtil.nativePause();
-            mSurface.enableSensor(Sensor.TYPE_ACCELEROMETER, false);
+            if(mSurface!=null)
+                mSurface.enableSensor(Sensor.TYPE_ACCELEROMETER, false);
         }
     }
 

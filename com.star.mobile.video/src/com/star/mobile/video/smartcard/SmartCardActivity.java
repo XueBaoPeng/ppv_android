@@ -143,11 +143,11 @@ public class SmartCardActivity extends BaseActivity implements OnClickListener,C
 		bindCardEditViewA =new BindCardEditViewA(this);
 		bindCardEditViewA.setCardNumberACallback(this);
 		bindCardEditViewB.setCardNumberBCallback(this);
-		 if(abSharePre.getABTest().equals("A")){
-			 ll_card_num.addView(bindCardEditViewA);
-		}else if(abSharePre.getABTest().equals("B")){
-			 ll_card_num.addView(bindCardEditViewB);
-		}
+//		 if(abSharePre.getABTest().equals("A")){
+		 ll_card_num.addView(bindCardEditViewA);
+//		}else if(abSharePre.getABTest().equals("B")){
+//			 ll_card_num.addView(bindCardEditViewB);
+//		}
 		
 	}
 //	private void showGuide() {
@@ -160,11 +160,11 @@ public class SmartCardActivity extends BaseActivity implements OnClickListener,C
 	 * 绑定智能卡
 	 */
 	private void bindingCard() {
-		if(abSharePre.getABTest().equals("A")){
-			cardNum = bindCardEditViewA.getEditText();
-		}else{
-			cardNum = bindCardEditViewB.getEditText();
-		}
+//		if(abSharePre.getABTest().equals("A")){
+		cardNum = bindCardEditViewA.getEditText();
+//		}else{
+//			cardNum = bindCardEditViewB.getEditText();
+//		}
 
 		for (int i = 0;i<mSmartinfos.size();i++){
 			String smartCardNo = mSmartinfos.get(i).getSmardCardNo().trim();

@@ -1045,5 +1045,6 @@
     <string name="all">ALL</string>
     <string name="request_fail">Fail to locate</string>
     <string name="channel_">Channel:</string>
+
     <string name="not_identify">Sorry, we do not support this kind of smart card temporarily.</string>
 </resources>
