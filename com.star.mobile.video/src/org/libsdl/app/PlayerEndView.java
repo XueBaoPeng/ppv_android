@@ -68,7 +68,9 @@ public class PlayerEndView {
 		mPlayer.mVideoMoreInfoListview.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				mPlayer.transferHorizontalListView(position, true);
+				if(!mRecommentsVideo.get(position).getVideo().getResources().get(0).getUrl().isEmpty()){
+					mPlayer.transferHorizontalListView(position, true);
+				}
 			}
 		});
 
@@ -89,7 +91,9 @@ public class PlayerEndView {
 		mPlayer.mVideoMoreInfoListview.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				mPlayer.transferHorizontalListView(position, true);
+				if(!mRecommentsVideo.get(position).getVideo().getResources().get(0).getUrl().isEmpty()){
+					mPlayer.transferHorizontalListView(position, true);
+				}
 			}
 		});
 		mPlayer.mVideoMoreInfoListview.setRequestCount(6);
