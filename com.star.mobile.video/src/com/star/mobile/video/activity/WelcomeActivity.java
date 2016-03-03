@@ -125,6 +125,8 @@ public class WelcomeActivity extends BaseActivity {
 		AppInfoCacheService cacheService = new AppInfoCacheService(this);
 		String posterUrl = cacheService.getAppPoster(ApplicationUtil.getAppVerison(this));
 		if(posterUrl!=null&&!posterUrl.equals("")){
+			findViewById(R.id.welcome_logo).setVisibility(View.GONE);
+			findViewById(R.id.tv_app_version).setVisibility(View.GONE);
 			ivPoster.setUrl(posterUrl);
 		}else{
 			ivPoster.setImageResource(R.drawable.welcome_bg);
