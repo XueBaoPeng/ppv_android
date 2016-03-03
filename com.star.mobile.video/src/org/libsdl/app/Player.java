@@ -105,6 +105,7 @@ public class Player extends BaseActivity implements OnClickListener{
 	public final int MSG_UPDATE_ANALYTICS = 37;
 	public final int MSG_POST_ANALYTICS = 38;
 	public final int MSG_DELAY_ANALYTICS = 39;
+	public static final int MSG_PLAYER_STATUS = 40;
 	public static final int MSG_URL_ERROR = 8;
 
 
@@ -264,6 +265,20 @@ public class Player extends BaseActivity implements OnClickListener{
 				case MSG_LOAD_FINISHED:
 					playerPB.setVisibility(View.GONE);
 					progressMsg.setVisibility(View.GONE);
+					break;
+				case MSG_PLAYER_STATUS:
+					int messageType = msg.arg1;
+					Bundle bundle = msg.getData();
+					long timestamp,message1,message2;
+                    if(bundle != null){
+                    	timestamp = bundle.getLong("timestamp");
+                    	message1 = bundle.getLong("message1");
+                    	message2 = bundle.getLong("message2");
+//                    	Log.d(TAG, "=====player.java get = "
+//                				+ messageType + "+" + timestamp + "+" + message1 + "+" + message2);
+                    	PA.processPlayerMessage(messageType, timestamp, message1, message2);
+                    }
+                    
 					break;
 				case MSG_UPDATE_ANALYTICS:
 					String line = "";

@@ -1,5 +1,7 @@
 package org.libsdl.app;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -49,6 +51,20 @@ public class PlayerAnalytic {
 	private final String postBasicLogUrl;
 	private final String sessionID;
 	private int LagTimes=0;
+	//added by zy
+	private final String zypostUrl;
+	HashMap<String, Object> zyMap = new HashMap<String, Object>();
+	HashMap<String, Object> zyCommonMap = new HashMap<String, Object>();
+	//HashMap<String, Object> zyLogMap;
+	HashMap<String, Object> zyTempMap;
+	String commonJson;
+	List<HashMap<String, Object>> zyLogMap = new ArrayList<HashMap<String, Object>>();
+	long zyTime = 0;
+	long zyCTime = 0;
+	int zymessageType;
+	long zytimestamp;
+	long zymessage1;
+	long zymessage2;
 /*	
 	private int mPlayerState=0;//0:has't play 1: is starting 2:is playing 3: is pause 4:is seeking 5:is delaying
 	private int mLastPosition=0;
@@ -67,8 +83,13 @@ public class PlayerAnalytic {
 		String baseURLForAna = mPlayer.getResources().getString(R.string.player_analytic_url);
 		postUrl = baseURLForAna + "/segment";
 		postBasicLogUrl = baseURLForAna + "/basic";
+		String baseURLForZy = mPlayer.getResources().getString(R.string.zy_player_analytic_url);
+		zypostUrl = baseURLForZy+":8080/video/app";
+		
 		appVersion = ApplicationUtil.getAppVerisonName(mPlayer);
 		sessionID = getSessionID();
+		
+
 	}
 	
 	private boolean isPostBasicInfo = false;
@@ -117,6 +138,28 @@ public class PlayerAnalytic {
 
 						@Override
 						public void doInBackground() {
+							//zy add
+							zyCommonMap.put("uri", videoURL);
+							zyCommonMap.put("user_id", StarApplication.mUser.getId());
+							zyCommonMap.put("equip_id", getEquipID());
+							zyCommonMap.put("location", location);
+							zyCommonMap.put("eventID", eventID );
+							zyCommonMap.put("sessionID",getSessionID());
+							zyCommonMap.put("equipID", getEquipID());
+							zyCommonMap.put("network", getNetwork());
+//							try {
+//								String strUTF8 = new String(getOperator().getBytes("GBK"), "UTF-8");
+//								zyCommonMap.put("operator", strUTF8);
+//							} catch (UnsupportedEncodingException e1) {
+//								// TODO Auto-generated catch block
+//								e1.printStackTrace();
+//							}
+							zyCommonMap.put("operator", getOperator());
+							zyCommonMap.put("version", appVersion);
+							commonJson = JSONUtil.getJSON(zyCommonMap);
+							//Log.w(TAG, "zy final jason common"+commonJson);
+							//======
+							
 							map = new HashMap<String, Object>();
 							map.put("eventID", eventID );
 							map.put("sessionID",getSessionID());
@@ -125,10 +168,11 @@ public class PlayerAnalytic {
 							map.put("network", getNetwork());
 							map.put("operator", getOperator());
 							map.put("version", appVersion);
-							Log.i(TAG, "Post to basicMsg:" + map);
+							//Log.i(TAG, "zy Post to basicMsg:" + JSONUtil.getJSON(map));
+							//Log.i(TAG, "zy Post to postBasicLogUrl:" + postBasicLogUrl);
 							Result re = null;
 							try {
-								String resp = IOUtil.httpPostToJSON(JSONUtil.getJSON(map),postBasicLogUrl);
+								String resp = IOUtil.httpPostToJSON(postBasicLogUrl,map);
 								Log.d(TAG, "Post to basicMsg:" + resp);
 								re = JSONUtil.getFromJSON(resp, Result.class);
 							} catch (Exception e) {
@@ -139,6 +183,8 @@ public class PlayerAnalytic {
 							if(re!=null&&"1000".equals(re.code)){
 								isPostBasicInfo = true;
 							}
+
+							
 						}
 					}.execute();
 				}
@@ -239,6 +285,21 @@ public class PlayerAnalytic {
 	
 	protected void postLog() {
 		//基本信息没上传成功时，不上传切片信息
+//		String testUrl = "http://52.30.15.151:8080/video/app";
+//		map = new HashMap<String, Object>();
+//		map.put("eventID", "22" );
+//		map.put("sessionID","44");
+//		
+//		final String jsonStr1 = JSONUtil.getJSON(map);
+//		Log.i(TAG,  "zy Size: " + jsonStr1.length() + " " + jsonStr1 + " " + testUrl);
+//		HttpResponse resp;
+//		try {
+//			resp = IOUtil.httpPost(testUrl, jsonStr1);
+//			Log.d(TAG, "zy res: " + EntityUtils.toString(resp.getEntity(),"UTF-8") );
+//		} catch (Exception e) {
+//			Log.e(TAG, "zy Post log for ts: ",e);
+//		}
+		
 		if(!getPostBasicInfo()||toSend.isEmpty()) 
 			return;
 
@@ -323,8 +384,102 @@ public class PlayerAnalytic {
 			toSend.offer(subMap1);
 		}
 	}
+	
+
+	protected void processPlayerMessage(int messageType, long timestamp, long message1, long message2) {
+		
+		zyTime = System.currentTimeMillis();
+		zyCTime = timestamp;
+		zyTempMap = new HashMap<String, Object>();
+		
+		zymessageType = messageType;
+		zytimestamp = timestamp;
+		zymessage1 = message1;
+		zymessage2 = message2;
+		
+		switch (messageType)
+		{
+		case 1:
+		case 2:
+		case 3:
+			zyTempMap.put("timestamp", zyTime);
+			zyTempMap.put("duration", message1);
+			zyTempMap.put("video_pos", message2);
+			zyTempMap.put("type", messageType);
+			break;
+		case 4:
+			zyTempMap.put("timestamp", zyTime);
+			zyTempMap.put("duration", message1);
+			zyTempMap.put("type", messageType);
+			break;
+		case 5:
+			zyTempMap.put("timestamp", zyTime);
+			zyTempMap.put("video_start", message1);
+			zyTempMap.put("video_end", message2);
+			zyTempMap.put("type", messageType);
+			break;
+		case 6:
+			zyTempMap.put("timestamp", zyTime);
+			zyTempMap.put("video_pos", message1);
+			zyTempMap.put("type", messageType);
+			break;
+		}
+		zyLogMap.add(zyTempMap);
+//			{“timestamp”:192247891274, “duration” : 3, “video_pos”:32, “type”:1},
+//			{“timestamp”:192247891274, “duration” : 3, “video_pos”:32, “type”:2},
+//			{“timestamp”:192247891274, “duration” : 3, “video_pos”:32, “type”:3},
+	//{“timestamp”:192247891274, “duration” : 3, “type”:4}
+//			{“timestamp”:192247891274, “duration” : 3, “video_start”:32, “video_end”:65, “type”:5},
+//			{“timestamp”:192247891274, “video_pos”:32, “type”:6},
+
+			
+	}
 
 protected void sendfinishPlayerDelay() {
+//	
+//	if(zymessageType == 1&&zymessageType == 2&&zymessageType == 3)
+//	{
+//		zyTempMap.put("timestamp", System.currentTimeMillis());
+//		zyTempMap.put("duration", System.currentTimeMillis() - zyTime);
+//		zyTempMap.put("type", 4);
+//	}
+
+	zyTempMap.put("timestamp", System.currentTimeMillis());
+	zyTempMap.put("type", 7);
+	zyLogMap.add(zyTempMap);
+	
+	zyMap.put("common", zyCommonMap);//zyCommonMapcommonJson
+	zyMap.put("log", zyLogMap);
+	String stringJson = JSONUtil.getJSON(zyCommonMap);
+	//Log.w(TAG, "zy final common jason" + stringJson);
+	String stringJson1 = JSONUtil.getJSON(zyMap);
+	//Log.w(TAG, "zy final jason" + stringJson1);
+	
+	new LoadingDataTask() {
+		HttpResponse resp;
+		@Override
+		public void onPreExecute() {
+		}
+		@Override
+		public void onPostExecute() {
+		}
+		@Override
+		public void doInBackground() {
+			Result re = null;
+			try {
+				String resp = IOUtil.httpPostToJSON(zypostUrl,zyMap);
+				Log.d(TAG, "zy Post to basicMsg:" + resp);
+				re = JSONUtil.getFromJSON(resp, Result.class);
+			} catch (Exception e) {
+				isPostBasicInfo = false;
+				Log.d(TAG, "zy Post to basicMsg:",e);
+				return;
+			}
+		}
+	}.execute();
+	
+	
+	
 	if(LagTimes!=0) {
 		GA.sendEvent("PlayerAnalytic", "Lag", "Count", LagTimes);	
 		GA.sendScreen("can get times");
