@@ -224,7 +224,7 @@ public class ChooseAreaActivity extends BaseActivity {
 	 */
 	private void setCurrentArea(){
 		for (Area area:areas){
-			if (area.getCode()=="8"){
+			if (area.getCode().equals("8")){
 				purrentArea=area;
 			}
 		}
