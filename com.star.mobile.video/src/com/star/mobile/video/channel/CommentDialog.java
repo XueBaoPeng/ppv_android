@@ -26,13 +26,16 @@ public class CommentDialog extends Dialog {
 	private RelativeLayout send;
 	private RatingBar ratingBar;
 	private Context context;
-	public CommentDialog(Context context) {
-		this(context,0);
+	private RateHeadView rateHeadView;
+	public CommentDialog(Context context,RateHeadView view) {
+		this(context,view,0);
 		this.context = context;
+
 	}
-	public CommentDialog(Context context, int theme){
+	public CommentDialog(Context context,RateHeadView view, int theme){
         super(context, R.style.TaskInfoDialog);
         setContentView(R.layout.dialog_comment);
+		rateHeadView=view;
         et_content = (EditText) findViewById(R.id.et_comment_content);
 		send = (RelativeLayout) findViewById(R.id.iv_comment_send);
 		username = (TextView) findViewById(R.id.tv_comment_username);
@@ -58,7 +61,7 @@ public class CommentDialog extends Dialog {
 					 ToastUtil.centerShowToast(context, context.getString(R.string.not_Emoji_input));
                  } else if(content.length()<500){
 					if("".equals(content) || content.length() >= 6){
-						((ChannelRateActivity)context).submitComment(isEdit,rate,content,channelID,commentID);
+						rateHeadView.submitComment(isEdit, rate, content, channelID, commentID);
 						imm.hideSoftInputFromWindow(et_content.getWindowToken(), 0); 
 						dismiss();	
 					}else{
