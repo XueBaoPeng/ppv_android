@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    
+
     <!-- https线上环境 --><!-- tenb调用的发帖地址  正式环境-->
     <!-- https线上环境 --><!-- tenb调用的发帖地址  正式环境-->
 	<!--<string name="server_url">https://tenbre.me/cms</string>
@@ -19,7 +19,7 @@
 	<string name="is_show_crash_dialog">0</string>
 	<string name="robot_icon_url">http://portal.tenbre.me/portal/img/image/official_avatar.png</string>-->
 
-    
+
 	<!-- https准上线测试环境 --><!-- tenb调用的发帖地址  准上线环境-->
 	<string name="server_url">https://52.18.227.87/cms</string>
 	<string name="bbs_url">http://52.18.227.87/bbs/forumsCategory/list1.page</string>
@@ -48,7 +48,7 @@
 	<string name="getui_appKey">aBkdhG2HHp5MWPxqayJ6U5</string>
 	<string name="getui_appSecret">rK07UCmhnp8RMc3Lm8lrU7</string>
 	<string name="getui_masterSecret">jSK3qyaDtbAzjmUVCT7b47</string>
-	
+
 	<!-- 本地测试环境 --><!-- tenb调用的发帖地址  本地环境-->
 	<!-- <string name="server_url">http://10.0.63.242:8281/cms</string>
 	<string name="html_prefix_url">http://10.0.63.242:8281</string>
