@@ -17,7 +17,9 @@ import com.star.mobile.video.R;
 import com.star.mobile.video.StarApplication;
 import com.star.mobile.video.activity.BrowserActivity;
 import com.star.mobile.video.base.BaseActivity;
+import com.star.mobile.video.dao.ServerUrlDao;
 import com.star.mobile.video.util.CommonUtil;
+import com.star.mobile.video.util.DifferentUrlContral;
 import com.star.mobile.video.view.ListView;
 import com.star.mobile.video.view.ListView.LoadingListener;
 import com.star.ui.ImageView;
@@ -145,8 +147,10 @@ public class TenbActivity extends BaseActivity implements OnClickListener {
 			onBackPressed();
 			break;
 		case R.id.iv_sendbbs:
+			ServerUrlDao serverUrlDao = DifferentUrlContral.diffUrlContral(this);
 			Intent intent = new Intent(this, BrowserActivity.class);
-			intent.putExtra("loadUrl",getString(R.string.tenb_post_bbs_url));
+//			intent.putExtra("loadUrl",getString(R.string.tenb_post_bbs_url));
+			intent.putExtra("loadUrl",serverUrlDao.getTenbPostBbsUrl());
 			intent.putExtra("isBbs",1);
 			CommonUtil.startActivity(this, intent);
 			break;

@@ -12,11 +12,13 @@ import android.util.SparseArray;
 import com.star.cms.model.User;
 import com.star.cms.model.vo.TaskVO;
 import com.star.mobile.video.account.ChooseAreaActivity;
+import com.star.mobile.video.dao.ServerUrlDao;
 import com.star.mobile.video.model.FunctionType;
 import com.star.mobile.video.service.FunctionService;
 import com.star.mobile.video.shared.SharedPreferencesUtil;
 import com.star.mobile.video.util.ABTestSharedPre;
 import com.star.mobile.video.util.Constant;
+import com.star.mobile.video.util.DifferentUrlContral;
 import com.star.mobile.video.util.http.HTTPClient;
 import com.star.util.app.Application;
 import com.star.util.app.GA;
@@ -46,16 +48,19 @@ public class StarApplication extends Application {
 //		Fresco.initialize(this);
 //		SSLUtil.disableCertificateValidation();
 		HTTPClient.instance.setContext(getApplicationContext());
-		
+		ServerUrlDao serverUrlDao = DifferentUrlContral.diffUrlContral(this);
 		if(Constant.getServerIp() == null || "".equals(Constant.getServerIp())) {
-			Constant.setServerIP(getResources().getString(R.string.server_url));
-			Constant.setBbsNewTopicUrl(getResources().getString(R.string.bbs_new_topic_url));
+//			Constant.setServerIP(getResources().getString(R.string.server_url));
+			Constant.setServerIP(serverUrlDao.getServerUrl());
+//			Constant.setBbsNewTopicUrl(getResources().getString(R.string.bbs_new_topic_url));
+			Constant.setBbsNewTopicUrl(serverUrlDao.getBBSNewTopicUrl());
 		}
 		String areaName = SharedPreferencesUtil.getAreaname(getApplicationContext());
 		if(!TextUtils.isEmpty(areaName))
 			FunctionService.initAreaFunctions(getApplicationContext(), areaName);
 		CrashHandler crashHandler = CrashHandler.getInstance();  
-        crashHandler.init(getApplicationContext(),this); 
+        crashHandler.init(getApplicationContext(),this);
+
 	}
 	public SparseArray<String> getUIS(){
 		return UIS;

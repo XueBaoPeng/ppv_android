@@ -208,7 +208,7 @@ public class ChatContentAdapter extends BaseAdapter {
 
 	private void setHeadIconOnClick(ViewHolder holder,final String headIcon,final String nickName,final Long userId) {
 		if (!ChatActivity.ROBOT_CHAT_CODE.equals(chatroom.getCode())) {
-			holder.userIcon_f.setOnClickListener(new OnClickListener() {
+			holder.userIcon_f.setOnClickListener(	new OnClickListener() {
 
 				@Override
 				public void onClick(View v) {

@@ -23,11 +23,13 @@ import com.star.mobile.video.R;
 import com.star.mobile.video.StarApplication;
 import com.star.mobile.video.activity.BrowserActivity;
 import com.star.mobile.video.channel.ChannelRateActivity;
+import com.star.mobile.video.dao.ServerUrlDao;
 import com.star.mobile.video.service.ChannelService;
 import com.star.mobile.video.service.ProgramService;
 import com.star.mobile.video.util.CommonUtil;
 import com.star.mobile.video.util.Constant;
 import com.star.mobile.video.util.DateFormat;
+import com.star.mobile.video.util.DifferentUrlContral;
 import com.star.mobile.video.util.LoadingDataTask;
 import com.star.util.loader.LoadMode;
 import com.star.util.loader.OnResultTagListener;
@@ -384,8 +386,10 @@ public class TenbItemView extends LinearLayout {
 				
 				@Override
 				public void onClick(View v) {
+					ServerUrlDao serverUrlDao = DifferentUrlContral.diffUrlContral(mContext);
 					Intent intent = new Intent(getContext(), BrowserActivity.class);
-					intent.putExtra("loadUrl",String.format(getContext().getString(R.string.bbs_detail), topic.getId()));
+//					intent.putExtra("loadUrl",String.format(getContext().getString(R.string.bbs_detail), topic.getId()));
+					intent.putExtra("loadUrl",String.format(serverUrlDao.getBBSDetail(), topic.getId()));
 					intent.putExtra("isBbs",1);
 					CommonUtil.startActivity((Activity)getContext(), intent);	
 				}

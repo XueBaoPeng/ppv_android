@@ -26,6 +26,7 @@ import com.star.mobile.video.account.ChooseAreaActivity;
 import com.star.mobile.video.account.LoginActivity;
 import com.star.mobile.video.appversion.AppInfoCacheService;
 import com.star.mobile.video.base.BaseActivity;
+import com.star.mobile.video.dao.ServerUrlDao;
 import com.star.mobile.video.guide.firstenter.WelcomeGuideView;
 import com.star.mobile.video.home.HomeActivity;
 import com.star.mobile.video.service.ApplicationService;
@@ -36,6 +37,7 @@ import com.star.mobile.video.util.ApplicationUtil;
 import com.star.mobile.video.util.CommonUtil;
 import com.star.mobile.video.util.ConnectServiceUtil;
 import com.star.mobile.video.util.Constant;
+import com.star.mobile.video.util.DifferentUrlContral;
 import com.star.mobile.video.util.IOUtil;
 import com.star.mobile.video.util.LanguageUtil;
 import com.star.mobile.video.util.ToastUtil;
@@ -53,7 +55,7 @@ public class WelcomeActivity extends BaseActivity {
 	private ABTestSharedPre abSharePre;
 	private Long startTime;
 	private RelativeLayout mPosterContainer;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -87,9 +89,11 @@ public class WelcomeActivity extends BaseActivity {
 		ConnectServiceUtil.checkConnectStatus();
 		CommonUtil.showHashKey(this);
 		PushManager.getInstance().initialize(this.getApplicationContext());
-		Constant.setServerIP(getResources().getString(R.string.server_url));
-		
-		TelephonyManager tm = (TelephonyManager)this.getSystemService(Context.TELEPHONY_SERVICE); 
+		ServerUrlDao serverUrlDao = DifferentUrlContral.diffUrlContral(this);
+//		Constant.setServerIP(getResources().getString(R.string.server_url));
+		Constant.setServerIP(serverUrlDao.getServerUrl());
+
+		TelephonyManager tm = (TelephonyManager)this.getSystemService(Context.TELEPHONY_SERVICE);
 		deviceId = tm.getDeviceId();
 		accountService = new AccountService(this);
 		applicationService = new ApplicationService(this);
@@ -103,7 +107,7 @@ public class WelcomeActivity extends BaseActivity {
 	protected void onStart() {
 		super.onStart();
 	}
-	
+
 	private void initView() {
 		TextView tv_version = (TextView) findViewById(R.id.tv_app_version);
 		tv_version.setText("Version "+ApplicationUtil.getAppVerisonName(this));
@@ -135,12 +139,12 @@ public class WelcomeActivity extends BaseActivity {
 
 	private void hideWelcomeView()  {
 		long nowTime = System.currentTimeMillis();
-		long diff = nowTime - startTime; 
+		long diff = nowTime - startTime;
 		if(diff < 2000) {
 			try {
 				Thread.sleep(2000 - diff);
 			} catch (InterruptedException e) {
-				
+
 			}
 		}
 		if(SharedPreferencesUtil.isAppGuideDone(this)){
@@ -149,24 +153,24 @@ public class WelcomeActivity extends BaseActivity {
 			showAppGuidePoster();
 		}
 	}
-	
+
 	private void showAppGuidePoster(){
 		new Handler().postDelayed(new Runnable() {
-			
+
 			@Override
 			public void run() {
 				mPosterContainer.setVisibility(View.VISIBLE);
 			}
 		}, 600);
 	}
-	
+
 	private void getMyAppInfo() {
 //		new LoadingDataTask() {
 //			private APPInfo info;
 //			@Override
 //			public void onPreExecute() {
 //			}
-//			
+//
 //			@Override
 //			public void onPostExecute() {
 //				SharedPreferences sharePre = SharedPreferencesUtil.getDBSharePreferences(WelcomeActivity.this);
@@ -185,7 +189,7 @@ public class WelcomeActivity extends BaseActivity {
 //					SyncService.getInstance(WelcomeActivity.this).setDBReady(false);
 //				}
 //			}
-//			
+//
 //			@Override
 //			public void doInBackground() {
 //				info =  applicationService.getMyApp(ApplicationUtil.getAppVerison(WelcomeActivity.this));
@@ -233,7 +237,7 @@ public class WelcomeActivity extends BaseActivity {
 			}
 		});
 	}
-	
+
 	private void login() {
 		if (userNameInCache != null) {
 			SharedPreferencesUtil.clearDeviceId(WelcomeActivity.this);
@@ -245,7 +249,7 @@ public class WelcomeActivity extends BaseActivity {
 						goChooseActivity();
 					}else{
 						new Handler().postDelayed(new Runnable() {
-							
+
 							@Override
 							public void run() {
 								goHomeActivity();
@@ -265,17 +269,17 @@ public class WelcomeActivity extends BaseActivity {
 			logonWithDevice();
 		}
 	}
-	
+
 	private void goChooseActivity() {
 		CommonUtil.startActivity(WelcomeActivity.this, ChooseAreaActivity.class);
 		finish();
 	}
-	
+
 	private void goHomeActivity() {
 		CommonUtil.startActivity(WelcomeActivity.this, HomeActivity.class);
 		finish();
 	}
-	
+
 	private void goLoginActivity() {
 		Intent intent = new Intent(WelcomeActivity.this, LoginActivity.class);
 		intent.putExtra("fill_name_password", true);
@@ -283,7 +287,7 @@ public class WelcomeActivity extends BaseActivity {
 		CommonUtil.startActivity(WelcomeActivity.this, intent);
 		finish();
 	}
-	
+
 	private void logonWithDevice(){
 		accountService.login(deviceId, new OnResultListener<LogonResult>() {
 
@@ -317,11 +321,11 @@ public class WelcomeActivity extends BaseActivity {
 			}
 		});
 	}
-	
+
 	private void clearLoginInfo() {
 		SharedPreferencesUtil.clearUserInfo(WelcomeActivity.this);
 	}
-	
+
 	private void needGohome() {
 		if(SyncService.getInstance(WelcomeActivity.this).isDBReady()) {
 			if(SharedPreferencesUtil.isAppGuideDone(this)){
@@ -333,7 +337,7 @@ public class WelcomeActivity extends BaseActivity {
 			CommonUtil.showNetworkerror(WelcomeActivity.this);
 		}
 	}
-	
+
 	/*private void checkVerison() {
 		if(newApp.getVersion() > ApplicationUtil.getAppVerison(this)) {
 			newAppVersion = newApp.getDescription();
@@ -348,14 +352,14 @@ public class WelcomeActivity extends BaseActivity {
 			login();
 		}
 	}*/
-	
+
 	/*private void alertInstall() {
 		Intent i = new Intent(this, AlertInstallActivity.class);
 		i.putExtra("what", "install");
 		i.putExtra("forceUp", newApp.isForceUpdate());
 		startActivityForResult(i, 110);
 	}*/
-	
+
 	/*@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if(requestCode==110 && resultCode==120){
@@ -366,7 +370,7 @@ public class WelcomeActivity extends BaseActivity {
 			}
 		}
 	}*/
-	
+
 //	private void alertUpdate() {
 //		if(StarApplication.nowDownLoadNewVersion){
 //			if(!newApp.isForceUpdate()){
@@ -382,7 +386,7 @@ public class WelcomeActivity extends BaseActivity {
 //			startActivityForResult(i, 110);
 //		}
 //	}
-	
+
 //	/**
 //	 * 判断logo是否显示
 //	 * @return
@@ -394,11 +398,11 @@ public class WelcomeActivity extends BaseActivity {
 //			return false;
 //		}
 //	}
-	
-	
+
+
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
 	}
-	
+
 }

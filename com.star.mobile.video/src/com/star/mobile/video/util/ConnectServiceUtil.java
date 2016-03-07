@@ -7,6 +7,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.star.mobile.video.R;
+import com.star.mobile.video.dao.ServerUrlDao;
 
 public class ConnectServiceUtil {
 	
@@ -28,7 +29,9 @@ public class ConnectServiceUtil {
 		Socket socket = null;
 		String ip = null; int port=80;
 		try {
-			String[] url = CONTEXT.getString(R.string.server_url).split("/");
+			ServerUrlDao serverUrlDao = DifferentUrlContral.diffUrlContral(CONTEXT);
+//			String[] url = CONTEXT.getString(R.string.server_url).split("/");
+			String[] url = serverUrlDao.getServerUrl().split("/");
 			url = url[2].split(":");
 			if(url.length==2){
 				ip = url[0];

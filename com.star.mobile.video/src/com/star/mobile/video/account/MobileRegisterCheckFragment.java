@@ -25,8 +25,10 @@ import com.star.mobile.video.AbsRegisterFragment;
 import com.star.mobile.video.R;
 import com.star.mobile.video.StarApplication;
 import com.star.mobile.video.activity.BrowserActivity;
+import com.star.mobile.video.dao.ServerUrlDao;
 import com.star.mobile.video.util.CommonUtil;
 import com.star.mobile.video.util.Constant;
+import com.star.mobile.video.util.DifferentUrlContral;
 import com.star.mobile.video.util.ToastUtil;
 import com.star.mobile.video.view.CheckCodeView;
 import com.star.mobile.video.view.CheckCodeView.CheckCodeButtonOnClick;
@@ -324,8 +326,10 @@ public class MobileRegisterCheckFragment extends AbsRegisterFragment implements 
 			goMobRegister();
 			break;
 		case R.id.tv_three:
+			ServerUrlDao serverUrlDao = DifferentUrlContral.diffUrlContral(registerActivity);
 			Intent i = new Intent(registerActivity,BrowserActivity.class);
-			i.putExtra("loadUrl", getString(R.string.html_prefix_url)+"/copyright/copyright.html");
+//			i.putExtra("loadUrl", getString(R.string.html_prefix_url)+"/copyright/copyright.html");
+			i.putExtra("loadUrl", serverUrlDao.getHtmlPrefixUrl()+"/copyright/copyright.html");
 			CommonUtil.startActivity(registerActivity, i);
 			break;
 		case R.id.bt_have_account:

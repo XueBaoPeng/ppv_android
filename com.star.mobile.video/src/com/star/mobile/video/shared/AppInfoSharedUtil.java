@@ -1,6 +1,8 @@
 package com.star.mobile.video.shared;
 
 import com.star.mobile.video.R;
+import com.star.mobile.video.dao.ServerUrlDao;
+import com.star.mobile.video.util.DifferentUrlContral;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -20,7 +22,9 @@ public class AppInfoSharedUtil {
 		SharedPreferences mSharedPreferences = context.getSharedPreferences("apk_info", Context.MODE_WORLD_READABLE);
 		String apkUrl = mSharedPreferences.getString("apk_url", null);
 		if(apkUrl == null || "".equals(apkUrl) ) {
-			apkUrl = context.getString(R.string.apk_url);
+			ServerUrlDao serverUrlDao = DifferentUrlContral.diffUrlContral(context);
+//			apkUrl = context.getString(R.string.apk_url);
+			apkUrl = serverUrlDao.getApkUrl();
 		}
 		return apkUrl;
 	} 

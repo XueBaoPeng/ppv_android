@@ -29,9 +29,11 @@ import com.star.mobile.video.R;
 import com.star.mobile.video.activity.BrowserActivity;
 import com.star.mobile.video.adapter.VideoAdapter;
 import com.star.mobile.video.base.BaseFragmentActivity;
+import com.star.mobile.video.dao.ServerUrlDao;
 import com.star.mobile.video.service.VideoService;
 import com.star.mobile.video.shared.SharedPreferencesUtil;
 import com.star.mobile.video.util.CommonUtil;
+import com.star.mobile.video.util.DifferentUrlContral;
 import com.star.mobile.video.view.ListView.LoadingListener;
 public class ChannelGuideVideo extends LinearLayout implements OnClickListener{
 
@@ -165,11 +167,14 @@ public class ChannelGuideVideo extends LinearLayout implements OnClickListener{
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.view_channel_video_header_rl:
+			ServerUrlDao serverUrlDao = DifferentUrlContral.diffUrlContral(context);
 			String aredCode = SharedPreferencesUtil.getAreaCode(context);
 			if (context.getResources().getString(R.string.bundesliga_name).toLowerCase().equals(mChannel.getName().toLowerCase())) {
-				transBrowser(context.getResources().getString(R.string.bundesliga_url)+aredCode,context.getResources().getString(R.string.bundesliga_name));
+//				transBrowser(context.getResources().getString(R.string.bundesliga_url)+aredCode,context.getResources().getString(R.string.bundesliga_name));
+				transBrowser(serverUrlDao.getBundesligaUrl()+aredCode,context.getResources().getString(R.string.bundesliga_name));
 			}else if (context.getResources().getString(R.string.serie_a_name).toLowerCase().equals(mChannel.getName().toLowerCase())) {
-				transBrowser(context.getResources().getString(R.string.serie_a_url)+aredCode,context.getResources().getString(R.string.serie_a_name));
+//				transBrowser(context.getResources().getString(R.string.serie_a_url)+aredCode,context.getResources().getString(R.string.serie_a_name));
+				transBrowser(serverUrlDao.getSerieAUrl()+aredCode,context.getResources().getString(R.string.serie_a_name));
 			}
 			break;
 
@@ -180,7 +185,6 @@ public class ChannelGuideVideo extends LinearLayout implements OnClickListener{
 
 	/**
 	 * 跳转到网页
-	 * @param position
 	 */
 	private void transBrowser(String url,String name) {
 		Intent intent = new Intent(channelGuideActivity, BrowserActivity.class);

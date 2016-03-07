@@ -106,7 +106,6 @@ public class VideoFragment extends BaseFragment {
 	}
 	/**
 	 * 跳转到网页
-	 * @param position
 	 */
 	private void transBrowser(String url,String name) {
 		Intent intent = new Intent(channelGuideActivity, BrowserActivity.class);

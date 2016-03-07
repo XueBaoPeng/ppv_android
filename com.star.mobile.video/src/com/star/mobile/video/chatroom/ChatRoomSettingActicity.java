@@ -13,8 +13,10 @@ import com.star.cms.model.ChatRoom;
 import com.star.mobile.video.R;
 import com.star.mobile.video.activity.BrowserActivity;
 import com.star.mobile.video.base.BaseActivity;
+import com.star.mobile.video.dao.ServerUrlDao;
 import com.star.mobile.video.shared.SharedPreferencesUtil;
 import com.star.mobile.video.util.CommonUtil;
+import com.star.mobile.video.util.DifferentUrlContral;
 import com.star.mobile.video.util.ToastUtil;
 import com.star.util.loader.OnResultListener;
 
@@ -70,9 +72,11 @@ public class ChatRoomSettingActicity extends BaseActivity implements OnClickList
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.rl_top_post:
+			ServerUrlDao serverUrlDao = DifferentUrlContral.diffUrlContral(this);
 			Intent i = new Intent(this, BrowserActivity.class);
 //			i.putExtra("pageName", (chatroom==null||chatroom.getName()==null)?roomName:chatroom.getName());
-			i.putExtra("loadUrl",getString(R.string.html_prefix_url)+"/forum/chat_top.html?id="/*+channelId*/);
+//			i.putExtra("loadUrl",getString(R.string.html_prefix_url)+"/forum/chat_top.html?id="/*+channelId*/);
+			i.putExtra("loadUrl",serverUrlDao.getHtmlPrefixUrl()+"/forum/chat_top.html?id="/*+channelId*/);
 			CommonUtil.startActivity(this, i);
 			break;
 		case R.id.iv_notifi_switch:
