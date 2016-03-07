@@ -29,12 +29,13 @@ import com.star.mobile.video.R;
 import com.star.mobile.video.activity.BrowserActivity;
 import com.star.mobile.video.adapter.VideoAdapter;
 import com.star.mobile.video.base.BaseFragmentActivity;
-import com.star.mobile.video.dao.ServerUrlDao;
 import com.star.mobile.video.service.VideoService;
 import com.star.mobile.video.shared.SharedPreferencesUtil;
 import com.star.mobile.video.util.CommonUtil;
-import com.star.mobile.video.util.DifferentUrlContral;
 import com.star.mobile.video.view.ListView.LoadingListener;
+import com.star.util.DifferentUrlContral;
+import com.star.util.ServerUrlDao;
+
 public class ChannelGuideVideo extends LinearLayout implements OnClickListener{
 
 	private com.star.mobile.video.view.ListView lvVideo;

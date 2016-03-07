@@ -15,11 +15,11 @@ import com.star.mobile.video.R;
 import com.star.mobile.video.activity.BrowserActivity;
 import com.star.mobile.video.appversion.CurrentVersionAppDetailActivity;
 import com.star.mobile.video.base.BaseActivity;
-import com.star.mobile.video.dao.ServerUrlDao;
 import com.star.mobile.video.me.feedback.FeedbackActivity;
 import com.star.mobile.video.model.AboutItemData;
 import com.star.mobile.video.util.CommonUtil;
-import com.star.mobile.video.util.DifferentUrlContral;
+import com.star.util.DifferentUrlContral;
+import com.star.util.ServerUrlDao;
 
 /**
  * 

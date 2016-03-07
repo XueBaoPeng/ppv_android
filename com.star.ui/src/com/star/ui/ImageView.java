@@ -23,6 +23,8 @@ import android.graphics.BitmapFactory;
 import android.util.AttributeSet;
 import android.util.Log;
 
+import com.star.util.DifferentUrlContral;
+import com.star.util.ServerUrlDao;
 import com.star.util.http.IOUtil;
 import com.star.util.loader.FileCache;
 import com.star.util.loader.MemoryCache;
@@ -76,13 +78,14 @@ public class ImageView extends android.widget.ImageView{
 	/**
 	 * 以前资源文件域名或 ip port  取消 ，
 	 * 变更为相对路径
-	 * @param url
 	 * @return
 	 */
 	private String replaceResourceUrl(String path) {
 		Matcher m =  urlPattern.matcher(path);
 		if(m.find()){
-			path = context.getString(R.string.resource_prefix_url)+m.group(2);
+			ServerUrlDao serverUrlDao = DifferentUrlContral.diffUrlContral(context);
+//			path = context.getString(R.string.resource_prefix_url)+m.group(2);
+			path = serverUrlDao.getResourcePrefixUrl()+m.group(2);
 		}
 		return path;
 	}

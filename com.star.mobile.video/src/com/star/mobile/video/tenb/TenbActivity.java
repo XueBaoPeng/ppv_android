@@ -17,12 +17,12 @@ import com.star.mobile.video.R;
 import com.star.mobile.video.StarApplication;
 import com.star.mobile.video.activity.BrowserActivity;
 import com.star.mobile.video.base.BaseActivity;
-import com.star.mobile.video.dao.ServerUrlDao;
 import com.star.mobile.video.util.CommonUtil;
-import com.star.mobile.video.util.DifferentUrlContral;
 import com.star.mobile.video.view.ListView;
 import com.star.mobile.video.view.ListView.LoadingListener;
 import com.star.ui.ImageView;
+import com.star.util.DifferentUrlContral;
+import com.star.util.ServerUrlDao;
 
 public class TenbActivity extends BaseActivity implements OnClickListener {
 	

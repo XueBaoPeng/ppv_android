@@ -12,10 +12,10 @@ import com.star.cms.model.RechargeCMD;
 import com.star.cms.model.vo.ChangePackageCMDVO;
 import com.star.mobile.video.R;
 import com.star.mobile.video.activity.BrowserActivity;
-import com.star.mobile.video.dao.ServerUrlDao;
 import com.star.mobile.video.me.feedback.FeedbackActivity;
 import com.star.mobile.video.util.CommonUtil;
-import com.star.mobile.video.util.DifferentUrlContral;
+import com.star.util.DifferentUrlContral;
+import com.star.util.ServerUrlDao;
 
 public class AsynAlertDialogActivity extends Activity implements OnClickListener{
 	private TextView mDialogPromptTitle;

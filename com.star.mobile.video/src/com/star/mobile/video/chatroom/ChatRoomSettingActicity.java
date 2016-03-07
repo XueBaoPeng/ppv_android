@@ -13,11 +13,11 @@ import com.star.cms.model.ChatRoom;
 import com.star.mobile.video.R;
 import com.star.mobile.video.activity.BrowserActivity;
 import com.star.mobile.video.base.BaseActivity;
-import com.star.mobile.video.dao.ServerUrlDao;
 import com.star.mobile.video.shared.SharedPreferencesUtil;
 import com.star.mobile.video.util.CommonUtil;
-import com.star.mobile.video.util.DifferentUrlContral;
 import com.star.mobile.video.util.ToastUtil;
+import com.star.util.DifferentUrlContral;
+import com.star.util.ServerUrlDao;
 import com.star.util.loader.OnResultListener;
 
 public class ChatRoomSettingActicity extends BaseActivity implements OnClickListener{

@@ -2,7 +2,6 @@ package com.star.mobile.video;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import android.app.Activity;
 import android.content.Context;
@@ -12,16 +11,14 @@ import android.util.SparseArray;
 import com.star.cms.model.User;
 import com.star.cms.model.vo.TaskVO;
 import com.star.mobile.video.account.ChooseAreaActivity;
-import com.star.mobile.video.dao.ServerUrlDao;
 import com.star.mobile.video.model.FunctionType;
 import com.star.mobile.video.service.FunctionService;
 import com.star.mobile.video.shared.SharedPreferencesUtil;
-import com.star.mobile.video.util.ABTestSharedPre;
 import com.star.mobile.video.util.Constant;
-import com.star.mobile.video.util.DifferentUrlContral;
 import com.star.mobile.video.util.http.HTTPClient;
+import com.star.util.DifferentUrlContral;
+import com.star.util.ServerUrlDao;
 import com.star.util.app.Application;
-import com.star.util.app.GA;
 import com.star.util.http.IOUtil;
 
 public class StarApplication extends Application {

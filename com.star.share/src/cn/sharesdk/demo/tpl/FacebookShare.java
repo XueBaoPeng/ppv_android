@@ -36,6 +36,8 @@ import com.facebook.share.ShareApi;
 import com.facebook.share.Sharer;
 import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.widget.ShareDialog;
+import com.star.util.DifferentUrlContral;
+import com.star.util.ServerUrlDao;
 
 import cn.sharesdk.onekeyshare.EditPage.ColseFriendCallback;
 
@@ -161,11 +163,13 @@ public class FacebookShare extends Activity {
         performPublish(PendingAction.POST_STATUS_UPDATE, canPresentShareDialog);
     }
     private void postStatusUpdate() {
+        ServerUrlDao serverUrlDao = DifferentUrlContral.diffUrlContral(this);
         Profile profile = Profile.getCurrentProfile();
         ShareLinkContent linkContent = new ShareLinkContent.Builder()
         		.setContentTitle(title)
                 .setContentDescription(text)
-                .setImageUrl(Uri.parse(getString(R.string.resource_prefix_url)+"/portal/img/share/invitation.png"))
+//                .setImageUrl(Uri.parse(getString(R.string.resource_prefix_url)+"/portal/img/share/invitation.png"))
+                .setImageUrl(Uri.parse(serverUrlDao.getResourcePrefixUrl() + "/portal/img/share/invitation.png"))
                 .setContentUrl(Uri.parse(url))
                 .build();
         

@@ -1,10 +1,7 @@
-package com.star.mobile.video.util;
+package com.star.util;
 
 
 import android.content.Context;
-
-import com.star.mobile.video.R;
-import com.star.mobile.video.dao.ServerUrlDao;
 
 /**
  * 控制不同url
@@ -37,10 +34,6 @@ public class DifferentUrlContral {
             serverUrlDao.setRobotIconUrl(context.getResources().getString(R.string.robot_icon_url_test));
             serverUrlDao.setGATrackingId(context.getResources().getString(R.string.ga_trackingId_test));
             serverUrlDao.setApkUrl(context.getResources().getString(R.string.apk_url_test));
-            serverUrlDao.setGetuiAppId(context.getResources().getString(R.string.getui_appId_test));
-            serverUrlDao.setGetuiAppKey(context.getResources().getString(R.string.getui_appKey_test));
-            serverUrlDao.setGetuiAppSecret(context.getResources().getString(R.string.getui_appSecret_test));
-            serverUrlDao.setGetuiMaseterSecret(context.getResources().getString(R.string.getui_masterSecret_test));
         } else if (appUrl == prepate_url) {//prepare环境
             serverUrlDao.setServerUrl(context.getResources().getString(R.string.server_url_prepare));
             serverUrlDao.setBBSFaqUrl(context.getResources().getString(R.string.bbs_faq_url_prepare));
@@ -58,10 +51,6 @@ public class DifferentUrlContral {
             serverUrlDao.setRobotIconUrl(context.getResources().getString(R.string.robot_icon_url_prepare));
             serverUrlDao.setGATrackingId(context.getResources().getString(R.string.ga_trackingId_online));
             serverUrlDao.setApkUrl(context.getResources().getString(R.string.apk_url_online));
-            serverUrlDao.setGetuiAppId(context.getResources().getString(R.string.getui_appId_online));
-            serverUrlDao.setGetuiAppKey(context.getResources().getString(R.string.getui_appKey_online));
-            serverUrlDao.setGetuiAppSecret(context.getResources().getString(R.string.getui_appSecret_online));
-            serverUrlDao.setGetuiMaseterSecret(context.getResources().getString(R.string.getui_masterSecret_online));
         } else if (appUrl == online_url) {//线上环境
             serverUrlDao.setServerUrl(context.getResources().getString(R.string.server_url_online));
             serverUrlDao.setBBSFaqUrl(context.getResources().getString(R.string.bbs_faq_url_online));
@@ -79,10 +68,6 @@ public class DifferentUrlContral {
             serverUrlDao.setRobotIconUrl(context.getResources().getString(R.string.robot_icon_url_online));
             serverUrlDao.setGATrackingId(context.getResources().getString(R.string.ga_trackingId_online));
             serverUrlDao.setApkUrl(context.getResources().getString(R.string.apk_url_online));
-            serverUrlDao.setGetuiAppId(context.getResources().getString(R.string.getui_appId_online));
-            serverUrlDao.setGetuiAppKey(context.getResources().getString(R.string.getui_appKey_online));
-            serverUrlDao.setGetuiAppSecret(context.getResources().getString(R.string.getui_appSecret_online));
-            serverUrlDao.setGetuiMaseterSecret(context.getResources().getString(R.string.getui_masterSecret_online));
         }
         return serverUrlDao;
     }

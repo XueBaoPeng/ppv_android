@@ -25,10 +25,10 @@ import android.os.Message;
 import android.util.Log;
 
 import com.star.mobile.video.activity.WelcomeActivity;
-import com.star.mobile.video.dao.ServerUrlDao;
 import com.star.mobile.video.util.CommonUtil;
 import com.star.mobile.video.util.CommonUtil.PromptDialogClickListener;
-import com.star.mobile.video.util.DifferentUrlContral;
+import com.star.util.DifferentUrlContral;
+import com.star.util.ServerUrlDao;
 import com.star.util.app.GA;
 
 /**

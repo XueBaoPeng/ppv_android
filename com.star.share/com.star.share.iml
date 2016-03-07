@@ -19,5 +19,6 @@
     <orderEntry type="module" module-name="com.star.ui" />
     <orderEntry type="library" name="share" level="project" />
     <orderEntry type="library" name="fbsdk" level="project" />
+    <orderEntry type="module" module-name="com.star.util" />
   </component>
 </module>

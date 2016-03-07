@@ -43,7 +43,9 @@ import com.star.mobile.video.util.DateFormat;
 import com.star.mobile.video.util.DownloadUtil;
 import com.star.mobile.video.util.IOUtil;
 import com.star.ui.ImageView;
+import com.star.util.DifferentUrlContral;
 import com.star.util.Logger;
+import com.star.util.ServerUrlDao;
 import com.star.util.json.JSONUtil;
 import com.star.util.loader.LoadMode;
 import com.star.util.loader.OnResultListener;
@@ -156,8 +158,10 @@ public class SyncService extends AbstractService{
 	public void doSync(){
 		if(needSync())
 			new Thread(syncDB).start();
+		ServerUrlDao serverUrlDao = DifferentUrlContral.diffUrlContral(context);
 		//网络测速
-		new NETSpeedTest(context,context.getString(R.string.apk_url)).asychStart();
+//		new NETSpeedTest(context,context.getString(R.string.apk_url)).asychStart();
+		new NETSpeedTest(context,serverUrlDao.getApkUrl()).asychStart();
 	}
 	
 	private Runnable syncDB = new Runnable() {

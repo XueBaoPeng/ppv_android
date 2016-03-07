@@ -6,8 +6,9 @@ import java.net.Socket;
 import android.content.Context;
 import android.util.Log;
 
-import com.star.mobile.video.R;
-import com.star.mobile.video.dao.ServerUrlDao;
+import com.star.util.DifferentUrlContral;
+import com.star.util.ServerUrlDao;
+
 
 public class ConnectServiceUtil {
 	

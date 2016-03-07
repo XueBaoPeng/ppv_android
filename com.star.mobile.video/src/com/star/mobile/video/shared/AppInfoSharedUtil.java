@@ -1,12 +1,12 @@
 package com.star.mobile.video.shared;
 
-import com.star.mobile.video.R;
-import com.star.mobile.video.dao.ServerUrlDao;
-import com.star.mobile.video.util.DifferentUrlContral;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+
+import com.star.util.DifferentUrlContral;
+import com.star.util.ServerUrlDao;
 
 public class AppInfoSharedUtil {
 

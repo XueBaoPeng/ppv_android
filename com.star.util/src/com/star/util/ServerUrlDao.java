@@ -1,4 +1,4 @@
-package com.star.mobile.video.dao;
+package com.star.util;
 
 /**
  * 加载不同服务器上的url

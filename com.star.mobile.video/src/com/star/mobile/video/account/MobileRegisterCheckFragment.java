@@ -25,15 +25,15 @@ import com.star.mobile.video.AbsRegisterFragment;
 import com.star.mobile.video.R;
 import com.star.mobile.video.StarApplication;
 import com.star.mobile.video.activity.BrowserActivity;
-import com.star.mobile.video.dao.ServerUrlDao;
 import com.star.mobile.video.util.CommonUtil;
 import com.star.mobile.video.util.Constant;
-import com.star.mobile.video.util.DifferentUrlContral;
 import com.star.mobile.video.util.ToastUtil;
 import com.star.mobile.video.view.CheckCodeView;
 import com.star.mobile.video.view.CheckCodeView.CheckCodeButtonOnClick;
 import com.star.mobile.video.view.CheckCodeView.CodeCallBack;
 import com.star.mobile.video.view.PhoneNumberInputView;
+import com.star.util.DifferentUrlContral;
+import com.star.util.ServerUrlDao;
 import com.star.util.loader.OnResultListener;
 
 /**

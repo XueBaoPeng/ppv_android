@@ -63,6 +63,8 @@ import com.star.mobile.video.fragment.AccountManagerFragment;
 import com.star.mobile.video.model.MenuHandle;
 import com.star.mobile.video.service.EggService;
 import com.star.mobile.video.shared.SharedPreferencesUtil;
+import com.star.util.DifferentUrlContral;
+import com.star.util.ServerUrlDao;
 
 public class CommonUtil {
 
@@ -778,8 +780,10 @@ public class CommonUtil {
 	 * @param activity
 	 */
 	public static void skipBbs(Activity activity) {
+		ServerUrlDao serverUrlDao = DifferentUrlContral.diffUrlContral(activity);
 		Intent intent = new Intent(activity, BrowserActivity.class);
-		intent.putExtra("loadUrl", activity.getString(R.string.bbs_url));
+//		intent.putExtra("loadUrl", activity.getString(R.string.bbs_url));
+		intent.putExtra("loadUrl", serverUrlDao.getBBSUrl());
 		intent.putExtra("isBbs", 1);
 		CommonUtil.startActivity(activity, intent);
 

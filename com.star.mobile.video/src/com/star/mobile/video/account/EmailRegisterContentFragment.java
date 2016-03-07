@@ -35,6 +35,8 @@ import com.star.mobile.video.shared.SharedPreferencesUtil;
 import com.star.mobile.video.util.ApplicationUtil;
 import com.star.mobile.video.util.CommonUtil;
 import com.star.mobile.video.util.ToastUtil;
+import com.star.util.DifferentUrlContral;
+import com.star.util.ServerUrlDao;
 import com.star.util.loader.OnResultListener;
 
 /**
@@ -355,8 +357,10 @@ public class EmailRegisterContentFragment extends AbsRegisterFragment implements
 
 			break;
 		case R.id.tv_copyright:
+			ServerUrlDao serverUrlDao = DifferentUrlContral.diffUrlContral(registerActivity);
 			Intent i = new Intent(registerActivity, BrowserActivity.class);
-			i.putExtra("loadUrl", getString(R.string.html_prefix_url) + "/copyright/copyright.html");
+//			i.putExtra("loadUrl", getString(R.string.html_prefix_url) + "/copyright/copyright.html");
+			i.putExtra("loadUrl", serverUrlDao.getHtmlPrefixUrl() + "/copyright/copyright.html");
 			CommonUtil.startActivity(registerActivity, i);
 			break;
 		case R.id.bt_have_account:
