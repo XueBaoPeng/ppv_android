@@ -12,6 +12,7 @@ import com.star.mobile.video.R;
 import com.star.mobile.video.account.ChooseAreaActivity;
 import com.star.mobile.video.account.RegisterActivity;
 import com.star.mobile.video.activity.AccountConnectActivity;
+import com.star.mobile.video.home.HomeActivity;
 import com.star.mobile.video.me.feedback.UserReportActivity;
 import com.star.mobile.video.me.mycoins.MyCoinsActivity;
 import com.star.mobile.video.me.mycoins.TaskService;
@@ -24,6 +25,7 @@ import com.star.mobile.video.util.ApplicationUtil;
 import com.star.mobile.video.util.CommonUtil;
 import com.star.mobile.video.util.CommonUtil.PromptDialogClickListener;
 import com.star.mobile.video.util.ToastUtil;
+import com.star.mobile.video.util.config.AppConfig;
 import com.star.util.loader.OnResultListener;
 
 public class DoTaskClickListener implements OnClickListener {
@@ -48,7 +50,11 @@ public class DoTaskClickListener implements OnClickListener {
 			if(checkLongin()) {
 				return;
 			}
-			CommonUtil.startFragmentActivity(context, context.getString(R.string.fragment_tag_channelGuide), 92L);
+//			CommonUtil.startFragmentActivity(context, context.getString(R.string.fragment_tag_channelGuide), 92L);
+			Intent intent = new Intent(context, HomeActivity.class);
+			intent.putExtra("fragmentTag", AppConfig.TAG_fragment_play);
+			intent.putExtra("channelType", "EPG");
+			CommonUtil.startActivity(context, intent);
 		} else if(tv.getCode().equals(TaskCode.Go_four_report)) {
 			if(checkLongin()) {
 				return;

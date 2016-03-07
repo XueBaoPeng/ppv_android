@@ -56,7 +56,7 @@ public class PlayerAnalytic {
 	HashMap<String, Object> zyMap = new HashMap<String, Object>();
 	HashMap<String, Object> zyCommonMap = new HashMap<String, Object>();
 	//HashMap<String, Object> zyLogMap;
-	HashMap<String, Object> zyTempMap = new HashMap<String, Object>();
+	
 	String commonJson;
 	List<HashMap<String, Object>> zyLogMap = new ArrayList<HashMap<String, Object>>();
 	long zyTime = 0;
@@ -390,7 +390,7 @@ public class PlayerAnalytic {
 		
 		zyTime = System.currentTimeMillis();
 		zyCTime = timestamp;
-		
+		HashMap<String, Object> zyTempMap = new HashMap<String, Object>();
 		zymessageType = messageType;
 		zytimestamp = timestamp;
 		zymessage1 = message1;
@@ -442,17 +442,17 @@ protected void sendfinishPlayerDelay() {
 //		zyTempMap.put("duration", System.currentTimeMillis() - zyTime);
 //		zyTempMap.put("type", 4);
 //	}
-
+	HashMap<String, Object> zyTempMap = new HashMap<String, Object>();
 	zyTempMap.put("timestamp", System.currentTimeMillis());
 	zyTempMap.put("type", 7);
 	zyLogMap.add(zyTempMap);
 	
 	zyMap.put("common", zyCommonMap);//zyCommonMapcommonJson
 	zyMap.put("log", zyLogMap);
-	String stringJson = JSONUtil.getJSON(zyCommonMap);
+	//String stringJson = JSONUtil.getJSON(zyCommonMap);
 	//Log.w(TAG, "zy final common jason" + stringJson);
 	String stringJson1 = JSONUtil.getJSON(zyMap);
-	//Log.w(TAG, "zy final jason" + stringJson1);
+	Log.w(TAG, "zy final jason" + stringJson1);
 	
 	new LoadingDataTask() {
 		HttpResponse resp;

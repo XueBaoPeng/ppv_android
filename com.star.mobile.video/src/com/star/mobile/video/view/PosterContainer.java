@@ -33,7 +33,7 @@ public class PosterContainer extends RelativeLayout {
 	private ImageView[] dots;
 	private View tv_appStart;
 	private PosterChangeListener pcListener;
-	private int[] resIds = new int[] {R.drawable.one,R.drawable.two,R.drawable.three,R.drawable.four};
+	private int[] resIds = new int[] {R.drawable.one,R.drawable.two,R.drawable.three};
 
 	public PosterContainer(Context context) {
 		this(context, null);
@@ -113,8 +113,6 @@ public class PosterContainer extends RelativeLayout {
 				dot.setBackgroundResource(R.drawable.circle_1);
 			} else if(i==1) {
 				dot.setBackgroundResource(R.drawable.circle_2);
-			}else if(i==2) {
-				dot.setBackgroundResource(R.drawable.circle_3);
 			}
 			mLinearLayout.addView(dot);
 			posters.add(mLinearLayout);

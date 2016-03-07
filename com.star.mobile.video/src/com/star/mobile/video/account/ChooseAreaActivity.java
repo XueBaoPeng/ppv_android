@@ -248,6 +248,9 @@ public class ChooseAreaActivity extends BaseActivity {
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position,
 				long id) {
+			if(position>areas.size()-1){
+				return;
+			}
 			Area area = areas.get(position);
 			String areaCode = SharedPreferencesUtil.getAreaCode(ChooseAreaActivity.this);
 			if(areaCode==null || !areaCode.equals(area.getCode())) {

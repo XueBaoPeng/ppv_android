@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:id="@+id/rl_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <com.star.ui.ImageView
+                    android:id="@+id/user_logo"
+                    android:layout_width="@dimen/dp_40"
+                    android:layout_height="@dimen/dp_40"
+                    android:src="@drawable/no_portrait"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_marginTop="@dimen/dp_10" />
+
+                <TextView
+                    android:id="@+id/tv_comment_username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/user_logo"
+                    android:layout_marginLeft="@dimen/dp_8"
+                    android:layout_toRightOf="@id/user_logo"
+                    android:textColor="#333333"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_comment_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_comment_username"
+                    android:layout_marginLeft="@dimen/dp_8"
+                    android:layout_marginRight="@dimen/dp_8"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:layout_toRightOf="@id/user_logo"
+                    android:textColor="#A6A6A6"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_data_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignTop="@id/tv_comment_username"
+                    android:layout_marginRight="@dimen/dp_16"
+                    android:textColor="#A6A6A6"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+
+            <include
+                android:id="@+id/loadingView_user"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                layout="@layout/loading_progress_large"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="vertical" >
+
+                <RatingBar
+                    android:id="@+id/rating_user"
+                    style="@style/roomRatingBar_48"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:numStars="5"
+                     android:rating="0"
+                    android:stepSize="1" >
+                    </RatingBar>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/no_rating_tips"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="12dp"
+                android:layout_marginTop="12dp"
+                android:text="@string/tips_score_rating"
+                android:textColor="#A6A6A6"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:id="@+id/ll_channel_rate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/channel_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/darkGray"
+                    android:textSize="36sp" />
+
+                <RatingBar
+                    android:id="@+id/rating_channel"
+                    style="@style/roomRatingBar_24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="2dp"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:stepSize="0.1" >
+                    </RatingBar>
+            </LinearLayout>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/dp_5"
+                android:background="@drawable/bgline_long" />
+        </LinearLayout>
+
+</LinearLayout>

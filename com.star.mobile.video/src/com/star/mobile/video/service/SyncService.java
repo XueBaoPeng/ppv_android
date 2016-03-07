@@ -363,11 +363,6 @@ public class SyncService extends AbstractService{
 				String cachePosterUrl = appInfoCacheService.getAppPoster(appInfo.getVersion());
 				if((cachePosterUrl==null&&appInfo.getPosterUrl()!=null)||(cachePosterUrl!=null&&!cachePosterUrl.equals(appInfo.getPosterUrl()))) {
 					appInfoCacheService.setAppPoster(appInfo.getVersion(), appInfo.getPosterUrl());
-					if(appInfo.getPosterUrl()!=null&&!appInfo.getPosterUrl().equals("")) {
-						ImageView imageview = new ImageView(context);
-						imageview.setLayoutParams(new LinearLayout.LayoutParams(Constant.WINDOW_WIDTH, Constant.WINDOW_HEIGHT));
-						imageview.setUrl(appInfo.getPosterUrl());
-					}
 				}
 			}
 

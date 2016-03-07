@@ -98,6 +98,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener,Gu
 	private PlayFragment mPlayFragment;
 	private boolean isActionBarMoreClick = false;
 	private long channelId = 0;
+	private String channelType=null;
 	private ImageView coin;
 	public static int phoneNumber;
 	@Override
@@ -132,6 +133,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener,Gu
 					doOncreate();
 					doOnstart();
 					unregisterReceiver(this);
+					checkLoginStatus(syncService);
 				}
 			};
 			registerReceiver(initReceiver, new IntentFilter(InitService.initAction_success));
@@ -149,7 +151,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener,Gu
 		//四格体验服务不在监听
 //		Intent intent = new Intent(this,FourLayerService.class);
 //		startService(intent);
-		checkLoginStatus();
 		setDimension();
 	}
 	private void setDimension() {
@@ -157,8 +158,8 @@ public class HomeActivity extends FragmentActivity implements OnClickListener,Gu
 			GA.sendCustomDimension(5, String.valueOf(StarApplication.mUser.getId()));
 		}
 	}
-	private void checkLoginStatus(){
-		if(!SyncService.getInstance(this).isDBReady()&&!SyncService.getInstance(this).isLoading()){
+	private void checkLoginStatus(SyncService syncService){
+		if(!syncService.isDBReady()&&!syncService.isLoading()){
 			com.star.util.Logger.d("not login, must go welcome!");
 			ToastUtil.centerShowToast(this, "Sorry, you need login again!");
 			CommonUtil.startActivity(this, WelcomeActivity.class);
@@ -190,6 +191,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener,Gu
 		mActionBarMoreIV.setOnClickListener(this);
 		findViewById(R.id.iv_actionbar_search).setOnClickListener(this);
 		mPlayFragment = new PlayFragment();
+		mPlayFragment.setFragmentActivity(this);
 //		getSmartCardInfo();//判断是否绑卡
 		initBottomBar();
 		getDisplayWidthHeight();
@@ -283,6 +285,13 @@ public class HomeActivity extends FragmentActivity implements OnClickListener,Gu
 			channelId = Long.parseLong(intent.getStringExtra("channelId"));
 		}catch (Exception e) {
 			channelId = intent.getLongExtra("channelId", 0);
+		}
+		try{
+			channelType = intent.getStringExtra("channelType");
+		}catch (Exception e) {
+		}
+		if(channelType!=null){
+			mPlayFragment.setChannelType(channelType);
 		}
 		if(channelId != 0){
 			setFragmentByTag(AppConfig.TAG_fragment_play);
