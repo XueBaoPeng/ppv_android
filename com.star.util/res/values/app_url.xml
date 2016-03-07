@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- https准上线测试环境 --><!-- tenb调用的发帖地址  准上线环境-->
+    <string name="server_url">https://52.18.227.87/cms</string>
+    <string name="bbs_url">http://52.18.227.87/bbs/forumsCategory/list1.page</string>
+    <string name="bbs_faq_url">http://52.18.227.87/bbs/forumsCategory/faq/36.page</string>
+    <string name="bbs_faq_recharge">http://52.18.227.87/bbs/tenbrePosts/list/204.page</string>
+    <string name="bbs_faq_changebouquet">http://52.18.227.87/bbs/tenbrePosts/list/359.page</string>
+    <string name="bbs_faq_bindCard">http://52.18.227.87/bbs/tenbrePosts/list/203.page</string>
+    <string name="bbs_new_topic_url">http://52.18.227.87/bbs/forumsCategory/isNewMessage.page</string>
+    <string name="bbs_detail">http://52.18.227.87/bbs/tenbrePosts/list/%1$s.page</string>
+    <string name="tenb_post_bbs_url">http://52.18.227.87/bbs/forumsCategory/chooseTag.page?appPost=1</string>
+    <string name="html_prefix_url">http://cdnt.tenbre.me/html5</string>
+    <string name="bundesliga_url">http://tenbre.me/bund/bundesliga.php?areaId=</string>
+    <string name="serie_a_url">http://tenbre.me/bund/serie_a.php?areaId=</string>
+    <string name="resource_prefix_url">http://portal.tenbre.me</string>
+    <string name="is_show_crash_dialog">0</string>
+    <string name="robot_icon_url">http://portal.tenbre.me/portal/img/image/official_avatar.png</string>
+
+
+    <!-- 线上apk更新地址 GA地址-->
+    <string name="ga_trackingId">UA-55969660-1</string>
+    <!--<string name="apk_url">http://tenbre.me/release/startimes.apk</string>-->
+    <string name="apk_url">http://tenbre.me/startimes.apk</string>
+</resources>
