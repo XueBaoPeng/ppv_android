@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<!--当前app url环境，0为测试环境，1为prepare环境，2为正式环境-->
-	<string name="app_current_url">1</string>
+	<string name="app_current_url">0</string>
 	<!-- 当前app版本，1为开发版，0为正式版 -->
-	<string name="app_current_version">1</string>
+	<string name="app_current_version">0</string>
 
 	<!-- https线上环境 --><!-- tenb调用的发帖地址  正式环境-->
 	<string name="server_url_online">https://tenbre.me/cms</string>
