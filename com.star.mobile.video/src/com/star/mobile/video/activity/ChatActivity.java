@@ -32,9 +32,7 @@ import com.star.mobile.video.util.ToastUtil;
 import com.star.mobile.video.view.BulletinView;
 import com.star.mobile.video.view.FaceContainer;
 import com.star.mobile.video.view.LoadingProgressBar;
-import com.star.util.DifferentUrlContral;
 import com.star.util.Logger;
-import com.star.util.ServerUrlDao;
 import com.star.util.loader.OnListResultListener;
 import com.star.util.loader.OnResultListener;
 
@@ -43,7 +41,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
-import android.nfc.Tag;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -664,14 +661,12 @@ public class ChatActivity extends BaseActivity implements OnClickListener, OnTou
 	}
 	
 	private ChatVO robotSay(String msg, Long userId, String userName) {
-		ServerUrlDao serverUrlDao = DifferentUrlContral.diffUrlContral(this);
 		ChatVO chartRobot = new ChatVO();
 		chartRobot.setCreateDate(new Date());
 		chartRobot.setMsg(msg);
 		chartRobot.setUserId(userId);
 		chartRobot.setUserName(userName);
-//		chartRobot.setIcoURL(getString(R.string.robot_icon_url));
-		chartRobot.setIcoURL(serverUrlDao.getRobotIconUrl());
+		chartRobot.setIcoURL(getString(R.string.robot_icon_url));
 		return chartRobot;
 	}
 	private String mIndexCon = null;

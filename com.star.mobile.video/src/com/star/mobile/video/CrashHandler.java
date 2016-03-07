@@ -27,8 +27,6 @@ import android.util.Log;
 import com.star.mobile.video.activity.WelcomeActivity;
 import com.star.mobile.video.util.CommonUtil;
 import com.star.mobile.video.util.CommonUtil.PromptDialogClickListener;
-import com.star.util.DifferentUrlContral;
-import com.star.util.ServerUrlDao;
 import com.star.util.app.GA;
 
 /**
@@ -114,11 +112,9 @@ public class CrashHandler implements UncaughtExceptionHandler {
 				Looper.prepare();
 				mHandler = new Handler() {
 					public void handleMessage(Message msg) {
-						ServerUrlDao serverUrlDao = DifferentUrlContral.diffUrlContral(mContext);
 						switch (msg.what){
 							case 1:
-//								if(mContext.getString(R.string.is_show_crash_dialog).equals("1")) {
-								if(serverUrlDao.getIsShowCrashDialog().equals("1")) {
+								if(mContext.getString(R.string.is_show_crash_dialog).equals("1")) {
 									CommonUtil.getInstance().showPromptSystemDialog(mContext,
 											null, mContext.getString(R.string.crash_message), mContext.getString(R.string.confirm), null, new PromptDialogClickListener() {
 
@@ -142,7 +138,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
 								collectDeviceInfo(mContext);
 								//保存日志文件
 								saveCrashInfo2File(ex);
-								if(serverUrlDao.getIsShowCrashDialog().equals("0")) {
+								if(mContext.getString(R.string.is_show_crash_dialog).equals("0")) {
 									try {
 										Thread.sleep(1000);
 									} catch (InterruptedException e) {

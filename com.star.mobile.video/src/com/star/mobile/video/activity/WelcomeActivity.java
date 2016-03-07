@@ -39,9 +39,7 @@ import com.star.mobile.video.util.LanguageUtil;
 import com.star.mobile.video.util.ToastUtil;
 import com.star.mobile.video.view.PosterContainer;
 import com.star.ui.ImageView;
-import com.star.util.DifferentUrlContral;
 import com.star.util.Logger;
-import com.star.util.ServerUrlDao;
 import com.star.util.app.GA;
 import com.star.util.loader.OnResultListener;
 
@@ -87,9 +85,7 @@ public class WelcomeActivity extends BaseActivity {
 		ConnectServiceUtil.checkConnectStatus();
 		CommonUtil.showHashKey(this);
 		PushManager.getInstance().initialize(this.getApplicationContext());
-		ServerUrlDao serverUrlDao = DifferentUrlContral.diffUrlContral(this);
-//		Constant.setServerIP(getResources().getString(R.string.server_url));
-		Constant.setServerIP(serverUrlDao.getServerUrl());
+		Constant.setServerIP(getResources().getString(R.string.server_url));
 
 		TelephonyManager tm = (TelephonyManager)this.getSystemService(Context.TELEPHONY_SERVICE);
 		deviceId = tm.getDeviceId();

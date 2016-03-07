@@ -6,8 +6,7 @@ import java.net.Socket;
 import android.content.Context;
 import android.util.Log;
 
-import com.star.util.DifferentUrlContral;
-import com.star.util.ServerUrlDao;
+import com.star.mobile.video.R;
 
 
 public class ConnectServiceUtil {
@@ -30,9 +29,7 @@ public class ConnectServiceUtil {
 		Socket socket = null;
 		String ip = null; int port=80;
 		try {
-			ServerUrlDao serverUrlDao = DifferentUrlContral.diffUrlContral(CONTEXT);
-//			String[] url = CONTEXT.getString(R.string.server_url).split("/");
-			String[] url = serverUrlDao.getServerUrl().split("/");
+			String[] url = CONTEXT.getString(R.string.server_url).split("/");
 			url = url[2].split(":");
 			if(url.length==2){
 				ip = url[0];

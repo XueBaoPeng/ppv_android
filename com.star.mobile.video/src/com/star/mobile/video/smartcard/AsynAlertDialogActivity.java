@@ -14,8 +14,6 @@ import com.star.mobile.video.R;
 import com.star.mobile.video.activity.BrowserActivity;
 import com.star.mobile.video.me.feedback.FeedbackActivity;
 import com.star.mobile.video.util.CommonUtil;
-import com.star.util.DifferentUrlContral;
-import com.star.util.ServerUrlDao;
 
 public class AsynAlertDialogActivity extends Activity implements OnClickListener{
 	private TextView mDialogPromptTitle;
@@ -124,21 +122,18 @@ public class AsynAlertDialogActivity extends Activity implements OnClickListener
 		case R.id.prompt_ok:
 			intent = new Intent();
 			if(errorType!=null){
-				ServerUrlDao serverUrlDao = DifferentUrlContral.diffUrlContral(this);
+
 				intent.setClass(this, BrowserActivity.class);
 				if(bindCardCommand !=null){
-//					intent.putExtra("loadUrl", getString(R.string.bbs_faq_bindCard));
-					intent.putExtra("loadUrl", serverUrlDao.getBBSFaqBindCard());
+					intent.putExtra("loadUrl", getString(R.string.bbs_faq_bindCard));
 					String content=String.format(getString(R.string.bindCard_error), bindCardCommand.getSmartCardNo(),getString(R.string.binding_failure)+bindCardCommand.getAcceptStatus());
 					intent.putExtra("selfServiceError", content);
 				}else if(changePackageCMDVO !=null){
-//					intent.putExtra("loadUrl", getString(R.string.bbs_faq_changebouquet));
-					intent.putExtra("loadUrl", serverUrlDao.getBBSFaqChangeBouquet());
+					intent.putExtra("loadUrl", getString(R.string.bbs_faq_changebouquet));
 					String content=String.format(getString(R.string.changePackage_error), changePackageCMDVO.getFromPackageName(),changePackageCMDVO.getToPackageName(),changePackageCMDVO.getSmartCardNo(),getString(R.string.fail_to_change_your_bouquet)+changePackageCMDVO.getAccepStatus());
 					intent.putExtra("selfServiceError", content);
 				} else if(rc != null) {
-//					intent.putExtra("loadUrl", getString(R.string.bbs_faq_recharge));
-					intent.putExtra("loadUrl", serverUrlDao.getBBSFaqRecharge());
+					intent.putExtra("loadUrl", getString(R.string.bbs_faq_recharge));
 					String rechargeTypes = "";
 					if(rc.getRechargeType() == RechargeCMD.RECHARGE_CARD_TYPE) {
 						rechargeTypes = "recharge card";

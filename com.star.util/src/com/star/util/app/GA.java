@@ -3,18 +3,15 @@ package com.star.util.app;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
-import com.star.util.DifferentUrlContral;
-import com.star.util.ServerUrlDao;
+import com.star.util.R;
 
 public class GA {
 	private static Tracker mTracker;
 	
 	protected static Tracker init(Application application){
 //		UncaughtExceptionHandler.init(this);
-		ServerUrlDao serverUrlDao = DifferentUrlContral.diffUrlContral(application);
 		GoogleAnalytics analytics = GoogleAnalytics.getInstance(application);
-//		mTracker = analytics.newTracker(application.getResources().getString(R.string.ga_trackingId));
-		mTracker = analytics.newTracker(serverUrlDao.getGATrackingId());
+		mTracker = analytics.newTracker(application.getResources().getString(R.string.ga_trackingId));
 		mTracker.enableExceptionReporting(true);
 //		mTracker.enableAutoActivityTracking(true);
 		return mTracker;

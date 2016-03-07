@@ -1,72 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<!--当前app url环境，0为测试环境，1为prepare环境，2为正式环境-->
-	<string name="app_current_url">0</string>
 	<!-- 当前app版本，1为开发版，0为正式版 -->
 	<string name="app_current_version">0</string>
 
-	<!-- https线上环境 --><!-- tenb调用的发帖地址  正式环境-->
-	<string name="server_url_online">https://tenbre.me/cms</string>
-	<string name="bbs_url_online">http://startimes.me/bbs/forumsCategory/list1.page</string>
-	<string name="bbs_faq_url_online">http://startimes.me/bbs/forumsCategory/faq/36.page</string>
-	<string name="bbs_faq_recharge_online">http://startimes.me/bbs/tenbrePosts/list/204.page</string>
-	<string name="bbs_faq_changebouquet_online">http://startimes.me/bbs/tenbrePosts/list/359.page</string>
-	<string name="bbs_faq_bindCard_online">http://startimes.me/bbs/tenbrePosts/list/203.page</string>
-	<string name="bbs_new_topic_url_online">http://tenbre.me/bbs/forumsCategory/isNewMessage.page</string>
-	<string name="bbs_detail_online">http://startimes.me/bbs/tenbrePosts/list/%1$s.page</string>
-	<string name="tenb_post_bbs_url_online">http://startimes.me/bbs/forumsCategory/chooseTag.page?appPost=1</string>
-	<string name="html_prefix_url_online">http://cdnt.tenbre.me/html5</string>
-	<string name="bundesliga_url_online">http://tenbre.me/bund/bundesliga.php?areaId=</string>
-	<string name="serie_a_url_online">http://tenbre.me/bund/serie_a.php?areaId=</string>
-	<string name="resource_prefix_url_online">http://portal.tenbre.me</string>
-	<string name="is_show_crash_dialog_online">0</string>
-	<string name="robot_icon_url_online">http://portal.tenbre.me/portal/img/image/official_avatar.png</string>
-
-
-	<!-- https准上线测试环境 --><!-- tenb调用的发帖地址  准上线环境-->
-	<string name="server_url_prepare">https://52.18.227.87/cms</string>
-	<string name="bbs_url_prepare">http://52.18.227.87/bbs/forumsCategory/list1.page</string>
-	<string name="bbs_faq_url_prepare">http://52.18.227.87/bbs/forumsCategory/faq/36.page</string>
-	<string name="bbs_faq_recharge_prepare">http://52.18.227.87/bbs/tenbrePosts/list/204.page</string>
-	<string name="bbs_faq_changebouquet_prepare">http://52.18.227.87/bbs/tenbrePosts/list/359.page</string>
-	<string name="bbs_faq_bindCard_prepare">http://52.18.227.87/bbs/tenbrePosts/list/203.page</string>
-	<string name="bbs_new_topic_url_prepare">http://52.18.227.87/bbs/forumsCategory/isNewMessage.page</string>
-	<string name="bbs_detail_prepare">http://52.18.227.87/bbs/tenbrePosts/list/%1$s.page</string>
-	<string name="tenb_post_bbs_url_prepare">http://52.18.227.87/bbs/forumsCategory/chooseTag.page?appPost=1</string>
-	<string name="html_prefix_url_prepare">http://cdnt.tenbre.me/html5</string>
-	<string name="bundesliga_url_prepare">http://tenbre.me/bund/bundesliga.php?areaId=</string>
-	<string name="serie_a_url_prepare">http://tenbre.me/bund/serie_a.php?areaId=</string>
-	<string name="resource_prefix_url_prepare">http://portal.tenbre.me</string>
-	<string name="is_show_crash_dialog_prepare">0</string>
-	<string name="robot_icon_url_prepare">http://portal.tenbre.me/portal/img/image/official_avatar.png</string>
-
-
-	<!-- 线上apk更新地址 GA地址-->
-	<string name="ga_trackingId_online">UA-55969660-1</string>
-	<!--<string name="apk_url_online">http://tenbre.me/release/startimes.apk</string>-->
-	<string name="apk_url_online">http://tenbre.me/startimes.apk</string>
-
-	<!-- https本地测试环境 --><!-- tenb调用的发帖地址  本地环境-->
-	<string name="server_url_test">http://10.0.63.242:8281/cms</string>
-	<string name="html_prefix_url_test">http://10.0.63.242:8281</string>
-	<string name="bbs_url_test">http://10.0.63.242:8281/bbs/forumsCategory/list1.page</string>
-	<string name="bbs_faq_url_test">http://10.0.63.242:8281/bbs/forumsCategory/faq/36.page</string>
-	<string name="bbs_faq_recharge_test">http://10.0.63.242:8281/bbs/tenbrePosts/list/311.page</string>
-	<string name="bbs_faq_changebouquet_test">http://10.0.63.242:8281/bbs/tenbrePosts/list/308.page</string>
-	<string name="bbs_faq_bindCard_test">http://10.0.63.242:8281/bbs/tenbrePosts/list/307.page</string>
-	<string name="bbs_new_topic_url_test">http://10.63.242:8281/bbs/forumsCategory/isNewMessage.page</string>
-	<string name="tenb_post_bbs_url_test">http://10.0.63.242:8281/bbs/forumsCategory/chooseTag.page?appPost=1</string>
-	<string name="bbs_detail_test">http://10.0.63.242:8281/bbs/tenbrePosts/list/%1$s.page</string>
-	<string name="bundesliga_url_test">http://10.0.63.242:8281/bundesliga/bundesliga.php?areaId=</string>
-	<string name="serie_a_url_test">http://10.0.63.242:8281/bundesliga/serie_a.php?areaId=</string>
-	<string name="resource_prefix_url_test">http://10.0.63.242:8281</string>
-	<string name="robot_icon_url_test">http://portal.tenbre.me/portal/img/bg/official_avatar.png</string>
-	<string name="is_show_crash_dialog_test">1</string>
-
-
-	<!-- 本地测试apk更新地址  GA地址-->
-	<string name="ga_trackingId_test">UA-55965871-1</string>
-	<string name="apk_url_test">http://218.205.169.218:8581/portal/apk/shonngo.apk</string>
 	<!--推送地址-->
 	<string name="getui_appId">Aee7pGAme78dzyoDS5Nxq7</string>
 	<string name="getui_appKey">aBkdhG2HHp5MWPxqayJ6U5</string>

@@ -18,8 +18,6 @@ import com.star.mobile.video.base.BaseActivity;
 import com.star.mobile.video.me.feedback.FeedbackActivity;
 import com.star.mobile.video.model.AboutItemData;
 import com.star.mobile.video.util.CommonUtil;
-import com.star.util.DifferentUrlContral;
-import com.star.util.ServerUrlDao;
 
 /**
  * 
@@ -57,9 +55,7 @@ public class AboutActivity extends BaseActivity {
 				try {
 					target = aid.getTarget().getConstructor().newInstance();
 					if(target instanceof BrowserActivity) {
-						ServerUrlDao serverUrlDao = DifferentUrlContral.diffUrlContral(AboutActivity.this);
-//						intent.putExtra("loadUrl", getString(R.string.bbs_faq_url));
-						intent.putExtra("loadUrl", serverUrlDao.getBBSFaqUrl());
+						intent.putExtra("loadUrl", getString(R.string.bbs_faq_url));
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
