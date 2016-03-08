@@ -374,7 +374,7 @@ public class BondSmartCardInfoView extends RelativeLayout implements View.OnClic
                 // 点击AccountBill跳转
                 if (mSmartCardInfoVO != null && mSmartCardInfoVO.getMoney() != null) {
                     Intent accountBillIntent = new Intent(mContext, AccountBillActivity.class);
-                    accountBillIntent.putExtra("platForm",platForm != null ? platForm : "");
+                    accountBillIntent.putExtra("platForm",platForm);
                     accountBillIntent.putExtra("smartCardInfo", mSmartCardInfoVO);
                     CommonUtil.startActivity(mContext, accountBillIntent);
                 }else {
