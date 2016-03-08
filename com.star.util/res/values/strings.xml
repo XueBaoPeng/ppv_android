@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<!-- 当前app版本，1为开发版，0为正式版 -->
-	<string name="app_current_version">0</string>
+	<string name="app_current_version">1</string>
 
 	<!--推送地址-->
 	<string name="getui_appId">Aee7pGAme78dzyoDS5Nxq7</string>
