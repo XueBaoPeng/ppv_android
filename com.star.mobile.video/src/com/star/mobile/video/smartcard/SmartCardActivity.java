@@ -197,6 +197,10 @@ public class SmartCardActivity extends BaseActivity implements OnClickListener,C
 						handler.sendEmptyMessage(WHAT_AWAIT);
 					} else if(ss == BindCardResult.SMART_CARD_IS_BIND) { // 智能卡已经绑定
 						handler.sendEmptyMessage(BindCardResult.SMART_CARD_IS_BIND);
+					} else if(ss == BindCardResult.USER_BINDCARDS_EXCEED){//一个用户绑卡超过10张（限定次数）
+						ToastUtil.centerShowToast(SmartCardActivity.this, getString(R.string.bind_smart_card_limit));
+					}else if(ss == BindCardResult.BINDCARD_USERS_EXCEED){//一张卡被10个用户绑（限定用户）
+						ToastUtil.centerShowToast(SmartCardActivity.this, getString(R.string.failed_ten));
 					}else {
 						handler.sendEmptyMessage(WHAT_ERROR);
 					}
