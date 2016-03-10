@@ -208,6 +208,11 @@ public class TranslucentBackgroundActivity extends BaseActivity implements OnCli
 		faceValue = exchange.getFaceValue();
 		String url = exchange.getPoster().getResources().get(1).getUrl();
 		ivExchageLogo.setUrl(url);
+		if(faceValue!=null){
+			llEx.setVisibility(View.VISIBLE);
+			tvFac.setText(faceValue.intValue()+"");
+			tvSymbol.setText(SharedPreferencesUtil.getCurrencSymbol(this));
+		}
 		int typeGet = exchange.getTypeGet();
 		if(typeGet == Award.TYPE_NEW_CUSTOMER) {
 			tvExchangeDes.setText(getString(R.string.first_coupon));
@@ -216,10 +221,7 @@ public class TranslucentBackgroundActivity extends BaseActivity implements OnCli
 			tvExchangeDes.setText(getString(R.string.limited_coupon));
 			ivExchangeBg.setBackgroundResource(R.drawable.limited_coupon_bg);
 		} else if(typeGet == Award.FREE_COUPON) {
-			llEx.setVisibility(View.VISIBLE);
 			ivExchangeBg.setBackgroundResource(R.drawable.free_coupon_dec);
-			tvSymbol.setText(SharedPreferencesUtil.getCurrencSymbol(this));
-			tvFac.setText((int)exchange.getFaceValue()+"");
 			tvExchangeDes.setText(getString(R.string.free_coupon));
 		}
 		loadingExchangeSuccess();
