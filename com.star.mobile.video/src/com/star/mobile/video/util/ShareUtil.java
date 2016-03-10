@@ -104,6 +104,13 @@ public class ShareUtil {
 //        oks.disableSSOWhenAuthorize();
 //        oks.setSilent(false);
 //        // 分享时Notification的图标和文字
+		oks.setTwitterShareCallback(new TwitterShareCallback() {
+
+			@Override
+			public void hui(String str) {
+					oks.setSetContent(text);
+			}
+		});
         oks.setNotification(R.drawable.app_icon, title);
         // title标题，印象笔记、邮箱、信息、微信、人人网和QQ空间使用
         oks.setTitle(title);
