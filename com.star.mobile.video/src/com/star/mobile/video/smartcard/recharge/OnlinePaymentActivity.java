@@ -48,8 +48,7 @@ public class OnlinePaymentActivity  extends BaseActivity implements OnClickListe
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_online_payment);
 		unit = SharedPreferencesUtil.getCurrencSymbol(OnlinePaymentActivity.this);
-		selectExchange = (ExchangeVO) getIntent().getSerializableExtra("exchange");
-		doHide=getIntent().getBooleanExtra("hideCoupon", false);
+		currentIntent(getIntent());
 		initView();
 	}
 	private void initView() {
@@ -75,7 +74,19 @@ public class OnlinePaymentActivity  extends BaseActivity implements OnClickListe
 		}
 		mSmartCardService = new SmartCardService(this);
 	}
-	
+
+	@Override
+	protected void onNewIntent(Intent intent) {
+		super.onNewIntent(intent);
+		currentIntent(intent);
+	}
+
+	private void currentIntent(Intent intent) {
+		selectExchange = (ExchangeVO) intent.getSerializableExtra("exchange");
+		doHide = intent.getBooleanExtra("hideCoupon", false);
+		selectSmartCardNo = intent.getStringExtra("smartcardNo");
+	}
+
 	private void goRecommendActivity(String key) {
 		Intent i = new Intent(OnlinePaymentActivity.this, BrowserActivity.class);
 		double money = Double.parseDouble(etPayMoney.getEditableText().toString());

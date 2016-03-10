@@ -50,22 +50,22 @@ public class SyncStatusService extends BaseService {
 	private final long periodtime_chatroom = 5000;
 	private final long periodtime_syncstatus = 30000;
 	
-	private PostTimer mHandler = new PostTimer(){
-
-		@Override
-		public void handleMessage(Message msg) {
-			switch (msg.what){
-				case 0:
-					sycnStatus();
-					break;
-			}
-		}
+	private PostTimer chatroomHander = new PostTimer(){
 
 		@Override
 		public void execute() {
 			moniterChatRoomsNewMsgCount();
 		}
 	};
+
+	private PostTimer syncHanler = new PostTimer() {
+		@Override
+		public void execute() {
+			sycnStatus();
+		}
+	};
+
+
 	private final String TAG = SyncStatusService.class.getName();
 	@Override
 	public IBinder onBind(Intent intent) {
@@ -76,9 +76,9 @@ public class SyncStatusService extends BaseService {
 	public void onCreate() {
 		super.onCreate();
 		chatService = new ChatService(this);
-		notifManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);  
-		mHandler.startDelayed(0);
-		sync_();
+		notifManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+		chatroomHander.startDelayed(0);
+		syncHanler.startDelayed(0);
 	}
 	
 	@Override
@@ -95,42 +95,24 @@ public class SyncStatusService extends BaseService {
 	@Override
 	public void onDestroy() {
 		rmNotification(-1);
-		if (syncTimer != null) {
-			syncTimer.cancel();
+
+		if (chatroomHander != null) {
+			chatroomHander.stop();
 		}
-		if (mHandler != null) {
-			mHandler.stop();
+		if (syncHanler != null) {
+			syncHanler.stop();
 		}
 		super.onDestroy();
 	}
 	
-	public void sync_(){
-		if(SharedPreferencesUtil.getUserName(this) == null){
-			Logger.d("not login, sync task can not start.");
-			return;
-		}
-		if(syncTimer == null || syncTimer.cancel){
-			syncTimer = new MyTimer();
-		}
-		syncTimer.innerTask = new TimerTask() {
-			
-			@Override
-			public void run() {
-				Message msg = mHandler.obtainMessage();
-				msg.what = 0;
-				mHandler.sendMessage(msg);
-			}
-		};
-		syncTimer.schedule(syncTimer.innerTask, 0, periodtime_syncstatus);
-	}
-	
+
 	private void moniterChatRoomsNewMsgCount(){
     	chatService.getChatRooms(StarApplication.CURRENT_VERSION,LoadMode.NET, new OnListResultListener<ChatRoom>() {
 			
 			@Override
 			public boolean onIntercept() {
 				if(!ApplicationUtil.isApplicationInBackground(SyncStatusService.this)){
-					mHandler.startDelayed(periodtime_chatroom);
+					chatroomHander.startDelayed(periodtime_chatroom);
 					return true;
 				}
 				return false;
@@ -138,7 +120,7 @@ public class SyncStatusService extends BaseService {
 			
 			@Override
 			public void onFailure(int errorCode, String msg) {
-				mHandler.startDelayed(periodtime_chatroom);
+				chatroomHander.startDelayed(periodtime_chatroom);
 			}
 			
 			@Override
@@ -160,7 +142,7 @@ public class SyncStatusService extends BaseService {
 						}
 					}
 				}
-				mHandler.startDelayed(periodtime_chatroom);
+				chatroomHander.startDelayed(periodtime_chatroom);
 			}
 		});
     }
@@ -258,6 +240,7 @@ public class SyncStatusService extends BaseService {
 						Logger.d("Recharge: (smartcardno:"+rc.getSmartCardNo()+", AcceptStatus:"+rc.getAcceptStatus()+")");
 					}
 				}
+				syncHanler.startDelayed(periodtime_syncstatus);
 			}
 			
 			@Override
@@ -268,6 +251,7 @@ public class SyncStatusService extends BaseService {
 			@Override
 			public void onFailure(int errorCode, String msg) {
 				Log.v("TAG", ">>>>>>>>>>>>>?");
+				syncHanler.startDelayed(periodtime_syncstatus);
 			}
 		});
     }
