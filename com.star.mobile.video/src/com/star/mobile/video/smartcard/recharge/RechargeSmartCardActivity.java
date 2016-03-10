@@ -176,6 +176,7 @@ public class RechargeSmartCardActivity extends BaseActivity implements OnClickLi
 			inte.putExtra("exchange", rechargeEx);
 			inte.putExtra("money", money);
 			inte.putExtra("hideCoupon", doHide);
+			inte.putExtra("smartcardNo",  smartcardinfo.getSmardCardNo());
 			inte.setClass(RechargeSmartCardActivity.this, OnlinePaymentActivity.class);
 			CommonUtil.startActivity(RechargeSmartCardActivity.this, inte);
 			break;
