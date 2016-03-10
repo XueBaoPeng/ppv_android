@@ -200,12 +200,13 @@ public class SmartCardActivity extends BaseActivity implements OnClickListener,C
 //		}else{
 //			cardNum = bindCardEditViewB.getEditText();
 //		}
-
-		for (int i = 0;i<mSmartinfos.size();i++){
-			String smartCardNo = mSmartinfos.get(i).getSmardCardNo().trim();
-			if (cardNum.trim().equals(smartCardNo)){
-				ToastUtil.centerShowToast(this,getString(R.string.smart_cart_has_bound));
-				return ;
+		if (mSmartinfos != null && mSmartinfos.size() > 0){
+			for (int i = 0;i<mSmartinfos.size();i++){
+				String smartCardNo = mSmartinfos.get(i).getSmardCardNo().trim();
+				if (cardNum.trim().equals(smartCardNo)){
+					ToastUtil.centerShowToast(this,getString(R.string.smart_cart_has_bound));
+					return ;
+				}
 			}
 		}
 
