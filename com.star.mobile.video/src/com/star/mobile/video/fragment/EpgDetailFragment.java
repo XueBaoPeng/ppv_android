@@ -609,7 +609,7 @@ public class EpgDetailFragment extends BaseFragment {
 //			ShareUtil.share(getActivity(), "tencent", tv_ico_url, text);
 //			text.append("\t http://www.baidu.com");
 //			Log.v("TAG", "SHARE"+text.toString());
-			ShareUtil.showShare(getActivity(),text.toString(),url, getString(R.string.share_from_tenbre),program);
+			ShareUtil.showShare(getActivity(),text.toString(),url, getString(R.string.share_from_tenbre),program,"");
 		}
 	}
 	
