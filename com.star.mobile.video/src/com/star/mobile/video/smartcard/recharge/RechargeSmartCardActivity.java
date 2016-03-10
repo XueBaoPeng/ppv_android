@@ -3,8 +3,6 @@
  */
 package com.star.mobile.video.smartcard.recharge;
 
-import java.io.Serializable;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -27,6 +25,8 @@ import com.star.mobile.video.smartcard.SmartCardService;
 import com.star.mobile.video.util.CommonUtil;
 import com.star.mobile.video.view.SmartCardInfoView;
 import com.star.util.loader.OnResultListener;
+
+import java.io.Serializable;
 
 /**
  * @author xbp
@@ -51,10 +51,6 @@ public class RechargeSmartCardActivity extends BaseActivity implements OnClickLi
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_recharge_smartcard);
-		smartcardinfo = (SmartCardInfoVO) getIntent().getSerializableExtra("smartcardinfovo");
-		rechargeEx = (ExchangeVO) getIntent().getSerializableExtra("exchange");
-		platForm = (TVPlatForm)getIntent().getSerializableExtra("platForm");
-		doHide = getIntent().getBooleanExtra("hideCoupon", false);
 		unit = SharedPreferencesUtil.getCurrencSymbol(RechargeSmartCardActivity.this);
 		userService = new UserService();
 		mSmartCardService = new SmartCardService(this);
@@ -111,7 +107,6 @@ public class RechargeSmartCardActivity extends BaseActivity implements OnClickLi
 	protected void onNewIntent(Intent intent) {
 		super.onNewIntent(intent);
 		currentIntent(intent);
-		currentIntent(getIntent());
 	}
 
 	private void initViewStatus() {
@@ -143,6 +138,7 @@ public class RechargeSmartCardActivity extends BaseActivity implements OnClickLi
 	private void currentIntent(Intent intent) {
 		smartcardinfo = (SmartCardInfoVO) intent.getSerializableExtra("smartcardinfovo");
 		rechargeEx = (ExchangeVO) intent.getSerializableExtra("exchange");
+		platForm = (TVPlatForm) intent.getSerializableExtra("platForm");
 		doHide = intent.getBooleanExtra("hideCoupon", false);
 		initViewStatus();
 	}
@@ -161,6 +157,7 @@ public class RechargeSmartCardActivity extends BaseActivity implements OnClickLi
 			Intent intent = new Intent();
 			intent.putExtra("smartcardinfovo", (Serializable) smartcardinfo);
 			intent.putExtra("exchange", rechargeEx);
+			intent.putExtra("platForm",platForm);
 			intent.setClass(RechargeSmartCardActivity.this, MyCouponsActivity.class);
 			CommonUtil.startActivity(RechargeSmartCardActivity.this, intent);
 			break;
@@ -176,7 +173,7 @@ public class RechargeSmartCardActivity extends BaseActivity implements OnClickLi
 			inte.putExtra("exchange", rechargeEx);
 			inte.putExtra("money", money);
 			inte.putExtra("hideCoupon", doHide);
-			inte.putExtra("smartcardNo",  smartcardinfo.getSmardCardNo());
+			inte.putExtra("smartcardNo", smartcardinfo.getSmardCardNo());
 			inte.setClass(RechargeSmartCardActivity.this, OnlinePaymentActivity.class);
 			CommonUtil.startActivity(RechargeSmartCardActivity.this, inte);
 			break;

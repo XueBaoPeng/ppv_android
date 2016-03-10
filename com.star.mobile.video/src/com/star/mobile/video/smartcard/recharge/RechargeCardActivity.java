@@ -3,9 +3,6 @@
  */
 package com.star.mobile.video.smartcard.recharge;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.app.Application;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -41,6 +38,9 @@ import com.star.mobile.video.util.Constant;
 import com.star.mobile.video.util.ToastUtil;
 import com.star.util.loader.OnResultListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author xbp
  * 2015年11月28日
@@ -64,9 +64,7 @@ public class RechargeCardActivity extends BaseActivity implements OnClickListene
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_recharge_card);
 		unit = SharedPreferencesUtil.getCurrencSymbol(RechargeCardActivity.this);
-		selectExchange = (ExchangeVO) getIntent().getSerializableExtra("exchange");
-		SmartcardVo=(SmartCardInfoVO) getIntent().getSerializableExtra("smartcardinfovo");
-		selectSmartCardNo = SmartcardVo.getSmardCardNo();
+		currentIntent(getIntent());
 		userService = new UserService();
 		initView();
 	}
@@ -109,6 +107,19 @@ public class RechargeCardActivity extends BaseActivity implements OnClickListene
 	protected void onStop() {
 		super.onStop();
 		isOnResume = false;
+	}
+
+	@Override
+	protected void onNewIntent(Intent intent) {
+		super.onNewIntent(intent);
+		currentIntent(intent);
+
+	}
+	private void currentIntent(Intent intent) {
+		selectExchange = (ExchangeVO) intent.getSerializableExtra("exchange");
+		SmartcardVo=(SmartCardInfoVO) intent.getSerializableExtra("smartcardinfovo");
+		selectSmartCardNo = SmartcardVo.getSmardCardNo();
+
 	}
 	private class EditFocusChange implements OnFocusChangeListener {
 

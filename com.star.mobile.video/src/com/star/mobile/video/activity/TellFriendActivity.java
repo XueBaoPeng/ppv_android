@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.facebook.CallbackManager;
-import com.star.cms.model.Area;
 import com.star.cms.model.User;
 import com.star.mobile.video.R;
 import com.star.mobile.video.base.BaseActivity;
@@ -43,46 +42,45 @@ public class TellFriendActivity extends BaseActivity implements OnClickListener 
 		setCouponInfo();
 		String aredCode = SharedPreferencesUtil.getAreaCode(TellFriendActivity.this);
 		String currencSymbol = SharedPreferencesUtil.getCurrencSymbol(TellFriendActivity.this);
-		if (Area.TANZANIA_CODE.equals(aredCode)) {
-			((TextView) findViewById(R.id.content_one))
-					.setText(String.format(getString(R.string.tell_friend_content_one), currencSymbol + "1000"));
-			// ((TextView)
-			// findViewById(R.id.content_two)).setText(String.format(getString(R.string.tell_friend_content_two),
-			// currencSymbol+"1000*6"));
-			// ((TextView)
-			// findViewById(R.id.content_three)).setText(String.format(getString(R.string.tell_friend_content_three),
-			// currencSymbol+"1000"));
-		} else if (Area.NIGERIA_CODE.equals(aredCode)) {
-			((TextView) findViewById(R.id.content_one))
-					.setText(String.format(getString(R.string.tell_friend_content_one), currencSymbol + "100"));
-			// ((TextView)
-			// findViewById(R.id.content_two)).setText(String.format(getString(R.string.tell_friend_content_two),
-			// currencSymbol+"100*6"));
-			// ((TextView)
-			// findViewById(R.id.content_three)).setText(String.format(getString(R.string.tell_friend_content_three),
-			// currencSymbol+"100"));
-		} else if (Area.KENYA_CODE.equals(aredCode)) {
-			((TextView) findViewById(R.id.content_one))
-					.setText(String.format(getString(R.string.tell_friend_content_one), currencSymbol + "50"));
-			// ((TextView)
-			// findViewById(R.id.content_two)).setText(String.format(getString(R.string.tell_friend_content_two),
-			// currencSymbol+"100*6"));
-			// ((TextView)
-			// findViewById(R.id.content_three)).setText(String.format(getString(R.string.tell_friend_content_three),
-			// currencSymbol+"100"));
-		} else if (Area.UGANDA_CODE.equals(aredCode)) {
-			((TextView) findViewById(R.id.content_one))
-					.setText(String.format(getString(R.string.tell_friend_content_one), currencSymbol + "1000"));
-		} else if (Area.SOUTHAFRICA_CODE.equals(aredCode)) {
-			((TextView) findViewById(R.id.content_one))
-					.setText(String.format(getString(R.string.tell_friend_content_one), currencSymbol + "5"));
-		} else if (Area.RWANDA_CODE.equals(aredCode)) {
-			((TextView) findViewById(R.id.content_one))
-					.setText(String.format(getString(R.string.tell_friend_content_one), currencSymbol + "350"));
-		} else {
+//		if (Area.TANZANIA_CODE.equals(aredCode)) {
+//			((TextView) findViewById(R.id.content_one))
+//					.setText(String.format(getString(R.string.tell_friend_content_one), currencSymbol + "1000"));
+//			// ((TextView)
+//			// findViewById(R.id.content_two)).setText(String.format(getString(R.string.tell_friend_content_two),
+//			// currencSymbol+"1000*6"));
+//			// ((TextView)
+//			// findViewById(R.id.content_three)).setText(String.format(getString(R.string.tell_friend_content_three),
+//			// currencSymbol+"1000"));
+//		} else if (Area.NIGERIA_CODE.equals(aredCode)) {
+//			((TextView) findViewById(R.id.content_one))
+//					.setText(String.format(getString(R.string.tell_friend_content_one), currencSymbol + "100"));
+//			// ((TextView)
+//			// findViewById(R.id.content_two)).setText(String.format(getString(R.string.tell_friend_content_two),
+//			// currencSymbol+"100*6"));
+//			// ((TextView)
+//			// findViewById(R.id.content_three)).setText(String.format(getString(R.string.tell_friend_content_three),
+//			// currencSymbol+"100"));
+//		} else if (Area.KENYA_CODE.equals(aredCode)) {
+//			((TextView) findViewById(R.id.content_one))
+//					.setText(String.format(getString(R.string.tell_friend_content_one), currencSymbol + "50"));
+//			// ((TextView)
+//			// findViewById(R.id.content_two)).setText(String.format(getString(R.string.tell_friend_content_two),
+//			// currencSymbol+"100*6"));
+//			// ((TextView)
+//			// findViewById(R.id.content_three)).setText(String.format(getString(R.string.tell_friend_content_three),
+//			// currencSymbol+"100"));
+//		} else if (Area.UGANDA_CODE.equals(aredCode)) {
+//			((TextView) findViewById(R.id.content_one))
+//					.setText(String.format(getString(R.string.tell_friend_content_one), currencSymbol + "1000"));
+//		} else if (Area.SOUTHAFRICA_CODE.equals(aredCode)) {
+//			((TextView) findViewById(R.id.content_one))
+//					.setText(String.format(getString(R.string.tell_friend_content_one), currencSymbol + "5"));
+//		} else if (Area.RWANDA_CODE.equals(aredCode)) {
+//			((TextView) findViewById(R.id.content_one))
+//					.setText(String.format(getString(R.string.tell_friend_content_one), currencSymbol + "350"));
+//		} else {
 			((TextView) findViewById(R.id.content_one))
 					.setText(String.format(getString(R.string.tell_friend_content_one), ""));
-		}
 
 		activity = this;
 	}
@@ -90,7 +88,7 @@ public class TellFriendActivity extends BaseActivity implements OnClickListener 
 	private void setCouponInfo() {
 		String aredCode = SharedPreferencesUtil.getAreaCode(this);
 		String currencSymbol = SharedPreferencesUtil.getCurrencSymbol(this);
-		if (Area.TANZANIA_CODE.equals(aredCode)) {
+		/*if (Area.TANZANIA_CODE.equals(aredCode)) {
 			tvCouponinfo.setText(String.format(getString(R.string.invita_one), currencSymbol + "1000"));
 		} else if (Area.NIGERIA_CODE.equals(aredCode)) {
 			tvCouponinfo.setText(String.format(getString(R.string.invita_one), currencSymbol + "100"));
@@ -102,9 +100,9 @@ public class TellFriendActivity extends BaseActivity implements OnClickListener 
 			tvCouponinfo.setText(String.format(getString(R.string.invita_one), currencSymbol + "5"));
 		} else if (Area.RWANDA_CODE.equals(aredCode)) {
 			tvCouponinfo.setText(String.format(getString(R.string.invita_one), currencSymbol + "350"));
-		} else {
+		} else {*/
 			tvCouponinfo.setText(String.format(getString(R.string.invita_one), ""));
-		}
+
 
 	}
 
