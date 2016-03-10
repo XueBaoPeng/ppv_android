@@ -78,9 +78,7 @@ public class SmartCardActivity extends BaseActivity implements OnClickListener,C
 
 								@Override
 								public void onConfirmClick() {
-									Intent intent =new Intent(SmartCardActivity.this,MyOrderActivity.class);
-									CommonUtil.startActivity(SmartCardActivity.this, intent);
-									SmartCardActivity.this.finish();
+
 								}
 
 								@Override
@@ -95,9 +93,7 @@ public class SmartCardActivity extends BaseActivity implements OnClickListener,C
 
 								@Override
 								public void onConfirmClick() {
-									Intent intent =new Intent(SmartCardActivity.this,MyOrderActivity.class);
-									CommonUtil.startActivity(SmartCardActivity.this, intent);
-									SmartCardActivity.this.finish();
+
 								}
 
 								@Override
