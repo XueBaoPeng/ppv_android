@@ -72,6 +72,41 @@ public class SmartCardActivity extends BaseActivity implements OnClickListener,C
 					}
 				});
 				break;
+				case BindCardResult.USER_BINDCARDS_EXCEED:
+					CommonUtil.getInstance().showPromptDialog(SmartCardActivity.this,
+							getString(R.string.tips), getString(R.string.bind_smart_card_limit), SmartCardActivity.this.getString(R.string.ok), null, new PromptDialogClickListener() {
+
+								@Override
+								public void onConfirmClick() {
+									Intent intent =new Intent(SmartCardActivity.this,MyOrderActivity.class);
+									CommonUtil.startActivity(SmartCardActivity.this, intent);
+									SmartCardActivity.this.finish();
+								}
+
+								@Override
+								public void onCancelClick() {
+
+								}
+							});
+					break;
+				case BindCardResult.BINDCARD_USERS_EXCEED:
+					CommonUtil.getInstance().showPromptDialog(SmartCardActivity.this,
+							getString(R.string.tips), getString(R.string.failed_ten), SmartCardActivity.this.getString(R.string.ok), null, new PromptDialogClickListener() {
+
+								@Override
+								public void onConfirmClick() {
+									Intent intent =new Intent(SmartCardActivity.this,MyOrderActivity.class);
+									CommonUtil.startActivity(SmartCardActivity.this, intent);
+									SmartCardActivity.this.finish();
+								}
+
+								@Override
+								public void onCancelClick() {
+
+								}
+							});
+
+					break;
 			case WHAT_ERROR:
 				CommonUtil.getInstance().showPromptDialog(SmartCardActivity.this,
 						getString(R.string.tips), getString(R.string.bind_card_failure), SmartCardActivity.this.getString(R.string.ok), null, new PromptDialogClickListener() {
@@ -198,9 +233,9 @@ public class SmartCardActivity extends BaseActivity implements OnClickListener,C
 					} else if(ss == BindCardResult.SMART_CARD_IS_BIND) { // 智能卡已经绑定
 						handler.sendEmptyMessage(BindCardResult.SMART_CARD_IS_BIND);
 					} else if(ss == BindCardResult.USER_BINDCARDS_EXCEED){//一个用户绑卡超过10张（限定次数）
-						ToastUtil.centerShowToast(SmartCardActivity.this, getString(R.string.bind_smart_card_limit));
+						handler.sendEmptyMessage(BindCardResult.USER_BINDCARDS_EXCEED);
 					}else if(ss == BindCardResult.BINDCARD_USERS_EXCEED){//一张卡被10个用户绑（限定用户）
-						ToastUtil.centerShowToast(SmartCardActivity.this, getString(R.string.failed_ten));
+						handler.sendEmptyMessage(BindCardResult.BINDCARD_USERS_EXCEED);
 					}else {
 						handler.sendEmptyMessage(WHAT_ERROR);
 					}
