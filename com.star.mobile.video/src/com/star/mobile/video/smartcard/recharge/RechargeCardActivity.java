@@ -352,6 +352,7 @@ public class RechargeCardActivity extends BaseActivity implements OnClickListene
 	}
 	
 	private void recharge() {
+		
 		if(selectSmartCardNo==null || selectSmartCardNo.isEmpty()) {
 			ToastUtil.centerShowToast(RechargeCardActivity.this, getString(R.string.vouchno_can_not_be_empty));
 			return;
