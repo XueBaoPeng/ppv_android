@@ -104,6 +104,13 @@ public class ShareUtil {
 //        oks.disableSSOWhenAuthorize();
 //        oks.setSilent(false);
 //        // 分享时Notification的图标和文字
+		oks.setTwitterShareCallback(new TwitterShareCallback() {
+
+			@Override
+			public void hui(String str) {
+					oks.setSetContent(text);
+			}
+		});
         oks.setNotification(R.drawable.app_icon, title);
         // title标题，印象笔记、邮箱、信息、微信、人人网和QQ空间使用
         oks.setTitle(title);
@@ -118,7 +125,7 @@ public class ShareUtil {
         oks.setUrl("http://tenbre.tk/portal/apk.html");
 //        oks.setFilePath("http://ec2-54-77-98-140.eu-west-1.compute.amazonaws.com/portal/com.star.mobile.video.apk");
 //        // comment是我对这条分享的评论，仅在人人网和QQ空间使用
-        oks.setComment("Incerely invite you to watch this program from StarTimes TV. "+text);
+        oks.setComment("Sincerely invite you to watch this program from StarTimes TV. "+text);
 //        // site是分享此内容的网站名称，仅在QQ空间使用
 //        oks.setSite("StarGO");
 //        // siteUrl是分享此内容的网站地址，仅在QQ空间使用

@@ -172,12 +172,28 @@ public class MyOrderDetailActivity extends BaseActivity implements OnClickListen
 							failedReason = getString(R.string.service_abnormal) + "(" + acceptStatus + ")";
 							break;
 					}
+					String rechargeTitle = "";
 					String dec = "";
-					Double money = result.getRechargeMoney();
-					if (money != null && money > 0) {
-						dec = SharedPreferencesUtil.getCurrencSymbol(MyOrderDetailActivity.this) + money;
+					Double exchangeMoney = result.getExchangeMoney();
+					Double rechargeMoney = result.getRechargeMoney();
+					if(result.getRechargeType() == RechargeCMD.EXCHANGE_TYPE){
+						dec = SharedPreferencesUtil.getCurrencSymbol(MyOrderDetailActivity.this) + exchangeMoney;
+						rechargeTitle = getString(R.string.counpon) + " " + getString(R.string.recharge);
+					}else if(result.getRechargeType() == RechargeCMD.RECHARGE_CARD_TYPE){
+						if (result.getRechargeByCouponStatus() == RechargeResult.EXCHANGE_SUCCESS
+								&& acceptStatus == RechargeResult.EXCHANGE_SUCCESS){
+							rechargeTitle = getString(R.string.counpon) + "+"+getString(R.string.card)+" " + getString(R.string.recharge);
+							Double totalMoney = exchangeMoney + rechargeMoney;
+							dec = SharedPreferencesUtil.getCurrencSymbol(MyOrderDetailActivity.this) + totalMoney;
+						} else if (acceptStatus == RechargeResult.EXCHANGE_SUCCESS){
+							rechargeTitle = getString(R.string.card) + " " + getString(R.string.recharge);
+							dec = SharedPreferencesUtil.getCurrencSymbol(MyOrderDetailActivity.this) + rechargeMoney;
+						} else{
+							rechargeTitle = getString(R.string.recharge);
+						}
 					}
-					setMyOrderDetailInfo(getString(R.string.recharge), result.getSmartCardNo(), dec,
+
+					setMyOrderDetailInfo(rechargeTitle, result.getSmartCardNo(), dec,
 							result.getCreateDate(), R.drawable.ic_cancel, result.getUpdateDate(),
 							failedReason, R.drawable.ic_alert, result.getCreateDate(),
 							result.getUpdateDate(), getString(R.string.recharge_success),
@@ -433,7 +449,8 @@ public class MyOrderDetailActivity extends BaseActivity implements OnClickListen
 			mProcessImageView.setImageResource(R.drawable.ic_confirm);
 
 			if (resultStatus == BindCardCommand.BIND_CARED_SUCCESS_RESULT
-					|| resultStatus == ChangePackageCode.CHANGE_SUCCESS) {// result为成功的时候
+					|| resultStatus == ChangePackageCode.CHANGE_SUCCESS
+					|| resultStatus == RechargeResult.EXCHANGE_SUCCESS) {// result为成功的时候
 				mResultImageView.setImageResource(R.drawable.ic_confirm);
 				setTextViewStyle(mResultTimeTV,
 						getString(R.string.time) + " " + DateFormat.format(successTime, "yyyy-MM-dd HH:mm"), 0, 6,

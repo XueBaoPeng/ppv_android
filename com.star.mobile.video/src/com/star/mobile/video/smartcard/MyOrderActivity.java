@@ -78,10 +78,6 @@ public class MyOrderActivity extends BaseActivity implements OnClickListener{
 	@Override
 	protected void onResume() {
 		super.onResume();
-//		if (mMyOrderLists != null && mMyOrderLists.size()>0) {
-//			mMyOrderLists.clear();
-//		}
-//		getOrderList();
 	}
 
 	@Override
@@ -110,9 +106,9 @@ public class MyOrderActivity extends BaseActivity implements OnClickListener{
 			@Override
 			public void loadPost(List<SMSHistory> datas) {
 				mSmartCardLoading.setVisibility(View.GONE);
-				if(datas!=null && datas.size()>0){
+				mMyOrderLists.addAll(datas);
+				if(mMyOrderLists!=null && mMyOrderLists.size()>0){
 					mMyOrderNodatall.setVisibility(View.GONE);
-					mMyOrderLists.addAll(datas);
 					mMyOrderAdapter.setMyOrderData(mMyOrderLists);
 					mMyOrderListView.setOnItemClickListener(new OnItemClickListener() {
 
