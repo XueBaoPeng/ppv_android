@@ -14,6 +14,7 @@ import com.star.mobile.video.account.ChooseAreaActivity;
 import com.star.mobile.video.model.FunctionType;
 import com.star.mobile.video.service.FunctionService;
 import com.star.mobile.video.shared.SharedPreferencesUtil;
+import com.star.mobile.video.util.ApplicationUtil;
 import com.star.mobile.video.util.Constant;
 import com.star.mobile.video.util.http.HTTPClient;
 import com.star.util.app.Application;
@@ -52,7 +53,7 @@ public class StarApplication extends Application {
 			FunctionService.initAreaFunctions(getApplicationContext(), areaName);
 		CrashHandler crashHandler = CrashHandler.getInstance();  
         crashHandler.init(getApplicationContext(),this);
-
+		IOUtil.setAppVerison(ApplicationUtil.getAppVerison(this));
 	}
 	public SparseArray<String> getUIS(){
 		return UIS;

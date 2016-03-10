@@ -1,31 +1,16 @@
 package com.star.util.http;
 
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.net.Socket;
-import java.net.UnknownHostException;
-import java.security.KeyManagementException;
-import java.security.KeyStore;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.security.UnrecoverableKeyException;
-import java.security.cert.CertificateException;
-import java.security.cert.X509Certificate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.zip.GZIPInputStream;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.os.Environment;
+import android.util.Log;
 
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
+import com.star.util.InternalStorage;
+import com.star.util.error.StarBoxException;
+import com.star.util.json.JSONUtil;
+import com.star.util.thread.ThreadLocalMap;
+import com.star.util.thread.ThreadLocalString;
 
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
@@ -59,17 +44,32 @@ import org.apache.http.params.HttpParams;
 import org.apache.http.params.HttpProtocolParams;
 import org.apache.http.protocol.HTTP;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.os.Environment;
-import android.util.Log;
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.Socket;
+import java.net.UnknownHostException;
+import java.security.KeyManagementException;
+import java.security.KeyStore;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.UnrecoverableKeyException;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.zip.GZIPInputStream;
 
-import com.star.util.InternalStorage;
-import com.star.util.error.StarBoxException;
-import com.star.util.json.JSONUtil;
-import com.star.util.thread.ThreadLocalMap;
-import com.star.util.thread.ThreadLocalString;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 
 /**
  * 
@@ -85,6 +85,7 @@ public class IOUtil {
 	private static String TOKEN;
 	public static Long sysTime;
 	public static Context context;
+	private static Integer appVerison;
 	
 	static {
 		try {
@@ -146,8 +147,12 @@ public class IOUtil {
 	
 	protected static HttpResponse excuteHttpRequest(HttpUriRequest httpReq) throws ClientProtocolException, IOException{
 		httpReq.setHeader("token", TOKEN);
-		if(context!=null)
+		if(context!=null) {
 			httpReq.setHeader("lnCode", context.getResources().getConfiguration().locale.getLanguage());
+		}
+		if(appVerison!=null&&appVerison!=0){
+			httpReq.setHeader("appVersion", appVerison+"");
+		}
 		httpReq.addHeader("Accept-Encoding", "gzip");
 		HTTPReqt http = new HTTPReqt();
 		http.setUrl(httpReq.getURI().getHost()+":"+httpReq.getURI().getPort());
@@ -379,8 +384,6 @@ public class IOUtil {
 	/**
 	 * send post http request.
 	 * 
-	 * @param params  KV  V:String/JSON
-	 * @param url
 	 * @return JSON
 	 * @throws Exception 
 	 */
@@ -495,6 +498,10 @@ public class IOUtil {
 
 	public static void setTOKEN(String tOKEN) {
 		TOKEN = tOKEN;
+	}
+
+	public static void setAppVerison(Integer version){
+		appVerison = version;
 	}
 	
 }
