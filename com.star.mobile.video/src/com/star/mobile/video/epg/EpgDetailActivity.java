@@ -602,11 +602,14 @@ public class EpgDetailActivity extends BaseActivity {
 			}else{
 				
 				StringBuffer text = new StringBuffer();
+				StringBuffer textTwitter = new StringBuffer();
 				text.append(getResources().getString(R.string.share_text));
+				textTwitter.append(getResources().getString(R.string.share_text));
 				try {
 					text.append(getString(R.string.share_program)+program.getName()+getString(R.string.share_channel)+channel.getChannelNumber()+"-"
 							+channel.getName()+"\n"+DateFormat.formatTuesday(program.getStartDate())+"\n"+ DateFormat.formatTime(program.getStartDate()) 
 							+ "-"+DateFormat.formatTime(program.getEndDate())+"\n"+getString(R.string.share_download)+"\n"+"www.startimestv.com");
+					textTwitter.append(getString(R.string.share_program)+program.getName()+"\n"+getString(R.string.share_download)+"\n"+"www.startimestv.com");
 				} catch (Exception e) {
 					Log.e("TAG", "Data format error",e);
 					try {
@@ -622,7 +625,7 @@ public class EpgDetailActivity extends BaseActivity {
 				}catch (Exception e) {
 					url = "http://tenbre.me/portal/img/shonngo_logo.png";
 				}
-				ShareUtil.showShare(EpgDetailActivity.this,text.toString(),url, getString(R.string.share_from_tenbre),program);
+				ShareUtil.showShare(EpgDetailActivity.this,text.toString(),url, getString(R.string.share_from_tenbre),program,textTwitter.toString());
 				ToastUtil.showToast(EpgDetailActivity.this, channel.getName()+"_"+program.getId());
 				GA.sendEvent("Program", "Program_share",channel.getName()+"_"+program.getId() , 1);
 			}

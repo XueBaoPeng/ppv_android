@@ -85,7 +85,7 @@ public class ShareUtil {
 		}
 	}
 	
-	public static void showShare(final Context context, final String text, String imageURL, String title,final Program programe) {
+	public static void showShare(final Context context, final String text, String imageURL, String title,final Program programe,final String textTwitter) {
         ShareSDK.initSDK(context);
         ShareSDK.registerPlatform(BbmCustomize.class);
         ShareSDK.registerPlatform(FacebookCustomize.class);
@@ -108,7 +108,7 @@ public class ShareUtil {
 
 			@Override
 			public void hui(String str) {
-					oks.setSetContent(text);
+					oks.setSetContent(textTwitter);
 			}
 		});
         oks.setNotification(R.drawable.app_icon, title);
