@@ -173,28 +173,26 @@ public class MyOrderDetailActivity extends BaseActivity implements OnClickListen
 							break;
 					}
 					String rechargeTitle = "";
-					if (result.getRechargeByCouponStatus() == RechargeResult.EXCHANGE_SUCCESS
-							&& acceptStatus == RechargeResult.EXCHANGE_SUCCESS){
-						rechargeTitle = getString(R.string.counpon) + "+"+getString(R.string.card)+" " + getString(R.string.recharge);
-					} else if(result.getRechargeByCouponStatus() == RechargeResult.EXCHANGE_SUCCESS) {
-						rechargeTitle = getString(R.string.counpon) + " " + getString(R.string.recharge);
-					} else if (acceptStatus == RechargeResult.EXCHANGE_SUCCESS){
-						rechargeTitle = getString(R.string.card) + " " + getString(R.string.recharge);
-					} else{
-						rechargeTitle = getString(R.string.recharge);
-					}
-
 					String dec = "";
 					Double exchangeMoney = result.getExchangeMoney();
 					Double rechargeMoney = result.getRechargeMoney();
-					if (exchangeMoney != null && exchangeMoney > 0 && rechargeMoney != null && rechargeMoney > 0) {
-						Double totalMoney = exchangeMoney + rechargeMoney;
-						dec = SharedPreferencesUtil.getCurrencSymbol(MyOrderDetailActivity.this) + totalMoney;
-					} else if (exchangeMoney != null && exchangeMoney > 0){
+					if(result.getRechargeType() == RechargeCMD.EXCHANGE_TYPE){
 						dec = SharedPreferencesUtil.getCurrencSymbol(MyOrderDetailActivity.this) + exchangeMoney;
-					} else if (rechargeMoney != null && rechargeMoney > 0){
-						dec = SharedPreferencesUtil.getCurrencSymbol(MyOrderDetailActivity.this) + rechargeMoney;
+						rechargeTitle = getString(R.string.counpon) + " " + getString(R.string.recharge);
+					}else if(result.getRechargeType() == RechargeCMD.RECHARGE_CARD_TYPE){
+						if (result.getRechargeByCouponStatus() == RechargeResult.EXCHANGE_SUCCESS
+								&& acceptStatus == RechargeResult.EXCHANGE_SUCCESS){
+							rechargeTitle = getString(R.string.counpon) + "+"+getString(R.string.card)+" " + getString(R.string.recharge);
+							Double totalMoney = exchangeMoney + rechargeMoney;
+							dec = SharedPreferencesUtil.getCurrencSymbol(MyOrderDetailActivity.this) + totalMoney;
+						} else if (acceptStatus == RechargeResult.EXCHANGE_SUCCESS){
+							rechargeTitle = getString(R.string.card) + " " + getString(R.string.recharge);
+							dec = SharedPreferencesUtil.getCurrencSymbol(MyOrderDetailActivity.this) + rechargeMoney;
+						} else{
+							rechargeTitle = getString(R.string.recharge);
+						}
 					}
+
 					setMyOrderDetailInfo(rechargeTitle, result.getSmartCardNo(), dec,
 							result.getCreateDate(), R.drawable.ic_cancel, result.getUpdateDate(),
 							failedReason, R.drawable.ic_alert, result.getCreateDate(),
